@@ -1,0 +1,43 @@
+RsaToolbox SCPI command support
+===============================
+
+VnaChannel:
+- setIfFilter(NORM|MED|HIGH)
+  SENSe<Ch>:BANDwidth[:RESolution]:SELect <NORMal|MEDium|HIGH>
+
+VnaChannel::VnaIntermod (class):
+- setLowerTone(uint port)
+  SENSe<Ch>:FREQuency:IMODulation:LTONe <source_type>, <source_port>
+- setUpperTonePort(uint port)
+  SENSe<Ch>:FREQuency:IMODulation:UTONe PORT, <source_index>
+- setUpperToneGenerator(uint index)
+  SENSe<Ch>:FREQuency:IMODulation:UTONe GEN,  <source_index>
+- setReceiverPort(uint port)
+  SENSe<Ch>:FREQuency:IMODulation:RECiever    <port>
+- setToneSpacing(double frequency_Hz, SiPrefix prefix = None)
+  SENSe<Ch>:FREQuency:IMODulation:TDIStance <frequency>
+- productOn(uint order)
+  SENSe<Ch>:FREQuency:IMODulation:ORDer<order>[:STATe] ON
+- off()
+  SENSe<Ch>:FREQuency:IMODulation:CONV OFF
+
+VnaTrace:
+- setIntermodTone(side, input/output)
+  CALCulate<Ch>:PARamater:SDEFine '<trace_name>','<side>T<at: I/O>'
+- setIntermod(order, side)
+  CALCulate<Ch>:PARamater:SDEFine '<trace_name>','IM<order><side>O'
+- setIP(order, side)
+  CALCulate<Ch>:PARamater:SDEFine '<trace_name>','IP<order><side>O'
+- setIntermodSuppression(order, side)
+  CALCulate<Ch>:PARamater:SDEFine '<trace_name>','IM<order><side>OR'
+
++ Unit Tests
+
+Core project functionality
+==========================
+
+GeneratePowerCal (class):
+- 
+
+TwoToneSweep (class)
+- 

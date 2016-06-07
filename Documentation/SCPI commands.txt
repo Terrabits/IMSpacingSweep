@@ -1,0 +1,60 @@
+ZNB
+===
+
+## IF filter selectivity
+SENSe<Ch>:BANDwidth[:RESolution]:SELect <NORMal|MEDium|HIGH>
+
+## Tone spacing
+SENSe<Ch>:FREQuency:IMODulation:TDIStance <freq>
+
+## Lower tone source
+SENSe<Ch>:FREQuency:IMODulation:LTONe <source_type>, <source_port>
+source_type: Lower tone must always be PORT
+
+## Upper tone source
+SENSe<Ch>:FREQuency:IMODulation:UTONe <source_type>, <source_index>
+source_type: PORT|GENerator|NONE(query)
+source_index: Port or generator number
+
+## Receiver port
+SENSe<Ch>:FREQuency:IMODulation:RECiever <port>
+
+## Measure intermodulation product(s)
+SENSe<Ch>:FREQuency:IMODulation:ORDer<order>[:STATe] ON|OFF
+order: Intermodulation product order 3|5|7|9|-(none)
+
+## Set trace parameter
+CALCulate<Ch>:PARamater:SDEFine '<trace_name>','<parameter>'
+Where parameter
+For IM:
+  IM<order><side>O
+  order: 3|5|7|9
+  side:  U|L|M(ajor)
+For IM suppression (dB Output Relative to lower):
+  IM<order><side>OR
+For IP:
+  IP<order><side>O
+For noise level at output:
+  NLO
+Original tones:
+  <side>T<at>
+  at: I|O (input or output)
+
+## Disable intermodulation
+SENSe<Ch>:FREQuency:IMODulation:CONV OFF
+
+## Spectrum commands?
+### Maximum order of IM product spectrum
+SENSe<Ch>:FREQuency:IMODulation:SPECtrum:MORDer <order>
+
+### Enable/Disable spectrum measurement in channel
+SENSe<Ch>:FREQuency:IMODulation:SPECtrum[:STATe] ON|OFF
+
+
+
+
+ZVA Differences
+===============
+
+## Difference 1
+

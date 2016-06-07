@@ -1,0 +1,156 @@
+Write:    "*RST"
+Bytes:    4
+
+Write:    "*OPC?"
+Bytes:    5
+
+Read:     "1"
+Bytes:    2
+
+Write:    ":SENS1:FREQ:STAR 1 GHz"
+Bytes:    22
+
+Write:    ":SENS1:FREQ:STOP 1 GHz"
+Bytes:    22
+
+Write:    ":SENS1:SWE:POIN 1"
+Bytes:    17
+
+Write:    "SENS:BAND:SEL HIGH"
+Bytes:    18
+
+Write:    "SENS:FREQ:IMOD:TDIS       1 KHz"
+Bytes:    31
+
+Write:    "SENS:FREQ:IMOD:LTON PORT, 1"
+Bytes:    31
+
+Write:    "SENS:FREQ:IMOD:UTON PORT, 3"
+Bytes:    31
+
+Write:    "SENS:FREQ:IMOD:REC        2"
+Bytes:    31
+
+Write:    "SENS:FREQ:IMOD:ORD3       ON"
+Bytes:    31
+
+Write:    "SENS:FREQ:IMOD:ORD5       ON"
+Bytes:    31
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'Trc1'"
+Bytes:    31
+
+Read:     "1"
+Bytes:    2
+
+Write:    ":CALC1:PAR:MEAS 'Trc1','LTI'"
+Bytes:    28
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1'"
+Bytes:    9
+
+Write:    ":CALC1:PAR:SDEF 'Trc2', 'UTI'"
+Bytes:    29
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2'"
+Bytes:    16
+
+Write:    ":CALC1:PAR:SDEF 'Trc3', 'LTO'"
+Bytes:    29
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2,3,Trc3'"
+Bytes:    23
+
+Write:    ":CALC1:PAR:SDEF 'Trc4', 'UTO'"
+Bytes:    29
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2,3,Trc3,4,Trc4'"
+Bytes:    30
+
+Write:    ":CALC1:PAR:SDEF 'Trc5', 'IM3LO'"
+Bytes:    31
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2,3,Trc3,4,Trc4,5,Trc5'"
+Bytes:    37
+
+Write:    ":CALC1:PAR:SDEF 'Trc6', 'IM3UO'"
+Bytes:    31
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2,3,Trc3,4,Trc4,5,Trc5,6,Trc6'"
+Bytes:    44
+
+Write:    ":CALC1:PAR:SDEF 'Trc7', 'IM3MO'"
+Bytes:    31
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2,3,Trc3,4,Trc4,5,Trc5,6,Trc6,7,Trc7'"
+Bytes:    51
+
+Write:    ":CALC1:PAR:SDEF 'Trc8', 'IM5LO'"
+Bytes:    31
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2,3,Trc3,4,Trc4,5,Trc5,6,Trc6,7,Trc7,8,Trc8'"
+Bytes:    58
+
+Write:    ":CALC1:PAR:SDEF 'Trc9', 'IM5UO'"
+Bytes:    31
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes:    15
+
+Read:     "'1,Trc1,2,Trc2,3,Trc3,4,Trc4,5,Trc5,6,Trc6,7,Trc7,8,Trc8,9,Trc9'"
+Bytes:    65
+
+Write:    ":CALC1:PAR:SDEF 'Trc10', 'IM3MO'"
+Bytes:    32
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc2'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc3'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc4'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc5'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc6'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc7'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc8'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc9'"
+Bytes:    27
+
+Write:    ":DISP:WIND1:TRAC:EFE 'Trc10'"
+Bytes:    28
+
