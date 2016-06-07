@@ -1,0 +1,27 @@
+<SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]"                                                            />
+<SetDirectory Id="ZnbExternalTools" Value="[WindowsVolume]\Rohde&amp;Schwarz\Nwa\External Tools"                    />
+<SetDirectory Id="ZvaExternalTools" Value="[WindowsVolume]\Users\Public\Documents\Rohde-Schwarz\Vna\External Tools" />
+<Directory Id="TARGETDIR" Name="SourceDir">
+    <Directory Id="ZnbExternalTools" />
+    <Directory Id="ZvaExternalTools" />
+    <Directory Id="WINDOWSVOLUME">
+        <Directory Id="ProgramFilesFolder">
+            <Directory Id="CompanyFilesFolder"  Name="Rohde-Schwarz">
+                <Directory Id="INSTALLFOLDER"   Name="Join Cal">
+                    <Directory Id="Platforms"   Name="Platforms" />
+                    <Directory Id="Licenses"    Name="Licenses"  />
+                </Directory>
+            </Directory>
+        </Directory>
+        <Directory Id="StartMenuFolder">
+            <Directory Id="StartFolder"         Name="R&amp;S Join Cal" />
+        </Directory>
+        <Directory Id="CommonAppDataFolder">
+            <Directory Id="CompanyDataFolder"   Name="Rohde-Schwarz">
+                <Directory Id="MyAppDataFolder" Name="Join Cal">
+                    <Directory Id="Settings"    Name="Settings" />
+                </Directory>
+            </Directory>
+        </Directory>
+    </Directory>
+</Directory>

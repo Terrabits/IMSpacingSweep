@@ -1,0 +1,32 @@
+<Feature Id="JoinCal" Title="R&amp;S Join Cal" Description="Application" Level="1">
+    <!-- Licenses       -->
+    <ComponentRef Id="MSVCLicense"    />
+    <ComponentRef Id="QtLicense"      />
+    <ComponentRef Id="RSLicense"      />
+    <!-- MSVC++ Runtime -->
+    <ComponentRef Id="msvcp100"       />
+    <ComponentRef Id="msvcr100"       />
+    <!-- Qt5 Platform   -->
+    <ComponentRef Id="qwindows"       />
+    <!-- Qt5            -->
+    <ComponentRef Id="D3DCompiler_43" />
+    <ComponentRef Id="icudt51"        />
+    <ComponentRef Id="icuin51"        />
+    <ComponentRef Id="icuuc51"        />
+    <ComponentRef Id="libEGL"         />
+    <ComponentRef Id="libGLESv2"      />
+    <ComponentRef Id="Qt5Core"        />
+    <ComponentRef Id="Qt5Gui"         />
+    <ComponentRef Id="Qt5Widgets"     />
+    <!-- R&S Visa       -->
+    <ComponentRef Id="RsVisa32"       />
+    <!-- Executable     -->
+    <ComponentRef Id="Executable"     />
+    <!-- Program Data   -->
+    <ComponentRef Id="SettingsFolder" />
+    <!-- External tools -->
+    <ComponentRef Id="ZnbShortcut"    />
+    <ComponentRef Id="ZvaShortcut"    />
+    <!-- Start menu     -->
+    <ComponentRef Id="StartShortcuts" />
+</Feature>

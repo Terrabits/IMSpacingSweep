@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="*" Language="1033"
+             Name="R&amp;S IM Spacing Sweep"
+             Version="0.9"
+             Manufacturer="Rohde &amp; Schwarz"
+             UpgradeCode="30D7685A-D6D6-4B58-86A2-F87301D4E00C">
+        <Package       InstallerVersion="200" Compressed="yes" InstallScope="perMachine"              />
+        <MajorUpgrade  DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <MediaTemplate EmbedCab="yes"                              />
+        <WixVariable   Id="WixUILicenseRtf"  Value="license.rtf"   />
+        <WixVariable   Id="WixUIBannerBmp"   Value="banner.bmp"    />
+        <WixVariable   Id="WixUIDialogBmp"   Value="dialog.bmp"    />
+        <Property      Id="ARPPRODUCTICON"   Value="icon.ico"      />
+        <Property      Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+        <UIRef         Id="WixUI_InstallDir"                       />
+        <Icon Id="icon.ico" SourceFile="icon.ico"                  />
+        <Feature Id="JoinCal" Title="R&amp;S IM Spacing Sweep" Description="Application" Level="1">
+            <!-- Licenses       -->
+            <ComponentRef Id="MSVCLicense"    />
+            <ComponentRef Id="QtLicense"      />
+            <ComponentRef Id="RSLicense"      />
+            <!-- MSVC++ Runtime -->
+            <ComponentRef Id="msvcp100"       />
+            <ComponentRef Id="msvcr100"       />
+            <!-- Qt5 Platform   -->
+            <ComponentRef Id="qwindows"       />
+            <!-- Qt5            -->
+            <ComponentRef Id="D3DCompiler_43" />
+            <ComponentRef Id="icudt51"        />
+            <ComponentRef Id="icuin51"        />
+            <ComponentRef Id="icuuc51"        />
+            <ComponentRef Id="libEGL"         />
+            <ComponentRef Id="libGLESv2"      />
+            <ComponentRef Id="Qt5Core"        />
+            <ComponentRef Id="Qt5Gui"         />
+            <ComponentRef Id="Qt5Widgets"     />
+            <!-- R&S Visa       -->
+            <ComponentRef Id="RsVisa32"       />
+            <!-- Executable     -->
+            <ComponentRef Id="Executable"     />
+            <!-- Program Data   -->
+            <ComponentRef Id="SettingsFolder" />
+            <!-- External tools -->
+            <ComponentRef Id="ZnbShortcut"    />
+            <ComponentRef Id="ZvaShortcut"    />
+            <!-- Start menu     -->
+            <ComponentRef Id="StartShortcuts" />
+        </Feature>
+    </Product>
+
+    <!-- Directories -->
+    <Fragment>
+    <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]"                                                            />
+    <SetDirectory Id="ZnbExternalTools" Value="[WindowsVolume]\Rohde&amp;Schwarz\Nwa\External Tools"                    />
+    <SetDirectory Id="ZvaExternalTools" Value="[WindowsVolume]\Users\Public\Documents\Rohde-Schwarz\Vna\External Tools" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+        <Directory Id="ZnbExternalTools" />
+        <Directory Id="ZvaExternalTools" />
+        <Directory Id="WINDOWSVOLUME">
+            <Directory Id="ProgramFilesFolder">
+                <Directory Id="CompanyFilesFolder"  Name="Rohde-Schwarz">
+                    <Directory Id="INSTALLFOLDER"   Name="IM Spacing Sweep">
+                        <Directory Id="Platforms"   Name="Platforms" />
+                        <Directory Id="Licenses"    Name="Licenses"  />
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="StartMenuFolder">
+                <Directory Id="StartFolder"         Name="R&amp;S IM Spacing Sweep" />
+            </Directory>
+            <Directory Id="CommonAppDataFolder">
+                <Directory Id="CompanyDataFolder"   Name="Rohde-Schwarz">
+                    <Directory Id="MyAppDataFolder" Name="IM Spacing Sweep">
+                        <Directory Id="Settings"    Name="Settings" />
+                    </Directory>
+                </Directory>
+            </Directory>
+        </Directory>
+    </Directory>
+    </Fragment>
+
+    <!-- Component Definitions -->
+    <Fragment>
+        <!-- Licenses       -->
+        <Component Id="MSVCLicense" Guid="*" Directory="Licenses">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\Licenses\Microsoft Visual C++ 2010 License.txt" KeyPath="yes" />
+        </Component>
+        <Component Id="QtLicense"   Guid="*" Directory="Licenses">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\Licenses\Qt 5 - GNU Lesser General Public License Version 2.1.txt" KeyPath="yes" />
+        </Component>
+        <Component Id="RSLicense"   Guid="*" Directory="Licenses">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\Licenses\R&amp;S Terms and Conditions for Royalty-Free Products.txt" KeyPath="yes" />
+        </Component>
+        <!-- MSVC++ Runtime -->
+        <Component Id="msvcp100"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\msvcp100.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="msvcr100"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\msvcr100.dll" KeyPath="yes" />
+        </Component>
+        <!-- Qt5 Platform   -->
+        <Component Id="qwindows"   Guid="*" Directory="Platforms">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\Platforms\qwindows.dll" KeyPath="yes" />
+        </Component>
+        <!-- Qt5            -->
+        <Component Id="D3DCompiler_43"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\D3DCompiler_43.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="icudt51"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\icudt51.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="icuin51"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\icuin51.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="icuuc51"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\icuuc51.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="libEGL"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\libEGL.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="libGLESv2"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\libGLESv2.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Qt5Core"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\Qt5Core.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Qt5Gui"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\Qt5Gui.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Qt5Widgets"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\Qt5Widgets.dll" KeyPath="yes" />
+        </Component>
+        <!-- R&S Visa       -->
+        <Component Id="RsVisa32"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\RsVisa32.dll" KeyPath="yes" />
+        </Component>
+        <!-- Executable     -->
+        <Component Id="Executable"   Guid="*" Directory="INSTALLFOLDER">
+            <File Source="[ProgramFiles]\Rohde-Schwarz\IM Spacing Sweep\R&amp;S IM Spacing Sweep.exe" KeyPath="yes" />
+        </Component>
+        <!-- Program Data   -->
+        <Component Id="SettingsFolder" Guid="*" Directory="MyAppDataFolder">
+            <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\IM Spacing Sweep\SettingsFolder">
+                <RegistryValue Value="[MyAppDataFolder]\Settings" Type="string" KeyPath="yes" />
+            </RegistryKey>
+            <CreateFolder Directory="Settings" />
+            <RemoveFile   Id="RemoveSettings" Directory="Settings" Name="*.*" On="uninstall" />
+            <RemoveFile   Id="RemoveLogs" Name="*.*" On="uninstall" />
+            <RemoveFolder Id="RemoveSettingsFolder" Directory="Settings" On="uninstall" />
+            <RemoveFolder Id="RemoveMyAppDataFolder" On="uninstall" />
+        </Component>
+        <!-- External Tools -->
+        <Component Id="ZnbShortcut" Guid="*" Directory="ZnbExternalTools">
+            <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\IM Spacing Sweep\ZnbExternalTools">
+                <RegistryValue Value="C:\Users\Public\Documents\Rohde-Schwarz\Vna\External Tools\IM Spacing Sweep.lnk" Type="string" KeyPath="yes" />
+            </RegistryKey>
+            <Shortcut Id="ZnbShortcutId" Name="IM Spacing Sweep" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S IM Spacing Sweep.exe" />
+        </Component>
+        <Component Id="ZvaShortcut" Guid="*" Directory="ZvaExternalTools">
+            <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\IM Spacing Sweep\ZvaExternalTools">
+                <RegistryValue Value="C:\Rohde&amp;Schwarz\Nwa\External Tools\IM Spacing Sweep.lnk" Type="string" KeyPath="yes" />
+            </RegistryKey>
+            <Shortcut Id="ZvaShortcutId" Name="IM Spacing Sweep" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S IM Spacing Sweep.exe" />
+        </Component>
+        <!-- Start menu     -->
+        <Component Id="StartShortcuts" Guid="*" Directory="StartFolder">
+            <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\IM Spacing Sweep\StartShortcuts">
+                <RegistryValue Value="[StartMenu]\R&amp;S IM Spacing Sweep\*" Type="string" KeyPath="yes" />
+            </RegistryKey>
+            <Shortcut Id="AboutShortcut"     Name="About"     Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S IM Spacing Sweep.exe" Arguments="-about" />
+            <Shortcut Id="AppShortcut"       Name="IM Spacing Sweep"  Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S IM Spacing Sweep.exe" />
+            <Shortcut Id="LogsShortcut"      Name="Logs"      Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[WindowsFolder]\explorer.exe" Arguments="&quot;[MyAppDataFolder]&quot;" />
+            <Shortcut Id="UninstallShortcut" Name="Uninstall" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[SystemFolder]\msiexec.exe" Arguments="/x [ProductCode]" />
+            <RemoveFolder Id="RemoveStartFolder" Directory="StartFolder" On="uninstall" />
+        </Component>
+    </Fragment>
+</Wix>

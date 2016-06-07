@@ -36,6 +36,9 @@ VnaTrace:
 Core project functionality
 ==========================
 
+ErrorChecking (class):
+- 
+
 GeneratePowerCal (class):
 - 
 

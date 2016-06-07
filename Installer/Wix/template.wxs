@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="*" Language="1033"
+             Name="R&amp;S Join Cal"
+             Version="1.0"
+             Manufacturer="Rohde &amp; Schwarz"
+             UpgradeCode="8FC61D25-B0A6-42FE-A1EE-187B48ACAE05">
+        <Package       InstallerVersion="200" Compressed="yes" InstallScope="perMachine"              />
+        <MajorUpgrade  DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <MediaTemplate EmbedCab="yes"                              />
+        <WixVariable   Id="WixUILicenseRtf"  Value="license.rtf"   />
+        <WixVariable   Id="WixUIBannerBmp"   Value="banner.bmp"    />
+        <WixVariable   Id="WixUIDialogBmp"   Value="dialog.bmp"    />
+        <Property      Id="ARPPRODUCTICON"   Value="icon.ico"      />
+        <Property      Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+        <UIRef         Id="WixUI_InstallDir"                       />
+        <Icon Id="icon.ico" SourceFile="icon.ico"                  />
+        <%= render features %>
+    </Product>
+
+    <!-- Directories -->
+    <Fragment>
+        <%= render directories %>
+    </Fragment>
+
+    <!-- Component Definitions -->
+    <Fragment>
+        <%= render components %>
+    </Fragment>
+</Wix>

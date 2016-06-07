@@ -1,0 +1,92 @@
+<!-- Licenses       -->
+<Component Id="MSVCLicense" Guid="*" Directory="Licenses">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\Licenses\Microsoft Visual C++ 2010 License.txt" KeyPath="yes" />
+</Component>
+<Component Id="QtLicense"   Guid="*" Directory="Licenses">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\Licenses\Qt 5 - GNU Lesser General Public License Version 2.1.txt" KeyPath="yes" />
+</Component>
+<Component Id="RSLicense"   Guid="*" Directory="Licenses">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\Licenses\R&amp;S Terms and Conditions for Royalty-Free Products.txt" KeyPath="yes" />
+</Component>
+<!-- MSVC++ Runtime -->
+<Component Id="msvcp100"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\msvcp100.dll" KeyPath="yes" />
+</Component>
+<Component Id="msvcr100"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\msvcr100.dll" KeyPath="yes" />
+</Component>
+<!-- Qt5 Platform   -->
+<Component Id="qwindows"   Guid="*" Directory="Platforms">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\Platforms\qwindows.dll" KeyPath="yes" />
+</Component>
+<!-- Qt5            -->
+<Component Id="D3DCompiler_43"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\D3DCompiler_43.dll" KeyPath="yes" />
+</Component>
+<Component Id="icudt51"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\icudt51.dll" KeyPath="yes" />
+</Component>
+<Component Id="icuin51"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\icuin51.dll" KeyPath="yes" />
+</Component>
+<Component Id="icuuc51"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\icuuc51.dll" KeyPath="yes" />
+</Component>
+<Component Id="libEGL"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\libEGL.dll" KeyPath="yes" />
+</Component>
+<Component Id="libGLESv2"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\libGLESv2.dll" KeyPath="yes" />
+</Component>
+<Component Id="Qt5Core"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\Qt5Core.dll" KeyPath="yes" />
+</Component>
+<Component Id="Qt5Gui"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\Qt5Gui.dll" KeyPath="yes" />
+</Component>
+<Component Id="Qt5Widgets"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\Qt5Widgets.dll" KeyPath="yes" />
+</Component>
+<!-- R&S Visa       -->
+<Component Id="RsVisa32"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\RsVisa32.dll" KeyPath="yes" />
+</Component>
+<!-- Executable     -->
+<Component Id="Executable"   Guid="*" Directory="INSTALLFOLDER">
+    <File Source="[ProgramFiles]\Rohde-Schwarz\Join Cal\R&amp;S Join Cal.exe" KeyPath="yes" />
+</Component>
+<!-- Program Data   -->
+<Component Id="SettingsFolder" Guid="*" Directory="MyAppDataFolder">
+    <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\Join Cal\SettingsFolder">
+        <RegistryValue Value="[MyAppDataFolder]\Settings" Type="string" KeyPath="yes" />
+    </RegistryKey>
+    <CreateFolder Directory="Settings" />
+    <RemoveFile   Id="RemoveSettings" Directory="Settings" Name="*.*" On="uninstall" />
+    <RemoveFile   Id="RemoveLogs" Name="*.*" On="uninstall" />
+    <RemoveFolder Id="RemoveSettingsFolder" Directory="Settings" On="uninstall" />
+    <RemoveFolder Id="RemoveMyAppDataFolder" On="uninstall" />
+</Component>
+<!-- External Tools -->
+<Component Id="ZnbShortcut" Guid="*" Directory="ZnbExternalTools">
+    <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\Join Cal\ZnbExternalTools">
+        <RegistryValue Value="C:\Users\Public\Documents\Rohde-Schwarz\Vna\External Tools\Join Cal.lnk" Type="string" KeyPath="yes" />
+    </RegistryKey>
+    <Shortcut Id="ZnbShortcutId" Name="Join Cal" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S Join Cal.exe" />
+</Component>
+<Component Id="ZvaShortcut" Guid="*" Directory="ZvaExternalTools">
+    <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\Join Cal\ZvaExternalTools">
+        <RegistryValue Value="C:\Rohde&amp;Schwarz\Nwa\External Tools\Join Cal.lnk" Type="string" KeyPath="yes" />
+    </RegistryKey>
+    <Shortcut Id="ZvaShortcutId" Name="Join Cal" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S Join Cal.exe" />
+</Component>
+<!-- Start menu     -->
+<Component Id="StartShortcuts" Guid="*" Directory="StartFolder">
+    <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\Join Cal\StartShortcuts">
+        <RegistryValue Value="[StartMenu]\R&amp;S Join Cal\*" Type="string" KeyPath="yes" />
+    </RegistryKey>
+    <Shortcut Id="AboutShortcut"     Name="About"     Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S Join Cal.exe" Arguments="-about" />
+    <Shortcut Id="AppShortcut"       Name="Join Cal"  Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S Join Cal.exe" />
+    <Shortcut Id="LogsShortcut"      Name="Logs"      Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[WindowsFolder]\explorer.exe" Arguments="&quot;[MyAppDataFolder]&quot;" />
+    <Shortcut Id="UninstallShortcut" Name="Uninstall" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[SystemFolder]\msiexec.exe" Arguments="/x [ProductCode]" />
+    <RemoveFolder Id="RemoveStartFolder" Directory="StartFolder" On="uninstall" />
+</Component>
