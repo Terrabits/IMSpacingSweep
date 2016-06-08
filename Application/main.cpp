@@ -39,10 +39,10 @@ int main(int argc, char *argv[])
 
     MainWindow w(&vna, &keys);
 
-    QString title = "%1 %2";
-    title = title.arg(APP_NAME);
-    title = title.arg(APP_VERSION);
-    w.setWindowTitle(title);
+//    QString title = "%1 %2";
+//    title = title.arg(APP_NAME);
+//    title = title.arg(APP_VERSION);
+    w.setWindowTitle(APP_NAME);
 
     w.show();
     return a.exec();

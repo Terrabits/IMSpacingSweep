@@ -2,4 +2,9 @@
     <qresource prefix="/icons">
         <file>RS.ico</file>
     </qresource>
+    <qresource prefix="/">
+        <file>Images/Power Cal Step 1.PNG</file>
+        <file>Images/Power Cal Step 2.PNG</file>
+        <file>Images/Power Cal Step 3.PNG</file>
+    </qresource>
 </RCC>
