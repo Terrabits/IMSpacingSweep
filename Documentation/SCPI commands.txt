@@ -24,7 +24,7 @@ SENSe<Ch>:FREQuency:IMODulation:ORDer<order>[:STATe] ON|OFF
 order: Intermodulation product order 3|5|7|9|-(none)
 
 ## Set trace parameter
-CALCulate<Ch>:PARamater:SDEFine '<trace_name>','<parameter>'
+CALCulate<Ch>:PARamater:[MEASure|SDEFine] '<trace_name>','<parameter>'
 Where parameter
 For IM:
   IM<order><side>O
