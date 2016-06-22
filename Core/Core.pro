@@ -25,13 +25,11 @@ HEADERS += Example.h \
            Settings.h \
     IMSettings.h \
     Measurement.h \
-    Error.h \
     Measure.h \
     IntermodMeasurement.h
 SOURCES += Example.cpp \
     IMSettings.cpp \
     Measurement.cpp \
-    Error.cpp \
     Measure.cpp \
     IntermodMeasurement.cpp
 
