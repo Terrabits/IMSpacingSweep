@@ -24,7 +24,7 @@ bool IntermodError::isError() const {
 //IntermodMeasurement class
 IntermodMeasurement::IntermodMeasurement(Vna *vna,
                                          uint referenceChannel,
-                                         const IMSettings &settings,
+                                         const IntermodSettings &settings,
                                          QObject *parent) :
     Measurement(parent),
     _vna(vna),

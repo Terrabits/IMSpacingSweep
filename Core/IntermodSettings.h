@@ -10,10 +10,11 @@
 #include <Qt>
 
 
-class IMSettings
+class IntermodSettings
 {
 public:
-    IMSettings();
+    IntermodSettings();
+    ~IntermodSettings();
 
     // Ports
     uint                                lowerSourcePort() const;
@@ -31,7 +32,7 @@ public:
     void setStopCenterFrequency(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
     void setCenterFrequencyPoints(uint points);
 
-    // Tone spacing
+    // Tone spacing (distance)
     double startSpacing_Hz()         const;
     double stopSpacing_Hz()          const;
     uint   spacingPoints()           const;
@@ -63,8 +64,8 @@ private:
     uint   _centerFrequencyPoints;
 
     // Tone spacing
-    double _start_Hz;
-    double _stop_Hz;
+    double _startSpacing_Hz;
+    double _stopSpacing_Hz;
     uint   _spacingPoints;
 
     // Settings

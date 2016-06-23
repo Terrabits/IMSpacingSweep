@@ -23,15 +23,15 @@ CONFIG(debug, debug|release) {
 include(../RsaToolbox/rsatoolbox.pri)
 HEADERS += Example.h \
            Settings.h \
-    IMSettings.h \
     Measurement.h \
     Measure.h \
-    IntermodMeasurement.h
+    IntermodMeasurement.h \
+    IntermodSettings.h
 SOURCES += Example.cpp \
-    IMSettings.cpp \
     Measurement.cpp \
     Measure.cpp \
-    IntermodMeasurement.cpp
+    IntermodMeasurement.cpp \
+    IntermodSettings.cpp
 
 # Defines
 DEFINES += SOURCE_DIR=\\\"$$PWD\\\"

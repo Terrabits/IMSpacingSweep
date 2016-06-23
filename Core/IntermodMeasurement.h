@@ -3,7 +3,7 @@
 
 
 // Project
-#include "IMSettings.h"
+#include "IntermodSettings.h"
 #include "Measurement.h"
 
 // RsaToolbox
@@ -41,7 +41,7 @@ class IntermodMeasurement : public Measurement
 public:
     IntermodMeasurement(RsaToolbox::Vna *vna,
                         uint referenceChannel,
-                        const IMSettings &settings,
+                        const IntermodSettings &settings,
                         QObject *parent = 0);
     ~IntermodMeasurement();
 
@@ -53,7 +53,7 @@ public slots:
 private:
     mutable RsaToolbox::Vna *_vna;
     uint                     _refChannel;
-    IMSettings               _settings;
+    IntermodSettings               _settings;
 
     uint _channel;
 };

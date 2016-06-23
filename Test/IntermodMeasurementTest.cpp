@@ -2,7 +2,7 @@
 
 
 // Project
-#include "IMSettings.h"
+#include "IntermodSettings.h"
 #include "IntermodMeasurement.h"
 
 // RsaToolbox
@@ -36,7 +36,7 @@ IntermodMeasurementTest::~IntermodMeasurementTest()
 }
 
 void IntermodMeasurementTest::basic() {
-    IMSettings settings;
+    IntermodSettings settings;
 
     IntermodMeasurement measurement(_vna.data(), 1, settings);
     IntermodError error;
