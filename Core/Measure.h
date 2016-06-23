@@ -5,7 +5,11 @@
 // Project
 #include "Measurement.h"
 
-//Qt
+// RsaToolbox
+#include <Vna.h>
+#include <VnaPauseSweeps.h>
+
+// Qt
 #include <QList>
 #include <QThread>
 
@@ -14,12 +18,13 @@ class Measure : public QThread
 {
     Q_OBJECT
 public:
-    Measure(QObject *parent = 0);
+    Measure(RsaToolbox::Vna *vna, QObject *parent = 0);
+    ~Measure();
 
     void addMeasurement(Measurement *measurement);
 
 signals:
-    void starting();
+    void started();
     void progress(uint percent);
     void finished();
 
@@ -30,12 +35,15 @@ private slots:
     void incrementProgress(uint value);
 
 private:
-    QList<Measurement*> _measurements;
-    uint _progress;
-    uint _progressFactor;
+    RsaToolbox::Vna           *_vna;
+    RsaToolbox::VnaPauseSweeps _pause;
 
+    QList<Measurement*> _measurements;
+
+    uint _progress;
     void connectMeasurement(Measurement *m);
     void disconnectMeasurement(Measurement *m);
 };
+
 
 #endif // MEASURE_H

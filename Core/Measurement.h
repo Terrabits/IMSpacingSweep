@@ -9,6 +9,9 @@
 class Measurement : public QObject
 {
     Q_OBJECT
+public:
+    explicit Measurement(QObject *parent = 0);
+    ~Measurement();
 
 signals:
     void starting();

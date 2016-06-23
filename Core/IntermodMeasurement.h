@@ -11,6 +11,7 @@
 #include <Vna.h>
 
 class IntermodError {
+public:
     enum /*class*/ Code {
         LowerSourcePort,
         UpperSourcePort,
@@ -27,14 +28,22 @@ class IntermodError {
         None
     };
 
+    IntermodError();
+    ~IntermodError();
     Code code;
     QString message;
+
+    bool isError() const;
 };
 
 class IntermodMeasurement : public Measurement
 {
 public:
-    IntermodMeasurement(RsaToolbox::Vna *vna, uint referenceChannel, const IMSettings &settings);
+    IntermodMeasurement(RsaToolbox::Vna *vna,
+                        uint referenceChannel,
+                        const IMSettings &settings,
+                        QObject *parent = 0);
+    ~IntermodMeasurement();
 
     bool isValid(IntermodError &error) const;
 

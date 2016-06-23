@@ -4,9 +4,10 @@ TARGET   = Test
 CONFIG  += testcase
 
 include(../Core/core.pri)
-HEADERS += ExampleTest.h
+HEADERS += \
+    IntermodMeasurementTest.h
 SOURCES += main.cpp \
-           ExampleTest.cpp
+    IntermodMeasurementTest.cpp
 
 DEFINES += SOURCE_DIR=\\\"$$PWD/\\\"
 

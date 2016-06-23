@@ -1,7 +1,7 @@
 
 
 // Project
-#include "ExampleTest.h"
+#include "IntermodMeasurementTest.h"
 
 // RsaToolbox
 #include <Definitions.h>
@@ -16,11 +16,11 @@ using namespace RsaToolbox;
 
 int main()
 {
-    // RsaToolbox::ConnectionType connectionType = RsaToolbox::ConnectionType::VisaTcpSocketConnection;
-    // QString address = "127.0.0.1::5025";
+     RsaToolbox::ConnectionType connectionType = RsaToolbox::ConnectionType::VisaTcpSocketConnection;
+     QString address = "127.0.0.1::5025";
 
     TestRunner testRunner;
-    testRunner.addTest(new ExampleTest);
+    testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
 
     qDebug() << "Global result: " << (testRunner.runTests() ? "PASS" : "FAIL");
     return 0;

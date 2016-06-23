@@ -1,4 +1,11 @@
 #include "Measurement.h"
 
-// Pure virtual. Nothing to offer here
-
+Measurement::Measurement(QObject *parent) :
+    QObject(parent)
+{
+    //
+}
+Measurement::~Measurement()
+{
+    //
+}

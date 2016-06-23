@@ -1,7 +1,14 @@
 #include "Measure.h"
 
-Measure::Measure(QObject *parent) :
-    QThread(parent)
+Measure::Measure(RsaToolbox::Vna *vna, QObject *parent) :
+    QThread(parent),
+    _vna(vna),
+    _pause(vna),
+    _progress(0)
+{
+    //
+}
+Measure::~Measure()
 {
     //
 }
@@ -17,7 +24,7 @@ void Measure::incrementProgress(uint value) {
 }
 
 void Measure::run() {
-    emit starting();
+    emit started();
     emit progress(0);
     _progress = 0;
     foreach (Measurement *m, _measurements) {
