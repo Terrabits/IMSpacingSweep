@@ -70,7 +70,7 @@ private:
 
     // Settings
     double _power_dBm;
-    double _if_bw_Hz;
+    double _ifBw_Hz;
     RsaToolbox::VnaChannel::IfSelectivity _selectivity;
 
     // Orders/Traces?

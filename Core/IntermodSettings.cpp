@@ -6,7 +6,17 @@
 using namespace RsaToolbox;
 
 
-IntermodSettings::IntermodSettings()
+IntermodSettings::IntermodSettings() :
+    _lowerSourcePort(0),
+    _receivingPort(0),
+    _startCenterFreq_Hz(0),
+    _stopCenterFreq_Hz(0),
+    _centerFrequencyPoints(0),
+    _startSpacing_Hz(0),
+    _stopSpacing_Hz(0),
+    _power_dBm(-1.0*DBL_MAX),
+    _ifBw_Hz(10.0E3),
+    _selectivity(VnaChannel::IfSelectivity::High)
 {
     //
 }
@@ -65,3 +75,34 @@ double IntermodSettings::stopSpacing_Hz() const {
 uint IntermodSettings::spacingPoints() const {
     return _spacingPoints;
 }
+void IntermodSettings::setStartSpacing(double frequency_Hz, SiPrefix prefix) {
+    _startSpacing_Hz = frequency_Hz * toDouble(prefix);
+}
+void IntermodSettings::setStopSpacing(double frequency_Hz, SiPrefix prefix) {
+    _stopSpacing_Hz  = frequency_Hz * toDouble(prefix);
+}
+void IntermodSettings::setSpacingPoints(uint points) {
+    _spacingPoints   = points;
+}
+
+// Settings
+double IntermodSettings::power_dBm() const {
+    return _power_dBm;
+}
+double IntermodSettings::ifBw_Hz() const {
+    return _ifBw_Hz;
+}
+VnaChannel::IfSelectivity IntermodSettings::selectivity() const {
+    return _selectivity;
+}
+void IntermodSettings::setPower(double power_dBm) {
+    _power_dBm = power_dBm;
+}
+void IntermodSettings::setIfBw(double frequency_Hz, SiPrefix prefix) {
+    _ifBw_Hz = frequency_Hz * toDouble(prefix);
+}
+void IntermodSettings::setSelectivity(VnaChannel::IfSelectivity selectivity) {
+    _selectivity = selectivity;
+}
+
+

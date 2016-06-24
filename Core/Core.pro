@@ -21,13 +21,13 @@ CONFIG(debug, debug|release) {
 
 # Files
 include(../RsaToolbox/rsatoolbox.pri)
-HEADERS += Example.h \
+HEADERS += \
            Settings.h \
     Measurement.h \
     Measure.h \
     IntermodMeasurement.h \
     IntermodSettings.h
-SOURCES += Example.cpp \
+SOURCES += \
     Measurement.cpp \
     Measure.cpp \
     IntermodMeasurement.cpp \
