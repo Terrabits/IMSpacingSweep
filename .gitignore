@@ -1,6 +1,9 @@
 # Do not include RsaToolbox
 RsaToolbox/
 
+# Do not include build
+_build/
+
 # C++ objects and libs
 
 *.slo
