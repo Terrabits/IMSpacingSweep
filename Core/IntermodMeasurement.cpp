@@ -49,6 +49,50 @@ bool IntermodMeasurement::isValid() const {
 }
 bool IntermodMeasurement::isValid(IntermodError &error) const {
     error.clear();
+
+    if (!_settings.lowerSourcePort()) {
+        error.code = IntermodError::Code::LowerSourcePort;
+        error.message = "*Choose lower source port";
+        return false;
+    }
+    if (_settings.upperSource().isUndefined()) {
+       error.code = IntermodError::Code::UpperSource;
+       error.message = "*Choose upper source port";
+       return false;
+    }
+    if (!_settings.receivingPort()) {
+        error.code = IntermodError::Code::ReceivingPort;
+        error.message = "*Choose receiving port";
+        return false;
+    }
+    if (_settings.startCenterFrequency_Hz() <= _settings.stopCenterFrequency_Hz()) {
+        error.code = IntermodError::Code::StartCenterFreq;
+        error.message = "*Stop frequency must be greater than start";
+        return false;
+    }
+    if (!_settings.centerFrequencyPoints()) {
+        error.code = IntermodError::Code::CenterFreqPoints;
+        error.message = "*Points must be greater than 0";
+        return false;
+    }
+    if (_settings.startSpacing_Hz() <= _settings.stopSpacing_Hz()) {
+        error.code = IntermodError::Code::StartSpacing;
+        error.message = "*Stop frequency must be greater than start";
+        return false;
+    }
+    if (!_settings.spacingPoints()) {
+        error.code = IntermodError::Code::SpacingPoints;
+        error.message = "*Points must be greater than 0";
+        return false;
+    }
+    // Is at least 3rd order result within
+    // range of Vna?
+    // if (no result in range) {
+    //    error.code = ?;
+    //    error.message = ?;
+    //    return false;
+    // }
+
     return true;
 }
 
@@ -102,7 +146,8 @@ void IntermodMeasurement::run() {
     _vna->isError();
 
     // Read first sweep data
-    readData();
+    _data = IntermodData(_settings.spacingPoints(), _settings.centerFrequencyPoints());
+    readData(0);
 
     // Continue with the rest of the sweeps
     for (int i = 1; i < spacings_Hz.size(); i++) {
@@ -117,7 +162,10 @@ void IntermodMeasurement::run() {
         _vna->isError();
 
         // Take data
-        readData();
+        readData(i);
+
+        // Read PAE?
+        // __PAE__
     }
 
     deleteTraces();
@@ -220,24 +268,29 @@ void IntermodMeasurement::deleteTraces() {
     _vna->pause();
 }
 
-void IntermodMeasurement::readData() {
-    _vna->trace(_lti).y();
-    _vna->trace(_lto).y();
-    _vna->trace(_uti).y();
-    _vna->trace(_uto).y();
+void IntermodMeasurement::readData(uint i) {
+    _data.lowerToneAtInput[i]  = _vna->trace(_lti).y();
+    _data.lowerToneAtOutput[i] = _vna->trace(_lto).y();
+    _data.upperToneAtInput[i]  = _vna->trace(_uti).y();
+    _data.upperToneAtOutput[i] = _vna->trace(_uto).y();
 
-    _vna->trace(_im3l).y();
-    _vna->trace(_im5l).y();
-    _vna->trace(_im7l).y();
-    _vna->trace(_im9l).y();
+    _data.intermod3Lower[i] = _vna->trace(_im3l).y();
+    _data.intermod5Lower[i] = _vna->trace(_im5l).y();
+    _data.intermod7Lower[i] = _vna->trace(_im7l).y();
+    _data.intermod9Lower[i] =  _vna->trace(_im9l).y();
 
-    _vna->trace(_im3u).y();
-    _vna->trace(_im5u).y();
-    _vna->trace(_im7u).y();
-    _vna->trace(_im9u).y();
+    _data.intermod3Upper[i] =  _vna->trace(_im3u).y();
+    _data.intermod5Upper[i] = _vna->trace(_im5u).y();
+    _data.intermod7Upper[i] = _vna->trace(_im7u).y();
+    _data.intermod9Upper[i] = _vna->trace(_im9u).y();
 
-    _vna->trace(_im3m).y();
-    _vna->trace(_im5m).y();
-    _vna->trace(_im7m).y();
-    _vna->trace(_im9m).y();
+    _data.intermod3Major[i] = _vna->trace(_im3m).y();
+    _data.intermod5Major[i] = _vna->trace(_im5m).y();
+    _data.intermod7Major[i] = _vna->trace(_im7m).y();
+    _data.intermod9Major[i] = _vna->trace(_im9m).y();
+
+    _data.intercept3Major[i] = _vna->trace(_ip3m).y();
+    _data.intercept5Major[i] = _vna->trace(_ip5m).y();
+    _data.intercept7Major[i] = _vna->trace(_ip7m).y();
+    _data.intercept9Major[i] = _vna->trace(_ip9m).y();
 }

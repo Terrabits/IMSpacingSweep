@@ -3,7 +3,12 @@
 
 
 // RsaToolbox
+#include <GenericBus.h>
 #include <VnaTestClass.h>
+
+// Qt
+#include <QObject>
+#include <QString>
 
 
 class IntermodMeasurementTest : public RsaToolbox::VnaTestClass
@@ -16,5 +21,6 @@ public:
 private slots:
     void basic();
 };
+
 
 #endif // INTERMODMEASUREMENTTEST_H

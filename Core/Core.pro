@@ -26,12 +26,17 @@ HEADERS += \
     Measurement.h \
     Measure.h \
     IntermodMeasurement.h \
-    IntermodSettings.h
+    IntermodSettings.h \
+    IntermodData.h \
+    IntermodWidget.h
 SOURCES += \
     Measurement.cpp \
     Measure.cpp \
     IntermodMeasurement.cpp \
-    IntermodSettings.cpp
+    IntermodSettings.cpp \
+    IntermodData.cpp \
+    IntermodWidget.cpp
+FORMS   += IntermodWidget.ui
 
 # Defines
 DEFINES += SOURCE_DIR=\\\"$$PWD\\\"

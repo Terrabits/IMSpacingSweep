@@ -3,6 +3,7 @@
 
 
 // Project
+#include "IntermodData.h"
 #include "IntermodSettings.h"
 #include "Measurement.h"
 
@@ -14,7 +15,7 @@ class IntermodError {
 public:
     enum /*class*/ Code {
         LowerSourcePort,
-        UpperSourcePort,
+        UpperSource,
         ReceivingPort,
         StartCenterFreq,
         StopCenterFreq,
@@ -67,9 +68,9 @@ private:
     void createTraces(uint channel, uint diagram);
     void deleteTraces();
 
-    // Results?
-    // ?
-    void readData();
+    // Results
+    IntermodData _data;
+    void readData(uint i);
 };
 
 #endif // INTERMOD_MEASUREMENT_H
