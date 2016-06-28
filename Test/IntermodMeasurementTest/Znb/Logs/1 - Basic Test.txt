@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Fri Jun 24 17:11:23 2016
+Mon Jun 27 17:54:21 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -39,6 +39,14 @@ Status: 0x0 Operation completed successfully.
 
 Read:     "1"
 Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:ERR?"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Read:     "0,"No error""
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":SYST:ERR?"
@@ -2025,7 +2033,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176??fGZ???..."
+Read:     "#3176M#???g??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -2109,7 +2117,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?????m??..."
+Read:     "#3176S????4??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -2193,7 +2201,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?]?????..."
+Read:     "#3176????&??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -2277,7 +2285,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#31767T???L??..."
+Read:     "#3176?@&V?r??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -2361,7 +2369,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176f>??R??..."
+Read:     "#3176?y??i???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -3749,7 +3757,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176P???4???..."
+Read:     "#3176?	4?7???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -3833,7 +3841,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#31761oh~???..."
+Read:     "#3176O?=?9??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -3917,7 +3925,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?nR2'??..."
+Read:     "#3176?M????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -4001,7 +4009,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176L_;^ B??..."
+Read:     "#3176x??"??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -4085,7 +4093,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176???v??..."
+Read:     "#3176]?(???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -5473,7 +5481,8 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?????..."
+Read:     "#3176?
+???}??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -5557,7 +5566,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176??8?O???..."
+Read:     "#3176>-|4?N??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -5641,7 +5650,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?U#????..."
+Read:     "#3176????^??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -5725,7 +5734,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176???Y[???..."
+Read:     "#3176?kA????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -5809,7 +5818,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176C????O??..."
+Read:     "#3176?+?F?<??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -7197,7 +7206,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#31764	??NM??..."
+Read:     "#3176?^?3???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -7281,7 +7290,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#31769???.??..."
+Read:     "#3176??????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -7365,7 +7374,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?8?????..."
+Read:     "#3176?7?$????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -7449,7 +7458,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?N????..."
+Read:     "#3176??????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -7533,7 +7542,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176???-???..."
+Read:     "#3176E???????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -8921,7 +8930,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?,????..."
+Read:     "#3176?;t?A??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -9005,7 +9014,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176GZ???.??..."
+Read:     "#3176?&?????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -9089,8 +9098,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176q?
-?????..."
+Read:     "#3176?W??????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -9174,7 +9182,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176R^K??..."
+Read:     "#3176????????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -9258,7 +9266,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176??e?`???..."
+Read:     "#3176j?`??W??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -10646,7 +10654,8 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176????Y]??..."
+Read:     "#3176?
+y???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -10730,7 +10739,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176???????..."
+Read:     "#3176?i????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -10814,7 +10823,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176+?4?7??..."
+Read:     "#3176????{??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -10898,7 +10907,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176U?????..."
+Read:     "#3176?H?????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -10982,7 +10991,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176??[?????..."
+Read:     "#3176h?*z????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -12370,7 +12379,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176Y?????..."
+Read:     "#3176???F??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -12454,7 +12463,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176/??????..."
+Read:     "#3176?o`?????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -12538,7 +12547,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?`???b??..."
+Read:     "#3176j???????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -12622,7 +12631,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176??hF?,??..."
+Read:     "#3176???N:??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -12706,7 +12715,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176????c??..."
+Read:     "#3176?IW(o??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -14094,7 +14103,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?^??????..."
+Read:     "#31762?(?????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -14178,7 +14187,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176??/?;{??..."
+Read:     "#3176o?3:???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -14262,7 +14271,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176???????..."
+Read:     "#3176??V?7???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -14346,7 +14355,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176#?2\????..."
+Read:     "#3176??F?"??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -14430,7 +14439,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?$?????..."
+Read:     "#3176?:?&?E??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -15818,7 +15827,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?N#:?m??..."
+Read:     "#3176cO?UR&??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -15902,7 +15911,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176???]U??..."
+Read:     "#3176??Y?E??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -15986,7 +15995,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176[?d????..."
+Read:     "#3176F?qB?q??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -16070,7 +16079,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?Q?????..."
+Read:     "#3176~B????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -16154,7 +16163,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176????]???..."
+Read:     "#31764/??{??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -17542,7 +17551,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc14', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176@???w???..."
+Read:     "#3176h?"}??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -17626,7 +17635,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc15', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176?z??????..."
+Read:     "#3176?7?@????..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -17710,7 +17719,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc16', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176k??]???..."
+Read:     "#3176L?|(???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -17794,7 +17803,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc17', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#3176???e???..."
+Read:     "#3176|?3???..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 
@@ -17878,7 +17887,7 @@ Write:    ":CALC:DATA:TRAC? 'Trc18', SDAT"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Read:     "#31767???~??..."
+Read:     "#3176e?4??..."
 Bytes: 182
 Status: 0x0 Operation completed successfully.
 

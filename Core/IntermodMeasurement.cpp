@@ -65,9 +65,9 @@ bool IntermodMeasurement::isValid(IntermodError &error) const {
         error.message = "*Choose receiving port";
         return false;
     }
-    if (_settings.startCenterFrequency_Hz() <= _settings.stopCenterFrequency_Hz()) {
+    if (_settings.startCenterFrequency_Hz() >= _settings.stopCenterFrequency_Hz()) {
         error.code = IntermodError::Code::StartCenterFreq;
-        error.message = "*Stop frequency must be greater than start";
+        error.message = "*Stop center frequency must be greater than start";
         return false;
     }
     if (!_settings.centerFrequencyPoints()) {
@@ -75,9 +75,9 @@ bool IntermodMeasurement::isValid(IntermodError &error) const {
         error.message = "*Points must be greater than 0";
         return false;
     }
-    if (_settings.startSpacing_Hz() <= _settings.stopSpacing_Hz()) {
+    if (_settings.startSpacing_Hz() >= _settings.stopSpacing_Hz()) {
         error.code = IntermodError::Code::StartSpacing;
-        error.message = "*Stop frequency must be greater than start";
+        error.message = "*Stop distance must be greater than start";
         return false;
     }
     if (!_settings.spacingPoints()) {

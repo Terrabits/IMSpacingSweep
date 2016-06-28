@@ -68,8 +68,11 @@ void IntermodMeasurementTest::basic() {
     // Validate settings
     IntermodMeasurement measurement(_vna.data(), 1, settings);
     IntermodError error;
-    QVERIFY(measurement.isValid(error));
-    QVERIFY(!error.isError());
+    QVERIFY(!_vna->isError());
+    bool isValid = measurement.isValid(error);
+    QCOMPARE(error.message, QString());
+    QCOMPARE(error.code, IntermodError::Code::None);
+    QCOMPARE(isValid, true);
 
     // Measure
     measurement.run();

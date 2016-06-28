@@ -6,103 +6,429 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>496</width>
-    <height>575</height>
+    <width>328</width>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="portsWidget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>150</y>
-     <width>250</width>
-     <height>131</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Receiving Port:</string>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <widget class="QWidget" name="portsSection" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="leftMargin">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Lower Port:</string>
+      <property name="topMargin">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lowerPort"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Upper Source:</string>
+      <property name="rightMargin">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="upperPort"/>
-    </item>
-    <item row="1" column="1">
-     <widget class="QWidget" name="upperSource" native="true"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="centerFrequencyWidget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>340</y>
-     <width>199</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>Start:</string>
+      <property name="bottomMargin">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="portsContainer" native="true">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>30</y>
-     <width>57</width>
-     <height>38</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="portsHeader">
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
+      <item>
+       <widget class="QLabel" name="portsHeader">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Ports</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="portsSettingsSection" native="true">
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="2" column="0">
+          <widget class="QLabel" name="receivingPortLabel">
+           <property name="text">
+            <string>Receiving Port:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lowerPortLabel">
+           <property name="text">
+            <string>Lower Port:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="RsaToolbox::PointsEdit" name="lowerPort"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="upperSourceLabel">
+           <property name="text">
+            <string>Upper Source:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="RsaToolbox::PointsEdit" name="receivingPort"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QWidget" name="upperSource" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QComboBox" name="upperSourceType">
+              <item>
+               <property name="text">
+                <string>Port</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>SigGen</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="RsaToolbox::PointsEdit" name="upperSourceIndex"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>0</number>
       </property>
-      <property name="text">
-       <string>Ports</string>
+      <property name="topMargin">
+       <number>0</number>
       </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="centerFrequencyHeader">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Center Frequency</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="centerFrequencySettingsSection" native="true">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="1" column="0">
+          <widget class="QLabel" name="stopCenterFrequencyLabel">
+           <property name="text">
+            <string>Stop:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="RsaToolbox::FrequencyEdit" name="stopCenterFrequency"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="RsaToolbox::FrequencyEdit" name="startCenterFrequency"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="startCenterFrequencyLabel">
+           <property name="text">
+            <string>Start:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="centerFrequencyPointsLabel">
+           <property name="text">
+            <string>Points:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="RsaToolbox::PointsEdit" name="centerFrequencyPoints"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="toneDistanceSection" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="toneDistanceHeader">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tone Distance</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="toneDistanceSettings" native="true">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="1" column="0">
+          <widget class="QLabel" name="stopToneDistanceLabel">
+           <property name="text">
+            <string>Stop:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="RsaToolbox::FrequencyEdit" name="stopToneDistance"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="RsaToolbox::FrequencyEdit" name="startToneDistance"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="startToneDistanceLabel">
+           <property name="text">
+            <string>Start:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="toneDistancePointsLabel">
+           <property name="text">
+            <string>Points:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="RsaToolbox::PointsEdit" name="toneDistancePoints"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="toneDistanceSection_2" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="miscellaneousHeader">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Miscellaneous</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="toneDistanceSettings_2" native="true">
+        <layout class="QGridLayout" name="gridLayout_4">
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="1" column="0">
+          <widget class="QLabel" name="powerLabel">
+           <property name="text">
+            <string>Power</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="RsaToolbox::PowerEdit" name="power"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="RsaToolbox::FrequencyEdit" name="ifBw"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="ifBwLabel">
+           <property name="text">
+            <string>IF BW:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="selectivityLabel">
+           <property name="text">
+            <string>Selectivity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="selectivity">
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>Normal</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>High</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RsaToolbox::FrequencyEdit</class>
+   <extends>QLineEdit</extends>
+   <header>FrequencyEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>RsaToolbox::PointsEdit</class>
+   <extends>QLineEdit</extends>
+   <header>PointsEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>RsaToolbox::PowerEdit</class>
+   <extends>QLineEdit</extends>
+   <header>PowerEdit.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>lowerPort</tabstop>
+  <tabstop>upperSourceType</tabstop>
+  <tabstop>upperSourceIndex</tabstop>
+  <tabstop>receivingPort</tabstop>
+  <tabstop>startCenterFrequency</tabstop>
+  <tabstop>stopCenterFrequency</tabstop>
+  <tabstop>centerFrequencyPoints</tabstop>
+  <tabstop>startToneDistance</tabstop>
+  <tabstop>stopToneDistance</tabstop>
+  <tabstop>toneDistancePoints</tabstop>
+  <tabstop>ifBw</tabstop>
+  <tabstop>power</tabstop>
+  <tabstop>selectivity</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

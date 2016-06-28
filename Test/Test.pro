@@ -6,10 +6,12 @@ CONFIG  += testcase
 include(../Core/core.pri)
 HEADERS += \
     IntermodMeasurementTest.h \
-    IntermodDataTest.h
+    IntermodDataTest.h \
+    IntermodWidgetTest.h
 SOURCES += main.cpp \
     IntermodMeasurementTest.cpp \
-    IntermodDataTest.cpp
+    IntermodDataTest.cpp \
+    IntermodWidgetTest.cpp
 
 DEFINES += SOURCE_DIR=\\\"$$PWD/\\\"
 
