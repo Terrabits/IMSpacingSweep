@@ -2,6 +2,9 @@
 #define INTERMODWIDGETTEST_H
 
 
+// Project
+#include "IntermodMeasurement.h"
+
 // RsaToolbox
 #include <GenericBus.h>
 #include <VnaTestClass.h>
@@ -20,7 +23,7 @@ private slots:
     void show();
 
 private:
-
+    void printError(const IntermodError &error) const;
 };
 
 #endif // INTERMODWIDGETTEST_H

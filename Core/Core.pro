@@ -28,14 +28,18 @@ HEADERS += \
     IntermodMeasurement.h \
     IntermodSettings.h \
     IntermodData.h \
-    IntermodWidget.h
+    IntermodWidget.h \
+    TraceSettings.h \
+    IntermodTrace.h
 SOURCES += \
     Measurement.cpp \
     Measure.cpp \
     IntermodMeasurement.cpp \
     IntermodSettings.cpp \
     IntermodData.cpp \
-    IntermodWidget.cpp
+    IntermodWidget.cpp \
+    TraceSettings.cpp \
+    IntermodTrace.cpp
 FORMS   += IntermodWidget.ui
 
 # Defines

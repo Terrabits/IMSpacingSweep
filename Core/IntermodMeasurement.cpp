@@ -75,13 +75,13 @@ bool IntermodMeasurement::isValid(IntermodError &error) const {
         error.message = "*Points must be greater than 0";
         return false;
     }
-    if (_settings.startSpacing_Hz() >= _settings.stopSpacing_Hz()) {
-        error.code = IntermodError::Code::StartSpacing;
+    if (_settings.startToneDistance_Hz() >= _settings.stopToneDistance_Hz()) {
+        error.code = IntermodError::Code::StartToneDistance;
         error.message = "*Stop distance must be greater than start";
         return false;
     }
-    if (!_settings.spacingPoints()) {
-        error.code = IntermodError::Code::SpacingPoints;
+    if (!_settings.toneDistancePoints()) {
+        error.code = IntermodError::Code::ToneDistancePoints;
         error.message = "*Points must be greater than 0";
         return false;
     }
@@ -125,7 +125,7 @@ void IntermodMeasurement::run() {
     _vna->isError();
 
     // First sweep settings
-    QRowVector spacings_Hz = linearSpacing(_settings.startSpacing_Hz(), _settings.stopSpacing_Hz(), _settings.spacingPoints());
+    QRowVector spacings_Hz = linearSpacing(_settings.startToneDistance_Hz(), _settings.stopToneDistance_Hz(), _settings.toneDistancePoints());
     sweep.setStart(_settings.startCenterFrequency_Hz() - 0.5 * spacings_Hz.first());
     sweep.setStop(_settings.stopCenterFrequency_Hz()   - 0.5 * spacings_Hz.first());
     im.setToneDistance(spacings_Hz.first());
@@ -146,7 +146,7 @@ void IntermodMeasurement::run() {
     _vna->isError();
 
     // Read first sweep data
-    _data = IntermodData(_settings.spacingPoints(), _settings.centerFrequencyPoints());
+    _data = IntermodData(_settings.toneDistancePoints(), _settings.centerFrequencyPoints());
     readData(0);
 
     // Continue with the rest of the sweeps

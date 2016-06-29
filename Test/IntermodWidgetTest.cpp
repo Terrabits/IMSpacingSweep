@@ -5,6 +5,7 @@
 #include "IntermodWidget.h"
 
 // RsaToolbox
+#include <ErrorLabel.h>
 using namespace RsaToolbox;
 
 // Qt
@@ -41,6 +42,16 @@ IntermodWidgetTest::IntermodWidgetTest(ConnectionType type, const QString &addre
 void IntermodWidgetTest::show() {
     QEventLoop loop;
     IntermodWidget widget(_vna.data());
+    ErrorLabel errorLabel;
+    connect(&widget, SIGNAL(errorMessage(QString)),
+            &errorLabel, SLOT(showMessage(QString)));
     widget.show();
+    errorLabel.show();
     loop.exec();
+}
+
+void IntermodWidgetTest::printError(const IntermodError &error) const {
+    qDebug() << "IntermodError";
+    qDebug() << "  Code:    " << error.code;
+    qDebug() << "  Message: " << error.message;
 }

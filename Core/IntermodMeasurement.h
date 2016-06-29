@@ -20,9 +20,9 @@ public:
         StartCenterFreq,
         StopCenterFreq,
         CenterFreqPoints,
-        StartSpacing,
-        StopSpacing,
-        SpacingPoints,
+        StartToneDistance,
+        StopToneDistance,
+        ToneDistancePoints,
         Power,
         IfBw,
         Selectivity,
@@ -57,7 +57,7 @@ public slots:
 private:
     mutable RsaToolbox::Vna *_vna;
     uint                     _refChannel;
-    IntermodSettings               _settings;
+    IntermodSettings         _settings;
 
     QString _lti, _lto;
     QString _uti, _uto;

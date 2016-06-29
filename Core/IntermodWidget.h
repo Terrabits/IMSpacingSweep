@@ -2,6 +2,10 @@
 #define INTERMODWIDGET_H
 
 
+// Project
+#include "IntermodMeasurement.h"
+#include "IntermodSettings.h"
+
 // RsaToolbox
 #include <Vna.h>
 
@@ -23,9 +27,18 @@ public:
 
     void initialize();
 
+    bool isInput(IntermodError &error) const;
+    IntermodSettings getInput() const;
+    void setInput(const IntermodSettings &settings);
+
+signals:
+    void errorMessage(QString message);
+
 private:
     Ui::IntermodWidget *ui;
     RsaToolbox::Vna *_vna;
+
+    void connectWidgets();
 };
 
 #endif // INTERMODWIDGET_H

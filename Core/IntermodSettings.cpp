@@ -12,8 +12,8 @@ IntermodSettings::IntermodSettings() :
     _startCenterFreq_Hz(0),
     _stopCenterFreq_Hz(0),
     _centerFrequencyPoints(0),
-    _startSpacing_Hz(0),
-    _stopSpacing_Hz(0),
+    _startToneDistance_Hz(0),
+    _stopToneDistance_Hz(0),
     _power_dBm(-1.0*DBL_MAX),
     _ifBw_Hz(10.0E3),
     _selectivity(VnaChannel::IfSelectivity::High)
@@ -66,23 +66,23 @@ void IntermodSettings::setCenterFrequencyPoints(uint points) {
 }
 
 // Tone spacing (distance)
-double IntermodSettings::startSpacing_Hz() const {
-    return _startSpacing_Hz;
+double IntermodSettings::startToneDistance_Hz() const {
+    return _startToneDistance_Hz;
 }
-double IntermodSettings::stopSpacing_Hz() const {
-    return _stopSpacing_Hz;
+double IntermodSettings::stopToneDistance_Hz() const {
+    return _stopToneDistance_Hz;
 }
-uint IntermodSettings::spacingPoints() const {
-    return _spacingPoints;
+uint IntermodSettings::toneDistancePoints() const {
+    return _ToneDistancePoints;
 }
-void IntermodSettings::setStartSpacing(double frequency_Hz, SiPrefix prefix) {
-    _startSpacing_Hz = frequency_Hz * toDouble(prefix);
+void IntermodSettings::setStartToneDistance(double frequency_Hz, SiPrefix prefix) {
+    _startToneDistance_Hz = frequency_Hz * toDouble(prefix);
 }
-void IntermodSettings::setStopSpacing(double frequency_Hz, SiPrefix prefix) {
-    _stopSpacing_Hz  = frequency_Hz * toDouble(prefix);
+void IntermodSettings::setStopToneDistance(double frequency_Hz, SiPrefix prefix) {
+    _stopToneDistance_Hz  = frequency_Hz * toDouble(prefix);
 }
-void IntermodSettings::setSpacingPoints(uint points) {
-    _spacingPoints   = points;
+void IntermodSettings::setToneDistancePoints(uint points) {
+    _ToneDistancePoints   = points;
 }
 
 // Settings

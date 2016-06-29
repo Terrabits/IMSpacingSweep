@@ -56,9 +56,9 @@ void IntermodMeasurementTest::basic() {
     settings.setCenterFrequencyPoints(11);
 
     // Tone spacing/distance
-    settings.setStartSpacing(10, SiPrefix::Mega);
-    settings.setStopSpacing(100, SiPrefix::Mega);
-    settings.setSpacingPoints(10);
+    settings.setStartToneDistance(10, SiPrefix::Mega);
+    settings.setStopToneDistance(100, SiPrefix::Mega);
+    settings.setToneDistancePoints(10);
 
     // Misc
     settings.setPower(-10);

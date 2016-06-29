@@ -33,12 +33,12 @@ public:
     void setCenterFrequencyPoints(uint points);
 
     // Tone spacing (distance)
-    double startSpacing_Hz()         const;
-    double stopSpacing_Hz()          const;
-    uint   spacingPoints()           const;
-    void setStartSpacing(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void setStopSpacing(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void setSpacingPoints(uint points);
+    double startToneDistance_Hz() const;
+    double stopToneDistance_Hz()  const;
+    uint   toneDistancePoints()   const;
+    void setStartToneDistance(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
+    void setStopToneDistance(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
+    void setToneDistancePoints(uint points);
 
     // Measurement settings
     double power_dBm() const;
@@ -64,9 +64,9 @@ private:
     uint   _centerFrequencyPoints;
 
     // Tone spacing
-    double _startSpacing_Hz;
-    double _stopSpacing_Hz;
-    uint   _spacingPoints;
+    double _startToneDistance_Hz;
+    double _stopToneDistance_Hz;
+    uint   _ToneDistancePoints;
 
     // Settings
     double _power_dBm;
