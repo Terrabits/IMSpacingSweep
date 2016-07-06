@@ -11,6 +11,7 @@ class IntermodDataTest : public RsaToolbox::TestClass
     Q_OBJECT
 public:
     IntermodDataTest(QObject *parent = 0);
+   ~IntermodDataTest();
 
 private slots:
     void size();

@@ -10,7 +10,7 @@ class IntermodTrace : public TraceSettings
 {
 public:
     IntermodTrace();
-    ~IntermodTrace();
+   ~IntermodTrace();
 
     virtual bool        isAt()          const;
     virtual bool        isAtValue()     const;

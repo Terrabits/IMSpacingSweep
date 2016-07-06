@@ -21,25 +21,25 @@ CONFIG(debug, debug|release) {
 
 # Files
 include(../RsaToolbox/rsatoolbox.pri)
-HEADERS += \
-           Settings.h \
-    Measurement.h \
-    Measure.h \
-    IntermodMeasurement.h \
-    IntermodSettings.h \
-    IntermodData.h \
-    IntermodWidget.h \
-    TraceSettings.h \
-    IntermodTrace.h
-SOURCES += \
-    Measurement.cpp \
-    Measure.cpp \
-    IntermodMeasurement.cpp \
-    IntermodSettings.cpp \
-    IntermodData.cpp \
-    IntermodWidget.cpp \
-    TraceSettings.cpp \
-    IntermodTrace.cpp
+HEADERS += Settings.h \
+           Measurement.h \
+           Measure.h \
+           IntermodMeasurement.h \
+           IntermodSettings.h \
+           IntermodData.h \
+           IntermodWidget.h \
+           TraceSettings.h \
+           IntermodTrace.h \
+           ProcessIntermodTrace.h
+SOURCES += Measurement.cpp \
+           Measure.cpp \
+           IntermodMeasurement.cpp \
+           IntermodSettings.cpp \
+           IntermodData.cpp \
+           IntermodWidget.cpp \
+           TraceSettings.cpp \
+           IntermodTrace.cpp \
+           ProcessIntermodTrace.cpp
 FORMS   += IntermodWidget.ui
 
 # Defines

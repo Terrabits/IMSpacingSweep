@@ -1,5 +1,10 @@
 #include "TraceSettings.h"
 
+
+// Qt
+#include <QRegExp>
+
+
 TraceSettings::TraceSettings() :
     _atValue(0)
 {
@@ -10,6 +15,8 @@ TraceSettings::~TraceSettings()
 
 }
 bool TraceSettings::isValid() const {
+    if (!isValidName())
+        return false;
     if (!isYValid())
         return false;
     if (!isXValid())
@@ -29,6 +36,10 @@ bool TraceSettings::isAtValid() const {
     return possibleAtParameters().contains(at());
 }
 
+bool TraceSettings::isValidName() const {
+    QRegExp regex("^[a-z_][0-9a-z_]*$", Qt::CaseInsensitive);
+    return  regex.exactMatch(_name);
+}
 QString TraceSettings::name() const {
     return _name;
 }

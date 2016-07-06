@@ -7,11 +7,13 @@ include(../Core/core.pri)
 HEADERS += \
     IntermodMeasurementTest.h \
     IntermodDataTest.h \
-    IntermodWidgetTest.h
+    IntermodWidgetTest.h \
+    IntermodTraceTest.h
 SOURCES += main.cpp \
     IntermodMeasurementTest.cpp \
     IntermodDataTest.cpp \
-    IntermodWidgetTest.cpp
+    IntermodWidgetTest.cpp \
+    IntermodTraceTest.cpp
 
 DEFINES += SOURCE_DIR=\\\"$$PWD/\\\"
 

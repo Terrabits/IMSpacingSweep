@@ -3,6 +3,7 @@
 // Project
 #include "IntermodDataTest.h"
 #include "IntermodMeasurementTest.h"
+#include "IntermodTraceTest.h"
 #include "IntermodWidgetTest.h"
 
 // RsaToolbox
@@ -22,9 +23,10 @@ int main()
      QString address = "127.0.0.1::5025";
 
     TestRunner testRunner;
-//    testRunner.addTest(new IntermodDataTest);
-//    testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
-    testRunner.addTest(new IntermodWidgetTest(connectionType, address));
+    testRunner.addTest(new IntermodDataTest);
+    testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
+    testRunner.addTest(new IntermodTraceTest);
+//    testRunner.addTest(new IntermodWidgetTest(connectionType, address));
 
     qDebug() << "Global result: " << (testRunner.runTests() ? "PASS" : "FAIL");
     return 0;

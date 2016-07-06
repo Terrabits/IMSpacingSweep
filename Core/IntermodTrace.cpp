@@ -11,10 +11,10 @@ IntermodTrace::~IntermodTrace()
 }
 
 bool IntermodTrace::isAt() const {
-
+    return false;
 }
 bool IntermodTrace::isAtValue() const {
-
+    return false;
 }
 QStringList IntermodTrace::possibleYParameters() const {
     QStringList p;

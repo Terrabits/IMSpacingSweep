@@ -2,18 +2,44 @@
 #define INTERMODDATA_H
 
 
+// Project
+#include "IntermodSettings.h"
+
 // RsaToolbox
 #include <Definitions.h>
 
 
-class IntermodData
-{
-public:
-    IntermodData();
-    IntermodData(uint spacingPoints, uint centerPoints);
+// Functions
+RsaToolbox::ComplexRowVector column(uint row, const RsaToolbox::ComplexMatrix2D &matrix);
 
-    uint spacingPoints;
-    uint centerPoints;
+// Data
+struct IntermodData
+{
+    IntermodData();
+    IntermodData(const IntermodSettings &settings);
+   ~IntermodData();
+
+    // Settings
+    uint distancePoints() const;
+    uint centerPoints()   const;
+    IntermodSettings settings() const;
+    RsaToolbox::QRowVector centerFrequencies_Hz() const;
+    RsaToolbox::QRowVector distances_Hz() const;
+
+    // Input frequencies
+    RsaToolbox::QRowVector lowerFrequencyAtCenter_Hz  (double centerFrequency, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+    RsaToolbox::QRowVector lowerFrequencyAtDistance_Hz(double toneDistance,    RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+    RsaToolbox::QRowVector upperFrequencyAtCenter_Hz  (double centerFrequency, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+    RsaToolbox::QRowVector upperFrequencyAtDistance_Hz(double toneDistance,    RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+
+    // Higher-order frequencies
+    RsaToolbox::QRowVector lowerFrequencyAtCenter_Hz  (uint order, double centerFrequency, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+    RsaToolbox::QRowVector lowerFrequencyAtDistance_Hz(uint order, double toneDistance,    RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+    RsaToolbox::QRowVector upperFrequencyAtCenter_Hz  (uint order, double centerFrequency, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+    RsaToolbox::QRowVector upperFrequencyAtDistance_Hz(uint order, double toneDistance,    RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None) const;
+
+    // Matrices:
+    // Y[distance][center] = a + j*b
 
     // Tones
     RsaToolbox::ComplexMatrix2D lowerToneAtInput;
@@ -45,7 +71,8 @@ public:
     RsaToolbox::ComplexMatrix2D intercept9Major;
 
 private:
-    void initialize(uint spacingPoints, uint centerPoints);
+    IntermodSettings _settings;
+    void initialize();
 };
 
 #endif // INTERMODDATA_H

@@ -146,7 +146,7 @@ void IntermodMeasurement::run() {
     _vna->isError();
 
     // Read first sweep data
-    _data = IntermodData(_settings.toneDistancePoints(), _settings.centerFrequencyPoints());
+    _data = IntermodData(_settings);
     readData(0);
 
     // Continue with the rest of the sweeps
@@ -269,28 +269,28 @@ void IntermodMeasurement::deleteTraces() {
 }
 
 void IntermodMeasurement::readData(uint i) {
-    _data.lowerToneAtInput[i]  = _vna->trace(_lti).y();
+    _data.lowerToneAtInput [i] = _vna->trace(_lti).y();
     _data.lowerToneAtOutput[i] = _vna->trace(_lto).y();
-    _data.upperToneAtInput[i]  = _vna->trace(_uti).y();
+    _data.upperToneAtInput [i] = _vna->trace(_uti).y();
     _data.upperToneAtOutput[i] = _vna->trace(_uto).y();
 
-    _data.intermod3Lower[i] = _vna->trace(_im3l).y();
-    _data.intermod5Lower[i] = _vna->trace(_im5l).y();
-    _data.intermod7Lower[i] = _vna->trace(_im7l).y();
-    _data.intermod9Lower[i] =  _vna->trace(_im9l).y();
+    _data.intermod3Lower[i]    = _vna->trace(_im3l).y();
+    _data.intermod5Lower[i]    = _vna->trace(_im5l).y();
+    _data.intermod7Lower[i]    = _vna->trace(_im7l).y();
+    _data.intermod9Lower[i]    = _vna->trace(_im9l).y();
 
-    _data.intermod3Upper[i] =  _vna->trace(_im3u).y();
-    _data.intermod5Upper[i] = _vna->trace(_im5u).y();
-    _data.intermod7Upper[i] = _vna->trace(_im7u).y();
-    _data.intermod9Upper[i] = _vna->trace(_im9u).y();
+    _data.intermod3Upper[i]    =  _vna->trace(_im3u).y();
+    _data.intermod5Upper[i]    = _vna->trace(_im5u).y();
+    _data.intermod7Upper[i]    = _vna->trace(_im7u).y();
+    _data.intermod9Upper[i]    = _vna->trace(_im9u).y();
 
-    _data.intermod3Major[i] = _vna->trace(_im3m).y();
-    _data.intermod5Major[i] = _vna->trace(_im5m).y();
-    _data.intermod7Major[i] = _vna->trace(_im7m).y();
-    _data.intermod9Major[i] = _vna->trace(_im9m).y();
+    _data.intermod3Major[i]    = _vna->trace(_im3m).y();
+    _data.intermod5Major[i]    = _vna->trace(_im5m).y();
+    _data.intermod7Major[i]    = _vna->trace(_im7m).y();
+    _data.intermod9Major[i]    = _vna->trace(_im9m).y();
 
-    _data.intercept3Major[i] = _vna->trace(_ip3m).y();
-    _data.intercept5Major[i] = _vna->trace(_ip5m).y();
-    _data.intercept7Major[i] = _vna->trace(_ip7m).y();
-    _data.intercept9Major[i] = _vna->trace(_ip9m).y();
+    _data.intercept3Major[i]   = _vna->trace(_ip3m).y();
+    _data.intercept5Major[i]   = _vna->trace(_ip5m).y();
+    _data.intercept7Major[i]   = _vna->trace(_ip7m).y();
+    _data.intercept9Major[i]   = _vna->trace(_ip9m).y();
 }

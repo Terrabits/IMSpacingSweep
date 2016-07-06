@@ -16,7 +16,7 @@ class IntermodMeasurementTest : public RsaToolbox::VnaTestClass
     Q_OBJECT
 public:
     IntermodMeasurementTest(RsaToolbox::ConnectionType type, const QString &address, QObject *parent = 0);
-    ~IntermodMeasurementTest();
+   ~IntermodMeasurementTest();
 
 private slots:
     void basic();

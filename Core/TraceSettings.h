@@ -22,11 +22,12 @@ public:
     bool isXValid()  const;
     bool isAtValid() const;
 
-    QString name()    const;
-    QString y()       const;
-    QString x()       const;
-    QString at()      const;
-    double  atValue() const;
+    bool isValidName() const;
+    QString name()     const;
+    QString y()        const;
+    QString x()        const;
+    QString at()       const;
+    double  atValue()  const;
 
     void setName(const QString &name);
     void setY   (const QString &y);
@@ -34,14 +35,14 @@ public:
     void setAt  (const QString &at);
     void setAtValue(double value);
 
-    bool isAt()       const = 0;
-    bool isAtValue()  const = 0;
+    virtual bool        isAt()                 const = 0;
+    virtual bool        isAtValue()            const = 0;
     virtual QStringList possibleYParameters()  const = 0;
     virtual QStringList possibleXParameters()  const = 0;
     virtual QStringList possibleAtParameters() const = 0;
-    RsaToolbox::Units   atUnits()    const = 0;
-//    virtual double      maxAtValue() const = 0;
-//    virtual double      minAtValue() const = 0;
+    virtual RsaToolbox::Units        atUnits() const = 0;
+//    virtual double      maxAtValue()           const = 0;
+//    virtual double      minAtValue()           const = 0;
 
 private:
     QString _name;
