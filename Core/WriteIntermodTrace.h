@@ -10,7 +10,7 @@
 #include <Vna.h>
 
 
-void processIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, IntermodData &data);
+void writeIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, IntermodData &data);
 
 
 #endif // PROCESSINTERMODTRACE_H

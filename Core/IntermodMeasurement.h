@@ -11,6 +11,10 @@
 #include <General.h>
 #include <Vna.h>
 
+// Qt
+#include <QScopedPointer>
+
+
 class IntermodError {
 public:
     enum /*class*/ Code {
@@ -49,7 +53,7 @@ public:
     bool isValid() const;
     bool isValid(IntermodError &error) const;
 
-    // ResultsType *results(); // Take?
+    IntermodData *takeResult();
 
 public slots:
     virtual void run();
@@ -69,7 +73,7 @@ private:
     void deleteTraces();
 
     // Results
-    IntermodData _data;
+    QScopedPointer<IntermodData> _data;
     void readData(uint i);
 };
 

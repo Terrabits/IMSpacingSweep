@@ -5,6 +5,7 @@
 #include "IntermodMeasurementTest.h"
 #include "IntermodTraceTest.h"
 #include "IntermodWidgetTest.h"
+#include "WriteIntermodTraceTest.h"
 
 // RsaToolbox
 #include <Definitions.h>
@@ -26,6 +27,7 @@ int main()
     testRunner.addTest(new IntermodDataTest);
     testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
     testRunner.addTest(new IntermodTraceTest);
+    testRunner.addTest(new WriteIntermodTraceTest(connectionType, address));
 //    testRunner.addTest(new IntermodWidgetTest(connectionType, address));
 
     qDebug() << "Global result: " << (testRunner.runTests() ? "PASS" : "FAIL");

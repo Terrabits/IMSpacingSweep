@@ -24,6 +24,8 @@ IntermodTraceTest::~IntermodTraceTest()
 
 void IntermodTraceTest::trace_data() {
     QTest::addColumn<bool>   ("isValid");
+    QTest::addColumn<QString>("name");
+    QTest::addColumn<bool>   ("isNameValid");
     QTest::addColumn<QString>("y");
     QTest::addColumn<bool>   ("isYValid");
     QTest::addColumn<QString>("x");
@@ -62,30 +64,34 @@ void IntermodTraceTest::trace_data() {
     const QString cf   = "Center Frequency";
     const QString td   = "Tone Distance";
 
-    //             Test            isValid  y       isYValid   x     isXValid   at    isAtValid
-    QTest::newRow("Empty")      << false << ""   << false   << "" << false   << "" << false;
-    QTest::newRow("Random")     << false << "ab" << false   <<"cd"<< false   <<"ef"<< false;
+    //             Test            isValid  name      isNameValid  y       isYValid   x     isXValid   at    isAtValid
+    QTest::newRow("Empty")      << false << ""     << false     << ""   << false   << "" << false   << "" << false;
+    QTest::newRow("Random")     << false << "_y"   << true      << "ab" << false   <<"cd"<< false   <<"ef"<< false;
+    QTest::newRow("SpaceInName")<< false << "a b"  << false     << ""   << false   << "" << false   << "" << false;
+    QTest::newRow("Punctuation")<< false << "a.b"  << false     << ""   << false   << "" << false   << "" << false;
 
-    // Original tones              isValid  y       isYValid   x     isXValid   at    isAtValid
-    QTest::newRow("LTI-TD-CF")  << true  << lti  << true    << td << true    << cf << true;
-    QTest::newRow("LTO-CF-TD")  << true  << lti  << true    << cf << true    << td << true;
-    QTest::newRow("UTI-TD-TD")  << false << lti  << true    << td << true    << td << false;
-    QTest::newRow("UTO-CF-CF")  << false << lti  << true    << cf << true    << cf << false;
+    // Original tones              isValid  name      isNameValid  y       isYValid   x     isXValid   at    isAtValid
+    QTest::newRow("LTI-TD-CF")  << true  << "LTITD"<< true      << lti  << true    << td << true    << cf << true;
+    QTest::newRow("LTO-CF-TD")  << true  << "LTOCF"<< true      << lti  << true    << cf << true    << td << true;
+    QTest::newRow("UTI-TD-TD")  << false << "UTITD"<< true      << lti  << true    << td << true    << td << false;
+    QTest::newRow("UTO-CF-CF")  << false << "UTOCF"<< true      << lti  << true    << cf << true    << cf << false;
 
-    // Intermod                    isValid  y       isYValid   x     isXValid   at    isAtValid
-    QTest::newRow("IM3L-TD-CF") << true  << im3l << true    << td << true    << cf << true;;
-    QTest::newRow("IM5U-CF-TD") << true  << im5u << true    << cf << true    << td << true;
-    QTest::newRow("IM7M-TD-TD") << false << im7m << true    << td << true    << td << false;
-    QTest::newRow("IM9L-CF-CF") << false << im9l << true    << cf << true    << cf << false;
+    // Intermod                    isValid  name      isNameValid  y       isYValid   x     isXValid   at    isAtValid
+    QTest::newRow("IM3L-TD-CF") << true  << "IM3LD"<< true      << im3l << true    << td << true    << cf << true;;
+    QTest::newRow("IM5U-CF-TD") << true  << "IM5UC"<< true      << im5u << true    << cf << true    << td << true;
+    QTest::newRow("IM7M-TD-TD") << false << "IM7MD"<< true      << im7m << true    << td << true    << td << false;
+    QTest::newRow("IM9L-CF-CF") << false << "IM9LC"<< true      << im9l << true    << cf << true    << cf << false;
 
-    // Intermod                    isValid  y       isYValid   x     isXValid   at    isAtValid
-    QTest::newRow("IP3M-TD-CF") << true  << ip3m << true    << td << true    << cf << true;;
-    QTest::newRow("IP5M-CF-TD") << true  << ip5m << true    << cf << true    << td << true;
-    QTest::newRow("IP7M-TD-TD") << false << ip7m << true    << td << true    << td << false;
-    QTest::newRow("IP9M-CF-CF") << false << ip9m << true    << cf << true    << cf << false;
+    // Intermod                    isValid  name      isNameValid  y       isYValid   x     isXValid   at    isAtValid
+    QTest::newRow("IP3M-TD-CF") << true  << "IP3MD"<< true      << ip3m << true    << td << true    << cf << true;;
+    QTest::newRow("IP5M-CF-TD") << true  << "IP5MC"<< true      << ip5m << true    << cf << true    << td << true;
+    QTest::newRow("IP7M-TD-TD") << false << "IP7MD"<< true      << ip7m << true    << td << true    << td << false;
+    QTest::newRow("IP9M-CF-CF") << false << "IP9MC"<< true      << ip9m << true    << cf << true    << cf << false;
 }
 void IntermodTraceTest::trace() {
     QFETCH(bool,    isValid);
+    QFETCH(QString, name);
+    QFETCH(bool,    isNameValid);
     QFETCH(QString, y);
     QFETCH(bool,    isYValid);
     QFETCH(QString, x);
@@ -94,17 +100,20 @@ void IntermodTraceTest::trace() {
     QFETCH(bool,    isAtValid);
 
     IntermodTrace trace;
+    trace.setName(name);
     trace.setY (y);
     trace.setX (x);
     trace.setAt(at);
 
-    QCOMPARE(trace.y(),  y);
-    QCOMPARE(trace.x(),  x);
-    QCOMPARE(trace.at(), at);
+    QCOMPARE(trace.name(), name);
+    QCOMPARE(trace.y(),    y);
+    QCOMPARE(trace.x(),    x);
+    QCOMPARE(trace.at(),   at);
 
-    QCOMPARE(trace.isValid(),   isValid);
-    QCOMPARE(trace.isYValid(),  isYValid);
-    QCOMPARE(trace.isXValid(),  isXValid);
-    QCOMPARE(trace.isAtValid(), isAtValid);
+    QCOMPARE(trace.isValid(),     isValid);
+    QCOMPARE(trace.isNameValid(), isNameValid);
+    QCOMPARE(trace.isYValid(),    isYValid);
+    QCOMPARE(trace.isXValid(),    isXValid);
+    QCOMPARE(trace.isAtValid(),   isAtValid);
 }
 

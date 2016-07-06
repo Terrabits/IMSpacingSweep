@@ -30,7 +30,7 @@ HEADERS += Settings.h \
            IntermodWidget.h \
            TraceSettings.h \
            IntermodTrace.h \
-           ProcessIntermodTrace.h
+    WriteIntermodTrace.h
 SOURCES += Measurement.cpp \
            Measure.cpp \
            IntermodMeasurement.cpp \
@@ -39,7 +39,7 @@ SOURCES += Measurement.cpp \
            IntermodWidget.cpp \
            TraceSettings.cpp \
            IntermodTrace.cpp \
-           ProcessIntermodTrace.cpp
+    WriteIntermodTrace.cpp
 FORMS   += IntermodWidget.ui
 
 # Defines

@@ -15,7 +15,7 @@ TraceSettings::~TraceSettings()
 
 }
 bool TraceSettings::isValid() const {
-    if (!isValidName())
+    if (!isNameValid())
         return false;
     if (!isYValid())
         return false;
@@ -36,7 +36,7 @@ bool TraceSettings::isAtValid() const {
     return possibleAtParameters().contains(at());
 }
 
-bool TraceSettings::isValidName() const {
+bool TraceSettings::isNameValid() const {
     QRegExp regex("^[a-z_][0-9a-z_]*$", Qt::CaseInsensitive);
     return  regex.exactMatch(_name);
 }

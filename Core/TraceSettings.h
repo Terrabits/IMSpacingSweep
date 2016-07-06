@@ -18,11 +18,11 @@ public:
     ~TraceSettings();
 
     bool isValid()   const;
+    bool isNameValid() const;
     bool isYValid()  const;
     bool isXValid()  const;
     bool isAtValid() const;
 
-    bool isValidName() const;
     QString name()     const;
     QString y()        const;
     QString x()        const;
