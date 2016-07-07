@@ -6,6 +6,7 @@
 #include "WriteIntermodTrace.h"
 
 // RsaToolbox
+#include <Test.h>
 using namespace RsaToolbox;
 
 // Qt
@@ -65,5 +66,19 @@ void WriteIntermodTraceTest::test() {
     measurement.run();
 
     QScopedPointer<IntermodData> data(measurement.takeResult());
-    QVERIFY(false);
+
+    IntermodTrace trace;
+    trace.setName("Test");
+    trace.setY("IM3 Upper");
+    trace.setX("Tone Distance");
+    trace.setAt("Center Frequency");
+    trace.setAtValue(data->centerFrequencies_Hz().last());
+    WriteIntermodTrace(_vna.data(), trace, *data);
+    _vna->trace(trace.name()).setDiagram(1);
+
+    bool isOff = _vna->settings().isDisplayOff();
+    _vna->settings().displayOn();
+    pause("Traces look ok?");
+    _vna->settings().displayOff(isOff);
+    QVERIFY(!_vna->isError());
 }

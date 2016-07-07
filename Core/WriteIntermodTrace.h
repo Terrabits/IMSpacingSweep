@@ -7,10 +7,23 @@
 #include "IntermodTrace.h"
 
 // RsaToolbox
+#include <Definitions.h>
 #include <Vna.h>
 
+// Qt
+#include <QString>
 
-void writeIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, IntermodData &data);
+class WriteIntermodTrace {
+public:
+    WriteIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, IntermodData &data);
+    ~WriteIntermodTrace();
 
+private:
+    RsaToolbox::Vna *_vna;
+    IntermodTrace    _trace;
+    IntermodData    &_data;
+
+    void values(RsaToolbox::QRowVector &x, RsaToolbox::ComplexRowVector &y, QString &scpi);
+};
 
 #endif // PROCESSINTERMODTRACE_H
