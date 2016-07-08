@@ -1,6 +1,10 @@
 #include "TraceSettings.h"
 
 
+// RsaToolbox
+#include <General.h>
+using namespace RsaToolbox;
+
 // Qt
 #include <QRegExp>
 
@@ -68,8 +72,8 @@ void TraceSettings::setX(const QString &x) {
 void TraceSettings::setAt(const QString &at) {
     _at = at;
 }
-void TraceSettings::setAtValue(double value) {
-    _atValue = value;
+void TraceSettings::setAtValue(double value, RsaToolbox::SiPrefix prefix) {
+    _atValue = value * toDouble(prefix);
 }
 
 bool operator==(const TraceSettings &lhs, const TraceSettings &rhs) {

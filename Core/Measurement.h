@@ -13,6 +13,8 @@ public:
     explicit Measurement(QObject *parent = 0);
     ~Measurement();
 
+    virtual bool isValid() const = 0;
+
 signals:
     void starting();
     void progress(uint percent);

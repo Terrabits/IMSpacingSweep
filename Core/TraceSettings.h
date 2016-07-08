@@ -7,9 +7,15 @@
 
 // Qt
 #include <QDataStream>
+#include <QList>
+#include <QSharedPointer>
 #include <QString>
 #include <QStringList>
 
+
+class TraceSettings;
+typedef QSharedPointer<TraceSettings> SharedTrace;
+typedef QList<SharedTrace> SharedTraces;
 
 class TraceSettings
 {
@@ -33,7 +39,7 @@ public:
     void setY   (const QString &y);
     void setX   (const QString &x);
     void setAt  (const QString &at);
-    void setAtValue(double value);
+    void setAtValue(double value, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
 
     virtual bool        isAt()                 const = 0;
     virtual bool        isAtValue()            const = 0;

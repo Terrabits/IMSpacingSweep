@@ -2,7 +2,10 @@
 
 
 // Project
+#include "IntermodData.h"
 #include "IntermodMeasurement.h"
+#include "IntermodSettings.h"
+#include "IntermodTrace.h"
 #include "WriteIntermodTrace.h"
 
 // RsaToolbox
@@ -45,7 +48,7 @@ WriteIntermodTraceTest::~WriteIntermodTraceTest()
 }
 
 void WriteIntermodTraceTest::test() {
-    // Measure
+    // Settings
     VnaIntermod::ToneSource port3;
     port3.setPort(3);
 
@@ -62,19 +65,26 @@ void WriteIntermodTraceTest::test() {
     settings.setPower(-10);
     settings.setIfBw(  10, SiPrefix::Kilo);
     settings.setSelectivity(VnaChannel::IfSelectivity::High);
-    IntermodMeasurement measurement(_vna.data(), 1, settings);
-    measurement.run();
 
+    // Traces
+    SharedIntermodTrace trace(new IntermodTrace);
+    trace->setName("Test");
+    trace->setY   ("IM3 Upper");
+    trace->setX   ("Tone Distance");
+    trace->setAt  ("Center Frequency");
+    trace->setAtValue(2, SiPrefix::Giga);
+
+    SharedIntermodTraces traces;
+    traces << trace;
+
+    // Measure
+    IntermodMeasurement measurement(_vna.data(), 1, settings, traces);
+    measurement.run();
     QScopedPointer<IntermodData> data(measurement.takeResult());
 
-    IntermodTrace trace;
-    trace.setName("Test");
-    trace.setY("IM3 Upper");
-    trace.setX("Tone Distance");
-    trace.setAt("Center Frequency");
-    trace.setAtValue(data->centerFrequencies_Hz().last());
-    WriteIntermodTrace(_vna.data(), trace, *data);
-    _vna->trace(trace.name()).setDiagram(1);
+    // Write
+    WriteIntermodTrace(_vna.data(), *trace, *data);
+    _vna->trace(trace->name()).setDiagram(1);
 
     bool isOff = _vna->settings().isDisplayOff();
     _vna->settings().displayOn();

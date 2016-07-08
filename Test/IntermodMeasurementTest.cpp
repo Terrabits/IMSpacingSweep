@@ -9,6 +9,10 @@
 #include <VnaChannel.h>
 using namespace RsaToolbox;
 
+// Qt
+#include <QDebug>
+#include <QSignalSpy>
+
 
 IntermodMeasurementTest::IntermodMeasurementTest(ConnectionType type, const QString &address, QObject *parent) :
     VnaTestClass(type, address, parent)
@@ -62,11 +66,28 @@ void IntermodMeasurementTest::basic() {
 
     // Misc
     settings.setPower(-10);
-    settings.setIfBw(  10, SiPrefix::Kilo);
+    settings.setIfBw ( 10, SiPrefix::Kilo);
     settings.setSelectivity(VnaChannel::IfSelectivity::High);
 
+    // Traces
+    const uint maxOrder = 9;
+    SharedIntermodTrace trace(new IntermodTrace);
+    trace->setName("test");
+    trace->setY   ("IM9 Major");
+    trace->setX   ("Tone Distance");
+    trace->setAt  ("Center Frequency");
+    trace->setAtValue(settings.startCenterFrequency_Hz());
+
+    SharedIntermodTraces traces;
+    traces << trace;
+
     // Validate settings
-    IntermodMeasurement measurement(_vna.data(), 1, settings);
+    const uint refChannel = 1;
+    IntermodMeasurement measurement(_vna.data(), refChannel, settings, traces);
+    QSignalSpy starting(&measurement, SIGNAL(starting()));
+    QSignalSpy progress(&measurement, SIGNAL(progress(uint)));
+    QSignalSpy finished(&measurement, SIGNAL(finished()));
+
     IntermodError error;
     QVERIFY(!_vna->isError());
     bool isValid = measurement.isValid(error);
@@ -77,4 +98,15 @@ void IntermodMeasurementTest::basic() {
     // Measure
     measurement.run();
     QVERIFY(!_vna->isError());
+
+    const int percents = settings.toneDistancePoints() + 1;
+    QCOMPARE(starting.count(),        1);
+    QCOMPARE(finished.count(),        1);
+    QCOMPARE(progress.count(), percents);
+    QCOMPARE(progress.first().first().toUInt(), uint(  0));
+    QCOMPARE(progress.last() .first().toUInt(), uint(100));
+
+    QScopedPointer<IntermodData> data(measurement.takeResult());
+    QVERIFY(!data->isEmpty());
+    QCOMPARE(data->maxOrder(), maxOrder);
 }

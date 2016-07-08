@@ -10,6 +10,25 @@ IntermodTrace::~IntermodTrace()
 
 }
 
+uint IntermodTrace::order() const {
+    if (!isYValid())
+        return 0;
+
+    if (y().contains("Tone", Qt::CaseInsensitive))
+        return 1;
+    if (y().contains("3"))
+        return 3;
+    if (y().contains("5"))
+        return 5;
+    if (y().contains("7"))
+        return 7;
+    if (y().contains("9"))
+        return 9;
+
+    // Error
+    return 0;
+}
+
 bool IntermodTrace::isAt() const {
     return false;
 }

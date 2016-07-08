@@ -14,7 +14,9 @@ public:
    ~IntermodDataTest();
 
 private slots:
-    void size();
+    void empty();
+    void constructAll();
+    void onlyTo5thOrder();
 };
 
 #endif // INTERMODDATATEST_H

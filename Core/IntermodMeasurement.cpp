@@ -6,35 +6,21 @@
 #include <VnaChannel.h>
 using namespace RsaToolbox;
 
+// std lib
+#include <algorithm>
 
-// IntermodError class
-IntermodError::IntermodError() :
-    code(IntermodError::Code::None)
-{
-    //
-}
-IntermodError::~IntermodError()
-{
-    //
-}
 
-bool IntermodError::isError() const {
-    return code != Code::None;
-}
-void IntermodError::clear() {
-    code = Code::None;
-    message.clear();
-}
-
-//IntermodMeasurement class
 IntermodMeasurement::IntermodMeasurement(Vna *vna,
                                          uint referenceChannel,
                                          const IntermodSettings &settings,
+                                         SharedIntermodTraces traces,
                                          QObject *parent) :
     Measurement(parent),
     _vna(vna),
     _refChannel(referenceChannel),
-    _settings(settings)
+    _settings(settings),
+    _traces(traces),
+    _maxOrder(maxOrder())
 {
     //
 }
@@ -85,13 +71,16 @@ bool IntermodMeasurement::isValid(IntermodError &error) const {
         error.message = "*Points must be greater than 0";
         return false;
     }
-    // Is at least 3rd order result within
-    // range of Vna?
-    // if (no result in range) {
-    //    error.code = ?;
-    //    error.message = ?;
-    //    return false;
-    // }
+    if (_traces.isEmpty()) {
+        error.code = IntermodError::Code::Traces;
+        error.message = "*Choose traces before measuring";
+        return false;
+    }
+    if (orderRequest() > _maxOrder) {
+        error.code = IntermodError::Code::Order;
+        error.message = "*IM product %1 out of VNA range";
+        return false;
+    }
 
     return true;
 }
@@ -101,10 +90,15 @@ IntermodData *IntermodMeasurement::takeResult() {
 }
 
 void IntermodMeasurement::run() {
+    emit starting();
+    emit progress(0);
     _vna->isError();
     _vna->clearStatus();
-    if (!isValid())
+    if (!isValid()) {
+        emit progress(100);
+        emit finished();
         return;
+    }
 
     // Create new channel
     _vna->channel(_refChannel).select();
@@ -136,10 +130,6 @@ void IntermodMeasurement::run() {
     _vna->isError();
 
     // Traces
-    im.order3On();
-    im.order5On();
-    im.order7On();
-    im.order9On();
     uint diagram = _vna->createDiagram();
     createTraces(c, diagram);
 
@@ -150,8 +140,9 @@ void IntermodMeasurement::run() {
     _vna->isError();
 
     // Read first sweep data
-    _data.reset(new IntermodData(_settings));
+    _data.reset(new IntermodData(_settings, _maxOrder));
     readData(0);
+    emit progress(100.0 * 1.0/spacings_Hz.size());
 
     // Continue with the rest of the sweeps
     for (int i = 1; i < spacings_Hz.size(); i++) {
@@ -167,6 +158,7 @@ void IntermodMeasurement::run() {
 
         // Take data
         readData(i);
+        emit progress(100.0 * double(i+1)/spacings_Hz.size());
 
         // Read PAE?
         // __PAE__
@@ -176,125 +168,176 @@ void IntermodMeasurement::run() {
     if (_vna->isDiagram(diagram))
         _vna->deleteDiagram(diagram);
     _vna->deleteChannel(c);
+    emit finished();
 }
 
 void IntermodMeasurement::createTraces(uint channel, uint diagram) {
-    _lti = _vna->createTrace(channel);
-    _lto = _vna->createTrace(channel);
-    _uti = _vna->createTrace(channel);
-    _uto = _vna->createTrace(channel);
-    _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Lower, VnaTrace::At::Input);
-    _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Lower, VnaTrace::At::Output);
-    _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Upper, VnaTrace::At::Input);
-    _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Upper, VnaTrace::At::Output);
-    _vna->trace(_lti).setDiagram(diagram);
-    _vna->trace(_lto).setDiagram(diagram);
-    _vna->trace(_uti).setDiagram(diagram);
-    _vna->trace(_uto).setDiagram(diagram);
-
-    _im3l = _vna->createTrace(channel);
-    _im5l = _vna->createTrace(channel);
-    _im7l = _vna->createTrace(channel);
-    _im9l = _vna->createTrace(channel);
-    _vna->trace(_im3l).setIntermod(3, VnaTrace::Side::Lower);
-    _vna->trace(_im5l).setIntermod(5, VnaTrace::Side::Lower);
-    _vna->trace(_im7l).setIntermod(7, VnaTrace::Side::Lower);
-    _vna->trace(_im9l).setIntermod(9, VnaTrace::Side::Lower);
-    _vna->trace(_im3l).setDiagram(diagram);
-    _vna->trace(_im5l).setDiagram(diagram);
-    _vna->trace(_im7l).setDiagram(diagram);
-    _vna->trace(_im9l).setDiagram(diagram);
-
-    _im3u = _vna->createTrace(channel);
-    _im5u = _vna->createTrace(channel);
-    _im7u = _vna->createTrace(channel);
-    _im9u = _vna->createTrace(channel);
-    _vna->trace(_im3u).setIntermod(3, VnaTrace::Side::Upper);
-    _vna->trace(_im5u).setIntermod(5, VnaTrace::Side::Upper);
-    _vna->trace(_im7u).setIntermod(7, VnaTrace::Side::Upper);
-    _vna->trace(_im9u).setIntermod(9, VnaTrace::Side::Upper);
-    _vna->trace(_im3u).setDiagram(diagram);
-    _vna->trace(_im5u).setDiagram(diagram);
-    _vna->trace(_im7u).setDiagram(diagram);
-    _vna->trace(_im9u).setDiagram(diagram);
-
-    _im3m = _vna->createTrace(channel);
-    _im5m = _vna->createTrace(channel);
-    _im7m = _vna->createTrace(channel);
-    _im9m = _vna->createTrace(channel);
-    _vna->trace(_im3m).setIntermod(3, VnaTrace::Side::Major);
-    _vna->trace(_im5m).setIntermod(5, VnaTrace::Side::Major);
-    _vna->trace(_im7m).setIntermod(7, VnaTrace::Side::Major);
-    _vna->trace(_im9m).setIntermod(9, VnaTrace::Side::Major);
-    _vna->trace(_im3m).setDiagram(diagram);
-    _vna->trace(_im5m).setDiagram(diagram);
-    _vna->trace(_im7m).setDiagram(diagram);
-    _vna->trace(_im9m).setDiagram(diagram);
-
-    _ip3m = _vna->createTrace(channel);
-    _ip5m = _vna->createTrace(channel);
-    _ip7m = _vna->createTrace(channel);
-    _ip9m = _vna->createTrace(channel);
-    _vna->trace(_ip3m).setIntermodIntercept(3, VnaTrace::Side::Major);
-    _vna->trace(_ip3m).setIntermodIntercept(5, VnaTrace::Side::Major);
-    _vna->trace(_ip3m).setIntermodIntercept(7, VnaTrace::Side::Major);
-    _vna->trace(_ip3m).setIntermodIntercept(9, VnaTrace::Side::Major);
-    _vna->trace(_ip3m).setDiagram(diagram);
-    _vna->trace(_ip5m).setDiagram(diagram);
-    _vna->trace(_ip7m).setDiagram(diagram);
-    _vna->trace(_ip9m).setDiagram(diagram);
+    VnaIntermod im = _vna->channel(channel).intermod();
+    switch(_maxOrder) {
+    case 9:
+        im.order9On();
+        _im9l = _vna->createTrace(channel);
+        _im9u = _vna->createTrace(channel);
+        _im9m = _vna->createTrace(channel);
+        _ip9m = _vna->createTrace(channel);
+        _vna->trace(_im9l).setIntermod(9, VnaTrace::Side::Lower);
+        _vna->trace(_im9u).setIntermod(9, VnaTrace::Side::Upper);
+        _vna->trace(_im9m).setIntermod(9, VnaTrace::Side::Major);
+        _vna->trace(_ip9m).setIntermodIntercept(9, VnaTrace::Side::Major);
+        _vna->trace(_im9l).setDiagram(diagram);
+        _vna->trace(_im9u).setDiagram(diagram);
+        _vna->trace(_im9m).setDiagram(diagram);
+        _vna->trace(_ip9m).setDiagram(diagram);
+        // And 7th order
+    case 7:
+        im.order7On();
+        _im7l = _vna->createTrace(channel);
+        _im7u = _vna->createTrace(channel);
+        _im7m = _vna->createTrace(channel);
+        _ip7m = _vna->createTrace(channel);
+        _vna->trace(_im7l).setIntermod(7, VnaTrace::Side::Lower);
+        _vna->trace(_im7u).setIntermod(7, VnaTrace::Side::Upper);
+        _vna->trace(_im7m).setIntermod(7, VnaTrace::Side::Major);
+        _vna->trace(_ip7m).setIntermodIntercept(7, VnaTrace::Side::Major);
+        _vna->trace(_im7l).setDiagram(diagram);
+        _vna->trace(_im7u).setDiagram(diagram);
+        _vna->trace(_im7m).setDiagram(diagram);
+        _vna->trace(_ip7m).setDiagram(diagram);
+        // And 5th order
+    case 5:
+        im.order5On();
+        _im5l = _vna->createTrace(channel);
+        _im5u = _vna->createTrace(channel);
+        _im5m = _vna->createTrace(channel);
+        _ip5m = _vna->createTrace(channel);
+        _vna->trace(_im5l).setIntermod(5, VnaTrace::Side::Lower);
+        _vna->trace(_im5u).setIntermod(5, VnaTrace::Side::Upper);
+        _vna->trace(_im5m).setIntermod(5, VnaTrace::Side::Major);
+        _vna->trace(_ip5m).setIntermodIntercept(5, VnaTrace::Side::Major);
+        _vna->trace(_im5l).setDiagram(diagram);
+        _vna->trace(_im5u).setDiagram(diagram);
+        _vna->trace(_im5m).setDiagram(diagram);
+        _vna->trace(_ip5m).setDiagram(diagram);
+        // And 3rd order
+    case 3:
+        im.order3On();
+        _im3l = _vna->createTrace(channel);
+        _im3u = _vna->createTrace(channel);
+        _im3m = _vna->createTrace(channel);
+        _ip3m = _vna->createTrace(channel);
+        _vna->trace(_im3l).setIntermod(3, VnaTrace::Side::Lower);
+        _vna->trace(_im3u).setIntermod(3, VnaTrace::Side::Upper);
+        _vna->trace(_im3m).setIntermod(3, VnaTrace::Side::Major);
+        _vna->trace(_ip3m).setIntermodIntercept(3, VnaTrace::Side::Major);
+        _vna->trace(_im3l).setDiagram(diagram);
+        _vna->trace(_im3u).setDiagram(diagram);
+        _vna->trace(_im3m).setDiagram(diagram);
+        _vna->trace(_ip3m).setDiagram(diagram);
+    default:
+        // Always do original tones
+        _lti = _vna->createTrace(channel);
+        _lto = _vna->createTrace(channel);
+        _uti = _vna->createTrace(channel);
+        _uto = _vna->createTrace(channel);
+        _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Lower, VnaTrace::At::Input);
+        _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Lower, VnaTrace::At::Output);
+        _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Upper, VnaTrace::At::Input);
+        _vna->trace(_lti).setIntermodTone(VnaTrace::Side::Upper, VnaTrace::At::Output);
+        _vna->trace(_lti).setDiagram(diagram);
+        _vna->trace(_lto).setDiagram(diagram);
+        _vna->trace(_uti).setDiagram(diagram);
+        _vna->trace(_uto).setDiagram(diagram);
+        break;
+    }
 }
 void IntermodMeasurement::deleteTraces() {
-    _vna->deleteTrace(_lti);
-    _vna->deleteTrace(_lto);
-    _vna->deleteTrace(_uti);
-    _vna->deleteTrace(_uto);
-
-    _vna->deleteTrace(_im3l);
-    _vna->deleteTrace(_im5l);
-    _vna->deleteTrace(_im7l);
-    _vna->deleteTrace(_im9l);
-
-    _vna->deleteTrace(_im3u);
-    _vna->deleteTrace(_im5u);
-    _vna->deleteTrace(_im7u);
-    _vna->deleteTrace(_im9u);
-
-    _vna->deleteTrace(_im3m);
-    _vna->deleteTrace(_im5m);
-    _vna->deleteTrace(_im7m);
-    _vna->deleteTrace(_im9m);
-
-    _vna->deleteTrace(_ip3m);
-    _vna->deleteTrace(_ip5m);
-    _vna->deleteTrace(_ip7m);
-    _vna->deleteTrace(_ip9m);
+    switch(_maxOrder) {
+    case 9:
+        _vna->deleteTrace(_im9l);
+        _vna->deleteTrace(_im9u);
+        _vna->deleteTrace(_im9m);
+        _vna->deleteTrace(_ip9m);
+        // And 7th
+    case 7:
+        _vna->deleteTrace(_im7l);
+        _vna->deleteTrace(_im7u);
+        _vna->deleteTrace(_im7m);
+        _vna->deleteTrace(_ip7m);
+        // And 5th
+    case 5:
+        _vna->deleteTrace(_im5l);
+        _vna->deleteTrace(_im5u);
+        _vna->deleteTrace(_im5m);
+        _vna->deleteTrace(_ip5m);
+        // And 3rd
+    case 3:
+        _vna->deleteTrace(_im3l);
+        _vna->deleteTrace(_im3u);
+        _vna->deleteTrace(_im3m);
+        _vna->deleteTrace(_ip3m);
+    default:
+        // Always original tones
+        _vna->deleteTrace(_lti);
+        _vna->deleteTrace(_lto);
+        _vna->deleteTrace(_uti);
+        _vna->deleteTrace(_uto);
+        break;
+    }
     _vna->pause();
 }
 
+uint IntermodMeasurement::maxOrder() const {
+    // Quantities (Hz)
+    const double vnaMin = _vna->properties().minimumFrequency_Hz();
+    const double vnaMax = _vna->properties().maximumFrequency_Hz();
+    const double tdMax  = _settings.stopToneDistance_Hz();
+    const double cfMin  = _settings.startCenterFrequency_Hz();
+    const double cfMax  = _settings.stopCenterFrequency_Hz();
+
+    const uint nlMax = floor(2 * (cfMin - vnaMin) / tdMax);
+    const uint nuMax = floor(2 * (cfMax - vnaMax) / tdMax);
+    const uint nMax = std::min(nlMax, nuMax);
+    return std::min(nMax,  uint(9));
+}
+
+uint IntermodMeasurement::orderRequest() const {
+    uint result = 1;
+    foreach (SharedIntermodTrace t, _traces) {
+        const uint t_order = t->order();
+        if (t_order > result)
+            result = t_order;
+    }
+    return result;
+}
+
 void IntermodMeasurement::readData(uint i) {
-    _data->lowerToneAtInput [i] = _vna->trace(_lti).y();
-    _data->lowerToneAtOutput[i] = _vna->trace(_lto).y();
-    _data->upperToneAtInput [i] = _vna->trace(_uti).y();
-    _data->upperToneAtOutput[i] = _vna->trace(_uto).y();
-
-    _data->intermod3Lower[i]    = _vna->trace(_im3l).y();
-    _data->intermod5Lower[i]    = _vna->trace(_im5l).y();
-    _data->intermod7Lower[i]    = _vna->trace(_im7l).y();
-    _data->intermod9Lower[i]    = _vna->trace(_im9l).y();
-
-    _data->intermod3Upper[i]    =  _vna->trace(_im3u).y();
-    _data->intermod5Upper[i]    = _vna->trace(_im5u).y();
-    _data->intermod7Upper[i]    = _vna->trace(_im7u).y();
-    _data->intermod9Upper[i]    = _vna->trace(_im9u).y();
-
-    _data->intermod3Major[i]    = _vna->trace(_im3m).y();
-    _data->intermod5Major[i]    = _vna->trace(_im5m).y();
-    _data->intermod7Major[i]    = _vna->trace(_im7m).y();
-    _data->intermod9Major[i]    = _vna->trace(_im9m).y();
-
-    _data->intercept3Major[i]   = _vna->trace(_ip3m).y();
-    _data->intercept5Major[i]   = _vna->trace(_ip5m).y();
-    _data->intercept7Major[i]   = _vna->trace(_ip7m).y();
-    _data->intercept9Major[i]   = _vna->trace(_ip9m).y();
+    switch(_maxOrder) {
+    case 9:
+        _data->intermod9Lower[i]    = _vna->trace(_im9l).y();
+        _data->intermod9Upper[i]    = _vna->trace(_im9u).y();
+        _data->intermod9Major[i]    = _vna->trace(_im9m).y();
+        _data->intercept9Major[i]   = _vna->trace(_ip9m).y();
+    case 7:
+        _data->intermod7Lower[i]    = _vna->trace(_im7l).y();
+        _data->intermod7Upper[i]    = _vna->trace(_im7u).y();
+        _data->intermod7Major[i]    = _vna->trace(_im7m).y();
+        _data->intercept7Major[i]   = _vna->trace(_ip7m).y();
+    case 5:
+        _data->intermod5Lower[i]    = _vna->trace(_im5l).y();
+        _data->intermod5Upper[i]    = _vna->trace(_im5u).y();
+        _data->intermod5Major[i]    = _vna->trace(_im5m).y();
+        _data->intercept5Major[i]   = _vna->trace(_ip5m).y();
+    case 3:
+        _data->intermod3Lower[i]    = _vna->trace(_im3l).y();
+        _data->intermod3Upper[i]    = _vna->trace(_im3u).y();
+        _data->intermod3Major[i]    = _vna->trace(_im3m).y();
+        _data->intercept3Major[i]   = _vna->trace(_ip3m).y();
+    default:
+        // Always original tones
+        _data->lowerToneAtInput [i] = _vna->trace(_lti).y();
+        _data->lowerToneAtOutput[i] = _vna->trace(_lto).y();
+        _data->upperToneAtInput [i] = _vna->trace(_uti).y();
+        _data->upperToneAtOutput[i] = _vna->trace(_uto).y();
+        break;
+    }
 }

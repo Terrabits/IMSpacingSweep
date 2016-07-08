@@ -4,7 +4,9 @@
 
 // Project
 #include "IntermodData.h"
+#include "IntermodError.h"
 #include "IntermodSettings.h"
+#include "IntermodTrace.h"
 #include "Measurement.h"
 
 // RsaToolbox
@@ -15,31 +17,7 @@
 #include <QScopedPointer>
 
 
-class IntermodError {
-public:
-    enum /*class*/ Code {
-        LowerSourcePort,
-        UpperSource,
-        ReceivingPort,
-        StartCenterFreq,
-        StopCenterFreq,
-        CenterFreqPoints,
-        StartToneDistance,
-        StopToneDistance,
-        ToneDistancePoints,
-        Power,
-        IfBw,
-        Selectivity,
-        None
-    };
 
-    IntermodError();
-    ~IntermodError();
-    bool isError() const;
-    Code code;
-    QString message;
-    void clear();
-};
 
 class IntermodMeasurement : public Measurement
 {
@@ -47,10 +25,11 @@ public:
     IntermodMeasurement(RsaToolbox::Vna *vna,
                         uint referenceChannel,
                         const IntermodSettings &settings,
+                        SharedIntermodTraces traces,
                         QObject *parent = 0);
     ~IntermodMeasurement();
 
-    bool isValid() const;
+    virtual bool isValid() const;
     bool isValid(IntermodError &error) const;
 
     IntermodData *takeResult();
@@ -62,7 +41,12 @@ private:
     mutable RsaToolbox::Vna *_vna;
     uint                     _refChannel;
     IntermodSettings         _settings;
+    SharedIntermodTraces     _traces;
+    uint                     _maxOrder;
+    uint maxOrder()     const;
+    uint orderRequest() const;
 
+    // Traces
     QString _lti, _lto;
     QString _uti, _uto;
     QString _im3l, _im5l, _im7l, _im9l;
