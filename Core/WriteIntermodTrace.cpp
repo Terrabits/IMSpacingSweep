@@ -7,10 +7,14 @@
 // RsaToolbox
 using namespace RsaToolbox;
 
+// Qt
+#include <QDebug>
 
-WriteIntermodTrace::WriteIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, IntermodData &data) :
+
+WriteIntermodTrace::WriteIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, uint diagram, IntermodData &data) :
     _vna(vna),
     _trace(trace),
+    _diagram(diagram),
     _data(data)
 {
     const QString name  = _trace.name();
@@ -39,8 +43,12 @@ WriteIntermodTrace::WriteIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace
     // Memory trace
     _vna->trace(_name).toMemory(name);
     _vna->trace(name).write(y);
+
+    // Set diagram
+    _vna->trace(_name).setDiagram(diagram);
 }
-WriteIntermodTrace::~WriteIntermodTrace() {
+WriteIntermodTrace::~WriteIntermodTrace()
+{
     //
 }
 
@@ -53,19 +61,19 @@ void WriteIntermodTrace::values(QRowVector &x, ComplexRowVector &y, QString &scp
     ComplexMatrix2D *yMatrix = 0;
     const QString yParam = _trace.y();
     // Tones
-    if (yParam == "Lower Tone Input") {
+    if (yParam == "Lower In") {
         scpi = "LTI";
         yMatrix = &(_data.lowerToneAtInput);
     }
-    else if (yParam == "Lower Tone Output") {
+    else if (yParam == "Lower Out") {
         scpi = "LTO";
         yMatrix = &(_data.lowerToneAtOutput);
     }
-    else if (yParam == "Upper Tone Input") {
+    else if (yParam == "Upper In") {
         scpi = "UTI";
         yMatrix = &(_data.upperToneAtInput);
     }
-    else if (yParam == "Upper Tone Output") {
+    else if (yParam == "Upper Out") {
         scpi = "UTO";
         yMatrix = &(_data.upperToneAtOutput);
     }
@@ -155,7 +163,8 @@ void WriteIntermodTrace::values(QRowVector &x, ComplexRowVector &y, QString &scp
             x.clear();
             return;
         }
-        y = column(iAt, (*yMatrix));
+        y = (*yMatrix)[iAt];
+
     }
     else if (xParam == "Tone Distance") {
         // at: Center Frequency
@@ -167,7 +176,7 @@ void WriteIntermodTrace::values(QRowVector &x, ComplexRowVector &y, QString &scp
             x.clear();
             return;
         }
-        y = (*yMatrix)[iAt];
+        y = column(*yMatrix, iAt);
     }
     // No x match
     else {

@@ -4,6 +4,9 @@
 // Project
 #include "IntermodData.h"
 
+// RsaToolbox
+using namespace RsaToolbox;
+
 
 IntermodDataTest::IntermodDataTest(QObject *parent) :
     TestClass(parent)
@@ -44,64 +47,41 @@ void IntermodDataTest::constructAll() {
     QCOMPARE(data.maxOrder(), order);
 
     // Tone
-    QCOMPARE(data.lowerToneAtInput.size(),     distancePoints);
-    QCOMPARE(data.lowerToneAtInput[0].size(),  centerPoints);
-    QCOMPARE(data.lowerToneAtOutput.size(),    distancePoints);
-    QCOMPARE(data.lowerToneAtOutput[0].size(), centerPoints);
-    QCOMPARE(data.upperToneAtInput.size(),     distancePoints);
-    QCOMPARE(data.upperToneAtInput[0].size(),  centerPoints);
-    QCOMPARE(data.upperToneAtOutput.size(),    distancePoints);
-    QCOMPARE(data.upperToneAtOutput[0].size(), centerPoints);
+    testMatrix(data.lowerToneAtInput,  distancePoints, centerPoints);
+    testMatrix(data.upperToneAtInput,  distancePoints, centerPoints);
+    testMatrix(data.lowerToneAtOutput, distancePoints, centerPoints);
+    testMatrix(data.upperToneAtOutput, distancePoints, centerPoints);
 
     // Intermod products
     QVERIFY(data.isIM3());
-    QCOMPARE(data.intermod3Lower.size(),     distancePoints);
-    QCOMPARE(data.intermod3Lower[0].size(),  centerPoints);
-    QCOMPARE(data.intermod3Upper.size(),     distancePoints);
-    QCOMPARE(data.intermod3Upper[0].size(),  centerPoints);
-    QCOMPARE(data.intermod3Major.size(),     distancePoints);
-    QCOMPARE(data.intermod3Major[0].size(),  centerPoints);
+    testMatrix(data.intermod3Lower,  distancePoints, centerPoints);
+    testMatrix(data.intermod3Upper,  distancePoints, centerPoints);
+    testMatrix(data.intermod3Major,  distancePoints, centerPoints);
 
     QVERIFY(data.isIM5());
-    QCOMPARE(data.intermod5Lower.size(),     distancePoints);
-    QCOMPARE(data.intermod5Lower[0].size(),  centerPoints);
-    QCOMPARE(data.intermod5Upper.size(),     distancePoints);
-    QCOMPARE(data.intermod5Upper[0].size(),  centerPoints);
-    QCOMPARE(data.intermod5Major.size(),     distancePoints);
-    QCOMPARE(data.intermod5Major[0].size(),  centerPoints);
+    testMatrix(data.intermod5Lower,  distancePoints, centerPoints);
+    testMatrix(data.intermod5Upper,  distancePoints, centerPoints);
+    testMatrix(data.intermod5Major,  distancePoints, centerPoints);
 
     QVERIFY(data.isIM7());
-    QCOMPARE(data.intermod7Lower.size(),     distancePoints);
-    QCOMPARE(data.intermod7Lower[0].size(),  centerPoints);
-    QCOMPARE(data.intermod7Upper.size(),     distancePoints);
-    QCOMPARE(data.intermod7Upper[0].size(),  centerPoints);
-    QCOMPARE(data.intermod7Major.size(),     distancePoints);
-    QCOMPARE(data.intermod7Major[0].size(),  centerPoints);
+    testMatrix(data.intermod7Lower,  distancePoints, centerPoints);
+    testMatrix(data.intermod7Upper,  distancePoints, centerPoints);
+    testMatrix(data.intermod7Major,  distancePoints, centerPoints);
 
     QVERIFY(data.isIM9());
-    QCOMPARE(data.intermod9Lower.size(),     distancePoints);
-    QCOMPARE(data.intermod9Lower[0].size(),  centerPoints);
-    QCOMPARE(data.intermod9Upper.size(),     distancePoints);
-    QCOMPARE(data.intermod9Upper[0].size(),  centerPoints);
-    QCOMPARE(data.intermod9Major.size(),     distancePoints);
-    QCOMPARE(data.intermod9Major[0].size(),  centerPoints);
+    testMatrix(data.intermod9Lower,  distancePoints, centerPoints);
+    testMatrix(data.intermod9Upper,  distancePoints, centerPoints);
+    testMatrix(data.intermod9Major,  distancePoints, centerPoints);
 
     // Intercept points
     QVERIFY(data.isIP3());
-    QCOMPARE(data.intercept3Major.size(),    distancePoints);
-    QCOMPARE(data.intercept3Major[0].size(), centerPoints);
-
     QVERIFY(data.isIP5());
-    QCOMPARE(data.intercept5Major.size(),    distancePoints);
-    QCOMPARE(data.intercept5Major[0].size(), centerPoints);
-
     QVERIFY(data.isIP7());
-    QCOMPARE(data.intercept7Major.size(),    distancePoints);
-    QCOMPARE(data.intercept7Major[0].size(), centerPoints);
-
     QVERIFY(data.isIP9());
-    QCOMPARE(data.intercept9Major.size(),    distancePoints);
-    QCOMPARE(data.intercept9Major[0].size(), centerPoints);
+    testMatrix(data.intercept3Major,  distancePoints, centerPoints);
+    testMatrix(data.intercept5Major,  distancePoints, centerPoints);
+    testMatrix(data.intercept7Major,  distancePoints, centerPoints);
+    testMatrix(data.intercept9Major,  distancePoints, centerPoints);
 }
 void IntermodDataTest::onlyTo5thOrder() {
     const uint distancePoints = 101;
@@ -118,44 +98,50 @@ void IntermodDataTest::onlyTo5thOrder() {
     QCOMPARE(data.maxOrder(), order);
 
     // Tone
-    QCOMPARE(data.lowerToneAtInput.size(),     distancePoints);
-    QCOMPARE(data.lowerToneAtInput[0].size(),  centerPoints);
-    QCOMPARE(data.lowerToneAtOutput.size(),    distancePoints);
-    QCOMPARE(data.lowerToneAtOutput[0].size(), centerPoints);
-    QCOMPARE(data.upperToneAtInput.size(),     distancePoints);
-    QCOMPARE(data.upperToneAtInput[0].size(),  centerPoints);
-    QCOMPARE(data.upperToneAtOutput.size(),    distancePoints);
-    QCOMPARE(data.upperToneAtOutput[0].size(), centerPoints);
+    testMatrix(data.lowerToneAtInput,  distancePoints, centerPoints);
+    testMatrix(data.upperToneAtInput,  distancePoints, centerPoints);
+    testMatrix(data.lowerToneAtOutput, distancePoints, centerPoints);
+    testMatrix(data.upperToneAtOutput, distancePoints, centerPoints);
 
     // Intermod products
     QVERIFY(data.isIM3());
-    QCOMPARE(data.intermod3Lower.size(),     distancePoints);
-    QCOMPARE(data.intermod3Lower[0].size(),  centerPoints);
-    QCOMPARE(data.intermod3Upper.size(),     distancePoints);
-    QCOMPARE(data.intermod3Upper[0].size(),  centerPoints);
-    QCOMPARE(data.intermod3Major.size(),     distancePoints);
-    QCOMPARE(data.intermod3Major[0].size(),  centerPoints);
+    testMatrix(data.intermod3Lower,  distancePoints, centerPoints);
+    testMatrix(data.intermod3Upper,  distancePoints, centerPoints);
+    testMatrix(data.intermod3Major,  distancePoints, centerPoints);
 
     QVERIFY(data.isIM5());
-    QCOMPARE(data.intermod5Lower.size(),     distancePoints);
-    QCOMPARE(data.intermod5Lower[0].size(),  centerPoints);
-    QCOMPARE(data.intermod5Upper.size(),     distancePoints);
-    QCOMPARE(data.intermod5Upper[0].size(),  centerPoints);
-    QCOMPARE(data.intermod5Major.size(),     distancePoints);
-    QCOMPARE(data.intermod5Major[0].size(),  centerPoints);
+    testMatrix(data.intermod5Lower,  distancePoints, centerPoints);
+    testMatrix(data.intermod5Upper,  distancePoints, centerPoints);
+    testMatrix(data.intermod5Major,  distancePoints, centerPoints);
 
     QVERIFY(!data.isIM7());
     QVERIFY(!data.isIM9());
 
     // Intercept points
     QVERIFY(data.isIP3());
-    QCOMPARE(data.intercept3Major.size(),    distancePoints);
-    QCOMPARE(data.intercept3Major[0].size(), centerPoints);
-
     QVERIFY(data.isIP5());
-    QCOMPARE(data.intercept5Major.size(),    distancePoints);
-    QCOMPARE(data.intercept5Major[0].size(), centerPoints);
-
     QVERIFY(!data.isIP7());
     QVERIFY(!data.isIP9());
+    testMatrix(data.intercept3Major,  distancePoints, centerPoints);
+    testMatrix(data.intercept5Major,  distancePoints, centerPoints);
+}
+
+void IntermodDataTest::columnFunction() {
+    const uint rows    = 101;
+    const uint columns =  10;
+
+    const ComplexDouble zero(0,0);
+    const ComplexRowVector row(columns, zero);
+    ComplexMatrix2D matrix(rows, row);
+
+    QCOMPARE(column(matrix, 0).size(), rows);
+    QCOMPARE(column(matrix, 1).size(), rows);
+    QCOMPARE(column(matrix, 9).size(), rows);
+}
+
+void IntermodDataTest::testMatrix(const ComplexMatrix2D &matrix, uint rows, uint columns) {
+    QCOMPARE(matrix.size(), rows);
+    for (uint i = 0; i < rows; i++) {
+        QCOMPARE(matrix[i].size(), columns);
+    }
 }

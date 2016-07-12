@@ -8,6 +8,7 @@
 
 // RsaToolbox
 #include <Vna.h>
+#include <WizardPage.h>
 
 // Qt
 #include <QWidget>
@@ -17,7 +18,7 @@ namespace Ui {
 class IntermodWidget;
 }
 
-class IntermodWidget : public QWidget
+class IntermodWidget : public RsaToolbox::WizardPage
 {
     Q_OBJECT
 

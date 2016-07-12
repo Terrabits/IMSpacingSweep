@@ -83,8 +83,8 @@ void WriteIntermodTraceTest::test() {
     QScopedPointer<IntermodData> data(measurement.takeResult());
 
     // Write
-    WriteIntermodTrace(_vna.data(), *trace, *data);
-    _vna->trace(trace->name()).setDiagram(1);
+    const uint diagram = 1;
+    WriteIntermodTrace(_vna.data(), *trace, diagram, *data);
 
     bool isOff = _vna->settings().isDisplayOff();
     _vna->settings().displayOn();

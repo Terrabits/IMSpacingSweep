@@ -18,18 +18,35 @@ using namespace RsaToolbox;
 #include <QDebug>
 
 
-int main()
+int main(int argc, char *argv[])
 {
      RsaToolbox::ConnectionType connectionType = RsaToolbox::ConnectionType::VisaTcpSocketConnection;
      QString address = "127.0.0.1::5025";
 
     TestRunner testRunner;
-    testRunner.addTest(new IntermodDataTest);
-    testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
-    testRunner.addTest(new IntermodTraceTest);
-    testRunner.addTest(new WriteIntermodTraceTest(connectionType, address));
-//    testRunner.addTest(new IntermodWidgetTest(connectionType, address));
+    if (argc == 2) {
+        QString arg(argv[1]);
+        arg = arg.remove("-").toLower();
+        if (arg == "intermodwidget") {
+            testRunner.addTest(new IntermodWidgetTest(connectionType, address));
+        }
+        else if (arg == "writeintermodtrace") {
+            testRunner.addTest(new WriteIntermodTraceTest(connectionType, address));
+        }
+    }
+    else {
+        testRunner.addTest(new IntermodDataTest);
+        testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
+        testRunner.addTest(new IntermodTraceTest);
+    }
 
-    qDebug() << "Global result: " << (testRunner.runTests() ? "PASS" : "FAIL");
-    return 0;
+    bool passed = testRunner.runTests();
+    if (passed) {
+        qDebug() << "Global result: PASS";
+        return 0;
+    }
+    else {
+        qDebug() << "Global result: FAIL";
+        return -1;
+    }
 }

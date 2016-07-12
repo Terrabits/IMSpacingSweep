@@ -55,14 +55,20 @@ void IntermodMeasurementTest::basic() {
     settings.setReceivingPort(2);
 
     // Center frequencies
-    settings.setStartCenterFrequency(1, SiPrefix::Giga);
-    settings.setStopCenterFrequency( 2, SiPrefix::Giga);
-    settings.setCenterFrequencyPoints(11);
+    double startCenter  =  1.0E9;
+    double stopCenter   =  2.0E9;
+    uint   centerPoints = 11;
+    settings.setStartCenterFrequency(startCenter);
+    settings.setStopCenterFrequency( stopCenter);
+    settings.setCenterFrequencyPoints(centerPoints);
 
     // Tone spacing/distance
-    settings.setStartToneDistance(10, SiPrefix::Mega);
-    settings.setStopToneDistance(100, SiPrefix::Mega);
-    settings.setToneDistancePoints(10);
+    double startDistance  =  10.0E6;
+    double stopDistance   = 100.0E6;
+    uint   distancePoints =  10;
+    settings.setStartToneDistance(startDistance);
+    settings.setStopToneDistance(stopDistance);
+    settings.setToneDistancePoints(distancePoints);
 
     // Misc
     settings.setPower(-10);
@@ -109,4 +115,43 @@ void IntermodMeasurementTest::basic() {
     QScopedPointer<IntermodData> data(measurement.takeResult());
     QVERIFY(!data->isEmpty());
     QCOMPARE(data->maxOrder(), maxOrder);
+
+    // Tones
+    testMatrix(data->lowerToneAtInput,  distancePoints, centerPoints);
+    testMatrix(data->upperToneAtInput,  distancePoints, centerPoints);
+    testMatrix(data->lowerToneAtOutput, distancePoints, centerPoints);
+    testMatrix(data->upperToneAtOutput, distancePoints, centerPoints);
+
+    // IM3
+    testMatrix(data->intermod3Lower, distancePoints, centerPoints);
+    testMatrix(data->intermod3Upper, distancePoints, centerPoints);
+    testMatrix(data->intermod3Major, distancePoints, centerPoints);
+
+    // IM5
+    testMatrix(data->intermod5Lower, distancePoints, centerPoints);
+    testMatrix(data->intermod5Upper, distancePoints, centerPoints);
+    testMatrix(data->intermod5Major, distancePoints, centerPoints);
+
+    // IM7
+    testMatrix(data->intermod7Lower, distancePoints, centerPoints);
+    testMatrix(data->intermod7Upper, distancePoints, centerPoints);
+    testMatrix(data->intermod7Major, distancePoints, centerPoints);
+
+    // IM9
+    testMatrix(data->intermod9Lower, distancePoints, centerPoints);
+    testMatrix(data->intermod9Upper, distancePoints, centerPoints);
+    testMatrix(data->intermod9Major, distancePoints, centerPoints);
+
+    // IP
+    testMatrix(data->intercept3Major, distancePoints, centerPoints);
+    testMatrix(data->intercept5Major, distancePoints, centerPoints);
+    testMatrix(data->intercept7Major, distancePoints, centerPoints);
+    testMatrix(data->intercept9Major, distancePoints, centerPoints);
+}
+
+void IntermodMeasurementTest::testMatrix(ComplexMatrix2D &m, uint rows, uint columns) {
+    QCOMPARE(m.size(), rows);
+    for (uint i = 0; i < rows; i++) {
+        QCOMPARE(m[i].size(), columns);
+    }
 }

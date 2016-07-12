@@ -15,10 +15,9 @@ TEMPLATE     = app
 
 # Files
 include(../Core/core.pri)
-SOURCES     += main.cpp\
-               mainwindow.cpp
-HEADERS     += mainwindow.h
-FORMS       += mainwindow.ui
+SOURCES     += main.cpp
+HEADERS     +=
+FORMS       +=
 RESOURCES   += Resources.qrc
 OTHER_FILES += ./_Debug/Log.txt
 

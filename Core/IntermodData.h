@@ -10,7 +10,7 @@
 
 
 // Functions
-RsaToolbox::ComplexRowVector column(uint row, const RsaToolbox::ComplexMatrix2D &matrix);
+RsaToolbox::ComplexRowVector column(const RsaToolbox::ComplexMatrix2D &matrix, uint index);
 
 // Data
 struct IntermodData

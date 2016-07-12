@@ -3,6 +3,7 @@
 
 
 // RsaToolbox
+#include <Definitions.h>
 #include <TestClass.h>
 
 
@@ -17,6 +18,10 @@ private slots:
     void empty();
     void constructAll();
     void onlyTo5thOrder();
+    void columnFunction();
+
+private:
+    void testMatrix(const RsaToolbox::ComplexMatrix2D &matrix, uint rows, uint columns);
 };
 
 #endif // INTERMODDATATEST_H

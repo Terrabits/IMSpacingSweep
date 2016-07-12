@@ -34,10 +34,10 @@ void IntermodTraceTest::trace_data() {
     QTest::addColumn<bool>   ("isAtValid");
 
     // Possible y values
-    const QString lti  = "Lower Tone Input";
-    const QString lto  = "Lower Tone Output";
-    const QString uti  = "Upper Tone Input";
-    const QString uto  = "Upper Tone Output";
+    const QString lti  = "Lower In";
+    const QString lto  = "Lower Out";
+    const QString uti  = "Upper In";
+    const QString uto  = "Upper Out";
 
     const QString im3l = "IM3 Lower";
     const QString im3u = "IM3 Upper";

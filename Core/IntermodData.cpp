@@ -7,11 +7,11 @@ using namespace RsaToolbox;
 
 
 // Functions
-ComplexRowVector column(uint row, const ComplexMatrix2D &matrix) {
-    const uint columns = matrix[0].size();
-    ComplexRowVector result(columns);
-    for (uint i = 0; i < columns; i++) {
-        result[i] = matrix[row][i];
+ComplexRowVector column(const ComplexMatrix2D &matrix, uint index) {
+    const uint rows = matrix.size();
+    ComplexRowVector result(rows);
+    for (uint i = 0; i < rows; i++) {
+        result[i] = matrix[i][index];
     }
     return result;
 }

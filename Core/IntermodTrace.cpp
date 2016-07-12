@@ -37,10 +37,10 @@ bool IntermodTrace::isAtValue() const {
 }
 QStringList IntermodTrace::possibleYParameters() const {
     QStringList p;
-    p << "Lower Tone Input";
-    p << "Lower Tone Output";
-    p << "Upper Tone Input";
-    p << "Upper Tone Output";
+    p << "Lower In";
+    p << "Lower Out";
+    p << "Upper In";
+    p << "Upper Out";
     p << "IM3 Upper";
     p << "IM3 Lower";
     p << "IM3 Major";

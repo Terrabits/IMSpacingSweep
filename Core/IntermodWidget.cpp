@@ -11,8 +11,8 @@ using namespace RsaToolbox;
 
 
 IntermodWidget::IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::IntermodWidget),
+    WizardPage(parent),
+    ui(new ::Ui::IntermodWidget),
     _vna(vna)
 {
     ui->setupUi(this);

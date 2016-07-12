@@ -20,6 +20,9 @@ public:
 
 private slots:
     void basic();
+
+private:
+    void testMatrix(RsaToolbox::ComplexMatrix2D &m, uint rows, uint columns);
 };
 
 

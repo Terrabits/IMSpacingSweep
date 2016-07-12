@@ -15,12 +15,13 @@
 
 class WriteIntermodTrace {
 public:
-    WriteIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, IntermodData &data);
+    WriteIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace, uint diagram, IntermodData &data);
     ~WriteIntermodTrace();
 
 private:
     RsaToolbox::Vna *_vna;
     IntermodTrace    _trace;
+    uint             _diagram;
     IntermodData    &_data;
 
     void values(RsaToolbox::QRowVector &x, RsaToolbox::ComplexRowVector &y, QString &scpi);

@@ -1,8 +1,8 @@
 
 
 //Project
-#include "mainwindow.h"
 #include "Settings.h"
+#include "IntermodWidget.h"
 
 // RsaToolbox
 #include <About.h>
@@ -10,6 +10,7 @@
 #include <Keys.h>
 #include <Log.h>
 #include <Vna.h>
+#include <Wizard.h>
 using namespace RsaToolbox;
 
 // Qt
@@ -37,14 +38,18 @@ int main(int argc, char *argv[])
 
     Keys keys(KEY_PATH);
 
-    MainWindow w(&vna, &keys);
+    QString title = "%1 %2";
+    title = title.arg(APP_NAME);
+    title = title.arg(APP_VERSION);
 
-//    QString title = "%1 %2";
-//    title = title.arg(APP_NAME);
-//    title = title.arg(APP_VERSION);
-    w.setWindowTitle(APP_NAME);
+    IntermodWidget *settings = new IntermodWidget(&vna);
 
-    w.show();
+    Wizard wizard;
+    wizard.setWindowTitle(title);
+    wizard.hideBreadcrumbs();
+    wizard.setRestartOnCancel(false);
+    wizard.addPage(settings);
+    wizard.show();
     return a.exec();
 }
 
