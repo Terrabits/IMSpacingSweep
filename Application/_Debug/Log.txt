@@ -1,7 +1,7 @@
 R&S IM Spacing Sweep Version 0.9
 (C) 2016 Rohde & Schwarz North America
 
-Mon Jul 11 18:36:30 2016
+Mon Jul 11 19:01:31 2016
 
 Write:    "*IDN?"
 Bytes: 6

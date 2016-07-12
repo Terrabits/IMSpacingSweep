@@ -222,4 +222,7 @@ void IntermodWidget::connectWidgets() {
             this, SIGNAL(errorMessage(QString)));
     connect(ui->ifBw, SIGNAL(outOfRange(QString)),
             this, SIGNAL(errorMessage(QString)));
+
+    // Display errors on widget
+    connect(this, SIGNAL(errorMessage(QString)), ui->error, SLOT(showMessage(QString)));
 }

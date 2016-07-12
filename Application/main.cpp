@@ -49,6 +49,11 @@ int main(int argc, char *argv[])
     wizard.hideBreadcrumbs();
     wizard.setRestartOnCancel(false);
     wizard.addPage(settings);
+
+    QObject::connect(settings, SIGNAL(errorMessage(QString)),
+                     &wizard,  SLOT(shake()));
+
+
     wizard.show();
     return a.exec();
 }

@@ -407,6 +407,9 @@
      </property>
     </spacer>
    </item>
+   <item>
+    <widget class="RsaToolbox::ErrorLabel" name="error" native="true"/>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -424,6 +427,12 @@
    <class>RsaToolbox::PowerEdit</class>
    <extends>QLineEdit</extends>
    <header>PowerEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>RsaToolbox::ErrorLabel</class>
+   <extends>QWidget</extends>
+   <header>ErrorLabel.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
