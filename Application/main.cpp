@@ -26,9 +26,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    // --about flag?
     if (isAboutMenu(argc, argv))
         return 0;
 
+    // Vna connection, log
     Vna vna(CONNECTION_TYPE, ADDRESS);
     Log log(LOG_FILENAME, APP_NAME, APP_VERSION);
     log.printHeader();
@@ -36,25 +38,34 @@ int main(int argc, char *argv[])
     if (!isRohdeSchwarzVna(vna))
         return 0;
 
+    // Keys / saved settings
     Keys keys(KEY_PATH);
 
+    // Title
     QString title = "%1 %2";
     title = title.arg(APP_NAME);
     title = title.arg(APP_VERSION);
 
+    // Pages
     IntermodWidget *settings = new IntermodWidget(&vna);
 
+    // Wizard
     Wizard wizard;
     wizard.setWindowTitle(title);
     wizard.hideBreadcrumbs();
     wizard.setRestartOnCancel(false);
     wizard.addPage(settings);
+//  wizard.addPage(...);
+//  ...
+    wizard.show();
 
+    // Connections
+    QObject::connect(settings, SIGNAL(error(IntermodError)),
+                     &wizard, SLOT(shake()));
     QObject::connect(settings, SIGNAL(errorMessage(QString)),
                      &wizard,  SLOT(shake()));
 
-
-    wizard.show();
+    // Start event loop
     return a.exec();
 }
 
@@ -80,8 +91,9 @@ bool isAboutMenu(int argc, char *argv[]) {
 }
 bool isRohdeSchwarzVna(Vna &vna) {
     if (!vna.isConnected() || vna.idString().isEmpty()) {
-        QString msg = "Instrument not found.\n";
-        msg += "Please run this application on the instrument.";
+        QString msg = "Could not connect to instrument.\n"
+                      "Please check your VISA installation and\n"
+                      "run this application on the instrument.";
         QMessageBox::critical(NULL,
                               APP_NAME,
                               msg);
@@ -90,8 +102,9 @@ bool isRohdeSchwarzVna(Vna &vna) {
     }
     vna.settings().setEmulationOff();
     if (!vna.properties().isKnownModel()) {
-        QString msg = "Instrument not recognized.\n";
-        msg += "Please use %1 with a Rohde & Schwarz VNA";
+        QString msg = "Instrument not recognized.\n"
+                      "Please use %1 with a Rohde & Schwarz VNA\n"
+                      "with emulation mode turned off.";
         msg = msg.arg(APP_NAME);
         QMessageBox::critical(NULL,
                               APP_NAME,

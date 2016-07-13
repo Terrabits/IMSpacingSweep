@@ -2,6 +2,10 @@
 #include "ui_IntermodWidget.h"
 
 
+// Project
+#include "IntermodMeasurement.h"
+#include "IntermodTrace.h"
+
 // RsaToolbox
 #include <VnaChannel.h>
 using namespace RsaToolbox;
@@ -23,6 +27,14 @@ IntermodWidget::IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent) :
 IntermodWidget::~IntermodWidget()
 {
     delete ui;
+}
+
+void IntermodWidget::showError(const IntermodError &error) {
+    focusOn(error);
+    ui->error->showMessage(error.message);
+}
+void IntermodWidget::showErrorMessage(const QString &message) {
+    ui->error->showMessage(message);
 }
 
 void IntermodWidget::initialize() {
@@ -64,12 +76,14 @@ bool IntermodWidget::isInput(IntermodError &error) const {
         error.message = "*Enter lower source port";
         return false;
     }
-//    if (ui->upperSource->isEmpty()) {
-//        ui->upperSource->setFocus();
-//        error.code = IntermodError::Code::UpperSource;
-//        error.message = "*Enter upper source";
-//        return false;
-//    }
+    /// FIX !!!!! ///
+    if (ui->upperSourceIndex->text().isEmpty()) {
+        ui->upperSourceIndex->selectAll();
+        ui->upperSourceIndex->setFocus();
+        error.code = IntermodError::Code::UpperSource;
+        error.message = "*Enter upper source";
+        return false;
+    }
     if (ui->receivingPort->text().isEmpty()) {
         ui->receivingPort->setFocus();
         error.code = IntermodError::Code::ReceivingPort;
@@ -118,16 +132,16 @@ bool IntermodWidget::isInput(IntermodError &error) const {
     }
 
     // Misc
-    if (ui->power->text().isEmpty()) {
-        ui->power->setFocus();
-        error.code = IntermodError::Code::Power;
-        error.message = "*Enter power level";
-        return false;
-    }
     if (ui->ifBw->text().isEmpty()) {
         ui->ifBw->setFocus();
         error.code = IntermodError::Code::IfBw;
         error.message = "*Enter IF bandwidth";
+        return false;
+    }
+    if (ui->power->text().isEmpty()) {
+        ui->power->setFocus();
+        error.code = IntermodError::Code::Power;
+        error.message = "*Enter power level";
         return false;
     }
     if (ui->selectivity->currentText().isEmpty()) {
@@ -137,14 +151,18 @@ bool IntermodWidget::isInput(IntermodError &error) const {
         return false;
     }
 
+    // No error
     return true;
 }
 IntermodSettings IntermodWidget::getInput() const {
+    VnaIntermod::ToneSource upper;
     IntermodSettings s;
 
     // Ports
     s.setLowerSourcePort(ui->lowerPort->points());
-//    s.setUpperSource(ui->upperSource->?);
+    /// FIX !!!!! ////
+    upper.setPort(ui->upperSourceIndex->points());
+    s.setUpperSource(upper);
     s.setReceivingPort(ui->receivingPort->points());
 
     // Center frequency
@@ -192,6 +210,26 @@ void IntermodWidget::setInput(const IntermodSettings &settings) {
         ui->selectivity->setCurrentText("High");
 }
 
+bool IntermodWidget::isReadyForNext() {
+    IntermodError e;
+    if (!isInput(e)) {
+        emit error(e);
+        return false;
+    }
+
+    e.clear();
+    SharedIntermodTraces traces;
+    IntermodMeasurement measurement(_vna, 1, getInput(), traces);
+    measurement.isValid(e);
+    if (isLocal(e)) {
+        emit error(e);
+        return false;
+    }
+
+    // No errors
+    return true;
+}
+
 void IntermodWidget::connectWidgets() {
     // Ports
     connect(ui->lowerPort, SIGNAL(outOfRange(QString)),
@@ -224,5 +262,84 @@ void IntermodWidget::connectWidgets() {
             this, SIGNAL(errorMessage(QString)));
 
     // Display errors on widget
-    connect(this, SIGNAL(errorMessage(QString)), ui->error, SLOT(showMessage(QString)));
+    connect(this, SIGNAL(error(IntermodError)),
+            this, SLOT(showError(IntermodError)));
+    connect(this, SIGNAL(errorMessage(QString)),
+            ui->error, SLOT(showErrorMessage(QString)));
+}
+
+bool IntermodWidget::isLocal(const IntermodError &error) {
+    typedef IntermodError::Code Code;
+    switch(error.code) {
+    case Code::LowerSourcePort:
+    case Code::UpperSource:
+    case Code::ReceivingPort:
+    case Code::StartCenterFreq:
+    case Code::StopCenterFreq:
+    case Code::CenterFreqPoints:
+    case Code::StartToneDistance:
+    case Code::StopToneDistance:
+    case Code::ToneDistancePoints:
+    case Code::Power:
+    case Code::IfBw:
+    case Code::Selectivity:
+        return true;
+    default:
+        return false;
+    }
+}
+
+void IntermodWidget::focusOn(const IntermodError &error) {
+    typedef IntermodError::Code Code;
+    switch(error.code) {
+    case Code::LowerSourcePort:
+        ui->lowerPort->selectAll();
+        ui->lowerPort->setFocus();
+        break;
+    case Code::UpperSource:
+        ui->upperSourceIndex->selectAll();
+        ui->upperSourceIndex->setFocus();
+        break;
+    case Code::ReceivingPort:
+        ui->receivingPort->selectAll();
+        ui->receivingPort->setFocus();
+        break;
+    case Code::StartCenterFreq:
+        ui->startCenterFrequency->selectAll();
+        ui->startCenterFrequency->setFocus();
+        break;
+    case Code::StopCenterFreq:
+        ui->stopCenterFrequency->selectAll();
+        ui->stopCenterFrequency->setFocus();
+        break;
+    case Code::CenterFreqPoints:
+        ui->centerFrequencyPoints->selectAll();
+        ui->centerFrequencyPoints->setFocus();
+        break;
+    case Code::StartToneDistance:
+        ui->startToneDistance->selectAll();
+        ui->startToneDistance->setFocus();
+        break;
+    case Code::StopToneDistance:
+        ui->stopToneDistance->selectAll();
+        ui->stopToneDistance->setFocus();
+        break;
+    case Code::ToneDistancePoints:
+        ui->toneDistancePoints->selectAll();
+        ui->toneDistancePoints->setFocus();
+        break;
+    case Code::Power:
+        ui->power->selectAll();
+        ui->power->setFocus();
+        break;
+    case Code::IfBw:
+        ui->ifBw->selectAll();
+        ui->ifBw->setFocus();
+        break;
+    case Code::Selectivity:
+        ui->selectivity->setFocus();
+        break;
+    default:
+        break;
+    }
 }

@@ -36,6 +36,7 @@ bool IntermodMeasurement::isValid() const {
 bool IntermodMeasurement::isValid(IntermodError &error) const {
     error.clear();
 
+    // Ports
     if (!_settings.lowerSourcePort()) {
         error.code = IntermodError::Code::LowerSourcePort;
         error.message = "*Choose lower source port";
@@ -51,6 +52,28 @@ bool IntermodMeasurement::isValid(IntermodError &error) const {
         error.message = "*Choose receiving port";
         return false;
     }
+    const uint lowerPort = _settings.lowerSourcePort();
+    const uint recvPort  = _settings.receivingPort();
+    if (lowerPort == recvPort) {
+        error.code = IntermodError::Code::ReceivingPort;
+        error.message = "*Lower and receiver ports must be different";
+        return false;
+    }
+    if (_settings.upperSource().isPort()) {
+        const uint upperPort = _settings.upperSource().port();
+        if (lowerPort == upperPort) {
+            error.code = IntermodError::Code::UpperSource;
+            error.message = "*Lower and upper ports must be different";
+            return false;
+        }
+        if (upperPort == recvPort) {
+            error.code = IntermodError::Code::ReceivingPort;
+            error.message = "*Upper and receiver ports must be different";
+            return false;
+        }
+    }
+
+    // Center frequency
     if (_settings.startCenterFrequency_Hz() >= _settings.stopCenterFrequency_Hz()) {
         error.code = IntermodError::Code::StartCenterFreq;
         error.message = "*Stop center frequency must be greater than start";
@@ -61,6 +84,8 @@ bool IntermodMeasurement::isValid(IntermodError &error) const {
         error.message = "*Points must be greater than 0";
         return false;
     }
+
+    // Tone Distance
     if (_settings.startToneDistance_Hz() >= _settings.stopToneDistance_Hz()) {
         error.code = IntermodError::Code::StartToneDistance;
         error.message = "*Stop distance must be greater than start";
@@ -71,11 +96,15 @@ bool IntermodMeasurement::isValid(IntermodError &error) const {
         error.message = "*Points must be greater than 0";
         return false;
     }
+
+    // Traces
     if (_traces.isEmpty()) {
         error.code = IntermodError::Code::Traces;
         error.message = "*Choose traces before measuring";
         return false;
     }
+
+    // Order
     if (orderRequest() > _maxOrder) {
         error.code = IntermodError::Code::Order;
         error.message = "*IM product %1 out of VNA range";

@@ -26,20 +26,30 @@ public:
     explicit IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent = 0);
     ~IntermodWidget();
 
-    void initialize();
-
     bool isInput(IntermodError &error) const;
     IntermodSettings getInput() const;
     void setInput(const IntermodSettings &settings);
 
+    // WizardPage
+    virtual bool isReadyForNext();
+
 signals:
+    void error(const IntermodError &error);
     void errorMessage(QString message);
+
+public slots:
+    void showError(const IntermodError &error);
+    void showErrorMessage(const QString &message);
 
 private:
     Ui::IntermodWidget *ui;
-    RsaToolbox::Vna *_vna;
+    mutable RsaToolbox::Vna *_vna;
 
+    void initialize();
     void connectWidgets();
+
+    static bool isLocal(const IntermodError &error);
+    void focusOn(const IntermodError &error);
 };
 
 #endif // INTERMODWIDGET_H
