@@ -36,6 +36,7 @@ public:
 signals:
     void error(const IntermodError &error);
     void errorMessage(QString message);
+    void validatedInput(const IntermodSettings &settings);
 
 public slots:
     void showError(const IntermodError &error);

@@ -218,15 +218,16 @@ bool IntermodWidget::isReadyForNext() {
     }
 
     e.clear();
+    IntermodSettings settings = getInput();
     SharedIntermodTraces traces;
-    IntermodMeasurement measurement(_vna, 1, getInput(), traces);
+    IntermodMeasurement measurement(_vna, 1, settings, traces);
     measurement.isValid(e);
     if (isLocal(e)) {
         emit error(e);
         return false;
     }
 
-    // No errors
+    emit validatedInput(settings);
     return true;
 }
 
