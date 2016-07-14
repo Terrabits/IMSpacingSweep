@@ -130,6 +130,7 @@ void IntermodMeasurement::run() {
     }
 
     // Create new channel
+    // copied from _refChannel
     _vna->channel(_refChannel).select();
     uint c = _vna->createChannel();
     VnaChannel channel = _vna->channel(c);

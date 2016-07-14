@@ -33,7 +33,9 @@ HEADERS += Settings.h \
     WriteIntermodTrace.h \
     IntermodFunctions.h \
     IntermodError.h \
-    TracesPage.h
+    TracesWidget.h \
+    IntermodTraceModel.h \
+    IntermodTraceDelegate.h
 SOURCES += Measurement.cpp \
            Measure.cpp \
            IntermodMeasurement.cpp \
@@ -45,9 +47,12 @@ SOURCES += Measurement.cpp \
     WriteIntermodTrace.cpp \
     IntermodFunctions.cpp \
     IntermodError.cpp \
-    TracesPage.cpp
+    TracesWidget.cpp \
+    IntermodTraceModel.cpp \
+    IntermodTraceDelegate.cpp
 FORMS   += IntermodWidget.ui \
-    TracesPage.ui
+    TracesPage.ui \
+    TracesWidget.ui
 
 # Defines
 DEFINES += SOURCE_DIR=\\\"$$PWD\\\"

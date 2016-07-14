@@ -5,6 +5,7 @@
 #include "IntermodMeasurementTest.h"
 #include "IntermodTraceTest.h"
 #include "IntermodWidgetTest.h"
+#include "TracesWidgetTest.h"
 #include "WriteIntermodTraceTest.h"
 
 // RsaToolbox
@@ -29,6 +30,9 @@ int main(int argc, char *argv[])
         arg = arg.remove("-").toLower();
         if (arg == "intermodwidget") {
             testRunner.addTest(new IntermodWidgetTest(connectionType, address));
+        }
+        else if (arg == "traceswidget") {
+            testRunner.addTest(new TracesWidgetTest(connectionType, address));
         }
         else if (arg == "writeintermodtrace") {
             testRunner.addTest(new WriteIntermodTraceTest(connectionType, address));

@@ -37,7 +37,7 @@ IntermodMeasurementTest::IntermodMeasurementTest(ConnectionType type, const QStr
     _logDir.mkpath(path);
     _logDir.cd(path);
 
-    _logFilenames << "1 - Basic Test.txt";
+    _logFilenames << "1 - Basic test.txt";
 }
 IntermodMeasurementTest::~IntermodMeasurementTest()
 {

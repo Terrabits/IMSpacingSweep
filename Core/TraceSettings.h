@@ -23,11 +23,11 @@ public:
     TraceSettings();
     ~TraceSettings();
 
-    bool isValid()   const;
+    bool isValid()     const;
     bool isNameValid() const;
-    bool isYValid()  const;
-    bool isXValid()  const;
-    bool isAtValid() const;
+    bool isYValid()    const;
+    bool isXValid()    const;
+    bool isAtValid()   const;
 
     QString name()     const;
     QString y()        const;
