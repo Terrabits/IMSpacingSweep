@@ -27,6 +27,7 @@ public:
         at,
         atValue
     };
+    static const int COLUMNS = 5;
 
     // Model
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
@@ -42,7 +43,6 @@ public:
 
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex());
     virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
-
 
     // Value
     QList<IntermodTrace> traces() const;
