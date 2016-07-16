@@ -6,6 +6,9 @@
 #include <General.h>
 using namespace RsaToolbox;
 
+// Qt
+#include <QDebug>
+
 
 // Constructor/destructor
 IntermodTraceModel::IntermodTraceModel(QObject *parent) :
@@ -183,7 +186,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
             return true;
 
         trace.setName(string);
-        emit dataChanged(topLeft, bottomRight);
+        emit dataChanged(index, index);
         return true;
 
     case Column::y:
@@ -222,6 +225,54 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
 
     // Default
     return false;
+}
+
+void IntermodTraceModel::appendNewTrace() {
+    if (_traces.isEmpty()) {
+        const QString     name = nextTraceName();
+        const QModelIndex i    = index(0,0);
+        insertRow(0);
+        setData(i, name);
+        return;
+    }
+
+    const QString name  = nextTraceName();
+    const int row       = _traces.size();
+    const QModelIndex i = index(row, 0);
+    insertRow(row);
+    setData(i, name);
+}
+bool IntermodTraceModel::moveRowUp(int row) {
+    if (_traces.isEmpty())
+        return false;
+    if (row < 1)
+        return false;
+    const int last = _traces.size()-1;
+    if (row > last)
+        return false;
+
+    IntermodTrace trace = _traces[row];
+    beginResetModel();
+    _traces.removeAt(row);
+    _traces.insert(row-1, trace);
+    endResetModel();
+    return true;
+}
+bool IntermodTraceModel::moveRowDown(int row) {
+    if (_traces.isEmpty())
+        return false;
+    if (row < 0)
+        return false;
+    const int last = _traces.size()-1;
+    if (row >= last)
+        return false;
+
+    IntermodTrace trace = _traces[row];
+    beginResetModel();
+    _traces.removeAt(row);
+    _traces.insert(row+1, trace);
+    endResetModel();
+    return true;
 }
 
 bool IntermodTraceModel::insertRows(int row, int count, const QModelIndex &parent) {
@@ -272,4 +323,26 @@ void IntermodTraceModel::setTraces(const QList<IntermodTrace> &traces) {
     beginResetModel();
     _traces = traces;
     endResetModel();
+}
+
+bool IntermodTraceModel::hasTraceName(const QString &name) const {
+    for (int i = 0; i < _traces.size(); i++) {
+        if (_traces[i].name().toLower() == name.toLower())
+            return true;
+    }
+    return false;
+}
+QString IntermodTraceModel::nextTraceName() const {
+    if (_traces.isEmpty()) {
+        qDebug() << "Next trace: Trc1";
+        return "Trc1";
+    }
+
+    const QString format = "Trc%1";
+    int i = _traces.size()+1;
+    while (hasTraceName(format.arg(i))) {
+        i++;
+    }
+    qDebug() << "Next trace: " << format.arg(i);
+    return format.arg(i);
 }

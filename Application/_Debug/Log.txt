@@ -1,7 +1,7 @@
 R&S IM Spacing Sweep Version 0.9
 (C) 2016 Rohde & Schwarz North America
 
-Fri Jul 15 19:20:55 2016
+Fri Jul 15 20:41:18 2016
 
 Write:    "*IDN?"
 Bytes: 6
@@ -109,22 +109,6 @@ Status: 0x0 Operation completed successfully.
 
 Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
 Bytes: 47
-Status: 0x0 Operation completed successfully.
-
-Write:    ":SYST:FREQ? MIN"
-Bytes: 16
-Status: 0x0 Operation completed successfully.
-
-Read:     "9000"
-Bytes: 5
-Status: 0x0 Operation completed successfully.
-
-Write:    ":SYST:FREQ? MAX"
-Bytes: 16
-Status: 0x0 Operation completed successfully.
-
-Read:     "8500000000"
-Bytes: 11
 Status: 0x0 Operation completed successfully.
 
 Write:    ":SYST:FREQ? MIN"

@@ -42,8 +42,12 @@ public:
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
+    void appendNewTrace();
+    bool moveRowUp  (int row);
+    bool moveRowDown(int row);
     virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex());
     virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
+
 
     // Value
     QList<IntermodTrace> traces() const;
@@ -56,6 +60,8 @@ public slots:
 
 private:
     QList<IntermodTrace> _traces;
+    bool    hasTraceName(const QString &name) const;
+    QString nextTraceName()                   const;
 };
 
 #endif // INTERMODTRACEMODEL_H

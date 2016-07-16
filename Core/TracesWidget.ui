@@ -27,7 +27,20 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTableView" name="traces"/>
+    <widget class="QTableView" name="traces">
+     <property name="tabKeyNavigation">
+      <bool>false</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+    </widget>
    </item>
    <item>
     <widget class="QWidget" name="traceButtons" native="true">
@@ -49,13 +62,13 @@
         <property name="minimumSize">
          <size>
           <width>31</width>
-          <height>0</height>
+          <height>31</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>31</width>
-          <height>16777215</height>
+          <height>31</height>
          </size>
         </property>
         <property name="font">
@@ -75,13 +88,13 @@
         <property name="minimumSize">
          <size>
           <width>31</width>
-          <height>0</height>
+          <height>31</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>31</width>
-          <height>16777215</height>
+          <height>31</height>
          </size>
         </property>
         <property name="font">
@@ -97,13 +110,63 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="moveUp">
+        <property name="minimumSize">
+         <size>
+          <width>31</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>31</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>▲</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="moveDown">
+        <property name="minimumSize">
+         <size>
+          <width>31</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>31</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>▼</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>396</width>
+          <width>322</width>
           <height>20</height>
          </size>
         </property>
@@ -138,6 +201,13 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>traces</tabstop>
+  <tabstop>addTrace</tabstop>
+  <tabstop>deleteTrace</tabstop>
+  <tabstop>moveUp</tabstop>
+  <tabstop>moveDown</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -52,6 +52,25 @@ void TracesWidget::back() {
 
 }
 
+void TracesWidget::addTrace() {
+    _model.appendNewTrace();
+}
+void TracesWidget::deleteTrace() {
+    QModelIndex i = ui->traces->currentIndex();
+    if (i.isValid())
+        _model.removeRow(i.row());
+}
+void TracesWidget::moveTraceUp() {
+    const int row = ui->traces->currentIndex().row();
+    if (_model.moveRowUp(row))
+        ui->traces->selectRow(row-1);
+}
+void TracesWidget::moveTraceDown() {
+    const int row  = ui->traces->currentIndex().row();
+    if (_model.moveRowDown(row))
+        ui->traces->selectRow(row+1);
+}
+
 void TracesWidget::showError(const IntermodError &error) {
     if (!owns(error))
         return;
@@ -80,6 +99,16 @@ void TracesWidget::setupMvc() {
     ui->traces->setItemDelegate(&_delegate);
 }
 void TracesWidget::connectWidgets() {
+    // Trace buttons
+    connect(ui->addTrace,    SIGNAL(clicked()    ),
+            this,            SLOT  (addTrace()   ));
+    connect(ui->deleteTrace, SIGNAL(clicked()    ),
+            this,            SLOT  (deleteTrace()));
+    connect(ui->moveUp,      SIGNAL(clicked()      ),
+            this,            SLOT  (moveTraceUp()  ));
+    connect(ui->moveDown,    SIGNAL(clicked()      ),
+            this,            SLOT  (moveTraceDown()));
+
     // Model, delegate error signals
     connect(&_model,    SIGNAL(error(IntermodError )),
              this,      SIGNAL(error(IntermodError )));

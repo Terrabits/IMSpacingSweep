@@ -44,6 +44,11 @@ signals:
     void errorMessage(const QString &message);
 
 public slots:
+    void addTrace();
+    void deleteTrace();
+    void moveTraceUp();
+    void moveTraceDown();
+
     void showError(const IntermodError &error);
     void showErrorMessage(const QString &message);
 
