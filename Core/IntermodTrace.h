@@ -7,7 +7,9 @@
 
 // Qt
 #include <QLabel>
+#include <QRegExp>
 #include <QSharedPointer>
+
 
 class IntermodTrace;
 typedef QSharedPointer<IntermodTrace> SharedIntermodTrace;
@@ -16,9 +18,13 @@ typedef QList<SharedIntermodTrace> SharedIntermodTraces;
 class IntermodTrace : public TraceSettings
 {
 public:
+    static const QRegExp NAME_REGEX;
+
     IntermodTrace();
    ~IntermodTrace();
 
+    bool isAtDistance() const;
+    bool isAtCenter()   const;
     uint order() const;
 
     virtual bool        isAt()          const;

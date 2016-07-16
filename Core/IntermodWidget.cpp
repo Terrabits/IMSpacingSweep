@@ -7,11 +7,14 @@
 #include "IntermodTrace.h"
 
 // RsaToolbox
+#include "General.h"
 #include <VnaChannel.h>
 using namespace RsaToolbox;
 
 // Qt
 #include <QDebug>
+#include <QLabel>
+#include <QList>
 
 
 IntermodWidget::IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent) :
@@ -20,7 +23,7 @@ IntermodWidget::IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent) :
     _vna(vna)
 {
     ui->setupUi(this);
-    initialize();
+    setInputLimits();
     connectWidgets();
 }
 
@@ -37,7 +40,7 @@ void IntermodWidget::showErrorMessage(const QString &message) {
     ui->error->showMessage(message);
 }
 
-void IntermodWidget::initialize() {
+void IntermodWidget::setInputLimits() {
     // Ports
     const uint ports = _vna->properties().physicalPorts();
     ui->lowerPort->setMaximum(ports);
@@ -64,6 +67,10 @@ void IntermodWidget::initialize() {
     ui->ifBw->setAcceptedValues(_vna->properties().ifBandwidthValues_Hz());
     ui->power->setMinimum(_vna->properties().minimumPower_dBm());
     ui->power->setMaximum(_vna->properties().maximumPower_dBm());
+}
+
+void IntermodWidget::alignLabels() {
+
 }
 
 bool IntermodWidget::isInput(IntermodError &error) const {
@@ -211,24 +218,55 @@ void IntermodWidget::setInput(const IntermodSettings &settings) {
 }
 
 bool IntermodWidget::isReadyForNext() {
+    // Check for missing input
     IntermodError e;
     if (!isInput(e)) {
         emit error(e);
         return false;
     }
 
+    // Check for input error (out of range)
     e.clear();
-    IntermodSettings settings = getInput();
+    IntermodSettings     settings = getInput();
     SharedIntermodTraces traces;
-    IntermodMeasurement measurement(_vna, 1, settings, traces);
+    IntermodMeasurement  measurement(_vna, 1, settings, traces);
     measurement.isValid(e);
-    if (isLocal(e)) {
+    if (owns(e)) {
         emit error(e);
         return false;
     }
 
+    // Input is good. Ready.
     emit validatedInput(settings);
     return true;
+}
+
+void IntermodWidget::showEvent(QShowEvent *event) {
+    qDebug() << "IntermodWidget::showEvent";
+    QList<QLabel*> labels;
+    labels << ui->lowerLabel
+           << ui->upperLabel
+           << ui->receivingLabel
+           << ui->startCenterLabel
+           << ui->stopCenterLabel
+           << ui->centerPointsLabel
+           << ui->startDistanceLabel
+           << ui->stopDistanceLabel
+           << ui->distancePointsLabel
+           << ui->ifBwLabel
+           << ui->powerLabel
+           << ui->selectivityLabel;
+
+    QList<int> labelWidths;
+    foreach (QLabel *label, labels) {
+        labelWidths << label->width();
+    }
+
+    uint width = max(labelWidths.toVector());
+
+    foreach (QLabel *label, labels) {
+        label->setMinimumWidth(width);
+    }
 }
 
 void IntermodWidget::connectWidgets() {
@@ -257,19 +295,19 @@ void IntermodWidget::connectWidgets() {
             this, SIGNAL(errorMessage(QString)));
 
     // Misc
-    connect(ui->power, SIGNAL(outOfRange(QString)),
-            this, SIGNAL(errorMessage(QString)));
-    connect(ui->ifBw, SIGNAL(outOfRange(QString)),
-            this, SIGNAL(errorMessage(QString)));
+    connect(ui->power, SIGNAL(outOfRange  (QString)),
+            this,      SIGNAL(errorMessage(QString)));
+    connect(ui->ifBw,  SIGNAL(outOfRange  (QString)),
+            this,      SIGNAL(errorMessage(QString)));
 
     // Display errors on widget
-    connect(this, SIGNAL(error(IntermodError)),
-            this, SLOT(showError(IntermodError)));
-    connect(this, SIGNAL(errorMessage(QString)),
-            ui->error, SLOT(showErrorMessage(QString)));
+    connect(this, SIGNAL(error            (IntermodError)),
+            this, SLOT  (showError        (IntermodError)));
+    connect(this, SIGNAL(errorMessage     (QString      )),
+            this, SLOT  (showErrorMessage (QString      )));
 }
 
-bool IntermodWidget::isLocal(const IntermodError &error) {
+bool IntermodWidget::owns(const IntermodError &error) {
     typedef IntermodError::Code Code;
     switch(error.code) {
     case Code::LowerSourcePort:

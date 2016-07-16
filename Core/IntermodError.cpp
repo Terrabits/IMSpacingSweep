@@ -2,7 +2,9 @@
 
 
 IntermodError::IntermodError() :
-    code(IntermodError::Code::None)
+    code  (IntermodError::Code::None),
+    row   (-1),
+    column(-1)
 {
     //
 }
@@ -15,6 +17,8 @@ bool IntermodError::isError() const {
     return code != Code::None;
 }
 void IntermodError::clear() {
-    code = Code::None;
+    code   = Code::None;
+    row    = -1;
+    column = -1;
     message.clear();
 }

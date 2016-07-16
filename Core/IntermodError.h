@@ -6,8 +6,7 @@
 #include <QString>
 
 
-class IntermodError {
-public:
+struct IntermodError {
     enum /*class*/ Code {
         LowerSourcePort,
         UpperSource,
@@ -28,10 +27,15 @@ public:
 
     IntermodError();
     ~IntermodError();
-    bool isError() const;
-    Code code;
+
+    bool    isError() const;
+    void    clear();
+
+    Code    code;
+    int     row;
+    int     column;
     QString message;
-    void clear();
 };
+
 
 #endif // INTERMODERROR_H

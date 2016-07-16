@@ -1,15 +1,24 @@
 #include "IntermodTrace.h"
 
+
+const QRegExp IntermodTrace::NAME_REGEX("^[a-z_][0-9a-z_]*$", Qt::CaseInsensitive);
+
 IntermodTrace::IntermodTrace()
 {
-
+    //
 }
 
 IntermodTrace::~IntermodTrace()
 {
-
+    //
 }
 
+bool IntermodTrace::isAtDistance() const {
+    return isAt() && (at() == "Tone Distance");
+}
+bool IntermodTrace::isAtCenter() const {
+    return isAt() && (at() == "Center Frequency");
+}
 uint IntermodTrace::order() const {
     if (!isYValid())
         return 0;
@@ -30,10 +39,10 @@ uint IntermodTrace::order() const {
 }
 
 bool IntermodTrace::isAt() const {
-    return false;
+    return true;
 }
 bool IntermodTrace::isAtValue() const {
-    return false;
+    return true;
 }
 QStringList IntermodTrace::possibleYParameters() const {
     QStringList p;

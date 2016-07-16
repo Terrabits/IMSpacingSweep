@@ -9,6 +9,7 @@
 // Qt
 #include <QAbstractTableModel>
 #include <QObject>
+#include <QRegExp>
 #include <QVariant>
 
 
@@ -19,13 +20,13 @@ public:
     explicit IntermodTraceModel(QObject *parent = 0);
     ~IntermodTraceModel();
 
-    // Structure
+    // Constants
     enum /*class*/ Column {
-        name,
-        y,
-        x,
-        at,
-        atValue
+        name    = 0,
+        y       = 1,
+        x       = 2,
+        at      = 3,
+        atValue = 4
     };
     static const int COLUMNS = 5;
 

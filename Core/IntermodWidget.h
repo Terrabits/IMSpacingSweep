@@ -30,12 +30,14 @@ public:
     IntermodSettings getInput() const;
     void setInput(const IntermodSettings &settings);
 
-    // WizardPage
+    // Leave page
     virtual bool isReadyForNext();
+
+    virtual void showEvent(QShowEvent *event);
 
 signals:
     void error(const IntermodError &error);
-    void errorMessage(QString message);
+    void errorMessage(const QString &message);
     void validatedInput(const IntermodSettings &settings);
 
 public slots:
@@ -46,10 +48,11 @@ private:
     Ui::IntermodWidget *ui;
     mutable RsaToolbox::Vna *_vna;
 
-    void initialize();
+    void setInputLimits();
+    void alignLabels();
     void connectWidgets();
 
-    static bool isLocal(const IntermodError &error);
+    static bool owns(const IntermodError &error);
     void focusOn(const IntermodError &error);
 };
 

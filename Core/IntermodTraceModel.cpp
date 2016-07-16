@@ -1,5 +1,13 @@
 #include "IntermodTraceModel.h"
 
+
+// RsaToolbox
+#include <Definitions.h>
+#include <General.h>
+using namespace RsaToolbox;
+
+
+// Constructor/destructor
 IntermodTraceModel::IntermodTraceModel(QObject *parent) :
     QAbstractTableModel(parent)
 {
@@ -11,6 +19,7 @@ IntermodTraceModel::~IntermodTraceModel()
     //
 }
 
+// Model
 QVariant IntermodTraceModel::headerData(int section, Qt::Orientation orientation, int role) const {
     if (section < 0 || section >= COLUMNS)
         return QVariant();
@@ -116,29 +125,25 @@ QVariant IntermodTraceModel::data(const QModelIndex &index, int role) const {
     }
 
 
+    IntermodTrace trace = _traces[row];
     switch (column) {
     case Column::name:
-        return _traces[row].name();
-    case Column::yParameter:
-        return _traces[row].y();
-    case Column::xParameter:
-        return _traces[row].x();
-    case Column::atParameter:
-        return _traces[row].at();
+        return trace.name();
+    case Column::y:
+        return trace.y();
+    case Column::x:
+        return trace.x();
+    case Column::at:
+        return trace.at();
     case Column::atValue:
-        if (!_traces[row].isAtValue()) {
+        if (!trace.isAtValue()) {
             return QVariant();
         }
         if (role == Qt::EditRole){
-            return _traces[row].atValue();
+            return trace.atValue();
         }
         else {
-            if (_traces[row].isAtFrequency())
-                return formatValue(_traces[row].atValue(), 3, Units::Hertz);
-            else if (_traces[row].isAtPin())
-                return formatValue(_traces[row].atValue(), 2, Units::dBm);
-            else
-                return QVariant();
+            return formatValue(trace.atValue(), 3, Units::Hertz);
         }
     default:
         return QVariant();
@@ -177,7 +182,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
         if (string.toLower() == trace.name().toLower())
             return true;
 
-        trace.setName(_string);
+        trace.setName(string);
         emit dataChanged(topLeft, bottomRight);
         return true;
 
@@ -190,7 +195,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
         return true;
 
     case Column::x:
-        if (_traces[row].xParameter.compare(value.toString()) == 0)
+        if (trace.x().compare(value.toString()) == 0)
             return true;
         trace.setX(string);
 //        fixTraceSettings(row);
@@ -213,10 +218,10 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
 //        fixTraceSettings(row);
         emit dataChanged(index, index);
         return true;
-
-    default:
-        return false;
     }
+
+    // Default
+    return false;
 }
 
 bool IntermodTraceModel::insertRows(int row, int count, const QModelIndex &parent) {
@@ -254,11 +259,12 @@ bool IntermodTraceModel::removeRows(int row, int count, const QModelIndex &paren
 
     beginRemoveRows(parent, row, lastRow);
     for (int i = 0; i < count; i++)
-        _traces.remove(row);
+        _traces.removeAt(row);
     endRemoveRows();
     return true;
 }
 
+// Accessors
 QList<IntermodTrace> IntermodTraceModel::traces() const {
     return _traces;
 }

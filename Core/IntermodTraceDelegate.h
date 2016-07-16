@@ -8,6 +8,7 @@
 
 // Qt
 #include <QObject>
+#include <QString>
 #include <QStyledItemDelegate>
 
 
@@ -28,7 +29,7 @@ public:
     void setIntermodSettings(const IntermodSettings &settings);
 
 signals:
-    void error(const IntermodError &error);
+    void errorMessage(const QString &message);
 
 public slots:
 

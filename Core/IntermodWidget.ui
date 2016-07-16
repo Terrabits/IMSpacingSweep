@@ -70,14 +70,14 @@
           <number>0</number>
          </property>
          <item row="2" column="0">
-          <widget class="QLabel" name="receivingPortLabel">
+          <widget class="QLabel" name="receivingLabel">
            <property name="text">
             <string>Receiving Port:</string>
            </property>
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QLabel" name="lowerPortLabel">
+          <widget class="QLabel" name="lowerLabel">
            <property name="text">
             <string>Lower Port:</string>
            </property>
@@ -87,7 +87,7 @@
           <widget class="RsaToolbox::PointsEdit" name="lowerPort"/>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="upperSourceLabel">
+          <widget class="QLabel" name="upperLabel">
            <property name="text">
             <string>Upper Source:</string>
            </property>
@@ -119,6 +119,9 @@
             </property>
             <item>
              <widget class="QComboBox" name="upperSourceType">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <item>
                <property name="text">
                 <string>Port</string>
@@ -187,7 +190,7 @@
           <number>0</number>
          </property>
          <item row="1" column="0">
-          <widget class="QLabel" name="stopCenterFrequencyLabel">
+          <widget class="QLabel" name="stopCenterLabel">
            <property name="text">
             <string>Stop:</string>
            </property>
@@ -200,14 +203,14 @@
           <widget class="RsaToolbox::FrequencyEdit" name="startCenterFrequency"/>
          </item>
          <item row="0" column="0">
-          <widget class="QLabel" name="startCenterFrequencyLabel">
+          <widget class="QLabel" name="startCenterLabel">
            <property name="text">
             <string>Start:</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="centerFrequencyPointsLabel">
+          <widget class="QLabel" name="centerPointsLabel">
            <property name="text">
             <string>Points:</string>
            </property>
@@ -266,7 +269,7 @@
           <number>0</number>
          </property>
          <item row="1" column="0">
-          <widget class="QLabel" name="stopToneDistanceLabel">
+          <widget class="QLabel" name="stopDistanceLabel">
            <property name="text">
             <string>Stop:</string>
            </property>
@@ -279,14 +282,14 @@
           <widget class="RsaToolbox::FrequencyEdit" name="startToneDistance"/>
          </item>
          <item row="0" column="0">
-          <widget class="QLabel" name="startToneDistanceLabel">
+          <widget class="QLabel" name="startDistanceLabel">
            <property name="text">
             <string>Start:</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="toneDistancePointsLabel">
+          <widget class="QLabel" name="distancePointsLabel">
            <property name="text">
             <string>Points:</string>
            </property>

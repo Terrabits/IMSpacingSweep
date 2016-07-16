@@ -51,7 +51,6 @@ SOURCES += Measurement.cpp \
     IntermodTraceModel.cpp \
     IntermodTraceDelegate.cpp
 FORMS   += IntermodWidget.ui \
-    TracesPage.ui \
     TracesWidget.ui
 
 # Defines

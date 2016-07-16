@@ -1,8 +1,9 @@
 
 
 //Project
-#include "Settings.h"
 #include "IntermodWidget.h"
+#include "Settings.h"
+#include "TracesWidget.h"
 
 // RsaToolbox
 #include <About.h>
@@ -46,26 +47,32 @@ int main(int argc, char *argv[])
     title = title.arg(APP_NAME);
     title = title.arg(APP_VERSION);
 
-    // Pages
-    IntermodWidget *settings = new IntermodWidget(&vna);
-
     // Wizard
     Wizard wizard;
     wizard.setWindowTitle(title);
     wizard.hideBreadcrumbs();
     wizard.setRestartOnCancel(false);
-    wizard.addPage(settings);
-//  wizard.addPage(...);
-//  ...
-    wizard.show();
 
-    // Connections
+    // Settings page
+    IntermodWidget *settings = new IntermodWidget(&vna);
+    settings->setNextIndex(1);
     QObject::connect(settings, SIGNAL(error(IntermodError)),
-                     &wizard, SLOT(shake()));
+                     &wizard,  SLOT(shake()));
     QObject::connect(settings, SIGNAL(errorMessage(QString)),
                      &wizard,  SLOT(shake()));
+    wizard.addPage(settings);
+
+    // Traces page
+    TracesWidget *traces = new TracesWidget  (&vna);
+    traces->setFinalPage(true);
+    QObject::connect(traces,   SIGNAL(error(IntermodError)),
+                     &wizard,  SLOT(shake()));
+    QObject::connect(traces,   SIGNAL(errorMessage(QString)),
+                     &wizard,  SLOT(shake()));
+    wizard.addPage(traces  );
 
     // Start event loop
+    wizard.show();
     return a.exec();
 }
 
