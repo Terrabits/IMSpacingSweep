@@ -242,7 +242,7 @@ bool IntermodWidget::isReadyForNext() {
 }
 
 void IntermodWidget::showEvent(QShowEvent *event) {
-    qDebug() << "IntermodWidget::showEvent";
+    Q_UNUSED(event);
     QList<QLabel*> labels;
     labels << ui->lowerLabel
            << ui->upperLabel

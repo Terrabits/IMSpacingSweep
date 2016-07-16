@@ -118,15 +118,10 @@ QVariant IntermodTraceModel::data(const QModelIndex &index, int role) const {
         return QVariant();
 
     if  (role != Qt::DisplayRole
-      && role != Qt::EditRole
-      && role != Qt::DecorationRole)
+      && role != Qt::EditRole)
     {
         return QVariant();
     }
-    else if (role == Qt::DecorationRole) {
-        return QVariant();
-    }
-
 
     IntermodTrace trace = _traces[row];
     switch (column) {
@@ -142,11 +137,13 @@ QVariant IntermodTraceModel::data(const QModelIndex &index, int role) const {
         if (!trace.isAtValue()) {
             return QVariant();
         }
-        if (role == Qt::EditRole){
-            return trace.atValue();
-        }
         else {
-            return formatValue(trace.atValue(), 3, Units::Hertz);
+            if (role == Qt::EditRole) {
+                return trace.atValue();
+            }
+            else {
+                return formatValue(trace.atValue(), 3, trace.atUnits());
+            }
         }
     default:
         return QVariant();
@@ -186,6 +183,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
             return true;
 
         trace.setName(string);
+        fixTrace(row);
         emit dataChanged(index, index);
         return true;
 
@@ -194,6 +192,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
             return true;
 
         trace.setY(string);
+        fixTrace(row);
         emit dataChanged(topLeft, bottomRight);
         return true;
 
@@ -201,7 +200,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
         if (trace.x().compare(value.toString()) == 0)
             return true;
         trace.setX(string);
-//        fixTraceSettings(row);
+        fixTrace(row);
         emit dataChanged(topLeft, bottomRight);
         return true;
 
@@ -210,7 +209,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
             return true;
 
         trace.setAt(string);
-//        fixTraceSettings(row);
+        fixTrace(row);
         emit dataChanged(topLeft, bottomRight);
         return true;
 
@@ -218,7 +217,7 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
         if (trace.atValue() == dbl)
             return true;
         trace.setAtValue(dbl);
-//        fixTraceSettings(row);
+        fixTrace(row);
         emit dataChanged(index, index);
         return true;
     }
@@ -227,20 +226,13 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
     return false;
 }
 
-void IntermodTraceModel::appendNewTrace() {
+bool IntermodTraceModel::appendNewTrace() {
     if (_traces.isEmpty()) {
-        const QString     name = nextTraceName();
-        const QModelIndex i    = index(0,0);
-        insertRow(0);
-        setData(i, name);
-        return;
+        return insertRow(0);
     }
 
-    const QString name  = nextTraceName();
-    const int row       = _traces.size();
-    const QModelIndex i = index(row, 0);
-    insertRow(row);
-    setData(i, name);
+    const int row = _traces.size();
+    return insertRow(row);
 }
 bool IntermodTraceModel::moveRowUp(int row) {
     if (_traces.isEmpty())
@@ -289,9 +281,12 @@ bool IntermodTraceModel::insertRows(int row, int count, const QModelIndex &paren
     trace.setY(trace.possibleYParameters().first());
     trace.setX(trace.possibleXParameters().first());
     trace.setAt(trace.possibleAtParameters().first());
+    trace.setAtValue(trace.possibleAtValues(_settings).first());
     beginInsertRows(parent, row, row + count - 1);
-    for (int i = 0; i < count; i++)
-        _traces.insert(row, IntermodTrace());
+    for (int i = 0; i < count; i++) {
+        trace.setName(nextTraceName());
+        _traces.insert(row, trace);
+    }
     endInsertRows();
     return true;
 }
@@ -315,6 +310,11 @@ bool IntermodTraceModel::removeRows(int row, int count, const QModelIndex &paren
     return true;
 }
 
+void IntermodTraceModel::setSettings(const IntermodSettings &settings) {
+    _settings = settings;
+    fixTraces();
+}
+
 // Accessors
 QList<IntermodTrace> IntermodTraceModel::traces() const {
     return _traces;
@@ -334,7 +334,6 @@ bool IntermodTraceModel::hasTraceName(const QString &name) const {
 }
 QString IntermodTraceModel::nextTraceName() const {
     if (_traces.isEmpty()) {
-        qDebug() << "Next trace: Trc1";
         return "Trc1";
     }
 
@@ -343,6 +342,48 @@ QString IntermodTraceModel::nextTraceName() const {
     while (hasTraceName(format.arg(i))) {
         i++;
     }
-    qDebug() << "Next trace: " << format.arg(i);
     return format.arg(i);
+}
+void IntermodTraceModel::fixTrace(int row) {
+    bool isFixed = false;
+    IntermodTrace &trace = _traces[row];
+    if (!trace.isNameValid()) {
+        trace.setName(QString("Trc%1").arg(row));
+        isFixed = true;
+    }
+    if (!trace.isYValid()) {
+        trace.setY(trace.possibleYParameters().first());
+        isFixed = true;
+    }
+    if (!trace.isXValid()) {
+        trace.setX(trace.possibleXParameters().first());
+        isFixed = true;
+    }
+    if (!trace.isAtValid()) {
+        trace.setAt(trace.possibleAtParameters().first());
+        isFixed = true;
+    }
+    if (trace.isAtValue()) {
+        QRowVector acceptableValues;
+        if (trace.at() == "Center Frequency") {
+            acceptableValues = _settings.centerFrequencies_Hz();
+        }
+        else if (trace.at() == "Tone Distance") {
+            acceptableValues = _settings.toneDistances_Hz();
+        }
+        const double atValue = findClosest(trace.atValue(), acceptableValues);
+        trace.setAtValue(atValue);
+        isFixed = true;
+    }
+
+    if (isFixed) {
+        QModelIndex left  = index(row, IntermodTraceModel::Column::name);
+        QModelIndex right = index(row, IntermodTraceModel::Column::atValue);
+        emit dataChanged(left, right);
+    }
+}
+void IntermodTraceModel::fixTraces() {
+    for (int i = 0; i < _traces.size(); i++) {
+        fixTrace(i);
+    }
 }

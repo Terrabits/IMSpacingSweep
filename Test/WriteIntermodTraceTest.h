@@ -16,7 +16,7 @@ public:
     ~WriteIntermodTraceTest();
 
 private slots:
-    void test();
+    void basic();
 
 };
 

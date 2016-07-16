@@ -3,6 +3,8 @@
 // Project
 #include "IntermodDataTest.h"
 #include "IntermodMeasurementTest.h"
+#include "IntermodTraceDelegateTest.h"
+#include "IntermodTraceModelTest.h"
 #include "IntermodTraceTest.h"
 #include "IntermodWidgetTest.h"
 #include "TracesWidgetTest.h"
@@ -42,6 +44,8 @@ int main(int argc, char *argv[])
         testRunner.addTest(new IntermodDataTest);
         testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
         testRunner.addTest(new IntermodTraceTest);
+        testRunner.addTest(new IntermodTraceModelTest);
+        testRunner.addTest(new IntermodTraceDelegateTest);
     }
 
     bool passed = testRunner.runTests();

@@ -1,6 +1,10 @@
 #include "IntermodTrace.h"
 
 
+// RsaToolbox
+using namespace RsaToolbox;
+
+
 const QRegExp IntermodTrace::NAME_REGEX("^[a-z_][0-9a-z_]*$", Qt::CaseInsensitive);
 
 IntermodTrace::IntermodTrace()
@@ -81,6 +85,14 @@ QStringList IntermodTrace::possibleAtParameters() const {
     if (x() == "Tone Distance")
         p << "Center Frequency";
     return p;
+}
+RsaToolbox::QRowVector IntermodTrace::possibleAtValues(const IntermodSettings &settings) const {
+    if (at() == "Center Frequency")
+        return settings.centerFrequencies_Hz();
+    if (at() == "Tone Distance")
+        return settings.toneDistances_Hz();
+
+    return QRowVector();
 }
 RsaToolbox::Units IntermodTrace::atUnits() const {
     return RsaToolbox::Units::Hertz;

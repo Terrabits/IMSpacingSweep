@@ -64,6 +64,9 @@ void IntermodSettings::setStopCenterFrequency(double frequency_Hz, SiPrefix pref
 void IntermodSettings::setCenterFrequencyPoints(uint points) {
     _centerFrequencyPoints = points;
 }
+QRowVector IntermodSettings::centerFrequencies_Hz() const {
+    return linearSpacing(_startCenterFreq_Hz, _stopCenterFreq_Hz, _centerFrequencyPoints);
+}
 
 // Tone spacing (distance)
 double IntermodSettings::startToneDistance_Hz() const {
@@ -83,6 +86,9 @@ void IntermodSettings::setStopToneDistance(double frequency_Hz, SiPrefix prefix)
 }
 void IntermodSettings::setToneDistancePoints(uint points) {
     _ToneDistancePoints   = points;
+}
+QRowVector IntermodSettings::toneDistances_Hz() const {
+    return linearSpacing(_startToneDistance_Hz, _stopToneDistance_Hz, _ToneDistancePoints);
 }
 
 // Settings

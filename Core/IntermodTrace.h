@@ -3,7 +3,11 @@
 
 
 // Project
+#include "IntermodSettings.h"
 #include "TraceSettings.h"
+
+// RsaToolbox
+#include <Definitions.h>
 
 // Qt
 #include <QLabel>
@@ -32,6 +36,7 @@ public:
     virtual QStringList possibleYParameters()  const;
     virtual QStringList possibleXParameters()  const;
     virtual QStringList possibleAtParameters() const;
+    RsaToolbox::QRowVector possibleAtValues(const IntermodSettings &settings) const;
     virtual RsaToolbox::Units atUnits() const;
 //    virtual double      maxAtValue()    const;
 //    virtual double      minAtValue()    const;

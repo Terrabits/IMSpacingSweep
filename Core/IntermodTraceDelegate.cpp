@@ -12,6 +12,7 @@ using namespace RsaToolbox;
 
 // Qt
 #include <QComboBox>
+#include <QDebug>
 #include <QLineEdit>
 #include <QRegExp>
 #include <QRegExpValidator>
@@ -65,21 +66,8 @@ QWidget *IntermodTraceDelegate::createEditor(QWidget *parent, const QStyleOption
     }
     case IntermodTraceModel::Column::atValue: {
         FrequencyEdit *edit = new FrequencyEdit(parent);
-        QRowVector freqs;
-        if (trace.isAtDistance()) {
-            const double start  = _settings.startToneDistance_Hz();
-            const double stop   = _settings.stopToneDistance_Hz();
-            const uint   points = _settings.toneDistancePoints();
-            freqs               = linearSpacing(start, stop, points);
-        }
-        else if (trace.isAtCenter()) {
-            const double start  = _settings.startCenterFrequency_Hz();
-            const double stop   = _settings.stopCenterFrequency_Hz();
-            const uint   points = _settings.centerFrequencyPoints();
-            freqs               = linearSpacing(start, stop, points);
-        }
-        edit->setAcceptedValues(freqs);
-        connect(edit, SIGNAL(outOfRange(QString)),
+        edit->setAcceptedValues(trace.possibleAtValues(_settings));
+        connect(edit, SIGNAL(outOfRange  (QString)),
                 this, SIGNAL(errorMessage(QString)));
         return edit;
     }
@@ -89,25 +77,19 @@ QWidget *IntermodTraceDelegate::createEditor(QWidget *parent, const QStyleOption
     }
 }
 void IntermodTraceDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const {
-    QComboBox; // Y, X, At
-    QLineEdit; // Name
-    FrequencyEdit; // At
-
     QComboBox *combo = qobject_cast<QComboBox*>(editor);
     if (combo) {
         combo->setCurrentText(index.data(Qt::EditRole).toString());
         return;
     }
-
-    QLineEdit *line = qobject_cast<QLineEdit*>(editor);
-    if (line) {
-        line->setText(index.data(Qt::EditRole).toString());
-        return;
-    }
-
     FrequencyEdit *freq = qobject_cast<FrequencyEdit*>(editor);
     if (freq) {
         freq->setFrequency(index.data(Qt::EditRole).toDouble());
+        return;
+    }
+    QLineEdit *line = qobject_cast<QLineEdit*>(editor);
+    if (line) {
+        line->setText(index.data(Qt::EditRole).toString());
         return;
     }
 
@@ -120,18 +102,16 @@ void IntermodTraceDelegate::setModelData(QWidget *editor, QAbstractItemModel *mo
         model->setData(index, combo->currentText());
         return;
     }
-
-    QLineEdit *lineEdit = qobject_cast<QLineEdit*>(editor);
-    if (lineEdit) {
-        if (lineEdit->hasAcceptableInput())
-            model->setData(index, lineEdit->text());
-        return;
-    }
-
     FrequencyEdit *freq = qobject_cast<FrequencyEdit*>(editor);
     if (freq) {
         if (freq->hasAcceptableInput())
             model->setData(index, freq->frequency_Hz());
+        return;
+    }
+    QLineEdit *lineEdit = qobject_cast<QLineEdit*>(editor);
+    if (lineEdit) {
+        if (lineEdit->hasAcceptableInput())
+            model->setData(index, lineEdit->text());
         return;
     }
 

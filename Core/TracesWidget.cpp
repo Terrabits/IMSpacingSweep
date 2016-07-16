@@ -52,23 +52,9 @@ void TracesWidget::back() {
 
 }
 
-void TracesWidget::addTrace() {
-    _model.appendNewTrace();
-}
-void TracesWidget::deleteTrace() {
-    QModelIndex i = ui->traces->currentIndex();
-    if (i.isValid())
-        _model.removeRow(i.row());
-}
-void TracesWidget::moveTraceUp() {
-    const int row = ui->traces->currentIndex().row();
-    if (_model.moveRowUp(row))
-        ui->traces->selectRow(row-1);
-}
-void TracesWidget::moveTraceDown() {
-    const int row  = ui->traces->currentIndex().row();
-    if (_model.moveRowDown(row))
-        ui->traces->selectRow(row+1);
+// public slots
+void TracesWidget::setSettings(const IntermodSettings &settings) {
+    _model.setSettings(settings);
 }
 
 void TracesWidget::showError(const IntermodError &error) {
@@ -91,6 +77,28 @@ void TracesWidget::measure() {
     qDebug() << "measure";
 }
 
+// private slots
+void TracesWidget::addTrace() {
+    _model.appendNewTrace();
+    const int rows = _model.rowCount();
+    ui->traces->selectRow(rows-1);
+}
+void TracesWidget::deleteTrace() {
+    QModelIndex i = ui->traces->currentIndex();
+    if (i.isValid())
+        _model.removeRow(i.row());
+}
+void TracesWidget::moveTraceUp() {
+    const int row = ui->traces->currentIndex().row();
+    if (_model.moveRowUp(row))
+        ui->traces->selectRow(row-1);
+}
+void TracesWidget::moveTraceDown() {
+    const int row  = ui->traces->currentIndex().row();
+    if (_model.moveRowDown(row))
+        ui->traces->selectRow(row+1);
+}
+
 bool TracesWidget::owns(const IntermodError &error) const {
     return error.code == IntermodError::Code::Traces;
 }
@@ -100,10 +108,10 @@ void TracesWidget::setupMvc() {
 }
 void TracesWidget::connectWidgets() {
     // Trace buttons
-    connect(ui->addTrace,    SIGNAL(clicked()    ),
-            this,            SLOT  (addTrace()   ));
-    connect(ui->deleteTrace, SIGNAL(clicked()    ),
-            this,            SLOT  (deleteTrace()));
+    connect(ui->addTrace,    SIGNAL(clicked()      ),
+            this,            SLOT  (addTrace()     ));
+    connect(ui->deleteTrace, SIGNAL(clicked()      ),
+            this,            SLOT  (deleteTrace()  ));
     connect(ui->moveUp,      SIGNAL(clicked()      ),
             this,            SLOT  (moveTraceUp()  ));
     connect(ui->moveDown,    SIGNAL(clicked()      ),

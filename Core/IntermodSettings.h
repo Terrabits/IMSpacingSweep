@@ -31,6 +31,7 @@ public:
     void setStartCenterFrequency(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
     void setStopCenterFrequency(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
     void setCenterFrequencyPoints(uint points);
+    RsaToolbox::QRowVector centerFrequencies_Hz() const;
 
     // Tone spacing (distance)
     double startToneDistance_Hz() const;
@@ -39,6 +40,7 @@ public:
     void setStartToneDistance(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
     void setStopToneDistance(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
     void setToneDistancePoints(uint points);
+    RsaToolbox::QRowVector toneDistances_Hz() const;
 
     // Measurement settings
     double power_dBm() const;

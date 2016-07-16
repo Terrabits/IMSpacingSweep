@@ -65,6 +65,8 @@ int main(int argc, char *argv[])
     // Traces page
     TracesWidget *traces = new TracesWidget  (&vna);
     traces->setFinalPage(true);
+    QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
+                     traces,   SLOT(setSettings(IntermodSettings)));
     QObject::connect(traces,   SIGNAL(error(IntermodError)),
                      &wizard,  SLOT(shake()));
     QObject::connect(traces,   SIGNAL(errorMessage(QString)),

@@ -47,7 +47,7 @@ WriteIntermodTraceTest::~WriteIntermodTraceTest()
 
 }
 
-void WriteIntermodTraceTest::test() {
+void WriteIntermodTraceTest::basic() {
     // Settings
     VnaIntermod::ToneSource port3;
     port3.setPort(3);

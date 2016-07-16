@@ -44,15 +44,18 @@ signals:
     void errorMessage(const QString &message);
 
 public slots:
-    void addTrace();
-    void deleteTrace();
-    void moveTraceUp();
-    void moveTraceDown();
+    void setSettings(const IntermodSettings &settings);
 
     void showError(const IntermodError &error);
     void showErrorMessage(const QString &message);
 
     void measure();
+
+private slots:
+    void addTrace();
+    void deleteTrace();
+    void moveTraceUp();
+    void moveTraceDown();
 
 private:
     Ui::TracesWidget *ui;
