@@ -13,8 +13,7 @@ QT           += core gui widgets
 TEMPLATE      = lib
 CONFIG       += staticlib
 DESTDIR       = $$PWD/Library
-win32: TARGET = Core
-macx:  TARGET = libCore
+TARGET = Core
 CONFIG(debug, debug|release) {
        TARGET = $$join(TARGET,,,d)
 }

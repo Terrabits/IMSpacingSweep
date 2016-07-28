@@ -1,5 +1,7 @@
 # Do not include RsaToolbox
+# (Folder or hard link)
 RsaToolbox/
+RsaToolbox
 
 # Do not include build
 _build/

@@ -25,7 +25,7 @@ public:
     static const QRegExp NAME_REGEX;
 
     IntermodTrace();
-   ~IntermodTrace();
+   virtual ~IntermodTrace();
 
     bool isAtDistance() const;
     bool isAtCenter()   const;

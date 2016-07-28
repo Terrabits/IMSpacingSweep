@@ -45,7 +45,7 @@ WriteIntermodTrace::WriteIntermodTrace(RsaToolbox::Vna *vna, IntermodTrace trace
     _vna->trace(name).write(y);
 
     // Set diagram
-    _vna->trace(_name).setDiagram(diagram);
+    _vna->trace(_name).setDiagram(_diagram);
 }
 WriteIntermodTrace::~WriteIntermodTrace()
 {

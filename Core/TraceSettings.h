@@ -21,7 +21,7 @@ class TraceSettings
 {
 public:
     TraceSettings();
-    ~TraceSettings();
+    virtual ~TraceSettings();
 
     bool isValid()     const;
     bool isNameValid() const;

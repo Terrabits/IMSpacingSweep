@@ -134,14 +134,14 @@ void IntermodDataTest::columnFunction() {
     const ComplexRowVector row(columns, zero);
     ComplexMatrix2D matrix(rows, row);
 
-    QCOMPARE(column(matrix, 0).size(), rows);
-    QCOMPARE(column(matrix, 1).size(), rows);
-    QCOMPARE(column(matrix, 9).size(), rows);
+    QCOMPARE(uint(column(matrix, 0).size()), rows);
+    QCOMPARE(uint(column(matrix, 1).size()), rows);
+    QCOMPARE(uint(column(matrix, 9).size()), rows);
 }
 
 void IntermodDataTest::testMatrix(const ComplexMatrix2D &matrix, uint rows, uint columns) {
-    QCOMPARE(matrix.size(), rows);
+    QCOMPARE(uint(matrix.size()), rows);
     for (uint i = 0; i < rows; i++) {
-        QCOMPARE(matrix[i].size(), columns);
+        QCOMPARE(uint(matrix[i].size()), columns);
     }
 }

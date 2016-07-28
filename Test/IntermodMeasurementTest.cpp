@@ -150,8 +150,8 @@ void IntermodMeasurementTest::basic() {
 }
 
 void IntermodMeasurementTest::testMatrix(ComplexMatrix2D &m, uint rows, uint columns) {
-    QCOMPARE(m.size(), rows);
+    QCOMPARE(uint(m.size()), rows);
     for (uint i = 0; i < rows; i++) {
-        QCOMPARE(m[i].size(), columns);
+        QCOMPARE(uint(m[i].size()), columns);
     }
 }
