@@ -311,8 +311,10 @@ bool IntermodTraceModel::removeRows(int row, int count, const QModelIndex &paren
 }
 
 void IntermodTraceModel::setSettings(const IntermodSettings &settings) {
+    beginResetModel();
     _settings = settings;
     fixTraces();
+    endResetModel();
 }
 
 // Accessors
@@ -322,6 +324,7 @@ QList<IntermodTrace> IntermodTraceModel::traces() const {
 void IntermodTraceModel::setTraces(const QList<IntermodTrace> &traces) {
     beginResetModel();
     _traces = traces;
+    fixTraces();
     endResetModel();
 }
 
@@ -344,7 +347,7 @@ QString IntermodTraceModel::nextTraceName() const {
     }
     return format.arg(i);
 }
-void IntermodTraceModel::fixTrace(int row) {
+bool IntermodTraceModel::fixTrace(int row) {
     bool isFixed = false;
     IntermodTrace &trace = _traces[row];
     if (!trace.isNameValid()) {
@@ -363,24 +366,15 @@ void IntermodTraceModel::fixTrace(int row) {
         trace.setAt(trace.possibleAtParameters().first());
         isFixed = true;
     }
-    if (trace.isAtValue()) {
-        QRowVector acceptableValues;
-        if (trace.at() == "Center Frequency") {
-            acceptableValues = _settings.centerFrequencies_Hz();
+    if (trace.isAtValue() && trace.isAtValueValid(_settings)) {
+        const double atValue = findClosest(trace.atValue(), trace.possibleAtValues(_settings));
+        if (std::abs(atValue - trace.atValue()) > 1.0) {
+            trace.setAtValue(atValue);
+            isFixed = true;
         }
-        else if (trace.at() == "Tone Distance") {
-            acceptableValues = _settings.toneDistances_Hz();
-        }
-        const double atValue = findClosest(trace.atValue(), acceptableValues);
-        trace.setAtValue(atValue);
-        isFixed = true;
     }
 
-    if (isFixed) {
-        QModelIndex left  = index(row, IntermodTraceModel::Column::name);
-        QModelIndex right = index(row, IntermodTraceModel::Column::atValue);
-        emit dataChanged(left, right);
-    }
+    return isFixed;
 }
 void IntermodTraceModel::fixTraces() {
     for (int i = 0; i < _traces.size(); i++) {

@@ -27,6 +27,8 @@ public:
     IntermodTrace();
    virtual ~IntermodTrace();
 
+    bool isAtValueValid(const IntermodSettings &settings) const;
+
     bool isAtDistance() const;
     bool isAtCenter()   const;
     uint order() const;

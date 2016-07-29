@@ -67,7 +67,7 @@ private:
     QList<IntermodTrace> _traces;
     bool    hasTraceName(const QString &name) const;
     QString nextTraceName()                   const;
-    void fixTrace (int row);
+    bool fixTrace (int row);
     void fixTraces();
 };
 

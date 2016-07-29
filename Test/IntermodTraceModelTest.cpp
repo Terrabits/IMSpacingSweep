@@ -28,17 +28,17 @@ void IntermodTraceModelTest::basic() {
     port3.setPort(3);
 
     IntermodSettings settings;
-    settings.setLowerSourcePort(1);
+    settings.setLowerSourcePort(1    );
     settings.setUpperSource    (port3);
-    settings.setReceivingPort  (2);
+    settings.setReceivingPort  (2    );
     settings.setStartCenterFrequency (1, SiPrefix::Giga);
     settings.setStopCenterFrequency  (2, SiPrefix::Giga);
     settings.setCenterFrequencyPoints(11);
-    settings.setStartToneDistance (10, SiPrefix::Mega);
+    settings.setStartToneDistance (10,  SiPrefix::Mega);
     settings.setStopToneDistance  (100, SiPrefix::Mega);
-    settings.setToneDistancePoints(10);
-    settings.setPower(-10);
-    settings.setIfBw(  10, SiPrefix::Kilo);
+    settings.setToneDistancePoints(10                 );
+    settings.setPower(-10                );
+    settings.setIfBw ( 10, SiPrefix::Kilo);
     settings.setSelectivity(VnaChannel::IfSelectivity::High);
 
     IntermodTraceModel model;
@@ -70,9 +70,12 @@ void IntermodTraceModelTest::basic() {
     // New trace name
     QModelIndex i = model.index(0, IntermodTraceModel::Column::name);
     QCOMPARE(model.data(i).toString(), QString("Trc1"));
+    QCOMPARE(dataChanged.count(),           0);
 
     // Set name
     i = model.index(0, IntermodTraceModel::Column::name);
+    QCOMPARE(dataChanged.count(),           0);
+
     const QString name = "my_trace_name";
     QVERIFY (model.setData(i,            name));
     QCOMPARE(model.data(i).toString(),   name);

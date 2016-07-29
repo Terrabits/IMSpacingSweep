@@ -17,6 +17,11 @@ IntermodTrace::~IntermodTrace()
     //
 }
 
+bool IntermodTrace::isAtValueValid(const IntermodSettings &settings) const {
+    const int indexOf = possibleAtValues(settings).indexOf(atValue());
+    return indexOf != -1;
+}
+
 bool IntermodTrace::isAtDistance() const {
     return isAt() && (at() == "Tone Distance");
 }
