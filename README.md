@@ -45,11 +45,10 @@ Intermod measurement with fixed center frequency and swept tone distance is not 
 
 - Source permanently on  
   SOUR<Ch>:POW<Port>:PERM          [0/1]  
-  SOUR<Ch>:POW<Ignore>:GEN<i>:PERM [0/1]  
-
+  SOUR<Ch>:POW<Ignore>:GEN<i>:PERM [0/1]
 - Source frequency conversion  
   SOUR<Ch>:FREQ<Port>:CONV:ARB:IFR                  <Numerator>, <Denominator>, <Offset>, <SweepType>  
-  SOUR<Ch>:FREQ<Ignore>:CONV:ARB:EFR<Gen> <On/Off>, <Numerator>, <Denominator>, <Offset>, <SweepType>  
+  SOUR<Ch>:FREQ<Ignore>:CONV:ARB:EFR<Gen> <On/Off>, <Numerator>, <Denominator>, <Offset>, <SweepType>
 
 Where:  
 f = (Numerator / Denominator) * fb + Offset
