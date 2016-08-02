@@ -6,6 +6,12 @@ A utility for measuring two-tone intermodulation by sweeping tone spacing. This 
 A binary version of this utility with installation instructions can be found at:  
 https://vna.rs-us.net/applications
 
+Requirements
+============
+This project was created with Qt5 and relies on Qt Creator. It also relies heavily on the RsaToolbox library found here:  
+https://github.com/Terrabits/RsaToolbox
+
+To build this project, first build RsaToolbox into a shared library in Qt Creator, then build this project in Qt Creator as well. This project was written for and tested exclusively in Windows environments running Windows XP and later. It should compile to other platforms as well, but it might take some effort. Some of the groundwork to compile for MacOS is in place. Linux has never been attempted.
 
 Intermod (vs center frequency) SCPI commands
 ============================================
