@@ -35,7 +35,8 @@ HEADERS += Settings.h \
     TracesWidget.h \
     IntermodTraceModel.h \
     IntermodTraceDelegate.h \
-    FrequencyConversion.h
+    FrequencyConversion.h \
+    FrequencyConversionGenerator.h
 SOURCES += Measurement.cpp \
            Measure.cpp \
            IntermodMeasurement.cpp \
@@ -50,7 +51,8 @@ SOURCES += Measurement.cpp \
     TracesWidget.cpp \
     IntermodTraceModel.cpp \
     IntermodTraceDelegate.cpp \
-    FrequencyConversion.cpp
+    FrequencyConversion.cpp \
+    FrequencyConversionGenerator.cpp
 FORMS   += IntermodWidget.ui \
     TracesWidget.ui
 

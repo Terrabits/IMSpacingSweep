@@ -12,7 +12,8 @@ HEADERS += \
     WriteIntermodTraceTest.h \
     TracesWidgetTest.h \
     IntermodTraceModelTest.h \
-    IntermodTraceDelegateTest.h
+    IntermodTraceDelegateTest.h \
+    FrequencyConversionTest.h
 SOURCES += main.cpp \
     IntermodMeasurementTest.cpp \
     IntermodDataTest.cpp \
@@ -21,7 +22,8 @@ SOURCES += main.cpp \
     WriteIntermodTraceTest.cpp \
     TracesWidgetTest.cpp \
     IntermodTraceModelTest.cpp \
-    IntermodTraceDelegateTest.cpp
+    IntermodTraceDelegateTest.cpp \
+    FrequencyConversionTest.cpp
 
 DEFINES += SOURCE_DIR=\\\"$$PWD/\\\"
 

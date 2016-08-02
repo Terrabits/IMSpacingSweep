@@ -2,23 +2,27 @@
 #define FREQUENCYCONVERSION_H
 
 
-// Project
-#include "IntermodSettings.h"
-
-
 class FrequencyConversion
 {
 public:
-    FrequencyConversion(const IntermodSettings &settings);
+    FrequencyConversion();
+    FrequencyConversion(double numerator, double denominator, double offset_Hz, bool isGenerator);
     ~FrequencyConversion();
 
-    uint points() const;
-    void lowerTone(double &start, double &stop);
-    void lowerTone(uint N, double &numerator, double &denominator, double &offset);
-    void upperTone(uint N, double &numerator, double &denominator, double &offset);
+    bool   isGenerator() const;
+    double numerator  () const;
+    double denominator() const;
+    double offset_Hz  () const;
+    void   setGenerator  (bool isGenerator);
+    void   setNumerator  (double value);
+    void   setDenominator(double value);
+    void   setOffset     (double offset_Hz);
 
 private:
-    IntermodSettings _settings;
+    bool   _isGenerator;
+    double _numerator;
+    double _denominator;
+    double _offset_Hz;
 };
 
 #endif // FREQUENCYCONVERSION_H
