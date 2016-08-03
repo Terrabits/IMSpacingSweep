@@ -2,6 +2,7 @@
 
 // Project
 #include "FrequencyConversionTest.h"
+#include "IntermodChannelsTest.h"
 #include "IntermodDataTest.h"
 #include "IntermodMeasurementTest.h"
 #include "IntermodTraceDelegateTest.h"
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
     else {
         testRunner.addTest(new IntermodDataTest);
         testRunner.addTest(new FrequencyConversionTest);
+        testRunner.addTest(new IntermodChannelsTest   (connectionType, address));
         testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
         testRunner.addTest(new IntermodTraceTest);
         testRunner.addTest(new IntermodTraceModelTest);
