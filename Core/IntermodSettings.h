@@ -25,21 +25,16 @@ public:
     void setReceivingPort(uint port);
 
     // Center frequency
-    double startCenterFrequency_Hz() const;
-    double stopCenterFrequency_Hz()  const;
-    uint   centerFrequencyPoints()   const;
-    void setStartCenterFrequency(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void setStopCenterFrequency(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void setCenterFrequencyPoints(uint points);
-    RsaToolbox::QRowVector centerFrequencies_Hz() const;
+    double centerFrequency_Hz() const;
+    void   setCenterFrequency(double frequency, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
 
     // Tone spacing (distance)
     double startToneDistance_Hz() const;
-    double stopToneDistance_Hz()  const;
-    uint   toneDistancePoints()   const;
-    void setStartToneDistance(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void setStopToneDistance(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void setToneDistancePoints(uint points);
+    double stopToneDistance_Hz () const;
+    uint   toneDistancePoints  () const;
+    void   setStartToneDistance (double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
+    void   setStopToneDistance  (double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
+    void   setToneDistancePoints(uint points);
     RsaToolbox::QRowVector toneDistances_Hz() const;
 
     // Measurement settings
@@ -61,9 +56,7 @@ private:
     uint _receivingPort;
 
     // Center frequency
-    double _startCenterFreq_Hz;
-    double _stopCenterFreq_Hz;
-    uint   _centerFrequencyPoints;
+    double _centerFrequency_Hz;
 
     // Tone spacing
     double _startToneDistance_Hz;

@@ -12,7 +12,7 @@
 class FrequencyConversionGenerator
 {
 public:
-    FrequencyConversionGenerator(const IntermodSettings &settings, double centerFrequency_Hz);
+    FrequencyConversionGenerator(const IntermodSettings &settings);
    ~FrequencyConversionGenerator();
 
     // channel base frequency (fb)
@@ -29,7 +29,6 @@ public:
 
 private:
     IntermodSettings _settings;
-    double           _center_Hz;
 };
 
 #endif // FREQUENCYCONVERSIONGENERATOR_H

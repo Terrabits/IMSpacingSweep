@@ -37,19 +37,20 @@ void FrequencyConversionTest::basic() {
     //  | 9 | U    | 1.025 GHz | 1.25 GHz |
     //
 
-    // center
-    const double centerFreq_Hz = 1.0e9;
-
     // distance
     IntermodSettings s;
     s.setStartToneDistance( 10, SiPrefix::Mega);
     s.setStopToneDistance (100, SiPrefix::Mega);
     s.setToneDistancePoints(11);
 
+    // center
+    const double centerFreq_Hz = 1.0e9;
+    s.setCenterFrequency(centerFreq_Hz);
+
     // Channel settings
     double fbStart_Hz = 0.995e9;
     double fbStop_Hz  = 0.950e9;
-    FrequencyConversionGenerator g(s, centerFreq_Hz);
+    FrequencyConversionGenerator g(s);
     QCOMPARE(g.channelStartFrequency_Hz(), fbStart_Hz);
     QCOMPARE(g.channelStopFrequency_Hz (), fbStop_Hz );
 

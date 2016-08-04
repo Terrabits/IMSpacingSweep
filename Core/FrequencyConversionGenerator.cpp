@@ -4,9 +4,8 @@
 // RsaToolbox
 using namespace RsaToolbox;
 
-FrequencyConversionGenerator::FrequencyConversionGenerator(const IntermodSettings &settings, double centerFrequency_Hz) :
-    _settings(settings),
-    _center_Hz(centerFrequency_Hz)
+FrequencyConversionGenerator::FrequencyConversionGenerator(const IntermodSettings &settings)
+    : _settings(settings)
 {
 
 }
@@ -17,10 +16,10 @@ FrequencyConversionGenerator::~FrequencyConversionGenerator()
 
 // channel
 double FrequencyConversionGenerator::channelStartFrequency_Hz() const {
-    return _center_Hz - (1.0/2.0) * _settings.startToneDistance_Hz();
+    return _settings.centerFrequency_Hz() - (1.0/2.0) * _settings.startToneDistance_Hz();
 }
 double FrequencyConversionGenerator::channelStopFrequency_Hz() const {
-    return _center_Hz - (1.0/2.0) * _settings.stopToneDistance_Hz();
+    return _settings.centerFrequency_Hz() - (1.0/2.0) * _settings.stopToneDistance_Hz();
 }
 
 // input
@@ -42,7 +41,7 @@ VnaArbitraryFrequency FrequencyConversionGenerator::lowerOutput(uint n) const {
     const uint np =  (n + 1)/2;
     fc.setNumerator  (np );
     fc.setDenominator(1.0);
-    fc.setOffset     (( 1.0 - np) * _center_Hz);
+    fc.setOffset     (( 1.0 - np) * _settings.centerFrequency_Hz());
     return fc;
 }
 VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(uint n) const {
@@ -50,6 +49,6 @@ VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(uint n) const {
     const uint np = (n + 1)/2;
     fc.setNumerator  (-1.0*np);
     fc.setDenominator(1.0    );
-    fc.setOffset     (( 1.0 + np) * _center_Hz);
+    fc.setOffset     (( 1.0 + np) * _settings.centerFrequency_Hz());
     return fc;
 }

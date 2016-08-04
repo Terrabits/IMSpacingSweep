@@ -18,8 +18,24 @@ public:
    ~IntermodTraceTest();
 
 private slots:
-    void trace_data();
-    void trace();
+    void accessors_data();
+    void accessors     ();
+
+    void constructors  ();
+
+//    void isType_data   ();
+//    void isType        ();
+
+//    void isFeature_data();
+//    void isFeature     ();
+
+//    void isOrder_data  ();
+//    void isOrder       ();
+
+    void display       ();
+
+    void comparison();
+    void sort();
 };
 
 #endif // INTERMODTRACETEST_H

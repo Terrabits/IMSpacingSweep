@@ -10,6 +10,9 @@ using namespace RsaToolbox;
 // Qt
 #include <QString>
 
+// std lib
+#include <algorithm>
+
 
 IntermodTraceTest::IntermodTraceTest(QObject *parent) :
     TestClass(parent)
@@ -22,84 +25,132 @@ IntermodTraceTest::~IntermodTraceTest()
     //
 }
 
-void IntermodTraceTest::trace_data() {
-    QTest::addColumn<bool>   ("isValid");
-    QTest::addColumn<QString>("name");
-    QTest::addColumn<bool>   ("isNameValid");
-    QTest::addColumn<QString>("y");
-    QTest::addColumn<bool>   ("isYValid");
+void IntermodTraceTest::accessors_data() {
+    QTest::addColumn<TraceType>("type"    );
+    QTest::addColumn<Feature  >("feature" );
+    QTest::addColumn<bool     >("hasOrder");
+    QTest::addColumn<uint     >("order"   );
 
-    // Possible y values
-    const QString lti  = "Lower In";
-    const QString lto  = "Lower Out";
-    const QString uti  = "Upper In";
-    const QString uto  = "Upper Out";
-
-    const QString im3l = "IM3 Lower";
-    const QString im3u = "IM3 Upper";
-    const QString im3m = "IM3 Major";
-
-    const QString im5l = "IM5 Lower";
-    const QString im5u = "IM5 Upper";
-    const QString im5m = "IM5 Major";
-
-    const QString im7l = "IM7 Lower";
-    const QString im7u = "IM7 Upper";
-    const QString im7m = "IM7 Major";
-
-    const QString im9l = "IM9 Lower";
-    const QString im9u = "IM9 Upper";
-    const QString im9m = "IM9 Major";
-
-    const QString ip3m = "IP3 Major";
-    const QString ip5m = "IP5 Major";
-    const QString ip7m = "IP7 Major";
-    const QString ip9m = "IP9 Major";
-
-    // Possible x/at values
-    const QString cf   = "Center Frequency";
-    const QString td   = "Tone Distance";
-
-    //             Test            isValid  name      isNameValid  y       isYValid
-    QTest::newRow("Empty")      << false << ""     << false     << ""   << false;
-    QTest::newRow("Random")     << false << "_y"   << true      << "ab" << false;
-    QTest::newRow("SpaceInName")<< false << "a b"  << false     << ""   << false;
-    QTest::newRow("Punctuation")<< false << "a.b"  << false     << ""   << false;
-
-    // Original tones              isValid  name      isNameValid  y       isYValid
-    QTest::newRow("LTI-TD-CF")  << true  << "LTITD"<< true      << lti  << true;
-    QTest::newRow("LTO-CF-TD")  << true  << "LTOCF"<< true      << lti  << true;
-    QTest::newRow("UTI-TD-TD")  << false << "UTITD"<< true      << lti  << true;
-    QTest::newRow("UTO-CF-CF")  << false << "UTOCF"<< true      << lti  << true;
-
-    // Intermod                    isValid  name      isNameValid  y       isYValid
-    QTest::newRow("IM3L-TD-CF") << true  << "IM3LD"<< true      << im3l << true;
-    QTest::newRow("IM5U-CF-TD") << true  << "IM5UC"<< true      << im5u << true;
-    QTest::newRow("IM7M-TD-TD") << false << "IM7MD"<< true      << im7m << true;
-    QTest::newRow("IM9L-CF-CF") << false << "IM9LC"<< true      << im9l << true;
-
-    // Intermod                    isValid  name      isNameValid  y       isYValid
-    QTest::newRow("IP3M-TD-CF") << true  << "IP3MD"<< true      << ip3m << true;
-    QTest::newRow("IP5M-CF-TD") << true  << "IP5MC"<< true      << ip5m << true;
-    QTest::newRow("IP7M-TD-TD") << false << "IP7MD"<< true      << ip7m << true;
-    QTest::newRow("IP9M-CF-CF") << false << "IP9MC"<< true      << ip9m << true;
+    // TEST NAME              TraceType                Feature           hasOrder?   n
+    QTest::newRow("uti"  ) << TraceType::inputTone  << Feature::upper << false    << uint(0);
+    QTest::newRow("lto"  ) << TraceType::outputTone << Feature::lower << false    << uint(0);
+    QTest::newRow("im3m" ) << TraceType::intermod   << Feature::major << true     << uint(3);
+    QTest::newRow("im5lr") << TraceType::relative   << Feature::lower << true     << uint(5);
+    QTest::newRow("ip7m" ) << TraceType::intercept  << Feature::major << true     << uint(7);
 }
-void IntermodTraceTest::trace() {
-    QFETCH(bool,    isValid);
-    QFETCH(QString, name);
-    QFETCH(bool,    isNameValid);
-    QFETCH(QString, y);
-    QFETCH(bool,    isYValid);
+void IntermodTraceTest::accessors() {
+    QFETCH(TraceType, type    );
+    QFETCH(Feature  , feature );
+    QFETCH(bool     , hasOrder);
+    QFETCH(uint     , order   );
 
-    IntermodTrace trace;
-    trace.setName(name);
-    trace.setY (y);
-
-    QCOMPARE(trace.name(), name);
-    QCOMPARE(trace.y(),    y);
-
-    QCOMPARE(trace.isValid(),     isValid);
-    QCOMPARE(trace.isNameValid(), isNameValid);
-    QCOMPARE(trace.isYValid(),    isYValid);
+    IntermodTrace t;
+    t.setType   (type   );
+    t.setFeature(feature);
+    t.setOrder  (order  );
+    QCOMPARE(t.type    (), type    );
+    QCOMPARE(t.feature (), feature );
+    QCOMPARE(t.hasOrder(), hasOrder);
+    if (t.hasOrder())
+        QCOMPARE(t.order(), order);
 }
 
+void IntermodTraceTest::constructors() {
+    IntermodTrace t1;
+    QCOMPARE(t1.type()    , TraceType::inputTone);
+    QCOMPARE(t1.feature() , Feature::lower);
+    QCOMPARE(t1.hasOrder(), false         );
+
+    IntermodTrace t2(TraceType::intermod, Feature::major, /*order=*/ 3);
+    QCOMPARE(t2.type()   , TraceType::intermod);
+    QCOMPARE(t2.feature(), Feature::major     );
+    QCOMPARE(t2.order()  , uint(3));
+
+    IntermodTrace t3("5th Upper Intercept");
+    QCOMPARE(t3.type()   , TraceType::intercept);
+    QCOMPARE(t3.feature(), Feature::upper      );
+    QCOMPARE(t3.order()  , uint(5));
+}
+
+void IntermodTraceTest::display() {
+    IntermodTrace t;
+    t.setType(TraceType::relative);
+    t.setFeature(Feature::major);
+    t.setOrder(9);
+    QCOMPARE(t.display(), QString("9th Major Relative"));
+}
+
+void IntermodTraceTest::comparison() {
+    IntermodTrace t1;
+    t1.setType(TraceType::inputTone);
+    t1.setFeature(Feature::lower);
+
+    IntermodTrace t2;
+    t2.setType(TraceType::outputTone);
+    t2.setFeature(Feature::lower);
+
+    QVERIFY(t1 != t2);
+    QVERIFY(t1 < t2 );
+
+    t1.setType(TraceType::outputTone);
+    QVERIFY(  t1 == t2);
+    QVERIFY(!(t1 <  t2));
+
+    t1.setFeature(Feature::upper);
+    QVERIFY(  t1 != t2);
+    QVERIFY(!(t1 <  t2));
+}
+
+void IntermodTraceTest::sort() {
+
+
+    // 6th: 9th Major Intercept
+    IntermodTrace t6;
+    t6.setType   (TraceType::intercept);
+    t6.setFeature(Feature::major);
+    t6.setOrder  (9);
+
+    QList<IntermodTrace> traces;
+    traces << t6;
+
+    // 5th: 5th Major Relative
+    IntermodTrace t5;
+    t5.setType   (TraceType::relative);
+    t5.setFeature(Feature::major);
+    t5.setOrder  (5);
+    traces << t5;
+
+    // 4th: 5th Upper Relative
+    IntermodTrace t4;
+    t4.setType   (TraceType::relative);
+    t4.setFeature(Feature::upper);
+    t4.setOrder  (5);
+    traces << t4;
+
+    // 3rd: 3rd Upper Relative
+    IntermodTrace t3;
+    t3.setType   (TraceType::relative);
+    t3.setFeature(Feature::upper);
+    t3.setOrder  (3);
+    traces << t3;
+
+    // 2nd: Upper Output
+    IntermodTrace t2;
+    t2.setType   (TraceType::outputTone);
+    t2.setFeature(Feature::upper);
+    traces << t2;
+
+    // 1st: Lower Input
+    IntermodTrace t1;
+    t1.setType   (TraceType::inputTone);
+    t1.setFeature(Feature::lower);
+    traces << t1;
+
+    std::sort(traces.begin(), traces.end());
+    QCOMPARE(traces[0], t1);
+    QCOMPARE(traces[1], t2);
+    QCOMPARE(traces[2], t3);
+    QCOMPARE(traces[3], t4);
+    QCOMPARE(traces[4], t5);
+    QCOMPARE(traces[5], t6);
+}

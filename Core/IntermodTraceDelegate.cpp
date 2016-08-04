@@ -38,20 +38,20 @@ QWidget *IntermodTraceDelegate::createEditor(QWidget *parent, const QStyleOption
 
     IntermodTrace trace = model->traces()[row];
     switch (column) {
-    case IntermodTraceModel::Column::name: {
-        QLineEdit *edit = new QLineEdit(parent);
-        QRegExpValidator *vld8r
-                = new QRegExpValidator(IntermodTrace::NAME_REGEX,
-                                                            edit);
-        edit->setValidator(vld8r);
-        return edit;
-    }
-    case IntermodTraceModel::Column::y: {
-        QComboBox *combo = new QComboBox(parent);
-        combo->setEditable(false);
-        combo->addItems(trace.possibleYParameters());
-        return combo;
-    }
+//    case IntermodTraceModel::Column::name: {
+//        QLineEdit *edit = new QLineEdit(parent);
+//        QRegExpValidator *vld8r
+//                = new QRegExpValidator(IntermodTrace::NAME_REGEX,
+//                                                            edit);
+//        edit->setValidator(vld8r);
+//        return edit;
+//    }
+//    case IntermodTraceModel::Column::y: {
+//        QComboBox *combo = new QComboBox(parent);
+//        combo->setEditable(false);
+//        combo->addItems(trace.possibleYParameters());
+//        return combo;
+//    }
     default: {
         return QStyledItemDelegate::createEditor(parent, option, index);
     }

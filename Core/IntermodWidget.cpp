@@ -175,9 +175,9 @@ IntermodSettings IntermodWidget::getInput() const {
     s.setReceivingPort(ui->receivingPort->points());
 
     // Center frequency
-    s.setStartCenterFrequency(ui->startCenterFrequency->frequency_Hz());
-    s.setStopCenterFrequency(ui->stopCenterFrequency->frequency_Hz());
-    s.setCenterFrequencyPoints(ui->centerFrequencyPoints->points());
+//    s.setStartCenterFrequency(ui->startCenterFrequency->frequency_Hz());
+//    s.setStopCenterFrequency(ui->stopCenterFrequency->frequency_Hz());
+//    s.setCenterFrequencyPoints(ui->centerFrequencyPoints->points());
 
     // Tone distance
     s.setStartToneDistance(ui->startToneDistance->frequency_Hz());
@@ -201,9 +201,9 @@ void IntermodWidget::setInput(const IntermodSettings &settings) {
     ui->receivingPort->setPoints(settings.receivingPort());
 
     // Center Frequency
-    ui->startCenterFrequency->setFrequency(settings.startCenterFrequency_Hz());
-    ui->stopCenterFrequency->setFrequency(settings.stopCenterFrequency_Hz());
-    ui->centerFrequencyPoints->setPoints(settings.centerFrequencyPoints());
+//    ui->startCenterFrequency->setFrequency(settings.startCenterFrequency_Hz());
+//    ui->stopCenterFrequency->setFrequency(settings.stopCenterFrequency_Hz());
+//    ui->centerFrequencyPoints->setPoints(settings.centerFrequencyPoints());
 
     // Tone distance
     ui->startToneDistance->setFrequency(settings.startToneDistance_Hz());

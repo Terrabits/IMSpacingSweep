@@ -7,15 +7,13 @@ using namespace RsaToolbox;
 
 
 IntermodSettings::IntermodSettings() :
-    _lowerSourcePort(0),
-    _receivingPort(0),
-    _startCenterFreq_Hz(0),
-    _stopCenterFreq_Hz(0),
-    _centerFrequencyPoints(0),
+    _lowerSourcePort     (0),
+    _receivingPort       (0),
+    _centerFrequency_Hz  (0),
     _startToneDistance_Hz(0),
-    _stopToneDistance_Hz(0),
+    _stopToneDistance_Hz (0),
     _power_dBm(-1.0*DBL_MAX),
-    _ifBw_Hz(10.0E3),
+    _ifBw_Hz  (10.0E3      ),
     _selectivity(VnaChannel::IfSelectivity::High)
 {
     //
@@ -46,26 +44,11 @@ void IntermodSettings::setReceivingPort(uint port) {
 }
 
 // Center Frequency
-double IntermodSettings::startCenterFrequency_Hz() const {
-    return _startCenterFreq_Hz;
+double IntermodSettings::centerFrequency_Hz() const {
+    return _centerFrequency_Hz;
 }
-double IntermodSettings::stopCenterFrequency_Hz() const  {
-    return _stopCenterFreq_Hz;
-}
-uint IntermodSettings::centerFrequencyPoints() const {
-    return _centerFrequencyPoints;
-}
-void IntermodSettings::setStartCenterFrequency(double frequency_Hz, SiPrefix prefix) {
-    _startCenterFreq_Hz = frequency_Hz * toDouble(prefix);
-}
-void IntermodSettings::setStopCenterFrequency(double frequency_Hz, SiPrefix prefix) {
-    _stopCenterFreq_Hz = frequency_Hz * toDouble(prefix);
-}
-void IntermodSettings::setCenterFrequencyPoints(uint points) {
-    _centerFrequencyPoints = points;
-}
-QRowVector IntermodSettings::centerFrequencies_Hz() const {
-    return linearSpacing(_startCenterFreq_Hz, _stopCenterFreq_Hz, _centerFrequencyPoints);
+void IntermodSettings::setCenterFrequency(double frequency, SiPrefix prefix) {
+    _centerFrequency_Hz = frequency * toDouble(prefix);
 }
 
 // Tone spacing (distance)

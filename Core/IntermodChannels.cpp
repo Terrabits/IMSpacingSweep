@@ -7,12 +7,10 @@ using namespace RsaToolbox;
 
 IntermodChannels::IntermodChannels(RsaToolbox::Vna *vna, uint baseChannel) :
     _vna(vna),
-    _nameFormat("intermod%1"),
-    _nameRegex("^intermod\\d+$", Qt::CaseInsensitive),
-    _base(baseChannel)
+    _base(baseChannel),
+    _usedBase(false)
 {
-    _vna->channel(_base).select();
-    _vna->channel(_base).setName(nextName());
+    collapse();
 }
 
 IntermodChannels::~IntermodChannels()
@@ -21,41 +19,60 @@ IntermodChannels::~IntermodChannels()
 }
 
 QVector<uint> IntermodChannels::all() {
+    QString suffix = "_im_ch%1";
+    suffix = suffix.arg(_base);
+
     QVector<uint>       _all;
     const QVector<uint>  channels = _vna->channels();
     foreach (const uint c, channels) {
         const QString name = _vna->channel(c).name();
-        if (_nameRegex.exactMatch(name)) {
+        if (name.endsWith(suffix, Qt::CaseInsensitive)) {
             _all << c;
         }
     }
     return _all;
 }
-VnaChannel IntermodChannels::create() {
+VnaChannel IntermodChannels::create(const IntermodTrace &t) {
+    // Use or create
     _vna->channel(_base).select();
-    const uint i = _vna->createChannel();
+    uint i;
+    if (!_usedBase) {
+        i = _base;
+        _usedBase = true;
+    }
+    else {
+        i = _vna->createChannel();
+    }
 
+    // Channel instance
     VnaChannel c;
     c = _vna->channel(i);
-    c.setName(nextName());
+
+    // Name
+    QString name = "%1_im_ch%2";
+    name = name.arg(t.abbreviate());
+    name = name.arg(_base);
+    c.setName(name);
+
     return c;
 }
 
 void IntermodChannels::collapse() {
+    // Delete all associated
+    // channels except base
     QVector<uint> _most = all();
     if (_most.contains(_base)) {
         const int i = _most.indexOf(_base);
         _most.remove(i);
     }
+
     _vna->deleteChannels(_most);
+    _usedBase = false;
 }
 
-QString IntermodChannels::nextName() {
-    int i = all().size() + 1;
-    QString name = _nameFormat.arg(i);
-    while (_vna->isChannel(name)) {
-        i++;
-        name = _nameFormat.arg(i);
-    }
-    return name;
+QString IntermodChannels::name(const IntermodTrace &t) {
+    QString s = "%1_im_ch%2";
+    s = s.arg(t.abbreviate());
+    s = s.arg(_base);
+    return s;
 }

@@ -29,7 +29,8 @@ HEADERS += Settings.h \
     IntermodTraceModel.h \
     IntermodTraceDelegate.h \
     FrequencyConversionGenerator.h \
-    IntermodChannels.h
+    IntermodChannels.h \
+    ProcessTraces.h
 SOURCES += \
            IntermodSettings.cpp \
            IntermodWidget.cpp \
@@ -39,7 +40,8 @@ SOURCES += \
     IntermodTraceModel.cpp \
     IntermodTraceDelegate.cpp \
     FrequencyConversionGenerator.cpp \
-    IntermodChannels.cpp
+    IntermodChannels.cpp \
+    ProcessTraces.cpp
 FORMS   += IntermodWidget.ui \
     TracesWidget.ui
 

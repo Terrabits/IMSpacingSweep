@@ -7,43 +7,128 @@
 
 // Qt
 #include <Qt>
-#include <QLabel>
-#include <QRegExp>
+//#include <QRegExp>
 #include <QString>
-#include <QStringList>
+
+
+enum /*class*/ TraceType {
+    inputTone,
+    outputTone,
+    intermod,
+    relative,
+    intercept
+};
+QString toString(TraceType type);
+Q_DECLARE_METATYPE(TraceType)
+
+
+enum /*class*/ Feature {
+    lower,
+    upper,
+    major
+};
+QString toString(Feature feature);
+Q_DECLARE_METATYPE(Feature)
 
 
 class IntermodTrace
 {
 public:
-    static const QRegExp NAME_REGEX;
-
     IntermodTrace();
-   virtual ~IntermodTrace();
+    IntermodTrace(TraceType type, Feature feature, uint order = 1);
+    IntermodTrace(QString display);
+   ~IntermodTrace();
 
-    bool isValid() const;
-    bool isNameValid() const;
-    bool isYValid() const;
+    bool isVisible() const;
+    void hide     ();
+    void show     ();
 
+    // is type
+    bool isInputTone () const;
+    bool isOutputTone() const;
+    bool isIntermod  () const;
+    bool isRelative  () const;
+    bool isIntercept () const;
+
+    // is feature
+    bool isLower() const;
+    bool isUpper() const;
     bool isMajor() const;
-    bool isRelative() const;
-    bool isIntercept() const;
-    uint order  () const;
 
-    QStringList possibleYParameters()  const;
+    // is order
+    bool hasOrder () const;
+    bool isThird  () const;
+    bool isFifth  () const;
+    bool isSeventh() const;
+    bool isNinth  () const;
 
-    QString name() const;
-    QString y   () const;
-    void    setName(const QString &name);
-    void    setY   (const QString &y   );
+    TraceType type      () const;
+    Feature   feature   () const;
+    uint      order     () const;
+    void      setType   (TraceType type );
+    void      setFeature(Feature feature);
+    void      setOrder  (uint n         );
+
+    QString   display   () const;
+    QString   abbreviate() const;
 
 private:
-    QString _name;
-    QString _y;
+    TraceType _type;
+    Feature   _feature;
+    uint      _order;
+    bool      _isVisible;
 
+    QString typeString()    const;
+    QString featureString() const;
+    QString orderString()   const;
 
+    QString abbreviateFeature() const;
 };
 
 bool operator==(const IntermodTrace &left, const IntermodTrace &right);
+bool operator!=(const IntermodTrace &left, const IntermodTrace &right);
+
+// for sorting according to
+// order of processing
+//
+// Order by traits:
+//   type < format < order
+//
+// Type sort:
+//   input < output
+//         < intermod
+//         < relative
+//         < intercept
+//
+// Feature sort:
+//   lower < upper < major
+//
+// Sort order as you'd expect
+//
+// Example:
+// | Type      | Feature | Order |
+// |-----------|---------|-------|
+// | input     | lower   | N/A   |
+// | input     | upper   | N/A   |
+// | output    | lower   | N/A   |
+// | output    | upper   | N/A   |
+// | intermod  | lower   | 3     |
+// | intermod  | upper   | 3     |
+// | intermod  | major   | 3     |
+// | intermod  | lower   | 5     |
+// | intermod  | ...     | ...   |
+// | relative  | lower   | 3     |
+// | relative  | upper   | 3     |
+// | relative  | major   | 3     |
+// | relative  | lower   | 5     |
+// | relative  | ...     | ...   |
+// | intercept | major   | 3     |
+// | intercept | major   | 5     |
+// | intercept | ...     | ...   |
+//
+bool operator< (const IntermodTrace &left, const IntermodTrace &right);
+bool operator<=(const IntermodTrace &left, const IntermodTrace &right);
+bool operator> (const IntermodTrace &left, const IntermodTrace &right);
+bool operator>=(const IntermodTrace &left, const IntermodTrace &right);
 
 #endif // INTERMODTRACE_H

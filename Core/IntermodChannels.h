@@ -2,6 +2,9 @@
 #define INTERMODCHANNELS_H
 
 
+// Project
+#include "IntermodTrace.h"
+
 // RsaToolbox
 #include <Vna.h>
 #include <VnaChannel.h>
@@ -20,18 +23,17 @@ public:
     ~IntermodChannels();
 
     QVector<uint> all();
-    RsaToolbox::VnaChannel create();
+    RsaToolbox::VnaChannel create(const IntermodTrace &t);
 
     // Remove all except base
     void collapse();
 
 private:
     RsaToolbox::Vna *_vna;
-    QString          _nameFormat;
-    QRegExp          _nameRegex;
     uint             _base;
+    bool             _usedBase;
 
-    QString nextName();
+    QString name(const IntermodTrace &t);
 };
 
 #endif // INTERMODCHANNELS_H
