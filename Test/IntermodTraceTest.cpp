@@ -27,7 +27,7 @@ void IntermodTraceTest::trace_data() {
     QTest::addColumn<QString>("name");
     QTest::addColumn<bool>   ("isNameValid");
     QTest::addColumn<QString>("y");
-    QTest::addColumn<bool>   ("isAtValid");
+    QTest::addColumn<bool>   ("isYValid");
 
     // Possible y values
     const QString lti  = "Lower In";
