@@ -25,11 +25,8 @@ public:
     enum /*class*/ Column {
         name    = 0,
         y       = 1,
-        x       = 2,
-        at      = 3,
-        atValue = 4
     };
-    static const int COLUMNS = 5;
+    static const int COLUMNS = 2;
 
     // Model
     virtual QVariant      headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;

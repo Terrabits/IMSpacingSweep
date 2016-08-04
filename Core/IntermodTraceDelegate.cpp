@@ -42,7 +42,7 @@ QWidget *IntermodTraceDelegate::createEditor(QWidget *parent, const QStyleOption
         QLineEdit *edit = new QLineEdit(parent);
         QRegExpValidator *vld8r
                 = new QRegExpValidator(IntermodTrace::NAME_REGEX,
-                                       edit);
+                                                            edit);
         edit->setValidator(vld8r);
         return edit;
     }
@@ -51,25 +51,6 @@ QWidget *IntermodTraceDelegate::createEditor(QWidget *parent, const QStyleOption
         combo->setEditable(false);
         combo->addItems(trace.possibleYParameters());
         return combo;
-    }
-    case IntermodTraceModel::Column::x: {
-        QComboBox *combo = new QComboBox(parent);
-        combo->setEditable(false);
-        combo->addItems(trace.possibleXParameters());
-        return combo;
-    }
-    case IntermodTraceModel::Column::at: {
-        QComboBox *combo = new QComboBox(parent);
-        combo->setEditable(false);
-        combo->addItems(trace.possibleAtParameters());
-        return combo;
-    }
-    case IntermodTraceModel::Column::atValue: {
-        FrequencyEdit *edit = new FrequencyEdit(parent);
-        edit->setAcceptedValues(trace.possibleAtValues(_settings));
-        connect(edit, SIGNAL(outOfRange  (QString)),
-                this, SIGNAL(errorMessage(QString)));
-        return edit;
     }
     default: {
         return QStyledItemDelegate::createEditor(parent, option, index);
@@ -80,11 +61,6 @@ void IntermodTraceDelegate::setEditorData(QWidget *editor, const QModelIndex &in
     QComboBox *combo = qobject_cast<QComboBox*>(editor);
     if (combo) {
         combo->setCurrentText(index.data(Qt::EditRole).toString());
-        return;
-    }
-    FrequencyEdit *freq = qobject_cast<FrequencyEdit*>(editor);
-    if (freq) {
-        freq->setFrequency(index.data(Qt::EditRole).toDouble());
         return;
     }
     QLineEdit *line = qobject_cast<QLineEdit*>(editor);

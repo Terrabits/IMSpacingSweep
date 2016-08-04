@@ -17,48 +17,52 @@ IntermodTrace::~IntermodTrace()
     //
 }
 
-bool IntermodTrace::isAtValueValid(const IntermodSettings &settings) const {
-    const int indexOf = possibleAtValues(settings).indexOf(atValue());
-    return indexOf != -1;
+bool IntermodTrace::isValid    () const {
+    return isNameValid() && isYValid();
+}
+bool IntermodTrace::isNameValid() const {
+    return NAME_REGEX.exactMatch(_name);
+}
+bool IntermodTrace::isYValid   () const {
+    return possibleYParameters().contains(_y, Qt::CaseInsensitive);
 }
 
-bool IntermodTrace::isAtDistance() const {
-    return isAt() && (at() == "Tone Distance");
+bool IntermodTrace::isMajor    () const {
+    return _y.contains("Major", Qt::CaseInsensitive);
 }
-bool IntermodTrace::isAtCenter() const {
-    return isAt() && (at() == "Center Frequency");
+bool IntermodTrace::isRelative () const {
+    return false;
 }
-uint IntermodTrace::order() const {
+bool IntermodTrace::isIntercept() const {
+    return _y.contains("IP", Qt::CaseInsensitive);
+}
+uint IntermodTrace::order      () const {
     if (!isYValid())
         return 0;
 
-    if (y().contains("Tone", Qt::CaseInsensitive))
+    if (_y.contains("Input", Qt::CaseInsensitive))
         return 1;
-    if (y().contains("3"))
+    if (_y.contains("Output"), Qt::CaseInsensitive)
+        return 1;
+    if (_y.contains("3"))
         return 3;
-    if (y().contains("5"))
+    if (_y.contains("5"))
         return 5;
-    if (y().contains("7"))
+    if (_y.contains("7"))
         return 7;
-    if (y().contains("9"))
+    if (_y.contains("9"))
         return 9;
 
     // Error
     return 0;
 }
 
-bool IntermodTrace::isAt() const {
-    return true;
-}
-bool IntermodTrace::isAtValue() const {
-    return true;
-}
 QStringList IntermodTrace::possibleYParameters() const {
     QStringList p;
-    p << "Lower In";
-    p << "Lower Out";
-    p << "Upper In";
-    p << "Upper Out";
+    p << "Lower Input";
+    p << "Lower Output";
+    p << "Upper Input";
+    p << "Upper Output";
     p << "IM3 Upper";
     p << "IM3 Lower";
     p << "IM3 Major";
@@ -77,35 +81,16 @@ QStringList IntermodTrace::possibleYParameters() const {
     p << "IP9 Major";
     return p;
 }
-QStringList IntermodTrace::possibleXParameters() const {
-    QStringList p;
-    p << "Center Frequency";
-    p << "Tone Distance";
-    return p;
-}
-QStringList IntermodTrace::possibleAtParameters() const {
-    QStringList p;
-    if (x() == "Center Frequency")
-        p << "Tone Distance";
-    if (x() == "Tone Distance")
-        p << "Center Frequency";
-    return p;
-}
-RsaToolbox::QRowVector IntermodTrace::possibleAtValues(const IntermodSettings &settings) const {
-    if (at() == "Center Frequency")
-        return settings.centerFrequencies_Hz();
-    if (at() == "Tone Distance")
-        return settings.toneDistances_Hz();
 
-    return QRowVector();
+QString IntermodTrace::name() const {
+    return _name;
 }
-RsaToolbox::Units IntermodTrace::atUnits() const {
-    return RsaToolbox::Units::Hertz;
+QString IntermodTrace::y   () const {
+    return _y;
 }
-//double IntermodTrace::maxAtValue() const {
-
-//}
-//double IntermodTrace::minAtValue() const {
-
-//}
-
+void IntermodTrace::setName(const QString &name) {
+    _name = name;
+}
+void IntermodTrace::setY   (const QString &y   ) {
+    _y    = y;
+}

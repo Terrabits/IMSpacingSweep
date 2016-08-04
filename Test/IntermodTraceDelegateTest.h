@@ -21,10 +21,7 @@ public:
 
 private slots:
     void name();
-    void y();
-    void x();
-    void at();
-    void atValue();
+    void y   ();
 
 private:
     static IntermodSettings defaultSettings();

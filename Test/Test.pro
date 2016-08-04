@@ -5,22 +5,16 @@ CONFIG  += testcase
 
 include(../Core/core.pri)
 HEADERS += \
-    IntermodMeasurementTest.h \
-    IntermodDataTest.h \
     IntermodWidgetTest.h \
     IntermodTraceTest.h \
-    WriteIntermodTraceTest.h \
     TracesWidgetTest.h \
     IntermodTraceModelTest.h \
     IntermodTraceDelegateTest.h \
     FrequencyConversionTest.h \
     IntermodChannelsTest.h
 SOURCES += main.cpp \
-    IntermodMeasurementTest.cpp \
-    IntermodDataTest.cpp \
     IntermodWidgetTest.cpp \
     IntermodTraceTest.cpp \
-    WriteIntermodTraceTest.cpp \
     TracesWidgetTest.cpp \
     IntermodTraceModelTest.cpp \
     IntermodTraceDelegateTest.cpp \

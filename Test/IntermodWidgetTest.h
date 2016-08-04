@@ -3,7 +3,7 @@
 
 
 // Project
-#include "IntermodMeasurement.h"
+#include "IntermodError.h"
 
 // RsaToolbox
 #include <GenericBus.h>

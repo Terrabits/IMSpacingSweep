@@ -36,11 +36,6 @@ QVariant IntermodTraceModel::headerData(int section, Qt::Orientation orientation
         return "Name";
     case Column::y:
         return "Y";
-    case Column::x:
-        return "X";
-    case Column::at:
-        return "At";
-    case Column::atValue:
     default:
         return QVariant();
     }
@@ -48,7 +43,7 @@ QVariant IntermodTraceModel::headerData(int section, Qt::Orientation orientation
 QModelIndex IntermodTraceModel::index(int row, int column, const QModelIndex &parent) const {
     if (parent.isValid())
         return QModelIndex();
-    if (row < 0 || row >= _traces.size())
+    if (row    < 0 || row    >= _traces.size())
         return QModelIndex();
     if (column < 0 || column >= COLUMNS)
         return QModelIndex();
@@ -63,7 +58,6 @@ Qt::ItemFlags IntermodTraceModel::flags(const QModelIndex &index) const {
     if (!index.isValid())
         return Qt::ItemFlags();
 
-    const int row    = index.row();
     const int column = index.column();
 
     Qt::ItemFlags flags = QAbstractTableModel::flags(index);
@@ -71,21 +65,6 @@ Qt::ItemFlags IntermodTraceModel::flags(const QModelIndex &index) const {
     case Column::name:
     case Column::y:
         return flags | Qt::ItemIsEditable;
-    case Column::x:
-        if (_traces[row].possibleXParameters().size() > 1)
-            return flags | Qt::ItemIsEditable;
-        else
-            return flags;
-    case Column::at:
-        if (_traces[row].possibleAtParameters().size() > 1)
-            return flags | Qt::ItemIsEditable;
-        else
-            return flags;
-    case Column::atValue:
-        if (_traces[row].isAtValue())
-            return flags | Qt::ItemIsEditable;
-        else
-            return flags;
     default:
         return flags;
     }
@@ -129,22 +108,6 @@ QVariant IntermodTraceModel::data(const QModelIndex &index, int role) const {
         return trace.name();
     case Column::y:
         return trace.y();
-    case Column::x:
-        return trace.x();
-    case Column::at:
-        return trace.at();
-    case Column::atValue:
-        if (!trace.isAtValue()) {
-            return QVariant();
-        }
-        else {
-            if (role == Qt::EditRole) {
-                return trace.atValue();
-            }
-            else {
-                return formatValue(trace.atValue(), 3, trace.atUnits());
-            }
-        }
     default:
         return QVariant();
     }
@@ -160,23 +123,18 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
     if (!value.isValid())
         return false;
 
-    const int row = index.row();
+    const int row    = index.row();
     const int column = index.column();
     if (row < 0 || row >= _traces.size())
         return false;
     if (column < 0 || column >= COLUMNS)
         return false;
 
-    if (column == atValue && !value.canConvert<double>())
-        return false;
     else if (!value.canConvert<QString>())
         return false;
 
-    const QString  string = value.toString();
-    const double   dbl    = value.toDouble();
-    IntermodTrace &trace  = _traces[row];
-    QModelIndex topLeft = createIndex(row, 0);
-    QModelIndex bottomRight = createIndex(row, COLUMNS-1);
+    const QString  string      = value.toString();
+    IntermodTrace &trace       = _traces[row];
     switch (column) {
     case Column::name:
         if (string.toLower() == trace.name().toLower())
@@ -193,37 +151,11 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
 
         trace.setY(string);
         fixTrace(row);
-        emit dataChanged(topLeft, bottomRight);
-        return true;
-
-    case Column::x:
-        if (trace.x().compare(value.toString()) == 0)
-            return true;
-        trace.setX(string);
-        fixTrace(row);
-        emit dataChanged(topLeft, bottomRight);
-        return true;
-
-    case Column::at:
-        if (string.toLower() == trace.at().toLower())
-            return true;
-
-        trace.setAt(string);
-        fixTrace(row);
-        emit dataChanged(topLeft, bottomRight);
-        return true;
-
-    case Column::atValue:
-        if (trace.atValue() == dbl)
-            return true;
-        trace.setAtValue(dbl);
-        fixTrace(row);
         emit dataChanged(index, index);
         return true;
+    default:
+        return false;
     }
-
-    // Default
-    return false;
 }
 
 bool IntermodTraceModel::appendNewTrace() {
@@ -279,9 +211,6 @@ bool IntermodTraceModel::insertRows(int row, int count, const QModelIndex &paren
 
     IntermodTrace trace;
     trace.setY(trace.possibleYParameters().first());
-    trace.setX(trace.possibleXParameters().first());
-    trace.setAt(trace.possibleAtParameters().first());
-    trace.setAtValue(trace.possibleAtValues(_settings).first());
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; i++) {
         trace.setName(nextTraceName());
@@ -357,21 +286,6 @@ bool IntermodTraceModel::fixTrace(int row) {
     if (!trace.isYValid()) {
         trace.setY(trace.possibleYParameters().first());
         isFixed = true;
-    }
-    if (!trace.isXValid()) {
-        trace.setX(trace.possibleXParameters().first());
-        isFixed = true;
-    }
-    if (!trace.isAtValid()) {
-        trace.setAt(trace.possibleAtParameters().first());
-        isFixed = true;
-    }
-    if (trace.isAtValue() && trace.isAtValueValid(_settings)) {
-        const double atValue = findClosest(trace.atValue(), trace.possibleAtValues(_settings));
-        if (std::abs(atValue - trace.atValue()) > 1.0) {
-            trace.setAtValue(atValue);
-            isFixed = true;
-        }
     }
 
     return isFixed;

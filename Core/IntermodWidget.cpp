@@ -3,7 +3,6 @@
 
 
 // Project
-#include "IntermodMeasurement.h"
 #include "IntermodTrace.h"
 
 // RsaToolbox
@@ -15,6 +14,9 @@ using namespace RsaToolbox;
 #include <QDebug>
 #include <QLabel>
 #include <QList>
+
+// std lib
+#include <cassert>
 
 
 IntermodWidget::IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent) :
@@ -228,9 +230,8 @@ bool IntermodWidget::isReadyForNext() {
     // Check for input error (out of range)
     e.clear();
     IntermodSettings     settings = getInput();
-    SharedIntermodTraces traces;
-    IntermodMeasurement  measurement(_vna, 1, settings, traces);
-    measurement.isValid(e);
+    // Is valid?
+    assert(false);
     if (owns(e)) {
         emit error(e);
         return false;

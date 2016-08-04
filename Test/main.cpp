@@ -3,14 +3,11 @@
 // Project
 #include "FrequencyConversionTest.h"
 #include "IntermodChannelsTest.h"
-#include "IntermodDataTest.h"
-#include "IntermodMeasurementTest.h"
 #include "IntermodTraceDelegateTest.h"
 #include "IntermodTraceModelTest.h"
 #include "IntermodTraceTest.h"
 #include "IntermodWidgetTest.h"
 #include "TracesWidgetTest.h"
-#include "WriteIntermodTraceTest.h"
 
 // RsaToolbox
 #include <Definitions.h>
@@ -36,20 +33,15 @@ int main(int argc, char *argv[])
             testRunner.addTest(new IntermodWidgetTest(connectionType, address));
         }
         else if (arg == "traceswidget") {
-            testRunner.addTest(new TracesWidgetTest(connectionType, address));
-        }
-        else if (arg == "writeintermodtrace") {
-            testRunner.addTest(new WriteIntermodTraceTest(connectionType, address));
+            testRunner.addTest(new TracesWidgetTest  (connectionType, address));
         }
     }
     else {
-        testRunner.addTest(new IntermodDataTest);
-        testRunner.addTest(new FrequencyConversionTest);
-        testRunner.addTest(new IntermodChannelsTest   (connectionType, address));
-        testRunner.addTest(new IntermodMeasurementTest(connectionType, address));
-        testRunner.addTest(new IntermodTraceTest);
-        testRunner.addTest(new IntermodTraceModelTest);
-        testRunner.addTest(new IntermodTraceDelegateTest);
+        testRunner.addTest(new FrequencyConversionTest                      );
+        testRunner.addTest(new IntermodChannelsTest(connectionType, address));
+        testRunner.addTest(new IntermodTraceTest                            );
+        testRunner.addTest(new IntermodTraceModelTest                       );
+        testRunner.addTest(new IntermodTraceDelegateTest                    );
     }
 
     bool passed = testRunner.runTests();

@@ -46,13 +46,13 @@ void IntermodTraceModelTest::basic() {
 
     QCOMPARE(model.rowCount(), 0);
 
-    QSignalSpy dataChanged          (&model, SIGNAL(dataChanged(QModelIndex,QModelIndex      )) );
-    QSignalSpy rowsAboutToBeInserted(&model, SIGNAL(rowsAboutToBeInserted(QModelIndex,int,int)) );
-    QSignalSpy rowsInserted         (&model, SIGNAL(rowsInserted(QModelIndex,int,int         )) );
-    QSignalSpy rowsAboutToBeRemoved (&model, SIGNAL(rowsAboutToBeRemoved(QModelIndex,int,int )) );
-    QSignalSpy rowsRemoved          (&model, SIGNAL(rowsRemoved(QModelIndex,int,int          )) );
-    QSignalSpy modelAboutToBeReset  (&model, SIGNAL(modelAboutToBeReset(                     )) );
-    QSignalSpy modelReset           (&model, SIGNAL(modelReset(                              )) );
+    QSignalSpy dataChanged          (&model, SIGNAL(dataChanged          (QModelIndex, QModelIndex)) );
+    QSignalSpy rowsAboutToBeInserted(&model, SIGNAL(rowsAboutToBeInserted(QModelIndex, int, int)) );
+    QSignalSpy rowsInserted         (&model, SIGNAL(rowsInserted         (QModelIndex, int, int)) );
+    QSignalSpy rowsAboutToBeRemoved (&model, SIGNAL(rowsAboutToBeRemoved (QModelIndex, int, int)) );
+    QSignalSpy rowsRemoved          (&model, SIGNAL(rowsRemoved          (QModelIndex, int, int)) );
+    QSignalSpy modelAboutToBeReset  (&model, SIGNAL(modelAboutToBeReset  (                     )) );
+    QSignalSpy modelReset           (&model, SIGNAL(modelReset           (                     )) );
 
     // New trace
     QVERIFY (model.appendNewTrace());
@@ -102,34 +102,6 @@ void IntermodTraceModelTest::basic() {
     QCOMPARE(modelReset.count(),            0);
     dataChanged.clear();
 
-    // Set X
-    i = model.index(0, IntermodTraceModel::Column::x);
-    const QString x = "Tone Distance";
-    QVERIFY (model.setData(i,               x));
-    QCOMPARE(model.data(i).toString(),      x);
-    QCOMPARE(dataChanged.count(),           1);
-    QCOMPARE(rowsAboutToBeInserted.count(), 0);
-    QCOMPARE(rowsInserted.count(),          0);
-    QCOMPARE(rowsAboutToBeRemoved.count(),  0);
-    QCOMPARE(rowsRemoved.count(),           0);
-    QCOMPARE(modelAboutToBeReset.count(),   0);
-    QCOMPARE(modelReset.count(),            0);
-    dataChanged.clear();
-
-    // Set at value
-    i = model.index(0, IntermodTraceModel::Column::atValue);
-    const double at = 1.4E9; // 1 GHz center freq
-    QVERIFY (model.setData(i,                        at));
-    QCOMPARE(model.data(i, Qt::EditRole).toDouble(), at);
-    QCOMPARE(dataChanged.count(),           1);
-    QCOMPARE(rowsAboutToBeInserted.count(), 0);
-    QCOMPARE(rowsInserted.count(),          0);
-    QCOMPARE(rowsAboutToBeRemoved.count(),  0);
-    QCOMPARE(rowsRemoved.count(),           0);
-    QCOMPARE(modelAboutToBeReset.count(),   0);
-    QCOMPARE(modelReset.count(),            0);
-    dataChanged.clear();
-
     // Delete trace
     QVERIFY (model.removeRow(0));
     QCOMPARE(model.rowCount(),              0);
@@ -154,24 +126,6 @@ void IntermodTraceModelTest::flags() {
     QVERIFY(flags & Qt::ItemIsSelectable);
 
     i = model.index(0, IntermodTraceModel::Column::y);
-    flags = model.flags(i);
-    QVERIFY(flags & Qt::ItemIsEditable);
-    QVERIFY(flags & Qt::ItemIsEnabled);
-    QVERIFY(flags & Qt::ItemIsSelectable);
-
-    i = model.index(0, IntermodTraceModel::Column::x);
-    flags = model.flags(i);
-    QVERIFY(flags & Qt::ItemIsEditable);
-    QVERIFY(flags & Qt::ItemIsEnabled);
-    QVERIFY(flags & Qt::ItemIsSelectable);
-
-    i = model.index(0, IntermodTraceModel::Column::at);
-    flags = model.flags(i);
-    QVERIFY(!(flags & Qt::ItemIsEditable));
-    QVERIFY(flags & Qt::ItemIsEnabled);
-    QVERIFY(flags & Qt::ItemIsSelectable);
-
-    i = model.index(0, IntermodTraceModel::Column::atValue);
     flags = model.flags(i);
     QVERIFY(flags & Qt::ItemIsEditable);
     QVERIFY(flags & Qt::ItemIsEnabled);

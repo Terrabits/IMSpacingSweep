@@ -3,7 +3,7 @@
 
 
 // Project
-#include "IntermodMeasurement.h"
+#include "IntermodError.h"
 #include "IntermodSettings.h"
 
 // RsaToolbox
