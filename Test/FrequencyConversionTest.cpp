@@ -2,8 +2,6 @@
 
 
 // Project
-#include "FrequencyConversion.h"
-#include "FrequencyConversionGenerator.h"
 #include "IntermodSettings.h"
 
 // RsaToolbox
@@ -57,8 +55,8 @@ void FrequencyConversionTest::basic() {
 
     // lower input
     //   = fb
-    FrequencyConversion fc = g.lowerInput();
-    QVERIFY (!fc.isGenerator());
+    VnaArbitraryFrequency fc = g.lowerInput();
+    QVERIFY (!fc.isGeneratorPort());
     QCOMPARE(fc.numerator(),   1.0);
     QCOMPARE(fc.denominator(), 1.0);
     QCOMPARE(fc.offset_Hz(),   0.0);
@@ -68,7 +66,7 @@ void FrequencyConversionTest::basic() {
     // upper input
     double start_Hz = 1.005e9;
     double stop_Hz  = 1.050e9;
-    QVERIFY (g.upperInput().isGenerator());
+    QVERIFY (g.upperInput().isGeneratorPort());
     QCOMPARE(calculateUpperInput_Hz(g, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperInput_Hz(g, fbStop_Hz ), stop_Hz );
 
@@ -76,35 +74,35 @@ void FrequencyConversionTest::basic() {
     uint n = 1;
     start_Hz = 0.995e9;
     stop_Hz  = 0.950e9;
-    QVERIFY (!g.lowerOutput(n).isGenerator());
+    QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 3;
     start_Hz = 0.990e9;
     stop_Hz  = 0.900e9;
-    QVERIFY (!g.lowerOutput(n).isGenerator());
+    QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 5;
     start_Hz = 0.985e9;
     stop_Hz  = 0.850e9;
-    QVERIFY (!g.lowerOutput(n).isGenerator());
+    QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 7;
     start_Hz = 0.980e9;
     stop_Hz  = 0.800e9;
-    QVERIFY (!g.lowerOutput(n).isGenerator());
+    QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 9;
     start_Hz = 0.975e9;
     stop_Hz  = 0.750e9;
-    QVERIFY (!g.lowerOutput(n).isGenerator());
+    QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
@@ -112,56 +110,56 @@ void FrequencyConversionTest::basic() {
     n = 1;
     start_Hz = 1.005e9;
     stop_Hz  = 1.050e9;
-    QVERIFY (!g.upperOutput(n).isGenerator());
+    QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 3;
     start_Hz = 1.010e9;
     stop_Hz  = 1.100e9;
-    QVERIFY (!g.upperOutput(n).isGenerator());
+    QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 5;
     start_Hz = 1.015e9;
     stop_Hz  = 1.150e9;
-    QVERIFY (!g.upperOutput(n).isGenerator());
+    QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 7;
     start_Hz = 1.020e9;
     stop_Hz  = 1.200e9;
-    QVERIFY (!g.upperOutput(n).isGenerator());
+    QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 9;
     start_Hz = 1.025e9;
     stop_Hz  = 1.250e9;
-    QVERIFY (!g.upperOutput(n).isGenerator());
+    QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 }
 
 // private
-double FrequencyConversionTest::calculateConversion_Hz(const FrequencyConversion &c, double fb_Hz) {
+double FrequencyConversionTest::calculateConversion_Hz(const VnaArbitraryFrequency &c, double fb_Hz) {
     return (c.numerator() / c.denominator()) * fb_Hz + c.offset_Hz();
 }
 double FrequencyConversionTest::calculateLowerInput_Hz(const FrequencyConversionGenerator &g, double fb_Hz) {
-    FrequencyConversion fc = g.lowerInput();
+    VnaArbitraryFrequency fc = g.lowerInput();
     return calculateConversion_Hz(fc, fb_Hz);
 }
 double FrequencyConversionTest::calculateUpperInput_Hz(const FrequencyConversionGenerator &g, double fb_Hz) {
-    FrequencyConversion fc = g.upperInput();
+    VnaArbitraryFrequency fc = g.upperInput();
     return calculateConversion_Hz(fc, fb_Hz);
 }
 double FrequencyConversionTest::calculateLowerOutput_Hz(const FrequencyConversionGenerator &g, uint n, double fb_Hz) {
-    FrequencyConversion fc = g.lowerOutput(n);
+    VnaArbitraryFrequency fc = g.lowerOutput(n);
     return calculateConversion_Hz(fc, fb_Hz);
 }
 double FrequencyConversionTest::calculateUpperOutput_Hz(const FrequencyConversionGenerator &g, uint n, double fb_Hz) {
-    FrequencyConversion fc = g.upperOutput(n);
+    VnaArbitraryFrequency fc = g.upperOutput(n);
     return calculateConversion_Hz(fc, fb_Hz);
 }

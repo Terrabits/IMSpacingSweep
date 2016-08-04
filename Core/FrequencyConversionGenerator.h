@@ -3,8 +3,10 @@
 
 
 // Project
-#include "FrequencyConversion.h"
 #include "IntermodSettings.h"
+
+// RsaToolbox
+#include "VnaArbitraryFrequency.h"
 
 
 class FrequencyConversionGenerator
@@ -18,12 +20,12 @@ public:
     double channelStopFrequency_Hz () const;
 
     // inputs
-    FrequencyConversion lowerInput()  const;
-    FrequencyConversion upperInput()  const;
+    RsaToolbox::VnaArbitraryFrequency lowerInput()  const;
+    RsaToolbox::VnaArbitraryFrequency upperInput()  const;
 
     // Intermod (output)
-    FrequencyConversion lowerOutput(uint n) const;
-    FrequencyConversion upperOutput(uint n) const;
+    RsaToolbox::VnaArbitraryFrequency lowerOutput(uint n) const;
+    RsaToolbox::VnaArbitraryFrequency upperOutput(uint n) const;
 
 private:
     IntermodSettings _settings;
