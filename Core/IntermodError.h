@@ -31,7 +31,6 @@ struct IntermodError {
 
     Code    code;
     int     row;
-    int     column;
     QString message;
 };
 

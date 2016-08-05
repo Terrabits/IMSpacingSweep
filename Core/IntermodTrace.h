@@ -39,9 +39,15 @@ public:
     IntermodTrace(QString display);
    ~IntermodTrace();
 
+    // Visible
     bool isVisible() const;
     void hide     ();
     void show     ();
+
+    // Dependenent calculation
+    bool                 isDependent() const;
+    QList<IntermodTrace> dependents () const;
+
 
     // is type
     bool isInputTone () const;
@@ -63,7 +69,7 @@ public:
     bool isNinth  () const;
 
     TraceType type      () const;
-    TraceFeature   feature   () const;
+    TraceFeature feature() const;
     uint      order     () const;
     void      setType   (TraceType type );
     void      setFeature(TraceFeature feature);

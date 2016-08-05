@@ -38,9 +38,25 @@ private:
     FrequencyConversionGenerator _genFreq;
     uint                         _diagram;
 
-    void preprocessTraces();
-    void processTrace    (const IntermodTrace &t);
+    // isReady
+    bool isFreqOutsideVna(const IntermodTrace &t) const;
 
+    // Preprocess
+    void preprocessTraces  ();
+    bool hasDependency     (const IntermodTrace &t) const;
+    void insertDependencies(const IntermodTrace &t);
+
+    // Process
+    void processTrace      (const IntermodTrace &t);
+
+    // Processing by TraceType
+    void processInputTrace    (const IntermodTrace &t);
+    void processOutputTrace   (const IntermodTrace &t);
+    void processIntermodTrace (const IntermodTrace &t);
+    void processRelativeTrace (const IntermodTrace &t);
+    void processInterceptTrace(const IntermodTrace &t);
+
+    // Helpers
     QString channelName(const IntermodTrace &t);
     QString traceName  (const IntermodTrace &t);
 
@@ -51,12 +67,7 @@ private:
     RsaToolbox::VnaArbitraryFrequency upperAf() const;
     RsaToolbox::VnaArbitraryFrequency outputAf(const IntermodTrace &t) const;
 
-    // Processing by TraceType
-    void processInputTrace    (const IntermodTrace &t);
-    void processOutputTrace   (const IntermodTrace &t);
-    void processIntermodTrace (const IntermodTrace &t);
-    void processRelativeTrace (const IntermodTrace &t);
-    void processInterceptTrace(const IntermodTrace &t);
+
 
 
 

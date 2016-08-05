@@ -2,6 +2,7 @@
 
 
 // RsaToolbox
+#include "General.h"
 #include <VnaChannel.h>
 #include <VnaTrace.h>
 using namespace RsaToolbox;
@@ -74,13 +75,15 @@ bool ProcessTraces::isReady(IntermodError &error) {
     const double min_Hz    = _vna->properties().minimumFrequency_Hz();
     if (center_Hz < min_Hz) {
         error.code = IntermodError::Code::CenterFrequency;
-        error.message = "*center frequency too low";
+        error.message = "*center frequency must be at least %1";
+        error.message = error.message.arg(min_Hz);
         return false;
     }
     const double max_Hz    = _vna->properties().maximumFrequency_Hz();
     if (center_Hz > max_Hz) {
         error.code = IntermodError::Code::CenterFrequency;
-        error.message = "*center frequency too high";
+        error.message = "*center frequency must be at most %1";
+        error.message = error.message.arg(max_Hz);
         return false;
     }
 
@@ -129,11 +132,52 @@ bool ProcessTraces::isReady(IntermodError &error) {
     }
 
     // Power
-    const double min_dBm = _vna->properties().minimumPower_dBm();
-
+    const double min_dBm   = _vna->properties().minimumPower_dBm();
+    const double power_dBm = _settings.power_dBm();
+    if (power_dBm < min_dBm) {
+        error.code = IntermodError::Code::Power;
+        error.message = "*power must be at least %1";
+        error.message = error.message.arg(min_dBm);
+        return false;
+    }
     const double max_dBm = _vna->properties().maximumPower_dBm();
+    if (power_dBm > max_dBm) {
+        error.code = IntermodError::Code::Power;
+        error.message = "*power must be at most %1";
+        error.message = error.message.arg(max_dBm);
+        return false;
+    }
 
+    // IF BW
+    const double ifBw_Hz  = _settings.ifBw_Hz();
+    const double newIfBw_Hz = findClosest(ifBw_Hz, _vna->properties().ifBandwidthValues_Hz());
+    if (newIfBw_Hz != ifBw_Hz) {
+        // if value rounded
+        error.code = IntermodError::Code::IfBw;
+        error.message = "*IF BW value rounded to %1";
+        error.message = error.message.arg(newIfBw_Hz);
+        return false;
+    }
 
+    // Traces
+    if (_traces.isEmpty()) {
+        error.code = IntermodError::Code::Traces;
+        error.message = "*Enter at least one trace";
+        return false;
+    }
+
+    // Frequency range of traces
+    for (int i = 0; i < _traces.size(); i++) {
+        const IntermodTrace t = _traces[i];
+        if (isFreqOutsideVna(t)) {
+            error.code    = IntermodError::Code::Order;
+            error.message = "*%1 outside range of VNA";
+            error.message = error.message.arg(t.display());
+            return false;
+        }
+    }
+
+    return true;
 }
 void ProcessTraces::run() {
     _diagram = _vna->createDiagram();
@@ -142,11 +186,44 @@ void ProcessTraces::run() {
     }
 }
 
-void ProcessTraces::preprocessTraces() {
-    // make sure all necessary traces,
-    // including trace dependencies,
-    // are included
+// isReady
+bool ProcessTraces::isFreqOutsideVna(const IntermodTrace &t) const {
+
 }
+
+// Preprocess
+void ProcessTraces::preprocessTraces() {
+    std::sort(_traces.begin(), _traces.end());
+    foreach (const IntermodTrace t, _traces) {
+        if (!hasDependency(t)) {
+            insertDependencies(t);
+        }
+    }
+}
+bool ProcessTraces::hasDependency(const IntermodTrace &t) const {
+    if (!t.isDependent())
+        return true;
+
+    const QList<IntermodTrace> dependents = t.dependents();
+    foreach (const IntermodTrace d, dependents) {
+        if (!_traces.contains(d)) {
+            return false;
+        }
+    }
+
+    // Else
+    return true;
+}
+void ProcessTraces::insertDependencies(const IntermodTrace &t) {
+    const QList<IntermodTrace> dependents = t.dependents();
+    foreach (const IntermodTrace d, dependents) {
+        if (!_traces.contains(d)) {
+            _traces.append(d);
+        }
+    }
+    std::sort(_traces.begin(), _traces.end());
+}
+
 void ProcessTraces::processTrace(const IntermodTrace &t) {
     switch (t.type()) {
     case TraceType::inputTone:

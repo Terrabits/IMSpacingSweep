@@ -18,8 +18,8 @@ public:
 
     // Ports
     uint                                lowerSourcePort() const;
-    RsaToolbox::VnaIntermod::ToneSource upperSource()     const;
-    uint                                receivingPort()   const;
+    RsaToolbox::VnaIntermod::ToneSource upperSource    () const;
+    uint                                receivingPort  () const;
     void setLowerSourcePort(uint port);
     void setUpperSource(RsaToolbox::VnaIntermod::ToneSource source);
     void setReceivingPort(uint port);
@@ -31,10 +31,10 @@ public:
     // Tone spacing (distance)
     double startToneDistance_Hz() const;
     double stopToneDistance_Hz () const;
-    uint   points  () const;
-    void   setStartToneDistance (double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void   setStopToneDistance  (double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void   setPoints(uint points);
+    uint   points              () const;
+    void   setStartToneDistance(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
+    void   setStopToneDistance (double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
+    void   setPoints           (uint points);
     RsaToolbox::QRowVector toneDistances_Hz() const;
 
     // Measurement settings

@@ -141,6 +141,7 @@ IntermodTrace::~IntermodTrace()
     //
 }
 
+// Visible
 bool IntermodTrace::isVisible() const {
     return _isVisible;
 }
@@ -149,6 +150,18 @@ void IntermodTrace::hide     () {
 }
 void IntermodTrace::show     () {
     _isVisible = true;
+}
+
+// Dependent calculation
+bool IntermodTrace::isDependent() const {
+    if (isRelative())
+        return true;
+    if (isIntercept())
+        return true;
+    if (isMajor())
+        return true;
+
+    return false;
 }
 
 // isType
@@ -225,6 +238,9 @@ TraceFeature   IntermodTrace::feature() const {
     return _feature;
 }
 uint      IntermodTrace::order  () const {
+    if (isInputTone() || isOutputTone())
+        return 1;
+
     return _order;
 }
 
@@ -236,7 +252,22 @@ void IntermodTrace::setFeature(TraceFeature feature) {
     _feature = feature;
 }
 void IntermodTrace::setOrder  (uint n)          {
-    _order = n;
+    if (isInputTone() || isOutputTone())
+        _order = 1;
+    else if (n <  3)
+        _order =  3;
+    else if (n >  9)
+        _order =  9;
+    else if (n == 3)
+        _order =  3;
+    else if (n == 5)
+        _order =  5;
+    else if (n == 7)
+        _order =  7;
+    else if (n == 9)
+        _order =  9;
+    else
+        _order = n - 1;
 }
 
 QString IntermodTrace::display()       const {

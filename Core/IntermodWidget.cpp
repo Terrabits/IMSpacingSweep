@@ -100,25 +100,26 @@ bool IntermodWidget::isInput(IntermodError &error) const {
         return false;
     }
 
+    // FIX ME
     // Center frequency
-    if (ui->startCenterFrequency->text().isEmpty()) {
-        ui->startCenterFrequency->setFocus();
-        error.code = IntermodError::Code::StartCenterFreq;
-        error.message = "*Enter start center frequency";
-        return false;
-    }
-    if (ui->stopCenterFrequency->text().isEmpty()) {
-        ui->stopCenterFrequency->setFocus();
-        error.code = IntermodError::Code::StopCenterFreq;
-        error.message = "*Enter stop center frequency";
-        return false;
-    }
-    if (ui->centerFrequencyPoints->text().isEmpty()) {
-        ui->centerFrequencyPoints->setFocus();
-        error.code = IntermodError::Code::CenterFreqPoints;
-        error.message = "*Enter center frequency points";
-        return false;
-    }
+//    if (ui->startCenterFrequency->text().isEmpty()) {
+//        ui->startCenterFrequency->setFocus();
+//        error.code = IntermodError::Code::CenterFrequency;
+//        error.message = "*Enter start center frequency";
+//        return false;
+//    }
+//    if (ui->stopCenterFrequency->text().isEmpty()) {
+//        ui->stopCenterFrequency->setFocus();
+//        error.code = IntermodError::Code::CenterFrequency;
+//        error.message = "*Enter stop center frequency";
+//        return false;
+//    }
+//    if (ui->centerFrequencyPoints->text().isEmpty()) {
+//        ui->centerFrequencyPoints->setFocus();
+//        error.code = IntermodError::Code::CenterFreqPoints;
+//        error.message = "*Enter center frequency points";
+//        return false;
+//    }
 
     // Tone distance
     if (ui->startToneDistance->text().isEmpty()) {
@@ -314,12 +315,10 @@ bool IntermodWidget::owns(const IntermodError &error) {
     case Code::LowerSourcePort:
     case Code::UpperSource:
     case Code::ReceivingPort:
-    case Code::StartCenterFreq:
-    case Code::StopCenterFreq:
-    case Code::CenterFreqPoints:
+    case Code::CenterFrequency:
     case Code::StartToneDistance:
     case Code::StopToneDistance:
-    case Code::ToneDistancePoints:
+    case Code::Points:
     case Code::Power:
     case Code::IfBw:
     case Code::Selectivity:
@@ -344,18 +343,8 @@ void IntermodWidget::focusOn(const IntermodError &error) {
         ui->receivingPort->selectAll();
         ui->receivingPort->setFocus();
         break;
-    case Code::StartCenterFreq:
-        ui->startCenterFrequency->selectAll();
-        ui->startCenterFrequency->setFocus();
-        break;
-    case Code::StopCenterFreq:
-        ui->stopCenterFrequency->selectAll();
-        ui->stopCenterFrequency->setFocus();
-        break;
-    case Code::CenterFreqPoints:
-        ui->centerFrequencyPoints->selectAll();
-        ui->centerFrequencyPoints->setFocus();
-        break;
+    case Code::CenterFrequency:
+        // FIX ME
     case Code::StartToneDistance:
         ui->startToneDistance->selectAll();
         ui->startToneDistance->setFocus();
@@ -364,7 +353,7 @@ void IntermodWidget::focusOn(const IntermodError &error) {
         ui->stopToneDistance->selectAll();
         ui->stopToneDistance->setFocus();
         break;
-    case Code::ToneDistancePoints:
+    case Code::Points:
         ui->toneDistancePoints->selectAll();
         ui->toneDistancePoints->setFocus();
         break;

@@ -62,7 +62,7 @@ void TracesWidget::showError(const IntermodError &error) {
         return;
 
     const int row       = error.row;
-    const int column    = error.column;
+    const int column    = 0/*error.column*/;
     const QModelIndex i = _model.index(row, column);
     ui->traces->setFocus();
     if (i.isValid())

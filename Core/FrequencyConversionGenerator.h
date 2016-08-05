@@ -23,9 +23,14 @@ public:
     RsaToolbox::VnaArbitraryFrequency lowerInput()  const;
     RsaToolbox::VnaArbitraryFrequency upperInput()  const;
 
+    // Note: assumes order n odd
+
     // Intermod (output)
     RsaToolbox::VnaArbitraryFrequency lowerOutput(uint n) const;
     RsaToolbox::VnaArbitraryFrequency upperOutput(uint n) const;
+
+    double minLowerFreq_Hz(uint n);
+    double maxUpperFreq_Hz(uint n);
 
 private:
     IntermodSettings _settings;
