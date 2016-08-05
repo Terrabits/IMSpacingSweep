@@ -3,6 +3,7 @@
 
 // Project
 #include "IntermodChannels.h"
+#include "IntermodTrace.h"
 
 // RsaToolbox
 #include <Test.h>
@@ -42,5 +43,31 @@ IntermodChannelsTest::~IntermodChannelsTest()
 }
 
 void IntermodChannelsTest::basic() {
-    QVERIFY(false);
+    const uint baseChannel = 1;
+    IntermodChannels channels(_vna.data(), baseChannel);
+
+    channels.collapse();
+    QCOMPARE(_vna->numberOfChannels(), uint(1));
+    QVERIFY (!_vna->isError());
+
+    IntermodTrace t;
+    t.setType   (TraceType::inputTone);
+    t.setFeature(TraceFeature::upper);
+    VnaChannel c;
+    c = channels.create(t);
+    QCOMPARE(c.name(), QString("uti_im_ch1"));
+    QCOMPARE(_vna->numberOfChannels(), uint(1));
+    QVERIFY (!_vna->isError());
+
+    t.setType(TraceType::intercept);
+    t.setFeature(TraceFeature::major);
+    t.setOrder(7);
+    c = channels.create(t);
+    QCOMPARE(c.name(), QString("ip7mo_im_ch1"));
+    QCOMPARE(_vna->numberOfChannels(), uint(2));
+    QVERIFY (!_vna->isError());
+
+    channels.collapse();
+    QCOMPARE(_vna->numberOfChannels(), uint(1));
+    QVERIFY (!_vna->isError());
 }

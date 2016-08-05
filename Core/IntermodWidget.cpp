@@ -135,7 +135,7 @@ bool IntermodWidget::isInput(IntermodError &error) const {
     }
     if (ui->toneDistancePoints->text().isEmpty()) {
         ui->toneDistancePoints->setFocus();
-        error.code = IntermodError::Code::ToneDistancePoints;
+        error.code = IntermodError::Code::Points;
         error.message = "*Enter tone distance points";
         return false;
     }
@@ -182,7 +182,7 @@ IntermodSettings IntermodWidget::getInput() const {
     // Tone distance
     s.setStartToneDistance(ui->startToneDistance->frequency_Hz());
     s.setStopToneDistance(ui->stopToneDistance->frequency_Hz());
-    s.setToneDistancePoints(ui->toneDistancePoints->points());
+    s.setPoints(ui->toneDistancePoints->points());
 
     // Misc
     s.setPower(ui->power->power_dBm());
@@ -208,7 +208,7 @@ void IntermodWidget::setInput(const IntermodSettings &settings) {
     // Tone distance
     ui->startToneDistance->setFrequency(settings.startToneDistance_Hz());
     ui->stopToneDistance->setFrequency(settings.stopToneDistance_Hz());
-    ui->toneDistancePoints->setPoints(settings.toneDistancePoints());
+    ui->toneDistancePoints->setPoints(settings.points());
 
     // Misc
     ui->power->setPower(settings.power_dBm());

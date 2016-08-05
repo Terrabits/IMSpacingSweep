@@ -9,6 +9,7 @@
 // Project
 #include "FrequencyConversionGenerator.h"
 #include "IntermodChannels.h"
+#include "IntermodError.h"
 #include "IntermodSettings.h"
 #include "IntermodTrace.h"
 
@@ -25,6 +26,9 @@ public:
                   RsaToolbox::Vna *vna,
                   uint baseChannel);
     ~ProcessTraces();
+
+    bool isReady(IntermodError &error);
+    void run();
 
 private:
     QList<IntermodTrace>         _traces;

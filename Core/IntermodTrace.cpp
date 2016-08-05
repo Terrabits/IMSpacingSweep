@@ -24,13 +24,13 @@ QString toString(TraceType type) {
         return "Input";
     }
 }
-QString toString(Feature feature) {
+QString toString(TraceFeature feature) {
     switch (feature) {
-    case Feature::upper:
+    case TraceFeature::upper:
         return "Upper";
-    case Feature::lower:
+    case TraceFeature::lower:
         return "Lower";
-    case Feature::major:
+    case TraceFeature::major:
         return "Major";
     default:
         return "Lower";
@@ -41,14 +41,14 @@ QString toString(Feature feature) {
 
 IntermodTrace::IntermodTrace() :
     _type   (TraceType::inputTone),
-    _feature(Feature::lower      ),
+    _feature(TraceFeature::lower      ),
     _order  (1 ),
     _isVisible(true)
 {
     //
 }
 IntermodTrace::IntermodTrace(TraceType type,
-                             Feature feature,
+                             TraceFeature feature,
                              uint order) :
     _type   (type   ),
     _feature(feature),
@@ -89,21 +89,21 @@ IntermodTrace::IntermodTrace(QString s) {
     }
 
     // Feature
-    const QString upper = toString(Feature::upper).toLower();
-    const QString lower = toString(Feature::lower).toLower();
-    const QString major = toString(Feature::major).toLower();
+    const QString upper = toString(TraceFeature::upper).toLower();
+    const QString lower = toString(TraceFeature::lower).toLower();
+    const QString major = toString(TraceFeature::major).toLower();
     if      (s.contains(upper)) {
-        _feature = Feature::upper;
+        _feature = TraceFeature::upper;
     }
     else if (s.contains(lower)) {
-        _feature = Feature::lower;
+        _feature = TraceFeature::lower;
     }
     else if (s.contains(major)) {
-        _feature = Feature::major;
+        _feature = TraceFeature::major;
     }
     else {
         // default feature
-        _feature = Feature::lower;
+        _feature = TraceFeature::lower;
     }
 
     // Order
@@ -170,13 +170,13 @@ bool IntermodTrace::isIntercept() const {
 
 // isFeature
 bool IntermodTrace::isLower() const {
-    return _feature == Feature::lower;
+    return _feature == TraceFeature::lower;
 }
 bool IntermodTrace::isUpper() const {
-    return _feature == Feature::upper;
+    return _feature == TraceFeature::upper;
 }
 bool IntermodTrace::isMajor() const {
-    return _feature == Feature::major;
+    return _feature == TraceFeature::major;
 }
 
 // isOrder
@@ -221,7 +221,7 @@ bool IntermodTrace::isNinth  () const {
 TraceType IntermodTrace::type   () const {
     return _type;
 }
-Feature   IntermodTrace::feature() const {
+TraceFeature   IntermodTrace::feature() const {
     return _feature;
 }
 uint      IntermodTrace::order  () const {
@@ -232,7 +232,7 @@ uint      IntermodTrace::order  () const {
 void IntermodTrace::setType   (TraceType type)  {
     _type = type;
 }
-void IntermodTrace::setFeature(Feature feature) {
+void IntermodTrace::setFeature(TraceFeature feature) {
     _feature = feature;
 }
 void IntermodTrace::setOrder  (uint n)          {
@@ -309,11 +309,11 @@ QString IntermodTrace::orderString()   const {
 
 QString IntermodTrace::abbreviateFeature() const {
     switch (_feature) {
-    case Feature::lower:
+    case TraceFeature::lower:
         return "l";
-    case Feature::upper:
+    case TraceFeature::upper:
         return "u";
-    case Feature::major:
+    case TraceFeature::major:
         return "m";
     default:
         return "l";

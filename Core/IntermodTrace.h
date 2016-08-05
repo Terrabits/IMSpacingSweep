@@ -22,20 +22,20 @@ QString toString(TraceType type);
 Q_DECLARE_METATYPE(TraceType)
 
 
-enum /*class*/ Feature {
+enum /*class*/ TraceFeature {
     lower,
     upper,
     major
 };
-QString toString(Feature feature);
-Q_DECLARE_METATYPE(Feature)
+QString toString(TraceFeature feature);
+Q_DECLARE_METATYPE(TraceFeature)
 
 
 class IntermodTrace
 {
 public:
     IntermodTrace();
-    IntermodTrace(TraceType type, Feature feature, uint order = 1);
+    IntermodTrace(TraceType type, TraceFeature feature, uint order = 1);
     IntermodTrace(QString display);
    ~IntermodTrace();
 
@@ -63,10 +63,10 @@ public:
     bool isNinth  () const;
 
     TraceType type      () const;
-    Feature   feature   () const;
+    TraceFeature   feature   () const;
     uint      order     () const;
     void      setType   (TraceType type );
-    void      setFeature(Feature feature);
+    void      setFeature(TraceFeature feature);
     void      setOrder  (uint n         );
 
     QString   display   () const;
@@ -74,7 +74,7 @@ public:
 
 private:
     TraceType _type;
-    Feature   _feature;
+    TraceFeature   _feature;
     uint      _order;
     bool      _isVisible;
 

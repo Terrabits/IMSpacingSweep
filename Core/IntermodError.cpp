@@ -1,12 +1,9 @@
 #include "IntermodError.h"
 
 
-IntermodError::IntermodError() :
-    code  (IntermodError::Code::None),
-    row   (-1),
-    column(-1)
+IntermodError::IntermodError()
 {
-    //
+    clear();
 }
 IntermodError::~IntermodError()
 {

@@ -41,7 +41,7 @@ void FrequencyConversionTest::basic() {
     IntermodSettings s;
     s.setStartToneDistance( 10, SiPrefix::Mega);
     s.setStopToneDistance (100, SiPrefix::Mega);
-    s.setToneDistancePoints(11);
+    s.setPoints(11);
 
     // center
     const double centerFreq_Hz = 1.0e9;

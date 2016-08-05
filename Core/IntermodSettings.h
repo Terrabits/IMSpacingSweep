@@ -31,10 +31,10 @@ public:
     // Tone spacing (distance)
     double startToneDistance_Hz() const;
     double stopToneDistance_Hz () const;
-    uint   toneDistancePoints  () const;
+    uint   points  () const;
     void   setStartToneDistance (double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
     void   setStopToneDistance  (double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
-    void   setToneDistancePoints(uint points);
+    void   setPoints(uint points);
     RsaToolbox::QRowVector toneDistances_Hz() const;
 
     // Measurement settings
@@ -61,7 +61,7 @@ private:
     // Tone spacing
     double _startToneDistance_Hz;
     double _stopToneDistance_Hz;
-    uint   _ToneDistancePoints;
+    uint   _points;
 
     // Settings
     double _power_dBm;

@@ -58,8 +58,8 @@ double IntermodSettings::startToneDistance_Hz() const {
 double IntermodSettings::stopToneDistance_Hz() const {
     return _stopToneDistance_Hz;
 }
-uint IntermodSettings::toneDistancePoints() const {
-    return _ToneDistancePoints;
+uint IntermodSettings::points() const {
+    return _points;
 }
 void IntermodSettings::setStartToneDistance(double frequency_Hz, SiPrefix prefix) {
     _startToneDistance_Hz = frequency_Hz * toDouble(prefix);
@@ -67,11 +67,11 @@ void IntermodSettings::setStartToneDistance(double frequency_Hz, SiPrefix prefix
 void IntermodSettings::setStopToneDistance(double frequency_Hz, SiPrefix prefix) {
     _stopToneDistance_Hz  = frequency_Hz * toDouble(prefix);
 }
-void IntermodSettings::setToneDistancePoints(uint points) {
-    _ToneDistancePoints   = points;
+void IntermodSettings::setPoints(uint points) {
+    _points   = points;
 }
 QRowVector IntermodSettings::toneDistances_Hz() const {
-    return linearSpacing(_startToneDistance_Hz, _stopToneDistance_Hz, _ToneDistancePoints);
+    return linearSpacing(_startToneDistance_Hz, _stopToneDistance_Hz, _points);
 }
 
 // Settings

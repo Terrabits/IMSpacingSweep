@@ -17,16 +17,129 @@ ProcessTraces::ProcessTraces(const QList<IntermodTraces> &traces,
       _channels(vna, baseChannel),
       _genFreq(settings)
 {
-    _diagram = _vna->createDiagram();
     preprocessTraces();
-    for (int i = 0; i < _traces.size(); i++) {
-        processTrace(_traces[i]);
-    }
 }
 
 ProcessTraces::~ProcessTraces()
 {
 
+}
+
+bool ProcessTraces::isReady(IntermodError &error) {
+    error.clear();
+
+    const uint vnaPorts = _vna->testPorts();
+
+    // Lower port
+    if (lowerPort() == 0 || lowerPort() > vnaPorts) {
+        error.code = IntermodError::Code::LowerSourcePort;
+        error.message = "*lower input port is invalid";
+        return false;
+    }
+
+    // Upper port
+    // Need to include generator...
+    if (upperPort() == 0 || upperPort() > vnaPorts) {
+        error.code = IntermodError::Code::UpperSource;
+        error.message = "*upper input is invalid";
+        return false;
+    }
+
+    // Output
+    if (outputPort() == 0 || outputPort() > vnaPorts) {
+        error.code = IntermodError::Code::ReceivingPort;
+        error.message = "*receiving port is invalid";
+        return false;
+    }
+
+    // Port overlap
+    if (lowerPort() == upperPort()) {
+        error.code = IntermodError::Code::UpperSource;
+        error.message = "*port assignments overlap";
+        return false;
+    }
+    if (lowerPort() == outputPort()) {
+        error.code = IntermodError::Code::LowerSource;
+        error.message = "*port assignments overlap";
+        return false;
+    }
+    if (upperPort() == outputPort()) {
+        error.code = IntermodError::Code::UpperSource;
+        error.message = "*port assignments overlap";
+        return false;
+    }
+
+    // Center frequency
+    const double center_Hz = _settings.centerFrequency_Hz();
+    const double min_Hz    = _vna->properties().minimumFrequency_Hz();
+    if (center_Hz < min_Hz) {
+        error.code = IntermodError::Code::CenterFrequency;
+        error.message = "*center frequency too low";
+        return false;
+    }
+    const double max_Hz    = _vna->properties().maximumFrequency_Hz();
+    if (center_Hz > max_Hz) {
+        error.code = IntermodError::Code::CenterFrequency;
+        error.message = "*center frequency too high";
+        return false;
+    }
+
+    // Tone distance
+    const double startDist_Hz = _settings.startToneDistance_Hz();
+    const double stopDist_Hz  = _settings.stopToneDistance_Hz ();
+    if (startDist_Hz <= 0) {
+        error.code = IntermodError::Code::StartToneDistance;
+        error.message = "*start tone distance must be greater than 0";
+        return false;
+    }
+    if (stopDist_Hz <= 0) {
+        error.code = IntermodError::Code::StopToneDistance;
+        error.message = "*stop tone distance must be greater than 0";
+        return false;
+    }
+    if (startDist_Hz >= stopDist_Hz) {
+        error.code = IntermodError::Code::StartToneDistance;
+        error.message = "*start tone distance must be greater than stop";
+        return false;
+    }
+    if (center_Hz - 0.5 * stopDist_Hz < min_Hz) {
+        error.code = IntermodError::Code::StopToneDistance;
+        error.message = "*tone distance too wide for VNA";
+        return false;
+    }
+    if (center_Hz + 0.5 * stopDist_Hz > max_Hz) {
+        error.code = IntermodError::Code::StopToneDistance;
+        error.message = "*tone distance too wide for VNA";
+        return false;
+    }
+
+    // Points
+    const uint points = _settings.points();
+    if (points == 0) {
+        error.code = IntermodError::Code::Points;
+        error.message = "*points must be greater than 0";
+        return false;
+    }
+    const uint maxPoints = _vna->properties().maximumPoints();
+    if (points > maxPoints) {
+        error.code = IntermodError::Code::Points;
+        error.message = "*points must be at most %1";
+        error.message = error.message.arg(maxPoints);
+        return false;
+    }
+
+    // Power
+    const double min_dBm = _vna->properties().minimumPower_dBm();
+
+    const double max_dBm = _vna->properties().maximumPower_dBm();
+
+
+}
+void ProcessTraces::run() {
+    _diagram = _vna->createDiagram();
+    for (int i = 0; i < _traces.size(); i++) {
+        processTrace(_traces[i]);
+    }
 }
 
 void ProcessTraces::preprocessTraces() {
@@ -122,7 +235,7 @@ void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
 
     // Always use lti?
     // Use mti (major)?
-    IntermodTrace t_in (TraceType::inputTone, Feature::lower);
+    IntermodTrace t_in (TraceType::inputTone, TraceFeature::lower);
     IntermodTrace t_out(TraceType::intermod,  t.feature(), t.order());
 
     QString expr = "%1 / %2";
@@ -146,7 +259,7 @@ void ProcessTraces::processInterceptTrace(const IntermodTrace &t) {
     t.setDiagram(_diagram);
 
     // How do I even calculate intercept?
-    IntermodTrace t_in (TraceType::inputTone, Feature::lower);
+    IntermodTrace t_in (TraceType::inputTone, TraceFeature::lower);
     IntermodTrace t_out(TraceType::intermod,  t.feature(), t.order());
 
     QString expr = "%1 / %2";
