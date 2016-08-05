@@ -54,10 +54,8 @@ VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(uint n) const {
 }
 
 double FrequencyConversionGenerator::minLowerFreq_Hz(uint n) {
-    const double center_Hz   = _settings.centerFrequency_Hz();
-    const double distance_Hz = _settings.stopToneDistance_Hz();
-    return
+    return 0;
 }
 double FrequencyConversionGenerator::maxUpperFreq_Hz(uint n) {
-
+    return 1.0E12;
 }

@@ -68,17 +68,14 @@ Definitions
 `fc = center frequency`  
 `fd = tone distance`  
 
-N-prime:  
-`Np = (N + 1)/2`
-
 Channel base frequency
 ----------------------
 `fb = -fc - 1/2*fd`
 
 Frequency conversion
 --------------------
-| Position | Order | Numerator | Denominator | Offset    | Note                 |
-|----------|-------|-----------|-------------|-----------|----------------------|
-| Lower    | 1     |  N/A      | N/A         | N/A       | = fb = fc - 1/2 * fd |
-| Lower    | N     |  Np       | 1           | (1-Np)*fc | N >= 3, N odd        |
-| Upper    | N     | -Np       | 1           | (1+Np)*fc | N >= 1, N odd        |
+| Position | Order | Numerator | Denominator | Offset   | Note                 |
+|----------|-------|-----------|-------------|----------|----------------------|
+| Lower    | 1     |  N/A      | N/A         | N/A      | = fb = fc - 1/2 * fd |
+| Lower    | N     |  Np       | 1           | (1-N)*fc | N >= 3, N odd        |
+| Upper    | N     | -Np       | 1           | (1+N)*fc | N >= 1, N odd        |
