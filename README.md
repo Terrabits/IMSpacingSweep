@@ -77,5 +77,5 @@ Frequency conversion
 | Position | Order | Numerator | Denominator | Offset   | Note                 |
 |----------|-------|-----------|-------------|----------|----------------------|
 | Lower    | 1     |  N/A      | N/A         | N/A      | = fb = fc - 1/2 * fd |
-| Lower    | N     |  Np       | 1           | (1-N)*fc | N >= 3, N odd        |
-| Upper    | N     | -Np       | 1           | (1+N)*fc | N >= 1, N odd        |
+| Lower    | N     |  N        | 1           | (1-N)*fc | N >= 3, N odd        |
+| Upper    | N     | -N        | 1           | (1+N)*fc | N >= 1, N odd        |
