@@ -31,12 +31,13 @@ void IntermodTraceTest::accessors_data() {
     QTest::addColumn<bool     >("hasOrder");
     QTest::addColumn<uint     >("order"   );
 
-    // TEST NAME              TraceType                Feature           hasOrder?   n
-    QTest::newRow("uti"  ) << TraceType::inputTone  << TraceFeature::upper << false    << uint(0);
-    QTest::newRow("lto"  ) << TraceType::outputTone << TraceFeature::lower << false    << uint(0);
-    QTest::newRow("im3m" ) << TraceType::intermod   << TraceFeature::major << true     << uint(3);
-    QTest::newRow("im5lr") << TraceType::relative   << TraceFeature::lower << true     << uint(5);
-    QTest::newRow("ip7m" ) << TraceType::intercept  << TraceFeature::major << true     << uint(7);
+    // TEST NAME               TraceType                     Feature                hasOrder?   n
+    QTest::newRow("uti"   ) << TraceType::inputTone       << TraceFeature::upper << false    << uint(0);
+    QTest::newRow("lto"   ) << TraceType::outputTone      << TraceFeature::lower << false    << uint(0);
+    QTest::newRow("im3m"  ) << TraceType::intermod        << TraceFeature::major << true     << uint(3);
+    QTest::newRow("im5lr" ) << TraceType::relative        << TraceFeature::lower << true     << uint(5);
+    QTest::newRow("ip7mo" ) << TraceType::outputIntercept << TraceFeature::major << true     << uint(7);
+    QTest::newRow("ip7mi" ) << TraceType::inputIntercept  << TraceFeature::lower << true     << uint(9);
 }
 void IntermodTraceTest::accessors() {
     QFETCH(TraceType, type    );
@@ -58,18 +59,31 @@ void IntermodTraceTest::accessors() {
 void IntermodTraceTest::constructors() {
     IntermodTrace t1;
     QCOMPARE(t1.type()    , TraceType::inputTone);
-    QCOMPARE(t1.feature() , TraceFeature::lower);
+    QCOMPARE(t1.feature() , TraceFeature::lower );
     QCOMPARE(t1.hasOrder(), false         );
 
     IntermodTrace t2(TraceType::intermod, TraceFeature::major, /*order=*/ 3);
     QCOMPARE(t2.type()   , TraceType::intermod);
-    QCOMPARE(t2.feature(), TraceFeature::major     );
+    QCOMPARE(t2.feature(), TraceFeature::major);
     QCOMPARE(t2.order()  , uint(3));
 
-    IntermodTrace t3("5th Upper Intercept");
-    QCOMPARE(t3.type()   , TraceType::intercept);
-    QCOMPARE(t3.feature(), TraceFeature::upper      );
+    IntermodTrace t3("5th Upper Output Intercept");
+    QCOMPARE(t3.type()   , TraceType::outputIntercept);
+    QCOMPARE(t3.feature(), TraceFeature::upper       );
     QCOMPARE(t3.order()  , uint(5));
+
+    IntermodTrace t4("9th Lower Input Intercept");
+    QCOMPARE(t4.type()   , TraceType::inputIntercept);
+    QCOMPARE(t4.feature(), TraceFeature::lower      );
+    QCOMPARE(t4.order()  , uint(9));
+
+    IntermodTrace t5("Upper Input");
+    QCOMPARE(t5.type()   , TraceType::inputTone);
+    QCOMPARE(t5.feature(), TraceFeature::upper  );
+
+    IntermodTrace t6("Lower Output");
+    QCOMPARE(t6.type()   , TraceType::outputTone);
+    QCOMPARE(t6.feature(), TraceFeature::lower  );
 }
 
 void IntermodTraceTest::display() {
@@ -106,7 +120,7 @@ void IntermodTraceTest::sort() {
 
     // 6th: 9th Major Intercept
     IntermodTrace t6;
-    t6.setType   (TraceType::intercept);
+    t6.setType   (TraceType::outputIntercept);
     t6.setFeature(TraceFeature::major);
     t6.setOrder  (9);
 

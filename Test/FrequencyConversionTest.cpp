@@ -143,6 +143,41 @@ void FrequencyConversionTest::basic() {
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 }
+void FrequencyConversionTest::limits() {
+    //  center frequency = 1 GHz
+    //  tone distance    = [10 MHz ... 100 MHz]
+    //
+    //  | N | Side | Start      | Stop    |
+    //  |---|------|-----------|----------|
+    //  | 1 | L    | 0.995 GHz | 0.95 GHz |
+    //  | 3 | L    | 0.985 GHz | 0.85 GHz |
+    //  | 5 | L    | 0.975 GHz | 0.75 GHz |
+    //  | 7 | L    | 0.965 GHz | 0.65 GHz |
+    //  | 9 | L    | 0.955 GHz | 0.55 GHz |
+    //  | 1 | U    | 1.005 GHz | 1.05 GHz |
+    //  | 3 | U    | 1.015 GHz | 1.15 GHz |
+    //  | 5 | U    | 1.025 GHz | 1.25 GHz |
+    //  | 7 | U    | 1.035 GHz | 1.35 GHz |
+    //  | 9 | U    | 1.045 GHz | 1.45 GHz |
+    //
+    IntermodSettings settings;
+    settings.setCenterFrequency  (1,   SiPrefix::Giga);
+    settings.setStartToneDistance(10,  SiPrefix::Mega);
+    settings.setStopToneDistance (100, SiPrefix::Mega);
+    settings.setPoints(10);
+
+    FrequencyConversionGenerator gen(settings);
+    QCOMPARE(gen.minLowerFreq_Hz(1), 0.95e9);
+    QCOMPARE(gen.minLowerFreq_Hz(3), 0.85e9);
+    QCOMPARE(gen.minLowerFreq_Hz(5), 0.75e9);
+    QCOMPARE(gen.minLowerFreq_Hz(7), 0.65e9);
+    QCOMPARE(gen.minLowerFreq_Hz(9), 0.55e9);
+    QCOMPARE(gen.maxUpperFreq_Hz(1), 1.05e9);
+    QCOMPARE(gen.maxUpperFreq_Hz(3), 1.15e9);
+    QCOMPARE(gen.maxUpperFreq_Hz(5), 1.25e9);
+    QCOMPARE(gen.maxUpperFreq_Hz(7), 1.35e9);
+    QCOMPARE(gen.maxUpperFreq_Hz(9), 1.45e9);
+}
 
 // private
 double FrequencyConversionTest::calculateConversion_Hz(const VnaArbitraryFrequency &c, double fb_Hz) {

@@ -21,7 +21,8 @@ public:
     ~FrequencyConversionTest();
 
 private slots:
-    void basic();
+    void basic ();
+    void limits();
 
 private:
     static double calculateConversion_Hz (const RsaToolbox::VnaArbitraryFrequency &c,         double fb_Hz);

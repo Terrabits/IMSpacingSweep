@@ -45,6 +45,7 @@ private:
     void preprocessTraces  ();
     bool hasDependency     (const IntermodTrace &t) const;
     void insertDependencies(const IntermodTrace &t);
+    void sort              ();
 
     // Process
     void processTrace      (const IntermodTrace &t);

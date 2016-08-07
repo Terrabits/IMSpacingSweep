@@ -171,7 +171,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
         const IntermodTrace t = _traces[i];
         if (isFreqOutsideVna(t)) {
             error.code    = IntermodError::Code::Order;
-            error.message = "*%1 outside range of VNA";
+            error.message = "*%1 outside VNA frequency range";
             error.message = error.message.arg(t.display());
             return false;
         }
@@ -188,7 +188,19 @@ void ProcessTraces::run() {
 
 // isReady
 bool ProcessTraces::isFreqOutsideVna(const IntermodTrace &t) const {
+    const double vnaMin = _vna->properties().minimumFrequency_Hz();
+    const double vnaMax = _vna->properties().maximumFrequency_Hz();
+    if (t.isLower() || t.isMajor()) {
+        if (_genFreq.minLowerFreq_Hz(t.order()) < vnaMin)
+            return true;
+    }
+    else if (t.isUpper() || t.isMajor()) {
+        if (_genFreq.maxUpperFreq_Hz(t.order()) > vnaMax)
+            return true;
+    }
 
+    // Else
+    return true;
 }
 
 // Preprocess
@@ -199,6 +211,7 @@ void ProcessTraces::preprocessTraces() {
             insertDependencies(t);
         }
     }
+    sort();
 }
 bool ProcessTraces::hasDependency(const IntermodTrace &t) const {
     if (!t.isDependent())
@@ -221,6 +234,8 @@ void ProcessTraces::insertDependencies(const IntermodTrace &t) {
             _traces.append(d);
         }
     }
+}
+void ProcessTraces::sort() {
     std::sort(_traces.begin(), _traces.end());
 }
 
@@ -238,7 +253,7 @@ void ProcessTraces::processTrace(const IntermodTrace &t) {
     case TraceType::relative:
         processRelativeTrace(t);
         return;
-    case TraceType::intercept:
+    case TraceType::outputIntercept:
         processInterceptTrace(t);
         return;
     default:

@@ -35,27 +35,33 @@ VnaArbitraryFrequency FrequencyConversionGenerator::upperInput() const {
 // intermod (output)
 VnaArbitraryFrequency FrequencyConversionGenerator::lowerOutput(uint n) const {
     VnaArbitraryFrequency fc;
-    if (n == 1)
+    if (n == 1) {
+        fc.setNumerator  (1);
+        fc.setDenominator(1);
+        fc.setOffset     (0);
         return fc;
+    }
 
-    const uint np =  (n + 1)/2;
-    fc.setNumerator  (np );
+    fc.setNumerator  (n );
     fc.setDenominator(1.0);
-    fc.setOffset     (( 1.0 - np) * _settings.centerFrequency_Hz());
+    fc.setOffset     (( 1.0 - n) * _settings.centerFrequency_Hz());
     return fc;
 }
 VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(uint n) const {
     VnaArbitraryFrequency fc;
-    const uint np = (n + 1)/2;
-    fc.setNumerator  (-1.0*np);
-    fc.setDenominator(1.0    );
-    fc.setOffset     (( 1.0 + np) * _settings.centerFrequency_Hz());
+    fc.setNumerator  (-1.0*n);
+    fc.setDenominator(1.0   );
+    fc.setOffset     (( 1.0 + n) * _settings.centerFrequency_Hz());
     return fc;
 }
 
 double FrequencyConversionGenerator::minLowerFreq_Hz(uint n) {
-    return 0;
+    const double cf_Hz = _settings.centerFrequency_Hz ();
+    const double td_Hz = _settings.stopToneDistance_Hz();
+    return cf_Hz - n/2.0 * td_Hz;
 }
 double FrequencyConversionGenerator::maxUpperFreq_Hz(uint n) {
-    return 1.0E12;
+    const double cf_Hz = _settings.centerFrequency_Hz ();
+    const double td_Hz = _settings.stopToneDistance_Hz();
+    return cf_Hz + n/2.0 * td_Hz;
 }

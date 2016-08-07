@@ -16,7 +16,8 @@ enum /*class*/ TraceType {
     outputTone,
     intermod,
     relative,
-    intercept
+    outputIntercept,
+    inputIntercept
 };
 QString toString(TraceType type);
 Q_DECLARE_METATYPE(TraceType)
@@ -55,6 +56,8 @@ public:
     bool isIntermod  () const;
     bool isRelative  () const;
     bool isIntercept () const;
+    bool isOutputIntercept() const;
+    bool isInputIntercept () const;
 
     // is feature
     bool isLower() const;

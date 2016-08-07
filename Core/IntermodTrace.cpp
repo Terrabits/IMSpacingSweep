@@ -18,8 +18,10 @@ QString toString(TraceType type) {
         return "Intermod";
     case TraceType::relative:
         return "Relative";
-    case TraceType::intercept:
-        return "Intercept";
+    case TraceType::outputIntercept:
+        return "Output Intercept";
+    case TraceType::inputIntercept:
+        return "Input Intercept";
     default:
         return "Input";
     }
@@ -63,25 +65,30 @@ IntermodTrace::IntermodTrace(QString s) {
     s = s.toLower();
 
     // Type
-    const QString input     = toString(TraceType::inputTone ).toLower();
-    const QString output    = toString(TraceType::outputTone).toLower();
-    const QString intermod  = toString(TraceType::intermod  ).toLower();
-    const QString relative  = toString(TraceType::relative  ).toLower();
-    const QString intercept = toString(TraceType::intercept ).toLower();
-    if (s.contains(input)) {
-        _type = TraceType::inputTone;
-    }
-    else if (s.contains(output)) {
-        _type = TraceType::outputTone;
-    }
-    else if (s.contains(intermod)) {
+    const QString input        = toString(TraceType::inputTone ).toLower();
+    const QString output       = toString(TraceType::outputTone).toLower();
+    const QString intermod     = toString(TraceType::intermod  ).toLower();
+    const QString relative     = toString(TraceType::relative  ).toLower();
+    const QString outIntercept = toString(TraceType::outputIntercept ).toLower();
+    const QString inIntercept  = toString(TraceType::inputIntercept).toLower();
+
+    if (s.contains(intermod)) {
         _type = TraceType::intermod;
     }
     else if (s.contains(relative)) {
         _type = TraceType::relative;
     }
-    else if (s.contains(intercept)) {
-        _type = TraceType::intercept;
+    else if (s.contains(outIntercept)) {
+        _type = TraceType::outputIntercept;
+    }
+    else if (s.contains(inIntercept)) {
+        _type = TraceType::inputIntercept;
+    }
+    if (s.contains(input)) {
+        _type = TraceType::inputTone;
+    }
+    else if (s.contains(output)) {
+        _type = TraceType::outputTone;
     }
     else {
         // default type
@@ -163,6 +170,46 @@ bool IntermodTrace::isDependent() const {
 
     return false;
 }
+QList<IntermodTrace> IntermodTrace::dependents() const {
+    QList<IntermodTrace> deps;
+    if (isRelative()) {
+        IntermodTrace t;
+        t.setType   (TraceType::outputTone);
+        t.setFeature(TraceFeature::lower);
+        deps << t;
+
+        t.setType   (TraceType::intermod);
+        t.setFeature(feature());
+        t.setOrder  (order());
+        deps << t;
+        return deps;
+    }
+    if (isIntercept()) {
+        IntermodTrace t;
+        t.setType(TraceType::outputTone);
+        t.setFeature(TraceFeature::lower);
+        deps << t;
+
+        t.setType(TraceType::intermod);
+        t.setFeature(feature());
+        t.setOrder(order());
+        return deps;
+    }
+    if (isMajor()) {
+        IntermodTrace t;
+        t.setType(type());
+        t.setOrder(order());
+
+        t.setFeature(TraceFeature::lower);
+        deps << t;
+        t.setFeature(TraceFeature::upper);
+        deps << t;
+        return deps;
+    }
+
+    // Else
+    return deps;
+}
 
 // isType
 bool IntermodTrace::isInputTone() const {
@@ -178,7 +225,13 @@ bool IntermodTrace::isRelative() const {
     return _type == TraceType::relative;
 }
 bool IntermodTrace::isIntercept() const {
-    return _type == TraceType::intercept;
+    return isOutputIntercept() || isInputIntercept();
+}
+bool IntermodTrace::isOutputIntercept() const {
+    return _type == TraceType::outputIntercept;
+}
+bool IntermodTrace::isInputIntercept () const {
+    return _type == TraceType::inputIntercept;
 }
 
 // isFeature
@@ -252,9 +305,7 @@ void IntermodTrace::setFeature(TraceFeature feature) {
     _feature = feature;
 }
 void IntermodTrace::setOrder  (uint n)          {
-    if (isInputTone() || isOutputTone())
-        _order = 1;
-    else if (n <  3)
+    if (n <  3)
         _order =  3;
     else if (n >  9)
         _order =  9;
@@ -281,7 +332,8 @@ QString IntermodTrace::display()       const {
         return result;
     case TraceType::intermod:
     case TraceType::relative:
-    case TraceType::intercept:
+    case TraceType::outputIntercept:
+    case TraceType::inputIntercept:
         result = "%1 %2 %3";
         result = result.arg(orderString  ());
         result = result.arg(featureString());
@@ -311,8 +363,13 @@ QString IntermodTrace::abbreviate()    const {
         result = "im%1%2or";
         result = result.arg(_order);
         result = result.arg(abbreviateFeature());
-    case TraceType::intercept:
+    case TraceType::outputIntercept:
         result = "ip%1%2o";
+        result = result.arg(_order);
+        result = result.arg(abbreviateFeature());
+        return result;
+    case TraceType::inputIntercept:
+        result = "ip%1%2i";
         result = result.arg(_order);
         result = result.arg(abbreviateFeature());
         return result;

@@ -59,12 +59,20 @@ void IntermodChannelsTest::basic() {
     QCOMPARE(_vna->numberOfChannels(), uint(1));
     QVERIFY (!_vna->isError());
 
-    t.setType(TraceType::intercept);
+    t.setType(TraceType::outputIntercept);
     t.setFeature(TraceFeature::major);
     t.setOrder(7);
     c = channels.create(t);
     QCOMPARE(c.name(), QString("ip7mo_im_ch1"));
     QCOMPARE(_vna->numberOfChannels(), uint(2));
+    QVERIFY (!_vna->isError());
+
+    t.setType(TraceType::inputIntercept);
+    t.setFeature(TraceFeature::lower);
+    t.setOrder(9);
+    c = channels.create(t);
+    QCOMPARE(c.name(), QString("ip9li_im_ch1"));
+    QCOMPARE(_vna->numberOfChannels(), uint(3));
     QVERIFY (!_vna->isError());
 
     channels.collapse();

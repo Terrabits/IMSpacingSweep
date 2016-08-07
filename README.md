@@ -13,6 +13,46 @@ https://github.com/Terrabits/RsaToolbox
 
 To build this project, first build RsaToolbox into a shared library in Qt Creator, then build this project in Qt Creator as well. This project was written for and tested exclusively in Windows environments running Windows XP and later. It should compile to other platforms as well, but it might take some effort. Some of the groundwork to compile for MacOS is in place. Linux has never been attempted.
 
+Measurement Types
+=================
+
+definitions
+-----------
+
+### Type
+T  = tone
+IM = Intermod
+R  = Relative
+IP = Intercept Point
+
+### Feature
+L = Lower
+U = Upper
+M = Major (max)
+
+### Location
+O  = Output
+I  = Input
+
+Traces
+------
+
+| Type | Features | Locations | Examples       |
+|------|----------|-----------|----------------|
+| T    | L, U     | I, O      | LTI,    UTO    |
+| IM   | L, U, M  | O         | IM3LO,  IM5MO  |
+| IM R | L, U, M  | O         | IM3LOR, IM7MOR |
+| IP   | L, U, M  | I, O      | IP3LO,  IP9MI  |
+
+Relative Intermod Definition
+----------------------------
+`IMR[n] dB = LTO dBm - IM[n] dBm`
+
+
+Intercept Point Definition
+--------------------------
+`IP[n] dBm = LT dBm  + IMR[n] dB`
+
 Intermod (vs center frequency) SCPI commands
 ============================================
 This measurement (intermod with fixed tone distance, sweeping center frequency) is already available on the instrument. You can ask via SCPI for these measurements and results directly.  
