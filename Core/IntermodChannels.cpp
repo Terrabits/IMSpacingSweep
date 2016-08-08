@@ -6,9 +6,9 @@ using namespace RsaToolbox;
 
 
 IntermodChannels::IntermodChannels(RsaToolbox::Vna *vna, uint baseChannel) :
-    _vna(vna),
-    _base(baseChannel),
-    _usedBase(false)
+    _vna     (vna        ),
+    _base    (baseChannel),
+    _usedBase(false      )
 {
     collapse();
 }
@@ -16,6 +16,10 @@ IntermodChannels::IntermodChannels(RsaToolbox::Vna *vna, uint baseChannel) :
 IntermodChannels::~IntermodChannels()
 {
 
+}
+
+uint IntermodChannels::base() const {
+    return _base;
 }
 
 QVector<uint> IntermodChannels::all() {
@@ -37,6 +41,10 @@ VnaChannel IntermodChannels::create(const IntermodTrace &t) {
     _vna->channel(_base).select();
     uint i;
     if (!_usedBase) {
+        VnaChannel ch = _vna->channel(_base);
+        const QStringList  traces = ch.traces();
+        _vna->deleteTraces(traces);
+
         i = _base;
         _usedBase = true;
     }
@@ -67,7 +75,14 @@ void IntermodChannels::collapse() {
     }
 
     _vna->deleteChannels(_most);
+    deleteTraces();
     _usedBase = false;
+}
+
+void IntermodChannels::deleteTraces() {
+    VnaChannel  c      = _vna->channel(_base);
+    QStringList traces = c.traces();
+    _vna->deleteTraces(traces);
 }
 
 QString IntermodChannels::name(const IntermodTrace &t) {

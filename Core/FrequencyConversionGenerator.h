@@ -6,7 +6,7 @@
 #include "IntermodSettings.h"
 
 // RsaToolbox
-#include "VnaArbitraryFrequency.h"
+#include <VnaArbitraryFrequency.h>
 
 
 class FrequencyConversionGenerator
@@ -29,8 +29,8 @@ public:
     RsaToolbox::VnaArbitraryFrequency lowerOutput(uint n) const;
     RsaToolbox::VnaArbitraryFrequency upperOutput(uint n) const;
 
-    double minLowerFreq_Hz(uint n);
-    double maxUpperFreq_Hz(uint n);
+    double minLowerFreq_Hz  (uint n) const;
+    double maxUpperFreq_Hz  (uint n) const;
 
 private:
     IntermodSettings _settings;

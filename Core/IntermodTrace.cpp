@@ -84,7 +84,7 @@ IntermodTrace::IntermodTrace(QString s) {
     else if (s.contains(inIntercept)) {
         _type = TraceType::inputIntercept;
     }
-    if (s.contains(input)) {
+    else if (s.contains(input)) {
         _type = TraceType::inputTone;
     }
     else if (s.contains(output)) {
@@ -172,6 +172,7 @@ bool IntermodTrace::isDependent() const {
 }
 QList<IntermodTrace> IntermodTrace::dependents() const {
     QList<IntermodTrace> deps;
+    // Relative Intermod
     if (isRelative()) {
         IntermodTrace t;
         t.setType   (TraceType::outputTone);
@@ -184,20 +185,26 @@ QList<IntermodTrace> IntermodTrace::dependents() const {
         deps << t;
         return deps;
     }
+    // Intercept
     if (isIntercept()) {
         IntermodTrace t;
-        t.setType(TraceType::outputTone);
-        t.setFeature(TraceFeature::lower);
+        if (isOutputIntercept())
+            t.setType(TraceType::outputTone);
+        else
+            t.setType(TraceType::inputTone );
+        t.setFeature (TraceFeature::lower);
         deps << t;
 
-        t.setType(TraceType::intermod);
+        t.setType   (TraceType::relative);
         t.setFeature(feature());
-        t.setOrder(order());
+        t.setOrder  (order());
+        deps << t;
         return deps;
     }
+    // Major
     if (isMajor()) {
         IntermodTrace t;
-        t.setType(type());
+        t.setType (type());
         t.setOrder(order());
 
         t.setFeature(TraceFeature::lower);
@@ -363,13 +370,14 @@ QString IntermodTrace::abbreviate()    const {
         result = "im%1%2or";
         result = result.arg(_order);
         result = result.arg(abbreviateFeature());
-    case TraceType::outputIntercept:
-        result = "ip%1%2o";
-        result = result.arg(_order);
-        result = result.arg(abbreviateFeature());
         return result;
     case TraceType::inputIntercept:
         result = "ip%1%2i";
+        result = result.arg(_order);
+        result = result.arg(abbreviateFeature());
+        return result;
+    case TraceType::outputIntercept:
+        result = "ip%1%2o";
         result = result.arg(_order);
         result = result.arg(abbreviateFeature());
         return result;

@@ -23,18 +23,18 @@ void FrequencyConversionTest::basic() {
     //  center frequency = 1 GHz
     //  tone distance    = [10 MHz ... 100 MHz]
     //
-    //  | N | Side | Start      | Stop    |
-    //  |---|------|-----------|----------|
-    //  | 1 | L    | 0.995 GHz | 0.95 GHz |
-    //  | 3 | L    | 0.985 GHz | 0.85 GHz |
-    //  | 5 | L    | 0.975 GHz | 0.75 GHz |
-    //  | 7 | L    | 0.965 GHz | 0.65 GHz |
-    //  | 9 | L    | 0.955 GHz | 0.55 GHz |
-    //  | 1 | U    | 1.005 GHz | 1.05 GHz |
-    //  | 3 | U    | 1.015 GHz | 1.15 GHz |
-    //  | 5 | U    | 1.025 GHz | 1.25 GHz |
-    //  | 7 | U    | 1.035 GHz | 1.35 GHz |
-    //  | 9 | U    | 1.045 GHz | 1.45 GHz |
+    //  | N | Side | Start     | Stop      |
+    //  |---|------|-----------|-----------|
+    //  | 1 | L    | 0.950 GHz | 0.995 GHz |
+    //  | 3 | L    | 0.850 GHz | 0.985 GHz |
+    //  | 5 | L    | 0.750 GHz | 0.975 GHz |
+    //  | 7 | L    | 0.650 GHz | 0.965 GHz |
+    //  | 9 | L    | 0.550 GHz | 0.955 GHz |
+    //  | 1 | U    | 1.050 GHz | 1.005 GHz |
+    //  | 3 | U    | 1.150 GHz | 1.015 GHz |
+    //  | 5 | U    | 1.250 GHz | 1.025 GHz |
+    //  | 7 | U    | 1.350 GHz | 1.035 GHz |
+    //  | 9 | U    | 1.450 GHz | 1.045 GHz |
     //
 
     // distance
@@ -48,8 +48,8 @@ void FrequencyConversionTest::basic() {
     s.setCenterFrequency(centerFreq_Hz);
 
     // Channel settings
-    double fbStart_Hz = 0.995e9;
-    double fbStop_Hz  = 0.950e9;
+    double fbStart_Hz = 0.950e9;
+    double fbStop_Hz  = 0.995e9;
     FrequencyConversionGenerator g(s);
     QCOMPARE(g.channelStartFrequency_Hz(), fbStart_Hz);
     QCOMPARE(g.channelStopFrequency_Hz (), fbStop_Hz );
@@ -65,80 +65,80 @@ void FrequencyConversionTest::basic() {
     QCOMPARE(calculateLowerInput_Hz(g, fbStop_Hz ), fbStop_Hz );
 
     // upper input
-    double start_Hz = 1.005e9;
-    double stop_Hz  = 1.050e9;
+    double start_Hz = 1.050e9;
+    double stop_Hz  = 1.005e9;
     QVERIFY (g.upperInput().isGeneratorPort());
     QCOMPARE(calculateUpperInput_Hz(g, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperInput_Hz(g, fbStop_Hz ), stop_Hz );
 
     // lower output
     uint n = 1;
-    start_Hz = 0.995e9;
-    stop_Hz  = 0.950e9;
+    start_Hz = 0.950e9;
+    stop_Hz  = 0.995e9;
     QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 3;
-    start_Hz = 0.985e9;
-    stop_Hz  = 0.850e9;
+    start_Hz = 0.850e9;
+    stop_Hz  = 0.985e9;
     QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 5;
-    start_Hz = 0.975e9;
-    stop_Hz  = 0.750e9;
+    start_Hz = 0.750e9;
+    stop_Hz  = 0.975e9;
     QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 7;
-    start_Hz = 0.965e9;
-    stop_Hz  = 0.650e9;
+    start_Hz = 0.650e9;
+    stop_Hz  = 0.965e9;
     QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 9;
-    start_Hz = 0.955e9;
-    stop_Hz  = 0.550e9;
+    start_Hz = 0.550e9;
+    stop_Hz  = 0.955e9;
     QVERIFY (!g.lowerOutput(n).isGeneratorPort());
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateLowerOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     // upper output
     n = 1;
-    start_Hz = 1.005e9;
-    stop_Hz  = 1.050e9;
+    start_Hz = 1.050e9;
+    stop_Hz  = 1.005e9;
     QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 3;
-    start_Hz = 1.015e9;
-    stop_Hz  = 1.150e9;
+    start_Hz = 1.15e9;
+    stop_Hz  = 1.015e9;
     QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 5;
-    start_Hz = 1.025e9;
-    stop_Hz  = 1.250e9;
+    start_Hz = 1.250e9;
+    stop_Hz  = 1.025e9;
     QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 7;
-    start_Hz = 1.035e9;
-    stop_Hz  = 1.350e9;
+    start_Hz = 1.350e9;
+    stop_Hz  = 1.035e9;
     QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );
 
     n = 9;
-    start_Hz = 1.045e9;
-    stop_Hz  = 1.450e9;
+    start_Hz = 1.450e9;
+    stop_Hz  = 1.045e9;
     QVERIFY (!g.upperOutput(n).isGeneratorPort());
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStart_Hz), start_Hz);
     QCOMPARE(calculateUpperOutput_Hz(g, n, fbStop_Hz ), stop_Hz );

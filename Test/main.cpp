@@ -7,6 +7,7 @@
 #include "IntermodTraceModelTest.h"
 #include "IntermodTraceTest.h"
 #include "IntermodWidgetTest.h"
+#include "ProcessTracesTest.h"
 #include "TracesWidgetTest.h"
 
 // RsaToolbox
@@ -27,8 +28,9 @@ int main()
 
     TestRunner testRunner;
     testRunner.addTest(new FrequencyConversionTest);
-    testRunner.addTest(new IntermodTraceTest);
+    testRunner.addTest(new IntermodTraceTest      );
     testRunner.addTest(new IntermodChannelsTest(connectionType, address));
+    testRunner.addTest(new ProcessTracesTest   (connectionType, address));
 
     // Fix these:
 //    testRunner.addTest(new IntermodTraceModelTest);

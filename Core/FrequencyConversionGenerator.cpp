@@ -2,6 +2,7 @@
 
 
 // RsaToolbox
+#include <General.h>
 using namespace RsaToolbox;
 
 FrequencyConversionGenerator::FrequencyConversionGenerator(const IntermodSettings &settings)
@@ -16,10 +17,14 @@ FrequencyConversionGenerator::~FrequencyConversionGenerator()
 
 // channel
 double FrequencyConversionGenerator::channelStartFrequency_Hz() const {
-    return _settings.centerFrequency_Hz() - (1.0/2.0) * _settings.startToneDistance_Hz();
+    const double cf_Hz = _settings.centerFrequency_Hz ();
+    const double td_Hz = _settings.stopToneDistance_Hz();
+    return cf_Hz - (1.0/2.0) * td_Hz;
 }
 double FrequencyConversionGenerator::channelStopFrequency_Hz() const {
-    return _settings.centerFrequency_Hz() - (1.0/2.0) * _settings.stopToneDistance_Hz();
+    const double cf_Hz = _settings.centerFrequency_Hz  ();
+    const double td_Hz = _settings.startToneDistance_Hz();
+    return cf_Hz - (1.0/2.0) * td_Hz;
 }
 
 // input
@@ -55,12 +60,12 @@ VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(uint n) const {
     return fc;
 }
 
-double FrequencyConversionGenerator::minLowerFreq_Hz(uint n) {
+double FrequencyConversionGenerator::minLowerFreq_Hz(uint n) const {
     const double cf_Hz = _settings.centerFrequency_Hz ();
     const double td_Hz = _settings.stopToneDistance_Hz();
     return cf_Hz - n/2.0 * td_Hz;
 }
-double FrequencyConversionGenerator::maxUpperFreq_Hz(uint n) {
+double FrequencyConversionGenerator::maxUpperFreq_Hz(uint n) const {
     const double cf_Hz = _settings.centerFrequency_Hz ();
     const double td_Hz = _settings.stopToneDistance_Hz();
     return cf_Hz + n/2.0 * td_Hz;

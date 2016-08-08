@@ -16,8 +16,8 @@ enum /*class*/ TraceType {
     outputTone,
     intermod,
     relative,
-    outputIntercept,
-    inputIntercept
+    inputIntercept,
+    outputIntercept
 };
 QString toString(TraceType type);
 Q_DECLARE_METATYPE(TraceType)
@@ -115,25 +115,32 @@ bool operator!=(const IntermodTrace &left, const IntermodTrace &right);
 // Sort order as you'd expect
 //
 // Example:
-// | Type      | Feature | Order |
-// |-----------|---------|-------|
-// | input     | lower   | N/A   |
-// | input     | upper   | N/A   |
-// | output    | lower   | N/A   |
-// | output    | upper   | N/A   |
-// | intermod  | lower   | 3     |
-// | intermod  | upper   | 3     |
-// | intermod  | major   | 3     |
-// | intermod  | lower   | 5     |
-// | intermod  | ...     | ...   |
-// | relative  | lower   | 3     |
-// | relative  | upper   | 3     |
-// | relative  | major   | 3     |
-// | relative  | lower   | 5     |
-// | relative  | ...     | ...   |
-// | intercept | major   | 3     |
-// | intercept | major   | 5     |
-// | intercept | ...     | ...   |
+// | Type             | Feature | Order |
+// |------------------|---------|-------|
+// | input            | lower   | N/A   |
+// | input            | upper   | N/A   |
+// | output           | lower   | N/A   |
+// | output           | upper   | N/A   |
+// | intermod         | lower   | 3     |
+// | intermod         | upper   | 3     |
+// | intermod         | major   | 3     |
+// | intermod         | lower   | 5     |
+// | intermod         | ...     | ...   |
+// | relative         | lower   | 3     |
+// | relative         | upper   | 3     |
+// | relative         | major   | 3     |
+// | relative         | lower   | 5     |
+// | relative         | ...     | ...   |
+// | input  intercept | lower   | 3     |
+// | input  intercept | upper   | 3     |
+// | input  intercept | major   | 3     |
+// | input  intercept | lower   | 5     |
+// | input  intercept | ...     | ...   |
+// | output intercept | lower   | 3     |
+// | output intercept | upper   | 3     |
+// | output intercept | major   | 3     |
+// | output intercept | lower   | 5     |
+// | output intercept | ...     | ...   |
 //
 bool operator< (const IntermodTrace &left, const IntermodTrace &right);
 bool operator<=(const IntermodTrace &left, const IntermodTrace &right);

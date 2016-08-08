@@ -8,6 +8,7 @@
 using namespace RsaToolbox;
 
 // Qt
+#include <QDebug>
 #include <QString>
 
 // std lib

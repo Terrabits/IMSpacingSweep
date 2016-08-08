@@ -8,7 +8,7 @@
 using namespace RsaToolbox;
 
 
-ProcessTraces::ProcessTraces(const QList<IntermodTraces> &traces,
+ProcessTraces::ProcessTraces(const QList<IntermodTrace> &traces,
                              const IntermodSettings &settings,
                              RsaToolbox::Vna *vna,
                              uint baseChannel)
@@ -60,7 +60,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
         return false;
     }
     if (lowerPort() == outputPort()) {
-        error.code = IntermodError::Code::LowerSource;
+        error.code = IntermodError::Code::LowerSourcePort;
         error.message = "*port assignments overlap";
         return false;
     }
@@ -179,10 +179,35 @@ bool ProcessTraces::isReady(IntermodError &error) {
 
     return true;
 }
+uint ProcessTraces::baseChannel() const {
+    return _channels.base();
+}
+void ProcessTraces::setupCalibration() {
+    VnaChannel c = _vna->channel(_channels.base());
+    configureChannel(c);
+
+    c.arbitraryFrequencyOff(lowerPort());
+    c.arbitraryFrequencyOff(upperPort());
+
+    c.setFrequencies(calFreq_Hz());
+    c.select();
+
+    // Create diagram, trace
+    uint d = createOrReuseDiagram();
+    const QString t = "calibrate";
+    _vna->createTrace(t, baseChannel());
+    _vna->trace(t).setDiagram(d);
+}
 void ProcessTraces::run() {
-    _diagram = _vna->createDiagram();
+    _diagram = createOrReuseDiagram();
+    uint numTraces = 0;
     for (int i = 0; i < _traces.size(); i++) {
+        if (numTraces >= 20) {
+            numTraces = 0;
+            _diagram = _vna->createDiagram();
+        }
         processTrace(_traces[i]);
+        numTraces++;
     }
 }
 
@@ -205,15 +230,24 @@ bool ProcessTraces::isFreqOutsideVna(const IntermodTrace &t) const {
 
 // Preprocess
 void ProcessTraces::preprocessTraces() {
-    std::sort(_traces.begin(), _traces.end());
     foreach (const IntermodTrace t, _traces) {
-        if (!hasDependency(t)) {
-            insertDependencies(t);
-        }
+        preprocessTrace(t);
     }
     sort();
 }
-bool ProcessTraces::hasDependency(const IntermodTrace &t) const {
+void ProcessTraces::preprocessTrace(const IntermodTrace &t) {
+    if (!dependencyInTraces(t)) {
+        QList<IntermodTrace> deps = t.dependents();
+        foreach (IntermodTrace d, deps) {
+            if (!_traces.contains(d)) {
+                _traces << d;
+                preprocessTrace(d);
+            }
+        }
+    }
+}
+
+bool ProcessTraces::dependencyInTraces(const IntermodTrace &t) const {
     if (!t.isDependent())
         return true;
 
@@ -226,14 +260,6 @@ bool ProcessTraces::hasDependency(const IntermodTrace &t) const {
 
     // Else
     return true;
-}
-void ProcessTraces::insertDependencies(const IntermodTrace &t) {
-    const QList<IntermodTrace> dependents = t.dependents();
-    foreach (const IntermodTrace d, dependents) {
-        if (!_traces.contains(d)) {
-            _traces.append(d);
-        }
-    }
 }
 void ProcessTraces::sort() {
     std::sort(_traces.begin(), _traces.end());
@@ -261,101 +287,243 @@ void ProcessTraces::processTrace(const IntermodTrace &t) {
     }
 }
 
-void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
-    // Create channel
-    const uint iCh   = _channels.create(t);
-    VnaChannel vnaCh = _vna->channel(iCh);
+void ProcessTraces::configureChannel(VnaChannel c) {
+    // Sweep setup
+    c.setSweepType(VnaChannel::SweepType::Linear);
+
+    VnaLinearSweep swp = c.linearSweep();
+    swp.setStart (_genFreq.channelStartFrequency_Hz());
+    swp.setStop  (_genFreq.channelStopFrequency_Hz ());
+    swp.setPoints(_settings.points());
+
+    swp.setIfbandwidth(_settings.ifBw_Hz    ());
+    swp.setPower      (_settings.power_dBm  ());
+    c.setIfSelectivity(_settings.selectivity());
 
     // Port setup
-    vnaCh.setArbitraryFrequency(lowerPort(), lowerAf());
-    vnaCh.setArbitraryFrequency(upperPort(), upperAf());
+    c.setArbitraryFrequency(lowerPort(), lowerAf());
+    c.setArbitraryFrequency(upperPort(), upperAf());
+}
+
+void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
+    // Channel
+    VnaChannel vnaCh = _channels.create(t);
+    configureChannel(vnaCh);
 
     // Trace
-    VnaTrace vnaTrc = _vna->createTrace(traceName(t), iCh);
+    const QString name = traceName(t);
+    _vna->createTrace(traceName(t), vnaCh.index());
+    VnaTrace vnaTrc = _vna->trace(name);
     if (t.isLower()) {
         vnaTrc.setWaveQuantity(WaveQuantity::a, lowerPort(), lowerPort());
     }
     else {
         vnaTrc.setWaveQuantity(WaveQuantity::a, upperPort(), lowerPort());
     }
-    t.setDiagram(_diagram);
+    vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processOutputTrace   (const IntermodTrace &t) {
-    // Create channel
-    const uint iCh   = _channels.create(t);
-    VnaChannel vnaCh = _vna->channel(iCh);
+    // Channel
+    VnaChannel vnaCh = _channels.create(t);
+    configureChannel(vnaCh);
 
-    // Port setup
-    vnaCh.setArbitraryFrequency(lowerPort(),  lowerAf ( ));
-    vnaCh.setArbitraryFrequency(upperPort(),  upperAf ( ));
+    // Output port setup
     vnaCh.setArbitraryFrequency(outputPort(), outputAf(t));
 
     // Trace
-    VnaTrace vnaTrc = _vna->createTrace(traceName(t), iCh);
+    const QString name = traceName(t);
+    _vna->createTrace(name, vnaCh.index());
+    VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
-    t.setDiagram(_diagram);
+    vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
-    // Create channel
-    const uint iCh   = _channels.create(t);
-    VnaChannel vnaCh = _vna->channel(iCh);
+    uint channel;
+    if (!t.isDependent()) {
+        // Channel
+        VnaChannel ch = _channels.create(t);
+        configureChannel(ch);
 
-    // Port setup
-    vnaCh.setArbitraryFrequency(lowerPort(),  lowerAf ( ));
-    vnaCh.setArbitraryFrequency(upperPort(),  upperAf ( ));
-    vnaCh.setArbitraryFrequency(outputPort(), outputAf(t));
+        // Output port setup
+        ch.setArbitraryFrequency(outputPort(), outputAf(t));
+        channel = ch.index();
+    }
+    else {
+        channel = baseChannel();
+    }
 
     // Trace
-    VnaTrace vnaTrc = _vna->createTrace(traceName(t), iCh);
+    const QString name = traceName(t);
+    _vna->createTrace(name, channel);
+    VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
-    t.setDiagram(_diagram);
+    if (t.isMajor()) {
+        vnaTrc.math().setExpression(math(t));
+        vnaTrc.math().on();
+    }
+    vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
-    // Create channel
-    const uint iCh   = _channels.create(t);
-    VnaChannel vnaCh = _vna->channel(iCh);
-
-    // Port setup
-    vnaCh.setArbitraryFrequency(lowerPort(),  lowerAf ( ));
-    vnaCh.setArbitraryFrequency(upperPort(),  upperAf ( ));
-    vnaCh.setArbitraryFrequency(outputPort(), outputAf(t));
-
     // Trace
-    VnaTrace vnaTrc = _vna->createTrace(traceName(t), iCh);
-    vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
-    t.setDiagram(_diagram);
-
-    // Always use lti?
-    // Use mti (major)?
-    IntermodTrace t_in (TraceType::inputTone, TraceFeature::lower);
-    IntermodTrace t_out(TraceType::intermod,  t.feature(), t.order());
-
-    QString expr = "%1 / %2";
-    expr = expr.arg(traceName(t_in ));
-    expr = expr.arg(traceName(t_out));
-    vnaTrc.math().setExpression(expr);
+    const QString name = traceName(t);
+    _vna->createTrace(name, baseChannel());
+    VnaTrace vnaTrc = _vna->trace(name);
+    vnaTrc.setWaveRatio(WaveQuantity::b, outputPort(), lowerPort(),  // num
+                        WaveQuantity::b, outputPort(), lowerPort()); // den
+    vnaTrc.math().setExpression(math(t));
+    vnaTrc.math().on();
+    vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processInterceptTrace(const IntermodTrace &t) {
-    // Create channel
-    const uint iCh   = _channels.create(t);
-    VnaChannel vnaCh = _vna->channel(iCh);
-
-    // Port setup
-    vnaCh.setArbitraryFrequency(lowerPort(),  lowerAf ( ));
-    vnaCh.setArbitraryFrequency(upperPort(),  upperAf ( ));
-    vnaCh.setArbitraryFrequency(outputPort(), outputAf(t));
-
     // Trace
-    VnaTrace vnaTrc = _vna->createTrace(traceName(t), iCh);
+    const QString name = traceName(t);
+    _vna->createTrace(name, baseChannel());
+    VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
-    t.setDiagram(_diagram);
+    vnaTrc.math().setExpression(math(t));
+    vnaTrc.math().on();
+    vnaTrc.setDiagram(_diagram);
+}
 
-    // How do I even calculate intercept?
-    IntermodTrace t_in (TraceType::inputTone, TraceFeature::lower);
-    IntermodTrace t_out(TraceType::intermod,  t.feature(), t.order());
+// Helpers
+QString ProcessTraces::traceName(const IntermodTrace &t) const {
+    QString name = "%1_im_ch%2";
+    name  = name.arg(t.abbreviate  ());
+    name  = name.arg(_channels.base());
+    return  name;
+}
+uint ProcessTraces::createOrReuseDiagram() {
+    if (_vna->traces().isEmpty()) {
+        _vna->createDiagram(1);
+        return 1;
+    }
+    else {
+        return _vna->createDiagram();
+    }
+}
 
-    QString expr = "%1 / %2";
-    expr = expr.arg(traceName(t_in ));
-    expr = expr.arg(traceName(t_out));
-    vnaTrc.math().setExpression(expr);
+uint ProcessTraces::lowerPort() const {
+    return _settings.lowerSourcePort();
+}
+uint ProcessTraces::upperPort() const {
+    return _settings.upperSource().port();
+}
+uint ProcessTraces::outputPort() const {
+    return _settings.receivingPort();
+}
+VnaArbitraryFrequency ProcessTraces::lowerAf() const {
+    return _genFreq.lowerInput();
+}
+VnaArbitraryFrequency ProcessTraces::upperAf() const {
+    return _genFreq.upperInput();
+}
+VnaArbitraryFrequency ProcessTraces::outputAf(const IntermodTrace &t) const {
+    if (t.isLower())
+        return _genFreq.lowerOutput(t.order());
+    if (t.isUpper())
+        return _genFreq.upperOutput(t.order());
+
+    // Else (doesn't matter)
+    return VnaArbitraryFrequency();
+}
+QString ProcessTraces::math(const IntermodTrace &t) const {
+    if (t.isRelative()) {
+        IntermodTrace lto;
+        lto.setType   (TraceType::outputTone);
+        lto.setFeature(TraceFeature::lower);
+
+        IntermodTrace im;
+        im.setType   (TraceType::intermod);
+        im.setFeature(t.feature());
+        im.setOrder  (t.order());
+
+        QString math;
+        math = "%1 / %2";
+        math =  math.arg(traceName(lto));
+        math =  math.arg(traceName(im ));
+        return  math;
+    }
+    if (t.isIntercept()) {
+        IntermodTrace lt;
+        lt.setFeature (TraceFeature::lower);
+        if (t.isInputIntercept())
+            lt.setType(TraceType::inputTone);
+        else
+            lt.setType(TraceType::outputTone);
+
+        IntermodTrace imr;
+        imr.setType   (TraceType::relative);
+        imr.setFeature(t.feature());
+        imr.setOrder  (t.order());
+
+        QString math;
+        math = "%1*(%2^%3)";
+        math =  math.arg(traceName(lt ));
+        math =  math.arg(traceName(imr));
+        math =  math.arg(1.0/(t.order()-1.0));
+        return  math;
+    }
+    if (t.isMajor()) {
+        IntermodTrace lower(t);
+        lower.setFeature(TraceFeature::lower);
+
+        IntermodTrace upper(t);
+        upper.setFeature(TraceFeature::upper);
+
+        QString math;
+        math = "Max(%1,%2)";
+        math =  math.arg(traceName(lower));
+        math =  math.arg(traceName(upper));
+        return  math;
+    }
+
+    // method shouldn't've been called
+    return QString();
+}
+
+QRowVector ProcessTraces::fb_Hz() const {
+    const double fbStart = _genFreq.channelStartFrequency_Hz();
+    const double fbStop  = _genFreq.channelStopFrequency_Hz ();
+    const uint   points  = _settings.points();
+    return linearSpacing(fbStart, fbStop, points);
+}
+QRowVector ProcessTraces::upperFreq_Hz() const {
+    VnaArbitraryFrequency af = upperAf();
+    return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
+}
+QRowVector ProcessTraces::outputFreq_Hz(const IntermodTrace &t) const {
+    VnaArbitraryFrequency af = outputAf(t);
+    return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
+}
+QRowVector ProcessTraces::calFreq_Hz() const {
+    // Original tones
+    QRowVector f;
+    f << fb_Hz();
+    f << upperFreq_Hz();
+
+    // Harmonics
+    foreach (IntermodTrace t, _traces) {
+        // Skip originals
+        if (t.isInputTone())
+            continue;
+        if (t.isOutputTone())
+            continue;
+
+        // Skip math traces
+        if (t.isDependent())
+            continue;
+
+        includeOneOf(f, outputFreq_Hz(t));
+    }
+    std::sort(f.begin(), f.end());
+    return f;
+}
+void ProcessTraces::includeOneOf(QRowVector &vector, double value) {
+    if (!vector.contains(value))
+        vector << value;
+}
+void ProcessTraces::includeOneOf(QRowVector &vector, const QRowVector &values) {
+    foreach (const double v, values) {
+        includeOneOf(vector, v);
+    }
 }
