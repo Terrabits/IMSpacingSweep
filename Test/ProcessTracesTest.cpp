@@ -66,8 +66,6 @@ void ProcessTracesTest::preprocess_data() {
     // - LTO
     // - IM3LO
     // - IM3UO
-    // - IM3MO
-    // - IM3MOR
     // - IP3MO
     Traces before;
     before << IntermodTrace(TraceType::outputIntercept, TraceFeature::major, 3);
@@ -76,8 +74,6 @@ void ProcessTracesTest::preprocess_data() {
     after  << IntermodTrace(TraceType::outputTone, TraceFeature::lower);
     after  << IntermodTrace(TraceType::intermod,   TraceFeature::lower, 3);
     after  << IntermodTrace(TraceType::intermod,   TraceFeature::upper, 3);
-    after  << IntermodTrace(TraceType::intermod,   TraceFeature::major, 3);
-    after  << IntermodTrace(TraceType::relative,   TraceFeature::major, 3);
     after  << IntermodTrace(TraceType::outputIntercept, TraceFeature::major, 3);
 
     QTest::newRow("oip3m") << before << after;
@@ -86,7 +82,6 @@ void ProcessTracesTest::preprocess_data() {
     // - LTI
     // - LTO
     // - IM5LO
-    // - IM5LOR
     // - IP5LI
     before.clear();
     before << IntermodTrace(TraceType::inputIntercept, TraceFeature::lower, 5);
@@ -95,7 +90,6 @@ void ProcessTracesTest::preprocess_data() {
     after  << IntermodTrace(TraceType::inputTone,      TraceFeature::lower   );
     after  << IntermodTrace(TraceType::outputTone,     TraceFeature::lower   );
     after  << IntermodTrace(TraceType::intermod,       TraceFeature::lower, 5);
-    after  << IntermodTrace(TraceType::relative,       TraceFeature::lower, 5);
     after  << IntermodTrace(TraceType::inputIntercept, TraceFeature::lower, 5);
 
     QTest::newRow("iip5l") << before << after;
@@ -111,8 +105,8 @@ void ProcessTracesTest::preprocess() {
 }
 
 void ProcessTracesTest::calibration_data() {
-    QTest::addColumn<IntermodSettings>("settings" );
-    QTest::addColumn<Traces>          ("traces");
+    QTest::addColumn<IntermodSettings>("settings");
+    QTest::addColumn<Traces>          ("traces"  );
 
     // No traces
     //   - should still calibrate original tones
@@ -174,8 +168,6 @@ void ProcessTracesTest::run_data() {
     // - LTO
     // - IM3LO
     // - IM3UO
-    // - IM3MO
-    // - IM3MOR
     // - IP3MO
     VnaIntermod::ToneSource upperSource;
     upperSource.setPort(3);

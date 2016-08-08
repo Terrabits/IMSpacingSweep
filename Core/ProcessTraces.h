@@ -75,7 +75,11 @@ private:
     RsaToolbox::VnaArbitraryFrequency lowerAf () const;
     RsaToolbox::VnaArbitraryFrequency upperAf () const;
     RsaToolbox::VnaArbitraryFrequency outputAf(const IntermodTrace &t) const;
+
     QString math(const IntermodTrace &t) const;
+    QString intermodMath (const IntermodTrace &t) const;
+    QString relativeMath (const IntermodTrace &t) const;
+    QString interceptMath(const IntermodTrace &t) const;
 
     // Calibrate
     RsaToolbox::QRowVector fb_Hz () const;

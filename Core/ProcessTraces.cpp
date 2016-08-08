@@ -7,6 +7,9 @@
 #include <VnaTrace.h>
 using namespace RsaToolbox;
 
+// Qt
+#include <QDebug>
+
 
 ProcessTraces::ProcessTraces(const QList<IntermodTrace> &traces,
                              const IntermodSettings &settings,
@@ -189,10 +192,12 @@ void ProcessTraces::setupCalibration() {
     c.arbitraryFrequencyOff(lowerPort());
     c.arbitraryFrequencyOff(upperPort());
 
+    qDebug() << "Setting frequencies...";
     c.setFrequencies(calFreq_Hz());
     c.select();
 
     // Create diagram, trace
+    qDebug() << "Creating diagram, trace...";
     uint d = createOrReuseDiagram();
     const QString t = "calibrate";
     _vna->createTrace(t, baseChannel());
@@ -360,6 +365,7 @@ void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
     if (t.isMajor()) {
         vnaTrc.math().setExpression(math(t));
         vnaTrc.math().on();
+        vnaTrc.math().setWaveQuantity();
     }
     vnaTrc.setDiagram(_diagram);
 }
@@ -382,6 +388,7 @@ void ProcessTraces::processInterceptTrace(const IntermodTrace &t) {
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
     vnaTrc.math().setExpression(math(t));
     vnaTrc.math().on();
+    vnaTrc.math().setWaveQuantity();
     vnaTrc.setDiagram(_diagram);
 }
 
@@ -427,58 +434,80 @@ VnaArbitraryFrequency ProcessTraces::outputAf(const IntermodTrace &t) const {
     return VnaArbitraryFrequency();
 }
 QString ProcessTraces::math(const IntermodTrace &t) const {
-    if (t.isRelative()) {
-        IntermodTrace lto;
-        lto.setType   (TraceType::outputTone);
-        lto.setFeature(TraceFeature::lower);
-
-        IntermodTrace im;
-        im.setType   (TraceType::intermod);
-        im.setFeature(t.feature());
-        im.setOrder  (t.order());
-
-        QString math;
-        math = "%1 / %2";
-        math =  math.arg(traceName(lto));
-        math =  math.arg(traceName(im ));
-        return  math;
-    }
-    if (t.isIntercept()) {
-        IntermodTrace lt;
-        lt.setFeature (TraceFeature::lower);
-        if (t.isInputIntercept())
-            lt.setType(TraceType::inputTone);
-        else
-            lt.setType(TraceType::outputTone);
-
-        IntermodTrace imr;
-        imr.setType   (TraceType::relative);
-        imr.setFeature(t.feature());
-        imr.setOrder  (t.order());
-
-        QString math;
-        math = "%1*(%2^%3)";
-        math =  math.arg(traceName(lt ));
-        math =  math.arg(traceName(imr));
-        math =  math.arg(1.0/(t.order()-1.0));
-        return  math;
-    }
-    if (t.isMajor()) {
-        IntermodTrace lower(t);
-        lower.setFeature(TraceFeature::lower);
-
-        IntermodTrace upper(t);
-        upper.setFeature(TraceFeature::upper);
-
-        QString math;
-        math = "Max(%1,%2)";
-        math =  math.arg(traceName(lower));
-        math =  math.arg(traceName(upper));
-        return  math;
-    }
+    if (t.isIntermod())
+        return intermodMath (t);
+    if (t.isRelative())
+        return relativeMath (t);
+    if (t.isIntercept())
+        return interceptMath(t);
 
     // method shouldn't've been called
     return QString();
+}
+QString ProcessTraces::intermodMath(const IntermodTrace &t) const {
+    if (!t.isMajor())
+        return QString();
+
+    IntermodTrace iml(t);
+    iml.setFeature(TraceFeature::lower);
+
+    IntermodTrace imu(t);
+    imu.setFeature(TraceFeature::upper);
+
+    QString math;
+    math = "Max(linMag(%1),linMag(%2))";
+    math = math.arg(traceName(iml));
+    math = math.arg(traceName(imu));
+    return math;
+}
+QString ProcessTraces::relativeMath(const IntermodTrace &t) const {
+    IntermodTrace lto(TraceType::outputTone, TraceFeature::lower           );
+    IntermodTrace iml(TraceType::intermod,   TraceFeature::lower, t.order());
+    IntermodTrace imu(TraceType::intermod,   TraceFeature::upper, t.order());
+
+    QString imExpr;
+    if (t.isLower()) {
+        imExpr = "linMag(%1)";
+        imExpr = imExpr.arg(traceName(iml));
+    }
+    else if (t.isUpper()) {
+        imExpr = "linMag(%1)";
+        imExpr = imExpr.arg(traceName(imu));
+    }
+    else { // major
+        imExpr = "Max(linMag(%1),linMag(%2))";
+        imExpr = imExpr.arg(traceName(iml));
+        imExpr = imExpr.arg(traceName(imu));
+    }
+
+    QString math;
+    math = "linMag(%1)/%2";
+    math = math.arg(traceName(lto));
+    math = math.arg(imExpr);
+    return math;
+}
+QString ProcessTraces::interceptMath(const IntermodTrace &t) const {
+    IntermodTrace tr(TraceType::relative, t.feature(), t.order());
+    QString relExpr;
+    relExpr = "((%1)^%2)";
+    relExpr = relExpr.arg(math(tr));
+    relExpr = relExpr.arg(1.0/(t.order()-1.0));
+
+    IntermodTrace lt;
+    if (t.isInputIntercept()) {
+        lt.setType   (TraceType::inputTone);
+        lt.setFeature(TraceFeature::lower );
+    }
+    else {
+        lt.setType   (TraceType::outputTone);
+        lt.setFeature(TraceFeature::lower  );
+    }
+
+    QString math;
+    math = "linMag(%1)*%2";
+    math = math.arg(traceName(lt));
+    math = math.arg(relExpr);
+    return math;
 }
 
 QRowVector ProcessTraces::fb_Hz() const {

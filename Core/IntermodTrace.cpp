@@ -7,6 +7,8 @@ using namespace RsaToolbox;
 // Qt
 #include <QVariant>
 
+typedef QList<IntermodTrace> Traces;
+
 
 QString toString(TraceType type) {
     switch (type) {
@@ -170,52 +172,16 @@ bool IntermodTrace::isDependent() const {
 
     return false;
 }
-QList<IntermodTrace> IntermodTrace::dependents() const {
-    QList<IntermodTrace> deps;
-    // Relative Intermod
-    if (isRelative()) {
-        IntermodTrace t;
-        t.setType   (TraceType::outputTone);
-        t.setFeature(TraceFeature::lower);
-        deps << t;
-
-        t.setType   (TraceType::intermod);
-        t.setFeature(feature());
-        t.setOrder  (order());
-        deps << t;
-        return deps;
-    }
-    // Intercept
-    if (isIntercept()) {
-        IntermodTrace t;
-        if (isOutputIntercept())
-            t.setType(TraceType::outputTone);
-        else
-            t.setType(TraceType::inputTone );
-        t.setFeature (TraceFeature::lower);
-        deps << t;
-
-        t.setType   (TraceType::relative);
-        t.setFeature(feature());
-        t.setOrder  (order());
-        deps << t;
-        return deps;
-    }
-    // Major
-    if (isMajor()) {
-        IntermodTrace t;
-        t.setType (type());
-        t.setOrder(order());
-
-        t.setFeature(TraceFeature::lower);
-        deps << t;
-        t.setFeature(TraceFeature::upper);
-        deps << t;
-        return deps;
-    }
+Traces IntermodTrace::dependents() const {
+    if (isIntermod())
+        return intermodDependents ();
+    if (isRelative())
+        return relativeDependents ();
+    if (isIntercept())
+        return interceptDependents();
 
     // Else
-    return deps;
+    return Traces();
 }
 
 // isType
@@ -384,6 +350,41 @@ QString IntermodTrace::abbreviate()    const {
     default:
         return "lti";
     }
+}
+
+Traces IntermodTrace::intermodDependents() const {
+    Traces t;
+    if (!isMajor())
+        return t;
+
+    t << IntermodTrace(TraceType::intermod, TraceFeature::lower, _order);
+    t << IntermodTrace(TraceType::intermod, TraceFeature::upper, _order);
+    return t;
+}
+Traces IntermodTrace::relativeDependents() const {
+    Traces t;
+    t << IntermodTrace(TraceType::outputTone, TraceFeature::lower);
+    if (isLower() || isMajor()) {
+        t << IntermodTrace(TraceType::intermod, TraceFeature::lower, _order);
+    }
+    if (isUpper() || isMajor()) {
+        t << IntermodTrace(TraceType::intermod, TraceFeature::upper, _order);
+    }
+    return t;
+}
+Traces IntermodTrace::interceptDependents() const {
+    Traces t;
+    t << IntermodTrace(TraceType::outputTone, TraceFeature::lower);
+    if (isInputIntercept()) {
+        t << IntermodTrace(TraceType::inputTone, TraceFeature::lower);
+    }
+    if (isLower() || isMajor()) {
+        t << IntermodTrace(TraceType::intermod, TraceFeature::lower, _order);
+    }
+    if (isUpper() || isMajor()) {
+        t << IntermodTrace(TraceType::intermod, TraceFeature::upper, _order);
+    }
+    return t;
 }
 
 QString IntermodTrace::typeString()    const {

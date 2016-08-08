@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Sun Aug 7 22:40:21 2016
+Sun Aug 7 23:57:05 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -450,158 +450,6 @@ Read:     "1"
 Bytes: 2
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:PAR:SDEF 'im3mo_im_ch1', 'S11'"
-Bytes: 38
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
-Bytes: 40
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:MEAS 'im3mo_im_ch1','B2D1'"
-Bytes: 38
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
-Bytes: 40
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
-Bytes: 40
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:SEL 'im3mo_im_ch1'"
-Bytes: 30
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:MATH:SDEF 'Max(im3lo_im_ch1,im3uo_im_ch1)'"
-Bytes: 50
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
-Bytes: 40
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
-Bytes: 40
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:SEL 'im3mo_im_ch1'"
-Bytes: 30
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:MATH:STAT 1"
-Bytes: 19
-Status: 0x0 Operation completed successfully.
-
-Write:    ":DISP:WIND1:TRAC:EFE 'im3mo_im_ch1'"
-Bytes: 36
-Status: 0x0 Operation completed successfully.
-
-Write:    ":SOUR1:LPOR1?"
-Bytes: 14
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:SDEF 'im3mor_im_ch1', 'S11'"
-Bytes: 39
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
-Bytes: 41
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:MEAS 'im3mor_im_ch1','B2D1/B2D1'"
-Bytes: 44
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
-Bytes: 41
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
-Bytes: 41
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:SEL 'im3mor_im_ch1'"
-Bytes: 31
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im3mo_im_ch1'"
-Bytes: 45
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
-Bytes: 41
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
-Bytes: 41
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:SEL 'im3mor_im_ch1'"
-Bytes: 31
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:MATH:STAT 1"
-Bytes: 19
-Status: 0x0 Operation completed successfully.
-
-Write:    ":DISP:WIND1:TRAC:EFE 'im3mor_im_ch1'"
-Bytes: 37
-Status: 0x0 Operation completed successfully.
-
-Write:    ":SOUR1:LPOR1?"
-Bytes: 14
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
 Write:    ":CALC1:PAR:SDEF 'ip3mo_im_ch1', 'S11'"
 Bytes: 38
 Status: 0x0 Operation completed successfully.
@@ -638,8 +486,8 @@ Write:    ":CALC1:PAR:SEL 'ip3mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im3mor_im_ch1^0.5)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im3lo_im_ch1),linMag(im3uo_im_c..."
+Bytes: 112
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"

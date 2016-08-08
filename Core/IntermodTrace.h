@@ -87,6 +87,10 @@ private:
     uint      _order;
     bool      _isVisible;
 
+    QList<IntermodTrace> intermodDependents () const;
+    QList<IntermodTrace> relativeDependents () const;
+    QList<IntermodTrace> interceptDependents() const;
+
     QString typeString()    const;
     QString featureString() const;
     QString orderString()   const;

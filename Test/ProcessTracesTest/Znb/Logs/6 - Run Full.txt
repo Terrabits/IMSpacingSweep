@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Sun Aug 7 22:43:34 2016
+Sun Aug 7 23:57:11 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -1470,8 +1470,8 @@ Write:    ":CALC1:PAR:SEL 'im3mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'Max(im3lo_im_ch1,im3uo_im_ch1)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im3lo_im_ch1),linMag(im3uo_im_ch1))'"
+Bytes: 66
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
@@ -1546,8 +1546,8 @@ Write:    ":CALC1:PAR:SEL 'im5mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'Max(im5lo_im_ch1,im5uo_im_ch1)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im5lo_im_ch1),linMag(im5uo_im_ch1))'"
+Bytes: 66
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
@@ -1622,8 +1622,8 @@ Write:    ":CALC1:PAR:SEL 'im7mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'Max(im7lo_im_ch1,im7uo_im_ch1)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im7lo_im_ch1),linMag(im7uo_im_ch1))'"
+Bytes: 66
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
@@ -1698,8 +1698,8 @@ Write:    ":CALC1:PAR:SEL 'im9mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'Max(im9lo_im_ch1,im9uo_im_ch1)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im9lo_im_ch1),linMag(im9uo_im_ch1))'"
+Bytes: 66
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
@@ -1774,8 +1774,8 @@ Write:    ":CALC1:PAR:SEL 'im3lor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im3lo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im3lo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3lor_im_ch1'"
@@ -1850,8 +1850,8 @@ Write:    ":CALC1:PAR:SEL 'im5lor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im5lo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im5lo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -1926,8 +1926,8 @@ Write:    ":CALC1:PAR:SEL 'im7lor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im7lo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im7lo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lor_im_ch1'"
@@ -2002,8 +2002,8 @@ Write:    ":CALC1:PAR:SEL 'im9lor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im9lo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im9lo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lor_im_ch1'"
@@ -2090,8 +2090,8 @@ Write:    ":CALC1:PAR:SEL 'im3uor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im3uo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im3uo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uor_im_ch1'"
@@ -2166,8 +2166,8 @@ Write:    ":CALC1:PAR:SEL 'im5uor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im5uo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im5uo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -2242,8 +2242,8 @@ Write:    ":CALC1:PAR:SEL 'im7uor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im7uo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im7uo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7uor_im_ch1'"
@@ -2318,8 +2318,8 @@ Write:    ":CALC1:PAR:SEL 'im9uor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im9uo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/linMag(im9uo_im_ch1)'"
+Bytes: 59
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -2394,8 +2394,8 @@ Write:    ":CALC1:PAR:SEL 'im3mor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im3mo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/Max(linMag(im3lo_im_ch1),linMag(im3uo_im_ch1))'"
+Bytes: 85
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -2470,8 +2470,8 @@ Write:    ":CALC1:PAR:SEL 'im5mor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im5mo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/Max(linMag(im5lo_im_ch1),linMag(im5uo_im_ch1))'"
+Bytes: 85
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mor_im_ch1'"
@@ -2546,8 +2546,8 @@ Write:    ":CALC1:PAR:SEL 'im7mor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im7mo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/Max(linMag(im7lo_im_ch1),linMag(im7uo_im_ch1))'"
+Bytes: 85
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -2622,8 +2622,8 @@ Write:    ":CALC1:PAR:SEL 'im9mor_im_ch1'"
 Bytes: 31
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1 / im9mo_im_ch1'"
-Bytes: 45
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)/Max(linMag(im9lo_im_ch1),linMag(im9uo_im_ch1))'"
+Bytes: 85
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -2710,8 +2710,8 @@ Write:    ":CALC1:PAR:SEL 'ip3lo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im3lor_im_ch1^0.5)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im3lo_im_ch1))^0.5)'"
+Bytes: 86
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -2786,8 +2786,8 @@ Write:    ":CALC1:PAR:SEL 'ip5lo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im5lor_im_ch1^0.25)'"
-Bytes: 51
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im5lo_im_ch1))^0.25)'"
+Bytes: 87
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5lo_im_ch1'"
@@ -2862,8 +2862,8 @@ Write:    ":CALC1:PAR:SEL 'ip7lo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im7lor_im_ch1^0.166667)'"
-Bytes: 55
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im7lo_im_ch1))^0.166667)'"
+Bytes: 91
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7lo_im_ch1'"
@@ -2938,8 +2938,8 @@ Write:    ":CALC1:PAR:SEL 'ip9lo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im9lor_im_ch1^0.125)'"
-Bytes: 52
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im9lo_im_ch1))^0.125)'"
+Bytes: 88
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9lo_im_ch1'"
@@ -3014,8 +3014,8 @@ Write:    ":CALC1:PAR:SEL 'ip3uo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im3uor_im_ch1^0.5)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im3uo_im_ch1))^0.5)'"
+Bytes: 86
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3uo_im_ch1'"
@@ -3090,8 +3090,8 @@ Write:    ":CALC1:PAR:SEL 'ip5uo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im5uor_im_ch1^0.25)'"
-Bytes: 51
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im5uo_im_ch1))^0.25)'"
+Bytes: 87
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5uo_im_ch1'"
@@ -3166,8 +3166,8 @@ Write:    ":CALC1:PAR:SEL 'ip7uo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im7uor_im_ch1^0.166667)'"
-Bytes: 55
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im7uo_im_ch1))^0.166667)'"
+Bytes: 91
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7uo_im_ch1'"
@@ -3242,8 +3242,8 @@ Write:    ":CALC1:PAR:SEL 'ip9uo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im9uor_im_ch1^0.125)'"
-Bytes: 52
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/linMag(im9uo_im_ch1))^0.125)'"
+Bytes: 88
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9uo_im_ch1'"
@@ -3318,8 +3318,8 @@ Write:    ":CALC1:PAR:SEL 'ip3mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im3mor_im_ch1^0.5)'"
-Bytes: 50
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im3lo_im_ch1),linMag(im3uo_im_c..."
+Bytes: 112
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
@@ -3394,8 +3394,8 @@ Write:    ":CALC1:PAR:SEL 'ip5mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im5mor_im_ch1^0.25)'"
-Bytes: 51
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im5lo_im_ch1),linMag(im5uo_im_c..."
+Bytes: 113
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
@@ -3470,8 +3470,8 @@ Write:    ":CALC1:PAR:SEL 'ip7mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im7mor_im_ch1^0.166667)'"
-Bytes: 55
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im7lo_im_ch1),linMag(im7uo_im_c..."
+Bytes: 117
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
@@ -3546,8 +3546,8 @@ Write:    ":CALC1:PAR:SEL 'ip9mo_im_ch1'"
 Bytes: 30
 Status: 0x0 Operation completed successfully.
 
-Write:    ":CALC1:MATH:SDEF 'lto_im_ch1*(im9mor_im_ch1^0.125)'"
-Bytes: 52
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im9lo_im_ch1),linMag(im9uo_im_c..."
+Bytes: 114
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
