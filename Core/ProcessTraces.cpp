@@ -284,6 +284,7 @@ void ProcessTraces::processTrace(const IntermodTrace &t) {
     case TraceType::relative:
         processRelativeTrace(t);
         return;
+    case TraceType::inputIntercept:
     case TraceType::outputIntercept:
         processInterceptTrace(t);
         return;

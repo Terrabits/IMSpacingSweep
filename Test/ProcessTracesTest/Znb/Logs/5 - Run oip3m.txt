@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Sun Aug 7 23:57:05 2016
+Mon Aug 8 00:49:39 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -512,6 +512,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND1:TRAC:EFE 'ip3mo_im_ch1'"

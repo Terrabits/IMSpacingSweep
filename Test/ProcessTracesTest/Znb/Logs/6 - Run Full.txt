@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Sun Aug 7 23:57:11 2016
+Mon Aug 8 00:49:41 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -1498,6 +1498,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND1:TRAC:EFE 'im3mo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -1572,6 +1604,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND1:TRAC:EFE 'im5mo_im_ch1'"
@@ -1650,6 +1714,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND1:TRAC:EFE 'im7mo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -1724,6 +1820,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND1:TRAC:EFE 'im9mo_im_ch1'"
@@ -2738,6 +2866,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip3lo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND3:TRAC:EFE 'ip3lo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -2812,6 +2972,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip5lo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND3:TRAC:EFE 'ip5lo_im_ch1'"
@@ -2890,6 +3082,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip7lo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND3:TRAC:EFE 'ip7lo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -2964,6 +3188,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip9lo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND3:TRAC:EFE 'ip9lo_im_ch1'"
@@ -3042,6 +3298,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip3uo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND3:TRAC:EFE 'ip3uo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -3116,6 +3404,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip5uo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND3:TRAC:EFE 'ip5uo_im_ch1'"
@@ -3194,6 +3514,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip7uo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND3:TRAC:EFE 'ip7uo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -3268,6 +3620,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip9uo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND3:TRAC:EFE 'ip9uo_im_ch1'"
@@ -3346,6 +3730,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND3:TRAC:EFE 'ip3mo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -3420,6 +3836,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND3:TRAC:EFE 'ip5mo_im_ch1'"
@@ -3498,6 +3946,38 @@ Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
 
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
 Write:    ":DISP:WIND3:TRAC:EFE 'ip7mo_im_ch1'"
 Bytes: 36
 Status: 0x0 Operation completed successfully.
@@ -3572,6 +4052,38 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":CALC1:MATH:STAT 1"
 Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":DISP:WIND3:TRAC:EFE 'ip9mo_im_ch1'"
