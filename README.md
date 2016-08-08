@@ -51,7 +51,7 @@ Relative Intermod Definition
 
 Intercept Point Definition
 --------------------------
-`IP[n] dBm = LT dBm  + IMR[n] dB`
+`IP[n] dBm = LT dBm  + IMR[n] dB / (n-1)`
 
 Intermod (vs center frequency) SCPI commands
 ============================================
