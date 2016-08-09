@@ -31,8 +31,14 @@ private slots:
     void run_data();
     void run     ();
 
+    void traceMath();
+
 private:
     void debugPrint(QString header, QList<IntermodTrace> traces);
+
+    static QList<IntermodTrace> allTraces();
+    double getMarkerValue(const QString prefix);
+    bool isEqual(double left, double right);
 };
 
 #endif // PROCESSTRACESTEST_H

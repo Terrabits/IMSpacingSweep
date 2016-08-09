@@ -192,12 +192,10 @@ void ProcessTraces::setupCalibration() {
     c.arbitraryFrequencyOff(lowerPort());
     c.arbitraryFrequencyOff(upperPort());
 
-    qDebug() << "Setting frequencies...";
     c.setFrequencies(calFreq_Hz());
     c.select();
 
     // Create diagram, trace
-    qDebug() << "Creating diagram, trace...";
     uint d = createOrReuseDiagram();
     const QString t = "calibrate";
     _vna->createTrace(t, baseChannel());
@@ -220,17 +218,22 @@ void ProcessTraces::run() {
 bool ProcessTraces::isFreqOutsideVna(const IntermodTrace &t) const {
     const double vnaMin = _vna->properties().minimumFrequency_Hz();
     const double vnaMax = _vna->properties().maximumFrequency_Hz();
+//    qDebug() << "Vna range: " << vnaMin << vnaMax;
+//    qDebug() << "trace  : " << t.display();
+//    qDebug() << "  order: " << t.order();
     if (t.isLower() || t.isMajor()) {
+//        qDebug() << "  min  : " << _genFreq.minLowerFreq_Hz(t.order());
         if (_genFreq.minLowerFreq_Hz(t.order()) < vnaMin)
             return true;
     }
     else if (t.isUpper() || t.isMajor()) {
+//        qDebug() << "  max  : " << _genFreq.maxUpperFreq_Hz(t.order());
         if (_genFreq.maxUpperFreq_Hz(t.order()) > vnaMax)
             return true;
     }
 
     // Else
-    return true;
+    return false;
 }
 
 // Preprocess
