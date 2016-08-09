@@ -9,13 +9,15 @@ using namespace RsaToolbox;
 #include <QDebug>
 
 
-TracesWidget::TracesWidget(Vna *vna, QWidget *parent) :
+TracesWidget::TracesWidget(Vna *vna, Keys *keys, QWidget *parent) :
     WizardPage(parent),
     ui(new ::Ui::TracesWidget),
-    _vna(vna)
+    _vna (vna ),
+    _keys(keys)
 {
     ui->setupUi(this);
-    setupMvc();
+    setupMvc      ();
+    loadKeys      ();
     connectWidgets();
 }
 
@@ -36,7 +38,7 @@ bool TracesWidget::isValidInput(IntermodError &error) const {
         return false;
     }
 
-    ProcessTraces p(traces(), _settings, _vna);
+    ProcessTraces p(input(), _settings, _vna);
     p.isReady(error);
     if (owns(error))
         return false;
@@ -45,22 +47,21 @@ bool TracesWidget::isValidInput(IntermodError &error) const {
     error.clear();
     return true;
 }
-QList<IntermodTrace> TracesWidget::traces() const {
+QList<IntermodTrace> TracesWidget::input() const {
     return _model.traces();
 }
-void TracesWidget::setTraces(const QList<IntermodTrace> &traces) {
+void TracesWidget::setInput(const QList<IntermodTrace> &traces) {
     _model.setTraces(traces);
 }
 
 bool TracesWidget::isReadyForNext() {
     IntermodError e;
-    if (isValidInput(e))
-        return true;
+    if (!isValidInput(e)) {
+        emit error(e);
+        return false;
+    }
 
-    emit error(e);
-    return false;
-
-    emit validatedInput(traces());
+    emit validatedInput(input());
     return true;
 }
 
@@ -70,6 +71,10 @@ void TracesWidget::setSettings(const IntermodSettings &settings) {
     _model.setSettings(_settings);
 }
 
+void TracesWidget::saveInput() {
+    saveKeys();
+}
+
 void TracesWidget::showError(const IntermodError &error) {
     if (owns(error))
         ui->traces->setFocus();
@@ -77,10 +82,6 @@ void TracesWidget::showError(const IntermodError &error) {
 }
 void TracesWidget::showErrorMessage(const QString &message) {
     ui->error->showMessage(message);
-}
-
-void TracesWidget::measure() {
-    qDebug() << "measure";
 }
 
 // private slots
@@ -141,4 +142,21 @@ void TracesWidget::connectWidgets() {
             this, SLOT  (showError(IntermodError )));
     connect(this, SIGNAL(errorMessage    (QString)),
             this, SLOT  (showErrorMessage(QString)));
+}
+
+void TracesWidget::loadKeys() {
+    if (!_keys)
+        return;
+    if (!_keys->exists("TRACES"))
+        return;
+
+    QList<IntermodTrace> traces;
+    _keys->get("TRACES", traces);
+    setInput(traces);
+}
+void TracesWidget::saveKeys() {
+    if (!_keys)
+        return;
+
+    _keys->set("TRACES", input());
 }

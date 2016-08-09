@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     Vna vna(ConnectionType::VisaTcpSocketConnection, "127.0.0.1::5025");
-    TracesWidget w(&vna);
+    TracesWidget w(&vna, NULL);
     w.show();
     int result = a.exec();
 

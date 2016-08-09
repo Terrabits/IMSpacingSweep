@@ -7,7 +7,7 @@
 
 // Qt
 #include <Qt>
-//#include <QRegExp>
+#include <QDataStream>
 #include <QString>
 
 
@@ -41,9 +41,10 @@ public:
    ~IntermodTrace();
 
     // Visible
-    bool isVisible() const;
-    void hide     ();
-    void show     ();
+    bool isVisible () const;
+    void hide      ();
+    void show      ();
+    void setVisible(bool isVisible);
 
     // Dependenent calculation
     bool                 isDependent() const;
@@ -97,6 +98,9 @@ private:
 
     QString abbreviateFeature() const;
 };
+
+QDataStream &operator<<(QDataStream &stream, const IntermodTrace &trace);
+QDataStream &operator>>(QDataStream &stream, IntermodTrace &trace);
 
 bool operator==(const IntermodTrace &left, const IntermodTrace &right);
 bool operator!=(const IntermodTrace &left, const IntermodTrace &right);

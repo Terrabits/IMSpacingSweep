@@ -2,6 +2,7 @@
 
 //Project
 #include "CalibrateWidget.h"
+#include "IntermodError.h"
 #include "IntermodWidget.h"
 #include "Settings.h"
 #include "TracesWidget.h"
@@ -55,7 +56,7 @@ int main(int argc, char *argv[])
     wizard.setRestartOnCancel(false);
 
     // Settings page
-    IntermodWidget *settings = new IntermodWidget(&vna);
+    IntermodWidget *settings = new IntermodWidget(&vna, &keys);
     settings->setNextIndex(1);
     QObject::connect(settings, SIGNAL(error(IntermodError)),
                      &wizard,  SLOT(shake()));
@@ -64,7 +65,7 @@ int main(int argc, char *argv[])
     wizard.addPage(settings);
 
     // Traces page
-    TracesWidget *traces = new TracesWidget  (&vna);
+    TracesWidget *traces = new TracesWidget(&vna, &keys);
     traces->setNextIndex(2);
     QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
                      traces,   SLOT(setSettings(IntermodSettings)));
@@ -95,7 +96,16 @@ int main(int argc, char *argv[])
 
     // Start event loop
     wizard.show();
-    return a.exec();
+    int result = a.exec();
+
+    // Save keys?
+    IntermodError e;
+    if (settings->isValidInput(e))
+        settings->saveInput();
+    if (traces->isValidInput(e))
+        traces->saveInput();
+
+    return result;
 }
 
 // Functions

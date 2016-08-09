@@ -41,7 +41,7 @@ IntermodWidgetTest::IntermodWidgetTest(ConnectionType type, const QString &addre
 
 void IntermodWidgetTest::show() {
     QEventLoop loop;
-    IntermodWidget widget(_vna.data());
+    IntermodWidget widget(_vna.data(), NULL);
     ErrorLabel errorLabel;
     connect(&widget, SIGNAL(errorMessage(QString)),
             &errorLabel, SLOT(showMessage(QString)));

@@ -7,6 +7,7 @@
 #include "IntermodSettings.h"
 
 // RsaToolbox
+#include <Keys.h>
 #include <Vna.h>
 #include <WizardPage.h>
 
@@ -23,11 +24,11 @@ class IntermodWidget : public RsaToolbox::WizardPage
     Q_OBJECT
 
 public:
-    explicit IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent = 0);
+    explicit IntermodWidget(RsaToolbox::Vna *vna, RsaToolbox::Keys *keys, QWidget *parent = 0);
     ~IntermodWidget();
 
-    bool isInput(IntermodError &error) const;
-    IntermodSettings getInput() const;
+    bool isValidInput(IntermodError &error) const;
+    IntermodSettings input() const;
     void setInput(const IntermodSettings &settings);
 
     // Leave page
@@ -39,15 +40,20 @@ signals:
     void validatedInput(const IntermodSettings &settings);
 
 public slots:
+    void saveInput();
+
     void showError(const IntermodError &error);
     void showErrorMessage(const QString &message);
 
 private:
-    Ui::IntermodWidget *ui;
+    Ui::IntermodWidget      *ui;
     mutable RsaToolbox::Vna *_vna;
+    RsaToolbox::Keys        *_keys;
 
     void setInputLimits();
     void connectWidgets();
+    void loadKeys();
+    void saveKeys();
 
     // Input
     RsaToolbox::VnaChannel::IfSelectivity selectivity() const;

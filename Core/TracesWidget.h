@@ -11,6 +11,7 @@
 #include "ProcessTraces.h"
 
 // RsaToolbox
+#include <Keys.h>
 #include <Vna.h>
 #include <WizardPage.h>
 
@@ -29,13 +30,13 @@ class TracesWidget : public RsaToolbox::WizardPage
     Q_OBJECT
 
 public:
-    explicit TracesWidget(RsaToolbox::Vna *vna, QWidget *parent = 0);
+    explicit TracesWidget(RsaToolbox::Vna *vna, RsaToolbox::Keys *keys, QWidget *parent = 0);
     ~TracesWidget();
 
     bool isEmpty() const;
     bool isValidInput(IntermodError &error) const;
-    QList<IntermodTrace> traces() const;
-    void setTraces(const QList<IntermodTrace> &traces);
+    QList<IntermodTrace> input() const;
+    void setInput(const QList<IntermodTrace> &input);
 
     // Enter, leave
     virtual bool isReadyForNext();
@@ -44,15 +45,15 @@ signals:
     void error(const IntermodError &error);
     void errorMessage(const QString &message);
 
-    void validatedInput(const QList<IntermodTrace> &traces);
+    void validatedInput(const QList<IntermodTrace> &input);
 
 public slots:
     void setSettings(const IntermodSettings &settings);
 
+    void saveInput();
+
     void showError(const IntermodError &error);
     void showErrorMessage(const QString &message);
-
-    void measure();
 
 private slots:
     void addTrace();
@@ -61,8 +62,9 @@ private slots:
     void moveTraceDown();
 
 private:
-    Ui::TracesWidget *ui;
+    Ui::TracesWidget        *ui;
     mutable RsaToolbox::Vna *_vna;
+    RsaToolbox::Keys        *_keys;
     IntermodSettings         _settings;
 
     IntermodTraceModel    _model;
@@ -70,6 +72,9 @@ private:
     bool owns(const IntermodError &error) const;
     void setupMvc();
     void connectWidgets();
+
+    void loadKeys();
+    void saveKeys();
 };
 
 #endif // TRACESWIDGET_H

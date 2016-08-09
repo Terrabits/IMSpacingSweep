@@ -48,7 +48,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
         return false;
     }
 
-    // Output
+    // Receiving port
     if (outputPort() == 0 || outputPort() > vnaPorts) {
         error.code = IntermodError::Code::ReceivingPort;
         error.message = "*receiving port is invalid";
@@ -215,12 +215,16 @@ void ProcessTraces::run() {
     _diagram = createOrReuseDiagram();
     uint numTraces = 0;
     for (int i = 0; i < _traces.size(); i++) {
-        if (numTraces >= 20) {
-            numTraces = 0;
-            _diagram = _vna->createDiagram();
+        const IntermodTrace t = _traces[i];
+        if (t.isVisible()) {
+            if (numTraces >= 20) {
+                numTraces = 0;
+                _diagram = _vna->createDiagram();
+            }
+            numTraces++;
         }
+
         processTrace(_traces[i]);
-        numTraces++;
     }
 }
 
@@ -265,6 +269,7 @@ void ProcessTraces::preprocessTrace(const IntermodTrace &t) {
         QList<IntermodTrace> deps = t.dependents();
         foreach (IntermodTrace d, deps) {
             if (!_traces.contains(d)) {
+                d.hide();
                 _traces << d;
                 preprocessTrace(d);
             }
@@ -346,7 +351,8 @@ void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
     else {
         vnaTrc.setWaveQuantity(WaveQuantity::a, upperPort(), lowerPort());
     }
-    vnaTrc.setDiagram(_diagram);
+    if (t.isVisible())
+        vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processOutputTrace   (const IntermodTrace &t) {
     // Channel
@@ -361,7 +367,8 @@ void ProcessTraces::processOutputTrace   (const IntermodTrace &t) {
     _vna->createTrace(name, vnaCh.index());
     VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
-    vnaTrc.setDiagram(_diagram);
+    if (t.isVisible())
+        vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
     uint channel;
@@ -388,7 +395,8 @@ void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
         vnaTrc.math().on();
         vnaTrc.math().setWaveQuantity();
     }
-    vnaTrc.setDiagram(_diagram);
+    if (t.isVisible())
+        vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
     // Trace
@@ -399,7 +407,8 @@ void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
                         WaveQuantity::b, outputPort(), lowerPort()); // den
     vnaTrc.math().setExpression(math(t));
     vnaTrc.math().on();
-    vnaTrc.setDiagram(_diagram);
+    if (t.isVisible())
+        vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processInterceptTrace(const IntermodTrace &t) {
     // Trace
@@ -410,7 +419,8 @@ void ProcessTraces::processInterceptTrace(const IntermodTrace &t) {
     vnaTrc.math().setExpression(math(t));
     vnaTrc.math().on();
     vnaTrc.math().setWaveQuantity();
-    vnaTrc.setDiagram(_diagram);
+    if (t.isVisible())
+        vnaTrc.setDiagram(_diagram);
 }
 
 // Helpers

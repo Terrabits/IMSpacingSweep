@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     Vna vna(ConnectionType::VisaTcpSocketConnection, "127.0.0.1::5025");
-    IntermodWidget w(&vna);
+    IntermodWidget w(&vna, NULL);
     w.show();
     int result = a.exec();
 
     vna.preset();
 
     IntermodError e;
-    qDebug() << "is input? " << w.isInput(e);
+    qDebug() << "is input? " << w.isValidInput(e);
     qDebug() << "is error? " << e.isError();
     qDebug() << "message:  " << e.message;
     return result;

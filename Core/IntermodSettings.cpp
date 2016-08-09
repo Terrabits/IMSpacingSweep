@@ -28,7 +28,10 @@ IntermodSettings::~IntermodSettings()
 uint IntermodSettings::lowerSourcePort() const {
     return _lowerSourcePort;
 }
-VnaIntermod::ToneSource IntermodSettings::upperSource() const {
+VnaIntermod::ToneSource  IntermodSettings::upperSource() const {
+    return _upperSource;
+}
+VnaIntermod::ToneSource &IntermodSettings::upperSource() {
     return _upperSource;
 }
 uint IntermodSettings::receivingPort() const {
@@ -103,3 +106,53 @@ void IntermodSettings::setChannel(uint index) {
     _channel = index;
 }
 
+// Stream operators
+QDataStream &operator<<(QDataStream &stream, const IntermodSettings &settings) {
+    stream << quint32(settings.lowerSourcePort());
+    stream << quint32(settings.upperSource().port());
+    stream << quint32(settings.receivingPort());
+
+    stream << settings.centerFrequency_Hz();
+
+    stream << settings.startToneDistance_Hz();
+    stream << settings.stopToneDistance_Hz();
+    stream << quint32(settings.points());
+
+    stream << settings.power_dBm();
+    stream << settings.ifBw_Hz();
+    stream << quint32(settings.selectivity());
+
+    stream << quint32(settings.channel());
+    return stream;
+}
+QDataStream &operator>>(QDataStream &stream, IntermodSettings &settings) {
+    quint32   lower ,  upper ,  recv;
+    stream >> lower >> upper >> recv;
+    settings.setLowerSourcePort   (lower);
+    settings.upperSource().setPort(upper);
+    settings.setReceivingPort     (recv);
+
+    double    center;
+    stream >> center;
+    settings.setCenterFrequency(center);
+
+    quint32   points;
+    double    start ,  stop;
+    stream >> start >> stop >> points;
+    settings.setStartToneDistance(start );
+    settings.setStopToneDistance (stop  );
+    settings.setPoints           (points);
+
+    typedef   VnaChannel::IfSelectivity Selectivity;
+    quint32   sel;
+    double    power ,  ifBw;
+    stream >> power >> ifBw >> sel;
+    settings.setPower(power);
+    settings.setIfBw(ifBw);
+    settings.setSelectivity(Selectivity(sel));
+
+    quint32   channel;
+    stream >> channel;
+    settings.setChannel(channel);
+    return stream;
+}

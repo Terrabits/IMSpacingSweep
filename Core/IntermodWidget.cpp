@@ -4,6 +4,7 @@
 
 // Project
 #include "IntermodTrace.h"
+#include "ProcessTraces.h"
 
 // RsaToolbox
 #include "General.h"
@@ -20,19 +21,26 @@ using namespace RsaToolbox;
 #include <cassert>
 
 
-IntermodWidget::IntermodWidget(RsaToolbox::Vna *vna, QWidget *parent) :
+IntermodWidget::IntermodWidget(RsaToolbox::Vna *vna, Keys *keys, QWidget *parent) :
     WizardPage(parent),
     ui(new ::Ui::IntermodWidget),
-    _vna(vna)
+    _vna (vna ),
+    _keys(keys)
 {
     ui->setupUi(this);
+
     setInputLimits();
+    loadKeys      ();
     connectWidgets();
 }
 
 IntermodWidget::~IntermodWidget()
 {
     delete ui;
+}
+
+void IntermodWidget::saveInput() {
+    saveKeys();
 }
 
 void IntermodWidget::showError(const IntermodError &error) {
@@ -72,97 +80,101 @@ void IntermodWidget::setInputLimits() {
     ui->channel->addItems(toStringList(_vna->channels()));
 }
 
-bool IntermodWidget::isInput(IntermodError &error) const {
-    error.clear();
+bool IntermodWidget::isValidInput(IntermodError &e) const {
+    e.clear();
 
     // Ports
     if (ui->lowerPort->text().isEmpty()) {
         ui->lowerPort->setFocus();
-        error.code = IntermodError::Code::LowerSourcePort;
-        error.message = "*Enter lower source port";
+        e.code = IntermodError::Code::LowerSourcePort;
+        e.message = "*Enter lower source port";
         return false;
     }
     // FIX ME !!!!! ///
     if (ui->upperSourceIndex->text().isEmpty()) {
         ui->upperSourceIndex->selectAll();
         ui->upperSourceIndex->setFocus();
-        error.code = IntermodError::Code::UpperSource;
-        error.message = "*Enter upper source";
+        e.code = IntermodError::Code::UpperSource;
+        e.message = "*Enter upper source";
         return false;
     }
     if (ui->receivingPort->text().isEmpty()) {
         ui->receivingPort->setFocus();
-        error.code = IntermodError::Code::ReceivingPort;
-        error.message = "*Enter receiving port";
+        e.code = IntermodError::Code::ReceivingPort;
+        e.message = "*Enter receiving port";
         return false;
     }
 
     // Center frequency
     if (ui->centerFrequency->text().isEmpty()) {
         ui->centerFrequency->setFocus();
-        error.code = IntermodError::Code::CenterFrequency;
-        error.message = "*Enter center frequency";
+        e.code = IntermodError::Code::CenterFrequency;
+        e.message = "*Enter center frequency";
         return false;
     }
 
     // Tone distance
     if (ui->startToneDistance->text().isEmpty()) {
         ui->startToneDistance->setFocus();
-        error.code = IntermodError::Code::StartToneDistance;
-        error.message = "*Enter start tone distance";
+        e.code = IntermodError::Code::StartToneDistance;
+        e.message = "*Enter start tone distance";
         return false;
     }
     if (ui->stopToneDistance->text().isEmpty()) {
         ui->stopToneDistance->setFocus();
-        error.code = IntermodError::Code::StopToneDistance;
-        error.message = "*Enter stop tone distance";
+        e.code = IntermodError::Code::StopToneDistance;
+        e.message = "*Enter stop tone distance";
         return false;
     }
     if (ui->toneDistancePoints->text().isEmpty()) {
         ui->toneDistancePoints->setFocus();
-        error.code = IntermodError::Code::Points;
-        error.message = "*Enter tone distance points";
+        e.code = IntermodError::Code::Points;
+        e.message = "*Enter tone distance points";
         return false;
     }
 
     // Misc
     if (ui->ifBw->text().isEmpty()) {
         ui->ifBw->setFocus();
-        error.code = IntermodError::Code::IfBw;
-        error.message = "*Enter IF bandwidth";
+        e.code = IntermodError::Code::IfBw;
+        e.message = "*Enter IF bandwidth";
         return false;
     }
     if (ui->power->text().isEmpty()) {
         ui->power->setFocus();
-        error.code = IntermodError::Code::Power;
-        error.message = "*Enter power level";
+        e.code = IntermodError::Code::Power;
+        e.message = "*Enter power level";
         return false;
     }
     if (ui->selectivity->currentText().isEmpty()) {
         ui->selectivity->setFocus();
-        error.code = IntermodError::Code::Selectivity;
-        error.message = "*Enter IF selectivity";
+        e.code = IntermodError::Code::Selectivity;
+        e.message = "*Enter IF selectivity";
         return false;
     }
     if (ui->channel->currentText().isEmpty()) {
         ui->channel->setFocus();
-        error.code = IntermodError::Code::Channel;
-        error.message = "*Choose channel";
+        e.code = IntermodError::Code::Channel;
+        e.message = "*Choose channel";
         return false;
     }
 
-    // No error
+    QList<IntermodTrace> traces;
+    ProcessTraces p(traces, input(), _vna);
+    p.isReady(e);
+    if (owns(e))
+        return false;
+
+    e.clear();
     return true;
 }
-IntermodSettings IntermodWidget::getInput() const {
-    VnaIntermod::ToneSource upper;
+IntermodSettings IntermodWidget::input() const {
     IntermodSettings s;
 
     // Ports
     s.setLowerSourcePort(ui->lowerPort->points());
     // FIX ME !!!!! ////
-    upper.setPort(ui->upperSourceIndex->points());
-    s.setUpperSource(upper);
+    s.upperSource().setPort(ui->upperSourceIndex->points());
     s.setReceivingPort(ui->receivingPort->points());
 
     // Center frequency
@@ -205,18 +217,12 @@ void IntermodWidget::setInput(const IntermodSettings &settings) {
 
 bool IntermodWidget::isReadyForNext() {
     IntermodError err;
-    if (!isInput(err)) {
+    if (!isValidInput(err)) {
         emit error(err);
         return false;
     }
 
-    if (owns(err)) {
-        emit error(err);
-        return false;
-    }
-
-    // Input is valid
-    emit validatedInput(getInput());
+    emit validatedInput(input());
     return true;
 }
 
@@ -252,6 +258,22 @@ void IntermodWidget::connectWidgets() {
             this, SLOT  (showError        (IntermodError)));
     connect(this, SIGNAL(errorMessage     (QString      )),
             this, SLOT  (showErrorMessage (QString      )));
+}
+void IntermodWidget::loadKeys() {
+    if (!_keys)
+        return;
+    if (!_keys->exists("SETTINGS"))
+        return;
+
+    IntermodSettings settings;
+    _keys->get("SETTINGS", settings);
+    setInput(settings);
+}
+void IntermodWidget::saveKeys() {
+    if (!_keys)
+        return;
+
+    _keys->set("SETTINGS", input());
 }
 
 // Input

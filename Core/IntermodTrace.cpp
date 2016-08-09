@@ -160,6 +160,9 @@ void IntermodTrace::hide     () {
 void IntermodTrace::show     () {
     _isVisible = true;
 }
+void IntermodTrace::setVisible(bool isVisible) {
+    _isVisible = isVisible;
+}
 
 // Dependent calculation
 bool IntermodTrace::isDependent() const {
@@ -417,7 +420,26 @@ QString IntermodTrace::abbreviateFeature() const {
     }
 }
 
-// Operators
+// Stream operators
+QDataStream &operator<<(QDataStream &stream, const IntermodTrace &trace) {
+    stream << quint32(trace.type     ());
+    stream << quint32(trace.feature  ());
+    stream << quint32(trace.order    ());
+    stream <<         trace.isVisible();
+    return stream;
+}
+QDataStream &operator>>(QDataStream &stream, IntermodTrace &trace) {
+    bool isVisible;
+    quint32   type ,  feature ,  order;
+    stream >> type >> feature >> order >> isVisible;
+    trace.setType   (TraceType   (type   ));
+    trace.setFeature(TraceFeature(feature));
+    trace.setOrder  (order    );
+    trace.setVisible(isVisible);
+    return stream;
+}
+
+// Boolean operators
 bool operator==(const IntermodTrace &left, const IntermodTrace &right) {
     // not equal?
     if (left.type() != right.type())

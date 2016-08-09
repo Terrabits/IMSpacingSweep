@@ -8,6 +8,7 @@
 
 // Qt
 #include <Qt>
+#include <QDataStream>
 
 
 class IntermodSettings
@@ -17,9 +18,10 @@ public:
     ~IntermodSettings();
 
     // Ports
-    uint                                lowerSourcePort() const;
-    RsaToolbox::VnaIntermod::ToneSource upperSource    () const;
-    uint                                receivingPort  () const;
+    uint                                 lowerSourcePort() const;
+    RsaToolbox::VnaIntermod::ToneSource  upperSource    () const;
+    RsaToolbox::VnaIntermod::ToneSource &upperSource    ();
+    uint                                 receivingPort  () const;
     void setLowerSourcePort(uint port);
     void setUpperSource(RsaToolbox::VnaIntermod::ToneSource source);
     void setReceivingPort(uint port);
@@ -71,6 +73,9 @@ private:
     // Channel
     uint _channel;
 };
+
+QDataStream &operator<<(QDataStream &stream, const IntermodSettings &settings);
+QDataStream &operator>>(QDataStream &stream, IntermodSettings &settings);
 
 
 #endif // IMSETTINGS_H
