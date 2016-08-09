@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Mon Aug 8 21:16:31 2016
+Mon Aug 8 23:07:57 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -44,50 +44,6 @@ Status: 0x0 Operation completed successfully.
 
 Read:     "1"
 Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:CHAN:CAT?"
-Bytes: 16
-Status: 0x0 Operation completed successfully.
-
-Read:     "'1,Ch1'"
-Bytes: 8
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:CHAN1:NAME?"
-Bytes: 18
-Status: 0x0 Operation completed successfully.
-
-Read:     "'Ch1'"
-Bytes: 6
-Status: 0x0 Operation completed successfully.
-
-Write:    "*IDN?"
-Bytes: 6
-Status: 0x0 Operation completed successfully.
-
-Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
-Bytes: 47
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:CHAN1:TRAC:CAT?"
-Bytes: 22
-Status: 0x0 Operation completed successfully.
-
-Read:     "'1,Trc1'"
-Bytes: 9
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CONF:TRAC:CHAN:NAME:ID? 'Trc1'"
-Bytes: 32
-Status: 0x0 Operation completed successfully.
-
-Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    ":CALC1:PAR:DEL 'Trc1'"
-Bytes: 22
 Status: 0x0 Operation completed successfully.
 
 Write:    ":SYST:ERR?"

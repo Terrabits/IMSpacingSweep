@@ -25,12 +25,10 @@ public:
 
     ProcessTraces(const QList<IntermodTrace> &traces,
                   const IntermodSettings &settings,
-                  RsaToolbox::Vna *vna,
-                  uint baseChannel);
+                  RsaToolbox::Vna *vna);
     ~ProcessTraces();
 
     bool isReady(IntermodError &error);
-    uint baseChannel     () const;
     void setupCalibration();
     void run             ();
 
@@ -41,6 +39,9 @@ private:
     IntermodChannels             _channels;
     FrequencyConversionGenerator _genFreq;
     uint                         _diagram;
+
+    // channel
+    uint channel() const;
 
     // isReady
     bool isFreqOutsideVna(const IntermodTrace &t) const;

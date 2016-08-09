@@ -13,7 +13,7 @@
 class IntermodSettings
 {
 public:
-    IntermodSettings();
+    IntermodSettings ();
     ~IntermodSettings();
 
     // Ports
@@ -45,9 +45,9 @@ public:
     void setIfBw(double frequency_Hz, RsaToolbox::SiPrefix prefix = RsaToolbox::SiPrefix::None);
     void setSelectivity(RsaToolbox::VnaChannel::IfSelectivity selectivity);
 
-    // Orders/Traces?
-    // How to specify?
-    // Need here
+    // Channel
+    uint channel() const;
+    void setChannel(uint index);
 
 private:
     // Ports
@@ -68,7 +68,8 @@ private:
     double _ifBw_Hz;
     RsaToolbox::VnaChannel::IfSelectivity _selectivity;
 
-    // Orders/Traces?
+    // Channel
+    uint _channel;
 };
 
 

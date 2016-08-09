@@ -22,6 +22,9 @@ public:
 private slots:
     virtual void initTestCase();
 
+    void ready_data();
+    void ready     ();
+
     void preprocess_data();
     void preprocess     ();
 
@@ -39,6 +42,9 @@ private:
     static QList<IntermodTrace> allTraces();
     double getMarkerValue(const QString prefix);
     bool isEqual(double left, double right);
+
+    double _vnaMin_Hz;
+    double _vnaMax_Hz;
 };
 
 #endif // PROCESSTRACESTEST_H

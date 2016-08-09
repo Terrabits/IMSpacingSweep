@@ -2,6 +2,7 @@
 
 
 // Project
+#include "IntermodError.h"
 #include "IntermodSettings.h"
 #include "IntermodTrace.h"
 #include "ProcessTraces.h"
@@ -16,8 +17,10 @@ using namespace RsaToolbox;
 
 
 typedef QList<IntermodTrace> Traces;
+typedef IntermodError::Code Code;
 Q_DECLARE_METATYPE(Traces)
 Q_DECLARE_METATYPE(IntermodSettings)
+Q_DECLARE_METATYPE(Code)
 
 ProcessTracesTest::ProcessTracesTest(RsaToolbox::ConnectionType type, const QString &address, QObject *parent) :
     VnaTestClass(type, address, parent)
@@ -51,15 +54,210 @@ void ProcessTracesTest::initTestCase() {
     _logDir.mkpath(path);
     _logDir.cd(path);
 
-    _logFilenames << "1 - Preprocess oip3m.txt"
-                  << "2 - Preprocess iip5l.txt"
-                  << "3 - Empty Calibration.txt"
-                  << "4 - Full Calibration.txt"
-                  << "5 - Run oip3m.txt"
-                  << "6 - Run All Traces.txt"
-                  << "7 - Trace Math.txt";
+    _logFilenames << "1  - Is ready.txt"
+                  << "2  - Low port is zero.txt"
+                  << "3  - Low port too high.txt"
+                  << "4  - Upper port is zero.txt"
+                  << "5  - Upper port too high.txt"
+                  << "6  - Recv port is zero.txt"
+                  << "7  - Recv port too high.txt"
+                  << "8  - Center freq too low.txt"
+                  << "9  - Center freq too high.txt"
+                  << "10 - Start too low.txt"
+                  << "11 - Td too low.txt"
+                  << "12 - Start too high.txt"
+                  << "13 - Stop too low.txt"
+                  << "14 - Stop too high.txt"
+                  << "15 - Td too high.txt"
+                  << "16 - No points.txt"
+                  << "17 - Too many points.txt"
+                  << "18 - Power too low.txt"
+                  << "19 - Power too high.txt"
+                  << "20 - IF BW too low.txt"
+                  << "21 - IF BW too high.txt"
+                  << "22 - Channel not found.txt"
+                  << "23 - No traces.txt"
+                  << "24 - IM3 too low.txt"
+                  << "25 - IM5 too low.txt"
+                  << "26 - IM7 too low.txt"
+                  << "27 - IM9 too low.txt"
+                  << "28 - IM3 too high.txt"
+                  << "29 - IM5 too high.txt"
+                  << "30 - IM7 too high.txt"
+                  << "31 - IM9 too high.txt"
+                  << "32 - Preprocess oip3m.txt"
+                  << "33 - Preprocess iip5l.txt"
+                  << "34 - Empty Calibration.txt"
+                  << "35 - Full Calibration.txt"
+                  << "36 - Run oip3m.txt"
+                  << "37 - Run All Traces.txt"
+                  << "38 - Trace Math.txt";
 
     VnaTestClass::_initTestCase();
+
+    _vna.reset(new Vna(_connectionType, _address));
+    _vnaMax_Hz = _vna->properties().maximumFrequency_Hz();
+    _vnaMin_Hz = _vna->properties().minimumFrequency_Hz();
+    _vna.reset();
+}
+
+void ProcessTracesTest::ready_data() {
+    QTest::addColumn<IntermodSettings>("settings");
+    QTest::addColumn<Traces>("traces");
+    QTest::addColumn<IntermodError::Code>("errorCode");
+
+    // Correct settings
+    // to start from
+    VnaIntermod::ToneSource upperSource;
+    upperSource.setPort(3);
+
+    IntermodSettings settings;
+    settings.setLowerSourcePort(1);
+    settings.setUpperSource    (upperSource);
+    settings.setReceivingPort  (2);
+    settings.setCenterFrequency  (  1, SiPrefix::Giga);
+    settings.setStartToneDistance( 10, SiPrefix::Mega);
+    settings.setStopToneDistance (100, SiPrefix::Mega);
+    settings.setPoints(10);
+    settings.setPower (-5);
+    settings.setIfBw  (1, SiPrefix::Kilo);
+    settings.setSelectivity(VnaChannel::IfSelectivity::High);
+    settings.setChannel(1);
+
+    Traces traces;
+    traces << IntermodTrace(TraceType::intermod, TraceFeature::major, 3);
+
+    // No error [1]
+    QTest::newRow("NoError") << settings << traces << Code::None;
+
+    // Lower port [2, 3]
+    settings.setLowerSourcePort(0);
+    QTest::newRow("LowPortIsZero")  << settings << traces << Code::LowerSourcePort;
+    settings.setLowerSourcePort(100);
+    QTest::newRow("LowPortTooHigh") << settings << traces << Code::LowerSourcePort;
+    settings.setLowerSourcePort(1);
+
+    // Upper port [4, 5]
+    upperSource.setPort(0);
+    settings.setUpperSource(upperSource);
+    QTest::newRow("UpperPortIsZero")  << settings << traces << Code::UpperSource;
+    upperSource.setPort(100);
+    settings.setUpperSource(upperSource);
+    QTest::newRow("UpperPortTooHigh") << settings << traces << Code::UpperSource;
+    upperSource.setPort(3);
+    settings.setUpperSource(upperSource);
+
+    // Receiving port [6, 7]
+    settings.setReceivingPort(0);
+    QTest::newRow("RecvPortIsZero") << settings << traces << Code::ReceivingPort;
+    settings.setReceivingPort(100);
+    QTest::newRow("RecvPortTooHigh") << settings << traces << Code::ReceivingPort;
+    settings.setReceivingPort(2);
+
+    // Center frequency [8, 9]
+    settings.setCenterFrequency(0);
+    QTest::newRow("CenterFreqTooLow") << settings << traces << Code::CenterFrequency;
+    settings.setCenterFrequency(1, SiPrefix::Tera);
+    QTest::newRow("CenterFreqTooHigh") << settings << traces << Code::CenterFrequency;
+    settings.setCenterFrequency(1, SiPrefix::Giga);
+
+    // Start tone [10, 11, 12]
+    settings.setStartToneDistance(0);
+    QTest::newRow("StartTooLow") << settings << traces << Code::StartToneDistance;
+    settings.setStopToneDistance(1);
+    QTest::newRow("TDTooLow") << settings << traces << Code::StartToneDistance;
+    settings.setStopToneDistance(100, SiPrefix::Mega);
+    settings.setStartToneDistance(200, SiPrefix::Mega);
+    QTest::newRow("StartTooHigh") << settings << traces << Code::StartToneDistance;
+    settings.setStartToneDistance(10, SiPrefix::Mega);
+
+    // Stop tone [13, 14, 15]
+    settings.setStopToneDistance (  0);
+    QTest::newRow("StopTooLow") << settings << traces << Code::StopToneDistance;
+    settings.setStopToneDistance (  1, SiPrefix::Tera);
+    QTest::newRow("StopTooHigh") << settings << traces << Code::StopToneDistance;
+    settings.setStartToneDistance(999, SiPrefix::Giga);
+    QTest::newRow("TDTooHigh" ) << settings << traces << Code::StopToneDistance;
+    settings.setStartToneDistance( 10, SiPrefix::Mega);
+    settings.setStopToneDistance (100, SiPrefix::Mega);
+
+    // Points [16, 17]
+    settings.setPoints(0);
+    QTest::newRow("ZeroPoints") << settings << traces << Code::Points;
+    settings.setPoints(100e6);
+    QTest::newRow("TooManyPoints") << settings << traces << Code::Points;
+    settings.setPoints(10);
+
+    // Power [18, 19]
+    settings.setPower(-1.0e6);
+    QTest::newRow("PowerTooLow") << settings << traces << Code::Power;
+    settings.setPower(1.0e6);
+    QTest::newRow("PowerTooHigh") << settings << traces << Code::Power;
+    settings.setPower(-5);
+
+    // IF BW [20, 21]
+    settings.setIfBw(0);
+    QTest::newRow("IfBwTooLow") << settings << traces << Code::IfBw;
+    settings.setIfBw(1, SiPrefix::Tera);
+    QTest::newRow("IfBwTooHigh") << settings << traces << Code::IfBw;
+    settings.setIfBw(1, SiPrefix::Kilo);
+
+    // Selectivity?
+    // Enum, can't be wrong!
+
+    // Channel [22]
+    settings.setChannel(0);
+    QTest::newRow("ChannelNotFound") << settings << traces << Code::Channel;
+
+    // Traces [23]
+    traces.clear();
+    QTest::newRow("NoTraces") << settings << traces << Code::Traces;
+
+    // Trace frequency [24..31]
+    const double tdStart = 10.0e6; // 10 MHz
+    settings.setCenterFrequency(_vnaMin_Hz + (3.0/2.0)*tdStart - 1.0e6);
+    traces << IntermodTrace(TraceType::intermod, TraceFeature::lower, 3);
+    QTest::newRow("3TooLow") << settings << traces << Code::Order;
+    settings.setCenterFrequency(_vnaMin_Hz + (5.0/2.0)*tdStart - 1.0e6);
+    traces.last().setOrder(5);
+    QTest::newRow("5TooLow") << settings << traces << Code::Order;
+    settings.setCenterFrequency(_vnaMin_Hz + (7.0/2.0)*tdStart - 1.0e6);
+    traces.last().setOrder(7);
+    QTest::newRow("7TooLow") << settings << traces << Code::Order;
+    settings.setCenterFrequency(_vnaMin_Hz + (9.0/2.0)*tdStart - 1.0e6);
+    traces.last().setOrder(9);
+    QTest::newRow("9TooLow") << settings << traces << Code::Order;
+    settings.setCenterFrequency(_vnaMax_Hz - (3.0/2.0)*tdStart - 1.0e6);
+    traces.last().setFeature(TraceFeature::upper);
+    traces.last().setOrder(3);
+    QTest::newRow("3TooHigh") << settings << traces << Code::Order;
+    settings.setCenterFrequency(_vnaMax_Hz - (5.0/2.0)*tdStart + 1.0e6);
+    traces.last().setOrder(5);
+    QTest::newRow("5TooHigh") << settings << traces << Code::Order;
+    settings.setCenterFrequency(_vnaMax_Hz - (7.0/2.0)*tdStart + 1.0e6);
+    traces.last().setOrder(7);
+    QTest::newRow("7TooHigh") << settings << traces << Code::Order;
+    settings.setCenterFrequency(_vnaMax_Hz - (9.0/2.0)*tdStart + 1.0e6);
+    traces.last().setOrder(9);
+    QTest::newRow("9TooHigh") << settings << traces << Code::Order;
+}
+void ProcessTracesTest::ready() {
+    QFETCH(IntermodSettings, settings);
+    QFETCH(Traces, traces);
+    QFETCH(IntermodError::Code, errorCode);
+
+//    ProcessTraces pt(traces, settings, _vna.data(), /*channel=*/ 1);
+//    IntermodError error;
+//    bool isReady = pt.isReady(error);
+//    QCOMPARE(error.code, errorCode);
+//    if (error.isError()) {
+//        QVERIFY(!isReady);
+//        QVERIFY(!error.message.isEmpty());
+//    }
+//    else {
+//        QVERIFY(isReady);
+//        QVERIFY(error.message.isEmpty());
+//    }
 }
 
 void ProcessTracesTest::preprocess_data() {
@@ -104,8 +302,8 @@ void ProcessTracesTest::preprocess() {
     QFETCH(Traces, after) ;
 
     IntermodSettings settings;
-    const uint base = 1;
-    ProcessTraces pt(before, settings, _vna.data(), base);
+    settings.setChannel(1);
+    ProcessTraces pt(before, settings, _vna.data());
     QCOMPARE(after, pt._traces);
 }
 
@@ -156,8 +354,8 @@ void ProcessTracesTest::calibration() {
     QFETCH(IntermodSettings, settings);
     QFETCH(Traces,           traces);
 
-    const uint base = 1;
-    ProcessTraces pt(traces, settings, _vna.data(), base);
+    settings.setChannel(1);
+    ProcessTraces pt(traces, settings, _vna.data());
     pt.setupCalibration();
     _vna->settings().displayOn();
 //    pause("Calibration: Check setup");
@@ -203,8 +401,8 @@ void ProcessTracesTest::run() {
     QFETCH(IntermodSettings, settings);
     QFETCH(Traces,           traces);
 
-    const uint base = 1;
-    ProcessTraces pt(traces, settings, _vna.data(), base);
+    settings.setChannel(1);
+    ProcessTraces pt(traces, settings, _vna.data());
     pt.run();
     QVERIFY(!_vna->isError());
     QCOMPARE(_vna->traces().size(), traces.size());
@@ -229,8 +427,8 @@ void ProcessTracesTest::traceMath() {
     settings.setPower(-5);
     settings.setIfBw(1, SiPrefix::Kilo);
 
-    const uint baseChannel = 1;
-    ProcessTraces pt(allTraces(), settings, _vna.data(), baseChannel);
+    settings.setChannel(1);
+    ProcessTraces pt(allTraces(), settings, _vna.data());
     IntermodError error;
     bool isReady = pt.isReady(error);
     QCOMPARE(error.message, QString());
@@ -254,8 +452,8 @@ void ProcessTracesTest::traceMath() {
 
         const double lto    = getMarkerValue("lto");
         const double lti    = getMarkerValue("lti");
-        const double uto    = getMarkerValue("uto");
-        const double uti    = getMarkerValue("uti");
+//        const double uto    = getMarkerValue("uto");
+//        const double uti    = getMarkerValue("uti");
 
         const double im3lo  = getMarkerValue("im3lo");
         const double im3uo  = getMarkerValue("im3uo");
@@ -358,6 +556,27 @@ void ProcessTracesTest::traceMath() {
         QVERIFY(isEqual(ip9uo, lto + im9uor/8.0));
         QVERIFY(isEqual(ip9mo, lto + im9mor/8.0));
         QVERIFY(isEqual(std::min(ip9lo, ip9uo), ip9mo));
+
+        // input intercept
+        QVERIFY(isEqual(ip3li, lti + im3lor/2.0));
+        QVERIFY(isEqual(ip3ui, lti + im3uor/2.0));
+        QVERIFY(isEqual(ip3mi, lti + im3mor/2.0));
+        QVERIFY(isEqual(std::min(ip3li, ip3ui), ip3mi));
+
+        QVERIFY(isEqual(ip5li, lti + im5lor/4.0));
+        QVERIFY(isEqual(ip5ui, lti + im5uor/4.0));
+        QVERIFY(isEqual(ip5mi, lti + im5mor/4.0));
+        QVERIFY(isEqual(std::min(ip5li, ip5ui), ip5mi));
+
+        QVERIFY(isEqual(ip7li, lti + im7lor/6.0));
+        QVERIFY(isEqual(ip7ui, lti + im7uor/6.0));
+        QVERIFY(isEqual(ip7mi, lti + im7mor/6.0));
+        QVERIFY(isEqual(std::min(ip7li, ip7ui), ip7mi));
+
+        QVERIFY(isEqual(ip9li, lti + im9lor/8.0));
+        QVERIFY(isEqual(ip9ui, lti + im9uor/8.0));
+        QVERIFY(isEqual(ip9mi, lti + im9mor/8.0));
+        QVERIFY(isEqual(std::min(ip9li, ip9ui), ip9mi));
     }
 }
 

@@ -14,7 +14,8 @@ IntermodSettings::IntermodSettings() :
     _stopToneDistance_Hz (0),
     _power_dBm(-1.0*DBL_MAX),
     _ifBw_Hz  (10.0E3      ),
-    _selectivity(VnaChannel::IfSelectivity::High)
+    _selectivity(VnaChannel::IfSelectivity::High),
+    _channel(1)
 {
     //
 }
@@ -94,4 +95,11 @@ void IntermodSettings::setSelectivity(VnaChannel::IfSelectivity selectivity) {
     _selectivity = selectivity;
 }
 
+// Channel
+uint IntermodSettings::channel() const {
+    return _channel;
+}
+void IntermodSettings::setChannel(uint index) {
+    _channel = index;
+}
 

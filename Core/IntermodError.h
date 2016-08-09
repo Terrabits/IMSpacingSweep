@@ -20,6 +20,7 @@ struct IntermodError {
         Selectivity,
         Traces,
         Order,
+        Channel,
         None
     };
 

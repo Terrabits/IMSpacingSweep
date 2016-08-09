@@ -13,12 +13,11 @@ using namespace RsaToolbox;
 
 ProcessTraces::ProcessTraces(const QList<IntermodTrace> &traces,
                              const IntermodSettings &settings,
-                             RsaToolbox::Vna *vna,
-                             uint baseChannel)
+                             RsaToolbox::Vna *vna)
     : _traces(traces),
       _settings(settings),
       _vna(vna),
-      _channels(vna, baseChannel),
+      _channels(vna, _settings.channel()),
       _genFreq(settings)
 {
     preprocessTraces();
@@ -162,6 +161,15 @@ bool ProcessTraces::isReady(IntermodError &error) {
         return false;
     }
 
+    // Channel
+    const uint c = _settings.channel();
+    if (!_vna->channels().contains(c)) {
+        error.code = IntermodError::Code::Channel;
+        error.message = "*Could not find channel %1";
+        error.message = error.message.arg(c);
+        return false;
+    }
+
     // Traces
     if (_traces.isEmpty()) {
         error.code = IntermodError::Code::Traces;
@@ -182,7 +190,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
 
     return true;
 }
-uint ProcessTraces::baseChannel() const {
+uint ProcessTraces::channel() const {
     return _channels.base();
 }
 void ProcessTraces::setupCalibration() {
@@ -198,7 +206,7 @@ void ProcessTraces::setupCalibration() {
     // Create diagram, trace
     uint d = createOrReuseDiagram();
     const QString t = "calibrate";
-    _vna->createTrace(t, baseChannel());
+    _vna->createTrace(t, channel());
     _vna->trace(t).setDiagram(d);
 }
 void ProcessTraces::run() {
@@ -218,16 +226,11 @@ void ProcessTraces::run() {
 bool ProcessTraces::isFreqOutsideVna(const IntermodTrace &t) const {
     const double vnaMin = _vna->properties().minimumFrequency_Hz();
     const double vnaMax = _vna->properties().maximumFrequency_Hz();
-//    qDebug() << "Vna range: " << vnaMin << vnaMax;
-//    qDebug() << "trace  : " << t.display();
-//    qDebug() << "  order: " << t.order();
     if (t.isLower() || t.isMajor()) {
-//        qDebug() << "  min  : " << _genFreq.minLowerFreq_Hz(t.order());
         if (_genFreq.minLowerFreq_Hz(t.order()) < vnaMin)
             return true;
     }
     else if (t.isUpper() || t.isMajor()) {
-//        qDebug() << "  max  : " << _genFreq.maxUpperFreq_Hz(t.order());
         if (_genFreq.maxUpperFreq_Hz(t.order()) > vnaMax)
             return true;
     }
@@ -358,7 +361,7 @@ void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
         channel = ch.index();
     }
     else {
-        channel = baseChannel();
+        channel = this->channel();
     }
 
     // Trace
@@ -376,7 +379,7 @@ void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
 void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
     // Trace
     const QString name = traceName(t);
-    _vna->createTrace(name, baseChannel());
+    _vna->createTrace(name, channel());
     VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveRatio(WaveQuantity::b, outputPort(), lowerPort(),  // num
                         WaveQuantity::b, outputPort(), lowerPort()); // den
@@ -387,7 +390,7 @@ void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
 void ProcessTraces::processInterceptTrace(const IntermodTrace &t) {
     // Trace
     const QString name = traceName(t);
-    _vna->createTrace(name, baseChannel());
+    _vna->createTrace(name, channel());
     VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
     vnaTrc.math().setExpression(math(t));
