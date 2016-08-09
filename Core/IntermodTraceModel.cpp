@@ -32,10 +32,12 @@ QVariant IntermodTraceModel::headerData(int section, Qt::Orientation orientation
         return QVariant();
 
     switch (section) {
-    case Column::name:
-        return "Name";
-    case Column::y:
-        return "Y";
+    case Column::Type:
+        return "Type";
+    case Column::Feature:
+        return "Feature";
+    case Column::Order:
+        return "Order";
     default:
         return QVariant();
     }
@@ -62,8 +64,9 @@ Qt::ItemFlags IntermodTraceModel::flags(const QModelIndex &index) const {
 
     Qt::ItemFlags flags = QAbstractTableModel::flags(index);
     switch (column) {
-    case Column::name:
-    case Column::y:
+    case Column::Type:
+    case Column::Feature:
+    case Column::Order:
         return flags | Qt::ItemIsEditable;
     default:
         return flags;
@@ -102,12 +105,20 @@ QVariant IntermodTraceModel::data(const QModelIndex &index, int role) const {
         return QVariant();
     }
 
+    // Will default to QString format
+    // Even though this probably isn't
+    // proper / is lazy
     IntermodTrace trace = _traces[row];
     switch (column) {
-//    case Column::name:
-//        return trace.name();
-//    case Column::y:
-//        return trace.y();
+    case Column::Type:
+        return toString(trace.type());
+    case Column::Feature:
+        return toString(trace.feature());
+    case Column::Order:
+        if (trace.hasOrder())
+            return trace.order();
+        else
+            return QVariant();
     default:
         return QVariant();
     }
@@ -133,25 +144,21 @@ bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value
     else if (!value.canConvert<QString>())
         return false;
 
-    const QString  string      = value.toString();
-    IntermodTrace &trace       = _traces[row];
+    const TraceType    type    = value.value<TraceType>();
+    const TraceFeature feature = value.value<TraceFeature>();
+    const uint         order   = value.toUInt();
+    IntermodTrace     &trace   = _traces[row];
     switch (column) {
-    case Column::name:
-//        if (string.toLower() == trace.name().toLower())
-//            return true;
-
-//        trace.setName(string);
-//        fixTrace(row);
-//        emit dataChanged(index, index);
+    case Column::Type:
+        trace.setType(type);
         return true;
-
-    case Column::y:
-//        if (string.toLower() == trace.y())
-//            return true;
-
-//        trace.setY(string);
-//        fixTrace(row);
-//        emit dataChanged(index, index);
+    case Column::Feature:
+        trace.setFeature(feature);
+        return true;
+    case Column::Order:
+        if (!trace.hasOrder())
+            return false;
+        trace.setOrder(order);
         return true;
     default:
         return false;
@@ -209,12 +216,9 @@ bool IntermodTraceModel::insertRows(int row, int count, const QModelIndex &paren
     if (count == 0)
         return true;
 
-    IntermodTrace trace;
-//    trace.setY(trace.possibleYParameters().first());
     beginInsertRows(parent, row, row + count - 1);
     for (int i = 0; i < count; i++) {
-//        trace.setName(nextTraceName());
-        _traces.insert(row, trace);
+        _traces.insert(row, IntermodTrace());
     }
     endInsertRows();
     return true;
@@ -242,7 +246,6 @@ bool IntermodTraceModel::removeRows(int row, int count, const QModelIndex &paren
 void IntermodTraceModel::setSettings(const IntermodSettings &settings) {
     beginResetModel();
     _settings = settings;
-    fixTraces();
     endResetModel();
 }
 
@@ -253,45 +256,6 @@ QList<IntermodTrace> IntermodTraceModel::traces() const {
 void IntermodTraceModel::setTraces(const QList<IntermodTrace> &traces) {
     beginResetModel();
     _traces = traces;
-    fixTraces();
     endResetModel();
 }
 
-bool IntermodTraceModel::hasTraceName(const QString &name) const {
-//    for (int i = 0; i < _traces.size(); i++) {
-//        if (_traces[i].name().toLower() == name.toLower())
-//            return true;
-//    }
-    return false;
-}
-QString IntermodTraceModel::nextTraceName() const {
-    if (_traces.isEmpty()) {
-        return "Trc1";
-    }
-
-    const QString format = "Trc%1";
-    int i = _traces.size()+1;
-    while (hasTraceName(format.arg(i))) {
-        i++;
-    }
-    return format.arg(i);
-}
-bool IntermodTraceModel::fixTrace(int row) {
-    bool isFixed = false;
-    IntermodTrace &trace = _traces[row];
-//    if (!trace.isNameValid()) {
-//        trace.setName(QString("Trc%1").arg(row));
-//        isFixed = true;
-//    }
-//    if (!trace.isYValid()) {
-//        trace.setY(trace.possibleYParameters().first());
-//        isFixed = true;
-//    }
-
-    return isFixed;
-}
-void IntermodTraceModel::fixTraces() {
-    for (int i = 0; i < _traces.size(); i++) {
-        fixTrace(i);
-    }
-}

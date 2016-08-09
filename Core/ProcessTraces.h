@@ -47,16 +47,17 @@ private:
     bool isFreqOutsideVna(const IntermodTrace &t) const;
 
     // Preprocess
-    //   Some traces depend on the existence
-    //   of other traces. Need to add
-    //   dependents to _traces.
-    void preprocessTraces  ();
+    //   Make sure there is only one
+    //   copy of each trace, and that
+    //   all dependencies are included
+    void preprocessTraces     ();
+    void removeDuplicateTraces();
     void preprocessTrace   (const IntermodTrace &t);
     bool dependencyInTraces(const IntermodTrace &t) const;
-    void sort              ();
+    void sort                 ();
 
     // Process
-    void processTrace         (const IntermodTrace   &t);
+    void processTrace      (const IntermodTrace &t);
 
     // Processing by TraceType
     void configureChannel     (RsaToolbox::VnaChannel c);

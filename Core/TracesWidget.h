@@ -4,9 +4,11 @@
 
 // Project
 #include "IntermodError.h"
+#include "IntermodSettings.h"
 #include "IntermodTrace.h"
 #include "IntermodTraceDelegate.h"
 #include "IntermodTraceModel.h"
+#include "ProcessTraces.h"
 
 // RsaToolbox
 #include <Vna.h>
@@ -36,12 +38,13 @@ public:
     void setTraces(const QList<IntermodTrace> &traces);
 
     // Enter, leave
-    void initialize();
-    void back();
+    virtual bool isReadyForNext();
 
 signals:
     void error(const IntermodError &error);
     void errorMessage(const QString &message);
+
+    void validatedInput(const QList<IntermodTrace> &traces);
 
 public slots:
     void setSettings(const IntermodSettings &settings);
@@ -60,6 +63,7 @@ private slots:
 private:
     Ui::TracesWidget *ui;
     mutable RsaToolbox::Vna *_vna;
+    IntermodSettings         _settings;
 
     IntermodTraceModel    _model;
     IntermodTraceDelegate _delegate;

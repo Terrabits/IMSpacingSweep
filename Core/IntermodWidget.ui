@@ -71,6 +71,12 @@
          </property>
          <item row="2" column="0">
           <widget class="QLabel" name="receivingLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Receiving Port:</string>
            </property>
@@ -78,6 +84,12 @@
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="lowerLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Lower Port:</string>
            </property>
@@ -88,6 +100,12 @@
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="upperLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Upper Source:</string>
            </property>
@@ -189,35 +207,24 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item row="1" column="0">
-          <widget class="QLabel" name="stopCenterLabel">
-           <property name="text">
-            <string>Stop:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="RsaToolbox::FrequencyEdit" name="stopCenterFrequency"/>
-         </item>
          <item row="0" column="1">
-          <widget class="RsaToolbox::FrequencyEdit" name="startCenterFrequency"/>
+          <widget class="RsaToolbox::FrequencyEdit" name="centerFrequency"/>
          </item>
          <item row="0" column="0">
-          <widget class="QLabel" name="startCenterLabel">
-           <property name="text">
-            <string>Start:</string>
+          <spacer name="centerFrequencySpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="centerPointsLabel">
-           <property name="text">
-            <string>Points:</string>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
            </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="RsaToolbox::PointsEdit" name="centerFrequencyPoints"/>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>80</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
@@ -270,6 +277,12 @@
          </property>
          <item row="1" column="0">
           <widget class="QLabel" name="stopDistanceLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Stop:</string>
            </property>
@@ -283,6 +296,12 @@
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="startDistanceLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Start:</string>
            </property>
@@ -290,6 +309,12 @@
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="distancePointsLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string>Points:</string>
            </property>
@@ -349,8 +374,14 @@
          </property>
          <item row="1" column="0">
           <widget class="QLabel" name="powerLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Power</string>
+            <string>Power:</string>
            </property>
           </widget>
          </item>
@@ -360,17 +391,16 @@
          <item row="0" column="1">
           <widget class="RsaToolbox::FrequencyEdit" name="ifBw"/>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="ifBwLabel">
-           <property name="text">
-            <string>IF BW:</string>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="selectivityLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
-            <string>Selectivity</string>
+            <string>Selectivity:</string>
            </property>
           </widget>
          </item>
@@ -389,6 +419,35 @@
              <string>High</string>
             </property>
            </item>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="ifBwLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>IF BW:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="channel"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="channelLabel">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Channel:</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -417,6 +476,12 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>RsaToolbox::ErrorLabel</class>
+   <extends>QWidget</extends>
+   <header>ErrorLabel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>RsaToolbox::FrequencyEdit</class>
    <extends>QLineEdit</extends>
    <header>FrequencyEdit.h</header>
@@ -431,21 +496,13 @@
    <extends>QLineEdit</extends>
    <header>PowerEdit.h</header>
   </customwidget>
-  <customwidget>
-   <class>RsaToolbox::ErrorLabel</class>
-   <extends>QWidget</extends>
-   <header>ErrorLabel.h</header>
-   <container>1</container>
-  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>lowerPort</tabstop>
   <tabstop>upperSourceType</tabstop>
   <tabstop>upperSourceIndex</tabstop>
   <tabstop>receivingPort</tabstop>
-  <tabstop>startCenterFrequency</tabstop>
-  <tabstop>stopCenterFrequency</tabstop>
-  <tabstop>centerFrequencyPoints</tabstop>
+  <tabstop>centerFrequency</tabstop>
   <tabstop>startToneDistance</tabstop>
   <tabstop>stopToneDistance</tabstop>
   <tabstop>toneDistancePoints</tabstop>

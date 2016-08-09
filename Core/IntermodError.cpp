@@ -15,6 +15,5 @@ bool IntermodError::isError() const {
 }
 void IntermodError::clear() {
     code   = Code::None;
-    row    = -1;
     message.clear();
 }

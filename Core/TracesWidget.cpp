@@ -30,13 +30,20 @@ bool TracesWidget::isEmpty() const {
 bool TracesWidget::isValidInput(IntermodError &error) const {
     error.clear();
     if (isEmpty()) {
+        ui->addTrace->setFocus();
         error.code = IntermodError::Code::Traces;
         error.message = "*At least one trace is required";
         return false;
     }
 
-    // Else
-    return /*true*/ false;
+    ProcessTraces p(traces(), _settings, _vna);
+    p.isReady(error);
+    if (owns(error))
+        return false;
+
+    // No errors
+    error.clear();
+    return true;
 }
 QList<IntermodTrace> TracesWidget::traces() const {
     return _model.traces();
@@ -45,28 +52,27 @@ void TracesWidget::setTraces(const QList<IntermodTrace> &traces) {
     _model.setTraces(traces);
 }
 
-void TracesWidget::initialize() {
+bool TracesWidget::isReadyForNext() {
+    IntermodError e;
+    if (isValidInput(e))
+        return true;
 
-}
-void TracesWidget::back() {
+    emit error(e);
+    return false;
 
+    emit validatedInput(traces());
+    return true;
 }
 
 // public slots
 void TracesWidget::setSettings(const IntermodSettings &settings) {
-    _model.setSettings(settings);
+    _settings = settings;
+    _model.setSettings(_settings);
 }
 
 void TracesWidget::showError(const IntermodError &error) {
-    if (!owns(error))
-        return;
-
-    const int row       = error.row;
-    const int column    = 0/*error.column*/;
-    const QModelIndex i = _model.index(row, column);
-    ui->traces->setFocus();
-    if (i.isValid())
-        ui->traces->edit(i);
+    if (owns(error))
+        ui->traces->setFocus();
     ui->error->showMessage(error.message);
 }
 void TracesWidget::showErrorMessage(const QString &message) {
@@ -100,7 +106,14 @@ void TracesWidget::moveTraceDown() {
 }
 
 bool TracesWidget::owns(const IntermodError &error) const {
-    return error.code == IntermodError::Code::Traces;
+    typedef IntermodError::Code Code;
+    switch(error.code) {
+    case Code::Traces:
+    case Code::Order:
+        return true;
+    default:
+        return false;
+    }
 }
 void TracesWidget::setupMvc() {
     ui->traces->setModel       (&_model   );

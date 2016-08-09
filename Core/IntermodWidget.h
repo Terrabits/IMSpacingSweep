@@ -33,8 +33,6 @@ public:
     // Leave page
     virtual bool isReadyForNext();
 
-    virtual void showEvent(QShowEvent *event);
-
 signals:
     void error(const IntermodError &error);
     void errorMessage(const QString &message);
@@ -49,8 +47,13 @@ private:
     mutable RsaToolbox::Vna *_vna;
 
     void setInputLimits();
-    void alignLabels();
     void connectWidgets();
+
+    // Input
+    RsaToolbox::VnaChannel::IfSelectivity selectivity() const;
+    void setSelectivity(RsaToolbox::VnaChannel::IfSelectivity s);
+    uint channel() const;
+    void setChannel(uint index);
 
     static bool owns(const IntermodError &error);
     void focusOn(const IntermodError &error);

@@ -1,6 +1,7 @@
 
 
 //Project
+#include "CalibrateWidget.h"
 #include "IntermodWidget.h"
 #include "Settings.h"
 #include "TracesWidget.h"
@@ -64,14 +65,33 @@ int main(int argc, char *argv[])
 
     // Traces page
     TracesWidget *traces = new TracesWidget  (&vna);
-    traces->setFinalPage(true);
+    traces->setNextIndex(2);
     QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
                      traces,   SLOT(setSettings(IntermodSettings)));
     QObject::connect(traces,   SIGNAL(error(IntermodError)),
                      &wizard,  SLOT(shake()));
     QObject::connect(traces,   SIGNAL(errorMessage(QString)),
                      &wizard,  SLOT(shake()));
-    wizard.addPage(traces  );
+    wizard.addPage(traces);
+
+    // Calibration page
+    CalibrateWidget *cal = new CalibrateWidget(&vna);
+    // cal->setNext(3);
+    cal->setFinalPage(true);
+    QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
+                     cal,      SLOT(setSettings(IntermodSettings)));
+    QObject::connect(traces,   SIGNAL(validatedInput(QList<IntermodTrace>)),
+                     cal,      SLOT(setTraces(QList<IntermodTrace>)));
+    wizard.addPage(cal);
+
+    // Process traces
+    // ProcessTracesWidget *process = new ProcessTracesWidget(&vna);
+    // process->setFinal(true);
+    // QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
+    //                  process,  SLOT(setSettings(IntermodSettings)));
+    // QObject::connect(traces,   SIGNAL(validatedInput(QList<IntermodTrace>)),
+    //                  process,  SLOT(setTraces(QList<IntermodTrace>)));
+    // wizard.addPage(cal);
 
     // Start event loop
     wizard.show();

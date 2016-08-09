@@ -14,6 +14,7 @@ using namespace RsaToolbox;
 #include <QDebug>
 #include <QLabel>
 #include <QList>
+#include <QVariant>
 
 // std lib
 #include <cassert>
@@ -53,14 +54,11 @@ void IntermodWidget::setInputLimits() {
     // Center frequency
     const double min_Hz  = _vna->properties().minimumFrequency_Hz();
     const double max_Hz  = _vna->properties().maximumFrequency_Hz();
-    const uint maxPoints = _vna->properties().maximumPoints();
-    ui->startCenterFrequency->setMinimum(min_Hz);
-    ui->startCenterFrequency->setMaximum(max_Hz);
-    ui->stopCenterFrequency->setMinimum(min_Hz);
-    ui->stopCenterFrequency->setMaximum(max_Hz);
-    ui->centerFrequencyPoints->setMaximum(maxPoints);
+    ui->centerFrequency->setMinimum(min_Hz);
+    ui->centerFrequency->setMaximum(max_Hz);
 
-    // Distance
+    // Tone Distance
+    const uint maxPoints = _vna->properties().maximumPoints();
     ui->startToneDistance->setMaximum(max_Hz);
     ui->stopToneDistance->setMaximum(max_Hz);
     ui->toneDistancePoints->setMaximum(maxPoints);
@@ -69,10 +67,9 @@ void IntermodWidget::setInputLimits() {
     ui->ifBw->setAcceptedValues(_vna->properties().ifBandwidthValues_Hz());
     ui->power->setMinimum(_vna->properties().minimumPower_dBm());
     ui->power->setMaximum(_vna->properties().maximumPower_dBm());
-}
 
-void IntermodWidget::alignLabels() {
-
+    ui->channel->clear   ( );
+    ui->channel->addItems(toStringList(_vna->channels()));
 }
 
 bool IntermodWidget::isInput(IntermodError &error) const {
@@ -85,7 +82,7 @@ bool IntermodWidget::isInput(IntermodError &error) const {
         error.message = "*Enter lower source port";
         return false;
     }
-    /// FIX !!!!! ///
+    // FIX ME !!!!! ///
     if (ui->upperSourceIndex->text().isEmpty()) {
         ui->upperSourceIndex->selectAll();
         ui->upperSourceIndex->setFocus();
@@ -100,26 +97,13 @@ bool IntermodWidget::isInput(IntermodError &error) const {
         return false;
     }
 
-    // FIX ME
     // Center frequency
-//    if (ui->startCenterFrequency->text().isEmpty()) {
-//        ui->startCenterFrequency->setFocus();
-//        error.code = IntermodError::Code::CenterFrequency;
-//        error.message = "*Enter start center frequency";
-//        return false;
-//    }
-//    if (ui->stopCenterFrequency->text().isEmpty()) {
-//        ui->stopCenterFrequency->setFocus();
-//        error.code = IntermodError::Code::CenterFrequency;
-//        error.message = "*Enter stop center frequency";
-//        return false;
-//    }
-//    if (ui->centerFrequencyPoints->text().isEmpty()) {
-//        ui->centerFrequencyPoints->setFocus();
-//        error.code = IntermodError::Code::CenterFreqPoints;
-//        error.message = "*Enter center frequency points";
-//        return false;
-//    }
+    if (ui->centerFrequency->text().isEmpty()) {
+        ui->centerFrequency->setFocus();
+        error.code = IntermodError::Code::CenterFrequency;
+        error.message = "*Enter center frequency";
+        return false;
+    }
 
     // Tone distance
     if (ui->startToneDistance->text().isEmpty()) {
@@ -160,6 +144,12 @@ bool IntermodWidget::isInput(IntermodError &error) const {
         error.message = "*Enter IF selectivity";
         return false;
     }
+    if (ui->channel->currentText().isEmpty()) {
+        ui->channel->setFocus();
+        error.code = IntermodError::Code::Channel;
+        error.message = "*Choose channel";
+        return false;
+    }
 
     // No error
     return true;
@@ -170,15 +160,13 @@ IntermodSettings IntermodWidget::getInput() const {
 
     // Ports
     s.setLowerSourcePort(ui->lowerPort->points());
-    /// FIX !!!!! ////
+    // FIX ME !!!!! ////
     upper.setPort(ui->upperSourceIndex->points());
     s.setUpperSource(upper);
     s.setReceivingPort(ui->receivingPort->points());
 
     // Center frequency
-//    s.setStartCenterFrequency(ui->startCenterFrequency->frequency_Hz());
-//    s.setStopCenterFrequency(ui->stopCenterFrequency->frequency_Hz());
-//    s.setCenterFrequencyPoints(ui->centerFrequencyPoints->points());
+    s.setCenterFrequency(ui->centerFrequency->frequency_Hz());
 
     // Tone distance
     s.setStartToneDistance(ui->startToneDistance->frequency_Hz());
@@ -188,23 +176,20 @@ IntermodSettings IntermodWidget::getInput() const {
     // Misc
     s.setPower(ui->power->power_dBm());
     s.setIfBw(ui->ifBw->frequency_Hz());
-    if (ui->selectivity->currentText() == "Normal")
-        s.setSelectivity(VnaChannel::IfSelectivity::Normal);
-    else
-        s.setSelectivity(VnaChannel::IfSelectivity::High);
+    s.setSelectivity(selectivity());
+    s.setChannel(channel());
 
     return s;
 }
 void IntermodWidget::setInput(const IntermodSettings &settings) {
     // Ports
     ui->lowerPort->setPoints(settings.lowerSourcePort());
-//    ui->upperSource->set?...
+    // FIX ME !!!!
+    ui->upperSourceIndex->setPoints(settings.upperSource().port());
     ui->receivingPort->setPoints(settings.receivingPort());
 
     // Center Frequency
-//    ui->startCenterFrequency->setFrequency(settings.startCenterFrequency_Hz());
-//    ui->stopCenterFrequency->setFrequency(settings.stopCenterFrequency_Hz());
-//    ui->centerFrequencyPoints->setPoints(settings.centerFrequencyPoints());
+    ui->centerFrequency->setFrequency(settings.centerFrequency_Hz());
 
     // Tone distance
     ui->startToneDistance->setFrequency(settings.startToneDistance_Hz());
@@ -214,61 +199,25 @@ void IntermodWidget::setInput(const IntermodSettings &settings) {
     // Misc
     ui->power->setPower(settings.power_dBm());
     ui->ifBw->setFrequency(settings.ifBw_Hz());
-    if (settings.selectivity() == VnaChannel::IfSelectivity::Normal)
-        ui->selectivity->setCurrentText("Normal");
-    else
-        ui->selectivity->setCurrentText("High");
+    setSelectivity(settings.selectivity());
+    setChannel(settings.channel());
 }
 
 bool IntermodWidget::isReadyForNext() {
-    // Check for missing input
-    IntermodError e;
-    if (!isInput(e)) {
-        emit error(e);
+    IntermodError err;
+    if (!isInput(err)) {
+        emit error(err);
         return false;
     }
 
-    // Check for input error (out of range)
-    e.clear();
-    IntermodSettings     settings = getInput();
-    // Is valid?
-    assert(false);
-    if (owns(e)) {
-        emit error(e);
+    if (owns(err)) {
+        emit error(err);
         return false;
     }
 
-    // Input is good. Ready.
-    emit validatedInput(settings);
+    // Input is valid
+    emit validatedInput(getInput());
     return true;
-}
-
-void IntermodWidget::showEvent(QShowEvent *event) {
-    Q_UNUSED(event);
-    QList<QLabel*> labels;
-    labels << ui->lowerLabel
-           << ui->upperLabel
-           << ui->receivingLabel
-           << ui->startCenterLabel
-           << ui->stopCenterLabel
-           << ui->centerPointsLabel
-           << ui->startDistanceLabel
-           << ui->stopDistanceLabel
-           << ui->distancePointsLabel
-           << ui->ifBwLabel
-           << ui->powerLabel
-           << ui->selectivityLabel;
-
-    QList<int> labelWidths;
-    foreach (QLabel *label, labels) {
-        labelWidths << label->width();
-    }
-
-    uint width = max(labelWidths.toVector());
-
-    foreach (QLabel *label, labels) {
-        label->setMinimumWidth(width);
-    }
 }
 
 void IntermodWidget::connectWidgets() {
@@ -281,11 +230,7 @@ void IntermodWidget::connectWidgets() {
             this, SIGNAL(errorMessage(QString)));
 
     // Center frequency
-    connect(ui->startCenterFrequency, SIGNAL(outOfRange(QString)),
-            this, SIGNAL(errorMessage(QString)));
-    connect(ui->stopCenterFrequency, SIGNAL(outOfRange(QString)),
-            this, SIGNAL(errorMessage(QString)));
-    connect(ui->centerFrequencyPoints, SIGNAL(outOfRange(QString)),
+    connect(ui->centerFrequency, SIGNAL(outOfRange(QString)),
             this, SIGNAL(errorMessage(QString)));
 
     // Tone Distance
@@ -309,6 +254,32 @@ void IntermodWidget::connectWidgets() {
             this, SLOT  (showErrorMessage (QString      )));
 }
 
+// Input
+VnaChannel::IfSelectivity IntermodWidget::selectivity() const {
+    const QString s = ui->selectivity->currentText();
+    if (s == "Normal")
+        return VnaChannel::IfSelectivity::Normal;
+    else
+        return VnaChannel::IfSelectivity::High;
+}
+void IntermodWidget::setSelectivity(VnaChannel::IfSelectivity s) {
+    if (s == VnaChannel::IfSelectivity::Normal)
+        ui->selectivity->setCurrentText("Normal");
+    else
+        ui->selectivity->setCurrentText("High");
+}
+uint IntermodWidget::channel() const {
+    const QString s = ui->channel->currentText();
+    return s.toUInt();
+}
+void IntermodWidget::setChannel(uint index) {
+    if (!_vna->channels().contains(index))
+        return;
+
+    const QString s = QVariant(index).toString();
+    ui->channel->setCurrentText(s);
+}
+
 bool IntermodWidget::owns(const IntermodError &error) {
     typedef IntermodError::Code Code;
     switch(error.code) {
@@ -322,6 +293,7 @@ bool IntermodWidget::owns(const IntermodError &error) {
     case Code::Power:
     case Code::IfBw:
     case Code::Selectivity:
+    case Code::Channel:
         return true;
     default:
         return false;
@@ -344,7 +316,9 @@ void IntermodWidget::focusOn(const IntermodError &error) {
         ui->receivingPort->setFocus();
         break;
     case Code::CenterFrequency:
-        // FIX ME
+        ui->centerFrequency->selectAll();
+        ui->centerFrequency->setFocus();
+        break;
     case Code::StartToneDistance:
         ui->startToneDistance->selectAll();
         ui->startToneDistance->setFocus();
@@ -367,6 +341,9 @@ void IntermodWidget::focusOn(const IntermodError &error) {
         break;
     case Code::Selectivity:
         ui->selectivity->setFocus();
+        break;
+    case Code::Channel:
+        ui->channel->setFocus();
         break;
     default:
         break;

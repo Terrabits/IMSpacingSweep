@@ -194,6 +194,7 @@ uint ProcessTraces::channel() const {
     return _channels.base();
 }
 void ProcessTraces::setupCalibration() {
+//    _channels.collapse();
     VnaChannel c = _vna->channel(_channels.base());
     configureChannel(c);
 
@@ -204,12 +205,13 @@ void ProcessTraces::setupCalibration() {
     c.select();
 
     // Create diagram, trace
-    uint d = createOrReuseDiagram();
-    const QString t = "calibrate";
-    _vna->createTrace(t, channel());
-    _vna->trace(t).setDiagram(d);
+//    uint d = createOrReuseDiagram();
+//    const QString t = "calibrate";
+//    _vna->createTrace(t, channel());
+//    _vna->trace(t).setDiagram(d);
 }
 void ProcessTraces::run() {
+    _channels.collapse();
     _diagram = createOrReuseDiagram();
     uint numTraces = 0;
     for (int i = 0; i < _traces.size(); i++) {
@@ -241,11 +243,23 @@ bool ProcessTraces::isFreqOutsideVna(const IntermodTrace &t) const {
 
 // Preprocess
 void ProcessTraces::preprocessTraces() {
+    removeDuplicateTraces();
     foreach (const IntermodTrace t, _traces) {
         preprocessTrace(t);
     }
     sort();
 }
+void ProcessTraces::removeDuplicateTraces() {
+    sort();
+    int i = 0;
+    while (i < _traces.size() - 1) {
+        if (_traces[i] == _traces[i+1])
+            _traces.removeAt(i+1);
+        else
+            i++;
+    }
+}
+
 void ProcessTraces::preprocessTrace(const IntermodTrace &t) {
     if (!dependencyInTraces(t)) {
         QList<IntermodTrace> deps = t.dependents();

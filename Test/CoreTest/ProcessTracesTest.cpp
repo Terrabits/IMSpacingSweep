@@ -246,18 +246,19 @@ void ProcessTracesTest::ready() {
     QFETCH(Traces, traces);
     QFETCH(IntermodError::Code, errorCode);
 
-//    ProcessTraces pt(traces, settings, _vna.data(), /*channel=*/ 1);
-//    IntermodError error;
-//    bool isReady = pt.isReady(error);
-//    QCOMPARE(error.code, errorCode);
-//    if (error.isError()) {
-//        QVERIFY(!isReady);
-//        QVERIFY(!error.message.isEmpty());
-//    }
-//    else {
-//        QVERIFY(isReady);
-//        QVERIFY(error.message.isEmpty());
-//    }
+    settings.setChannel(1);
+    ProcessTraces pt(traces, settings, _vna.data());
+    IntermodError error;
+    bool isReady = pt.isReady(error);
+    QCOMPARE(error.code, errorCode);
+    if (error.isError()) {
+        QVERIFY(!isReady);
+        QVERIFY(!error.message.isEmpty());
+    }
+    else {
+        QVERIFY(isReady);
+        QVERIFY(error.message.isEmpty());
+    }
 }
 
 void ProcessTracesTest::preprocess_data() {

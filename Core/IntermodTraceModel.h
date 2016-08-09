@@ -23,10 +23,12 @@ public:
 
     // Constants
     enum /*class*/ Column {
-        name    = 0,
-        y       = 1,
+        Type    = 0,
+        Feature = 1,
+        Order   = 2
+
     };
-    static const int COLUMNS = 2;
+    static const int COLUMNS = 3;
 
     // Model
     virtual QVariant      headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
@@ -40,11 +42,13 @@ public:
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     virtual bool  setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
+    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex());
+    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
+
+    // Non-model
     bool appendNewTrace();
     bool moveRowUp  (int row);
     bool moveRowDown(int row);
-    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex());
-    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
 
     // Settings
     void setSettings(const IntermodSettings &settings);
@@ -56,16 +60,9 @@ public:
 signals:
     void error(const IntermodError &error);
 
-public slots:
-
 private:
     IntermodSettings     _settings;
-
     QList<IntermodTrace> _traces;
-    bool    hasTraceName(const QString &name) const;
-    QString nextTraceName()                   const;
-    bool fixTrace (int row);
-    void fixTraces();
 };
 
 

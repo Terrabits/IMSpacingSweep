@@ -10,7 +10,7 @@ IntermodChannels::IntermodChannels(RsaToolbox::Vna *vna, uint baseChannel) :
     _base    (baseChannel),
     _usedBase(false      )
 {
-    collapse();
+//    collapse();
 }
 
 IntermodChannels::~IntermodChannels()
