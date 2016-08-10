@@ -80,7 +80,7 @@ TraceFeature toTraceFeature(QString string) {
 IntermodTrace::IntermodTrace() :
     _type   (TraceType::inputTone),
     _feature(TraceFeature::lower      ),
-    _order  (1 ),
+    _order  (3 ),
     _isVisible(true)
 {
     //
@@ -294,13 +294,13 @@ bool IntermodTrace::isNinth  () const {
 }
 
 // get
-TraceType IntermodTrace::type   () const {
+TraceType    IntermodTrace::type   () const {
     return _type;
 }
-TraceFeature   IntermodTrace::feature() const {
+TraceFeature IntermodTrace::feature() const {
     return _feature;
 }
-uint      IntermodTrace::order  () const {
+uint IntermodTrace::order() const {
     if (isInputTone() || isOutputTone())
         return 1;
 
@@ -315,20 +315,14 @@ void IntermodTrace::setFeature(TraceFeature feature) {
     _feature = feature;
 }
 void IntermodTrace::setOrder  (uint n)          {
-    if (n <  3)
+    if (n <  3)          // too low
         _order =  3;
-    else if (n >  9)
+    else if (n >  9)     // too high
         _order =  9;
-    else if (n == 3)
-        _order =  3;
-    else if (n == 5)
-        _order =  5;
-    else if (n == 7)
-        _order =  7;
-    else if (n == 9)
-        _order =  9;
+    else if (n % 2 == 0) // even
+        _order =  n - 1;
     else
-        _order = n - 1;
+        _order = n;      // valid
 }
 
 QString IntermodTrace::display()       const {

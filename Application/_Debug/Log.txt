@@ -1,7 +1,7 @@
 R&S IM Spacing Sweep Version 1.0
 (C) 2016 Rohde & Schwarz North America
 
-Tue Aug 9 22:06:33 2016
+Tue Aug 9 22:09:29 2016
 
 Write:    "*IDN?"
 Bytes: 6
@@ -437,6 +437,86 @@ Status: 0x0 Operation completed successfully.
 
 Read:     "'1,lto_im_ch1,2,im3lo_im_ch1,3,im3uo_im_ch1'"
 Bytes: 45
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
 Status: 0x0 Operation completed successfully.
 
 Write:    ":SYST:FREQ? MIN"
