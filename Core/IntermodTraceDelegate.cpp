@@ -112,7 +112,7 @@ QWidget *IntermodTraceDelegate::createFeatureEditor(QWidget *parent, const Inter
     QStringList items;
     items << toString(TraceFeature::lower)
              << toString(TraceFeature::upper);
-    if (!t.isInputTone() || !t.isOutputTone())
+    if (!t.isInputTone() && !t.isOutputTone())
         items << toString(TraceFeature::major);
 
     QComboBox *combo = new QComboBox(parent);
