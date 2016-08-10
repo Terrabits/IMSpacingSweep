@@ -16,9 +16,8 @@ using namespace RsaToolbox;
 #include <Qt>
 
 
-typedef QList<IntermodTrace> Traces;
 typedef IntermodError::Code Code;
-Q_DECLARE_METATYPE(Traces)
+Q_DECLARE_METATYPE(IntermodTraces)
 Q_DECLARE_METATYPE(IntermodSettings)
 Q_DECLARE_METATYPE(Code)
 
@@ -103,7 +102,7 @@ void ProcessTracesTest::initTestCase() {
 
 void ProcessTracesTest::ready_data() {
     QTest::addColumn<IntermodSettings>("settings");
-    QTest::addColumn<Traces>("traces");
+    QTest::addColumn<IntermodTraces>("traces");
     QTest::addColumn<IntermodError::Code>("errorCode");
 
     // Correct settings
@@ -124,7 +123,7 @@ void ProcessTracesTest::ready_data() {
     settings.setSelectivity(VnaChannel::IfSelectivity::High);
     settings.setChannel(1);
 
-    Traces traces;
+    IntermodTraces traces;
     traces << IntermodTrace(TraceType::intermod, TraceFeature::major, 3);
 
     // No error [1]
@@ -243,7 +242,7 @@ void ProcessTracesTest::ready_data() {
 }
 void ProcessTracesTest::ready() {
     QFETCH(IntermodSettings, settings);
-    QFETCH(Traces, traces);
+    QFETCH(IntermodTraces, traces);
     QFETCH(IntermodError::Code, errorCode);
 
     settings.setChannel(1);
@@ -262,8 +261,8 @@ void ProcessTracesTest::ready() {
 }
 
 void ProcessTracesTest::preprocess_data() {
-    QTest::addColumn<Traces>("before");
-    QTest::addColumn<Traces>("after" );
+    QTest::addColumn<IntermodTraces>("before");
+    QTest::addColumn<IntermodTraces>("after" );
 
 
     // IP3MO ->
@@ -271,10 +270,10 @@ void ProcessTracesTest::preprocess_data() {
     // - IM3LO
     // - IM3UO
     // - IP3MO
-    Traces before;
+    IntermodTraces before;
     before << IntermodTrace(TraceType::outputIntercept, TraceFeature::major, 3);
 
-    Traces after;
+    IntermodTraces after;
     after  << IntermodTrace(TraceType::outputTone, TraceFeature::lower);
     after  << IntermodTrace(TraceType::intermod,   TraceFeature::lower, 3);
     after  << IntermodTrace(TraceType::intermod,   TraceFeature::upper, 3);
@@ -299,8 +298,8 @@ void ProcessTracesTest::preprocess_data() {
     QTest::newRow("iip5l") << before << after;
 }
 void ProcessTracesTest::preprocess() {
-    QFETCH(Traces, before);
-    QFETCH(Traces, after) ;
+    QFETCH(IntermodTraces, before);
+    QFETCH(IntermodTraces, after) ;
 
     IntermodSettings settings;
     settings.setChannel(1);
@@ -310,7 +309,7 @@ void ProcessTracesTest::preprocess() {
 
 void ProcessTracesTest::calibration_data() {
     QTest::addColumn<IntermodSettings>("settings");
-    QTest::addColumn<Traces>          ("traces"  );
+    QTest::addColumn<IntermodTraces>          ("traces"  );
 
     // No traces
     //   - should still calibrate original tones
@@ -328,7 +327,7 @@ void ProcessTracesTest::calibration_data() {
     settings.setPower(-5);
     settings.setIfBw(1, SiPrefix::Kilo);
 
-    Traces traces;
+    IntermodTraces traces;
     QTest::newRow("empty") << settings << traces;
 
     // Everything
@@ -353,7 +352,7 @@ void ProcessTracesTest::calibration_data() {
 }
 void ProcessTracesTest::calibration() {
     QFETCH(IntermodSettings, settings);
-    QFETCH(Traces,           traces);
+    QFETCH(IntermodTraces,           traces);
 
     settings.setChannel(1);
     ProcessTraces pt(traces, settings, _vna.data());
@@ -366,7 +365,7 @@ void ProcessTracesTest::calibration() {
 
 void ProcessTracesTest::run_data() {
     QTest::addColumn<IntermodSettings>("settings" );
-    QTest::addColumn<Traces>          ("traces");
+    QTest::addColumn<IntermodTraces>          ("traces");
 
     // IP3MO ->
     // - LTO
@@ -387,7 +386,7 @@ void ProcessTracesTest::run_data() {
     settings.setPower(-5);
     settings.setIfBw(1, SiPrefix::Kilo);
 
-    Traces traces;
+    IntermodTraces traces;
     traces << IntermodTrace(TraceType::outputTone,      TraceFeature::lower);
     traces << IntermodTrace(TraceType::intermod,        TraceFeature::lower, 3);
     traces << IntermodTrace(TraceType::intermod,        TraceFeature::upper, 3);
@@ -400,7 +399,7 @@ void ProcessTracesTest::run_data() {
 }
 void ProcessTracesTest::run() {
     QFETCH(IntermodSettings, settings);
-    QFETCH(Traces,           traces);
+    QFETCH(IntermodTraces,           traces);
 
     settings.setChannel(1);
     ProcessTraces pt(traces, settings, _vna.data());
@@ -581,16 +580,16 @@ void ProcessTracesTest::traceMath() {
     }
 }
 
-void ProcessTracesTest::debugPrint(QString header, QList<IntermodTrace> traces) {
+void ProcessTracesTest::debugPrint(QString header, IntermodTraces traces) {
     qDebug() << header.toUpper();
     for (int i = 0; i < traces.size(); i++) {
         qDebug() << "  " << traces[i].abbreviate();
     }
 }
 
-Traces ProcessTracesTest::allTraces() {
+IntermodTraces ProcessTracesTest::allTraces() {
     // Original tones
-    Traces traces;
+    IntermodTraces traces;
     traces << IntermodTrace(TraceType::inputTone , TraceFeature::lower   );
     traces << IntermodTrace(TraceType::outputTone, TraceFeature::lower   );
     traces << IntermodTrace(TraceType::inputTone , TraceFeature::upper   );

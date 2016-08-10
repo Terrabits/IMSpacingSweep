@@ -20,8 +20,7 @@ using namespace RsaToolbox;
 #include <QWidget>
 
 
-typedef QList<IntermodTrace> Traces;
-Q_DECLARE_METATYPE(Traces)
+Q_DECLARE_METATYPE(IntermodTraces)
 
 IntermodTraceDelegateTest::IntermodTraceDelegateTest(QObject *parent) :
     TestClass(parent)
@@ -35,19 +34,19 @@ IntermodTraceDelegateTest::~IntermodTraceDelegateTest()
 }
 
 void IntermodTraceDelegateTest::set_data() {
-    QTest::addColumn<Traces >("before");
+    QTest::addColumn<IntermodTraces >("before");
     QTest::addColumn<int    >("row"   );
     QTest::addColumn<int    >("column");
     QTest::addColumn<QString>("text"  );
-    QTest::addColumn<Traces >("after" );
+    QTest::addColumn<IntermodTraces >("after" );
 
     // One trace
     // Change type
-    Traces before;
+    IntermodTraces before;
     before << IntermodTrace(TraceType::intermod, TraceFeature::major, 3);
     int row      = 0;
     int column   = 0;
-    Traces after = before;
+    IntermodTraces after = before;
     after[row].setType(TraceType::relative);
     QTest::newRow("OneTraceType") << before << row << column << "Relative" << after;
 
@@ -81,11 +80,11 @@ void IntermodTraceDelegateTest::set_data() {
 
 }
 void IntermodTraceDelegateTest::set() {
-    QFETCH(Traces, before);
+    QFETCH(IntermodTraces, before);
     QFETCH(int, row);
     QFETCH(int, column);
     QFETCH(QString, text);
-    QFETCH(Traces, after);
+    QFETCH(IntermodTraces, after);
 
     IntermodTraceModel model;
     model.setTraces(before);

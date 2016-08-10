@@ -125,7 +125,7 @@ void IntermodTraceTest::sort() {
     t6.setFeature(TraceFeature::major);
     t6.setOrder  (9);
 
-    QList<IntermodTrace> traces;
+    IntermodTraces traces;
     traces << t6;
 
     // 5th: 5th Major Relative

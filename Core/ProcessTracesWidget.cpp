@@ -3,10 +3,14 @@
 
 
 // Project
+#include "ProcessThread.h"
 #include "ProcessTraces.h"
 
 // RsaToolbox
 using namespace RsaToolbox;
+
+// Qt
+#include <QDebug>
 
 
 ProcessTracesWidget::ProcessTracesWidget(RsaToolbox::Vna *vna, QWidget *parent) :
@@ -23,29 +27,20 @@ ProcessTracesWidget::~ProcessTracesWidget()
 }
 
 void ProcessTracesWidget::initialize() {
-    buttons()->next()->setText("Apply");
-    QObject::disconnect(buttons()->next(), SIGNAL(clicked()),
-                        wizard(), SLOT(next()));
-    QObject::connect(buttons()->next(), SIGNAL(clicked()),
-                     this, SLOT(run()));
-}
-void ProcessTracesWidget::back() {
-    buttons()->next()->setText("Next");
-    QObject::disconnect(buttons()->next(), SIGNAL(clicked()),
-                     this, SLOT(run()));
-    QObject::connect(buttons()->next(), SIGNAL(clicked()),
-                        wizard(), SLOT(next()));
+    buttons()->hide();
+    _process.reset(new ProcessThread(_settings, _traces, _vna));
+    QObject::connect(_process.data(), SIGNAL(finished()),
+                     this, SLOT(processFinished()));
+    _process->start();
 }
 
 void ProcessTracesWidget::setSettings(const IntermodSettings &settings) {
     _settings = settings;
 }
-void ProcessTracesWidget::setTraces(const QList<IntermodTrace> &traces) {
+void ProcessTracesWidget::setTraces(const IntermodTraces &traces) {
     _traces = traces;
 }
 
-void ProcessTracesWidget::run() {
-    ProcessTraces p(_traces, _settings, _vna);
-    p.run();
+void ProcessTracesWidget::processFinished() {
     wizard()->close();
 }

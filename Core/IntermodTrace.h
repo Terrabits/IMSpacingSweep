@@ -33,6 +33,8 @@ QString      toString      (TraceFeature feature);
 TraceFeature toTraceFeature(QString string);
 Q_DECLARE_METATYPE(TraceFeature)
 
+class IntermodTrace;
+typedef QList<IntermodTrace> IntermodTraces;
 
 class IntermodTrace
 {

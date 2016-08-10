@@ -76,19 +76,13 @@ int main(int argc, char *argv[])
                      &wizard,  SLOT(shake()));
     wizard.addPage(traces);
 
-    // TEMP
-    traces->initialize();
-    QList<IntermodTrace> _traces;
-    _traces << IntermodTrace(TraceType::outputIntercept, TraceFeature::major, 3);
-    traces->setInput(_traces);
-
     // Calibration page
     CalibrateWidget *cal = new CalibrateWidget(&vna);
     cal->setNextIndex(3);
     QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
                      cal,      SLOT(setSettings(IntermodSettings)));
-    QObject::connect(traces,   SIGNAL(validatedInput(QList<IntermodTrace>)),
-                     cal,      SLOT(setTraces(QList<IntermodTrace>)));
+    QObject::connect(traces,   SIGNAL(validatedInput(IntermodTraces)),
+                     cal,      SLOT(setTraces(IntermodTraces)));
     wizard.addPage(cal);
 
     // Process traces
@@ -96,8 +90,8 @@ int main(int argc, char *argv[])
     process->setFinalPage(true);
     QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
                      process,  SLOT(setSettings(IntermodSettings)));
-    QObject::connect(traces,   SIGNAL(validatedInput(QList<IntermodTrace>)),
-                     process,  SLOT(setTraces(QList<IntermodTrace>)));
+    QObject::connect(traces,   SIGNAL(validatedInput(IntermodTraces)),
+                     process,  SLOT(setTraces(IntermodTraces)));
     wizard.addPage(process);
 
     // Start event loop

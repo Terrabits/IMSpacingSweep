@@ -32,7 +32,7 @@ public:
 
 public slots:
     void setSettings(const IntermodSettings     &settings);
-    void setTraces  (const QList<IntermodTrace> &traces  );
+    void setTraces  (const IntermodTraces &traces  );
 
     void setupCalibration();
 

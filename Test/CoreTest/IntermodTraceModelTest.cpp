@@ -12,9 +12,6 @@ using namespace RsaToolbox;
 #include <QSignalSpy>
 
 
-typedef QList<IntermodTrace> Traces;
-
-
 IntermodTraceModelTest::IntermodTraceModelTest(QObject *parent) :
     TestClass(parent)
 {
@@ -27,13 +24,13 @@ IntermodTraceModelTest::~IntermodTraceModelTest()
 }
 
 void IntermodTraceModelTest::get_data() {
-    QTest::addColumn<Traces>("traces");
+    QTest::addColumn<IntermodTraces>("traces");
 
     typedef TraceType Type;
     typedef TraceFeature Feature;
 
     // Empty
-    Traces traces;
+    IntermodTraces traces;
     QTest::newRow("Empty") << traces;
 
     // lti
@@ -47,7 +44,7 @@ void IntermodTraceModelTest::get_data() {
     QTest::newRow("ip3loAndip5uo") << traces;
 }
 void IntermodTraceModelTest::get() {
-    QFETCH(Traces, traces);
+    QFETCH(IntermodTraces, traces);
 
     IntermodTraceModel model;
     model.setTraces(traces);
@@ -75,13 +72,13 @@ void IntermodTraceModelTest::get() {
 }
 
 void IntermodTraceModelTest::set_data() {
-    QTest::addColumn<Traces>("traces");
+    QTest::addColumn<IntermodTraces>("traces");
 
     typedef TraceType Type;
     typedef TraceFeature Feature;
 
     // Empty
-    Traces traces;
+    IntermodTraces traces;
     QTest::newRow("Empty") << traces;
 
     // lti
@@ -100,7 +97,7 @@ void IntermodTraceModelTest::set_data() {
     QTest::newRow("ip3loAndip5uo") << traces;
 }
 void IntermodTraceModelTest::set() {
-    QFETCH(Traces, traces);
+    QFETCH(IntermodTraces, traces);
 
     IntermodTraceModel model;
     model.insertRows(0, traces.size());

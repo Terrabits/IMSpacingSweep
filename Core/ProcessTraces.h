@@ -29,6 +29,8 @@ public:
     ~ProcessTraces();
 
     bool isReady(IntermodError &error);
+
+public slots:
     void setupCalibration();
     void run             ();
 

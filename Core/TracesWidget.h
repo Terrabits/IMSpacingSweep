@@ -35,8 +35,8 @@ public:
 
     bool isEmpty() const;
     bool isValidInput(IntermodError &error) const;
-    QList<IntermodTrace> input() const;
-    void setInput(const QList<IntermodTrace> &input);
+    IntermodTraces input() const;
+    void setInput(const IntermodTraces &input);
 
     // Enter, leave
     virtual void initialize();
@@ -46,7 +46,7 @@ signals:
     void error(const IntermodError &error);
     void errorMessage(const QString &message);
 
-    void validatedInput(const QList<IntermodTrace> &input);
+    void validatedInput(const IntermodTraces &input);
 
 public slots:
     void setSettings(const IntermodSettings &settings);

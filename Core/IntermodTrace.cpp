@@ -7,7 +7,7 @@ using namespace RsaToolbox;
 // Qt
 #include <QVariant>
 
-typedef QList<IntermodTrace> Traces;
+typedef QList<IntermodTrace> IntermodTraces;
 
 
 QString toString(TraceType type) {
@@ -209,7 +209,7 @@ bool IntermodTrace::isDependent() const {
 
     return false;
 }
-Traces IntermodTrace::dependents() const {
+IntermodTraces IntermodTrace::dependents() const {
     if (isIntermod())
         return intermodDependents ();
     if (isRelative())
@@ -218,7 +218,7 @@ Traces IntermodTrace::dependents() const {
         return interceptDependents();
 
     // Else
-    return Traces();
+    return IntermodTraces();
 }
 
 // isType
@@ -383,8 +383,8 @@ QString IntermodTrace::abbreviate()    const {
     }
 }
 
-Traces IntermodTrace::intermodDependents() const {
-    Traces t;
+IntermodTraces IntermodTrace::intermodDependents() const {
+    IntermodTraces t;
     if (!isMajor())
         return t;
 
@@ -392,8 +392,8 @@ Traces IntermodTrace::intermodDependents() const {
     t << IntermodTrace(TraceType::intermod, TraceFeature::upper, _order);
     return t;
 }
-Traces IntermodTrace::relativeDependents() const {
-    Traces t;
+IntermodTraces IntermodTrace::relativeDependents() const {
+    IntermodTraces t;
     t << IntermodTrace(TraceType::outputTone, TraceFeature::lower);
     if (isLower() || isMajor()) {
         t << IntermodTrace(TraceType::intermod, TraceFeature::lower, _order);
@@ -403,8 +403,8 @@ Traces IntermodTrace::relativeDependents() const {
     }
     return t;
 }
-Traces IntermodTrace::interceptDependents() const {
-    Traces t;
+IntermodTraces IntermodTrace::interceptDependents() const {
+    IntermodTraces t;
     t << IntermodTrace(TraceType::outputTone, TraceFeature::lower);
     if (isInputIntercept()) {
         t << IntermodTrace(TraceType::inputTone, TraceFeature::lower);

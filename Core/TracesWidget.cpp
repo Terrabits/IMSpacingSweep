@@ -47,10 +47,10 @@ bool TracesWidget::isValidInput(IntermodError &error) const {
     error.clear();
     return true;
 }
-QList<IntermodTrace> TracesWidget::input() const {
+IntermodTraces TracesWidget::input() const {
     return _model.traces();
 }
-void TracesWidget::setInput(const QList<IntermodTrace> &traces) {
+void TracesWidget::setInput(const IntermodTraces &traces) {
     _model.setTraces(traces);
 }
 
@@ -157,7 +157,7 @@ void TracesWidget::loadKeys() {
     if (!_keys->exists("TRACES"))
         return;
 
-    QList<IntermodTrace> traces;
+    IntermodTraces traces;
     _keys->get("TRACES", traces);
     setInput(traces);
     _keysLoaded = true;

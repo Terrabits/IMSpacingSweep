@@ -53,7 +53,7 @@ int CalibrateWidget::next() {
 void CalibrateWidget::setSettings(const IntermodSettings &settings) {
     _settings = settings;
 }
-void CalibrateWidget::setTraces(const QList<IntermodTrace> &traces) {
+void CalibrateWidget::setTraces(const IntermodTraces &traces) {
     _traces = traces;
 }
 

@@ -1,7 +1,7 @@
 R&S IM Spacing Sweep Version 1.0
 (C) 2016 Rohde & Schwarz North America
 
-Tue Aug 9 22:09:29 2016
+Tue Aug 9 23:00:50 2016
 
 Write:    "*IDN?"
 Bytes: 6
@@ -115,16 +115,16 @@ Write:    ":CONF:CHAN:CAT?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "'1,lto_im_ch1,2,im3lo_im_ch1,3,im3uo_im_ch1'"
-Bytes: 45
+Read:     "'1,Ch1'"
+Bytes: 8
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:CHAN:CAT?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "'1,lto_im_ch1,2,im3lo_im_ch1,3,im3uo_im_ch1'"
-Bytes: 45
+Read:     "'1,Ch1'"
+Bytes: 8
 Status: 0x0 Operation completed successfully.
 
 Write:    "*IDN?"
@@ -227,8 +227,8 @@ Write:    ":CONF:CHAN:CAT?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "'1,lto_im_ch1,2,im3lo_im_ch1,3,im3uo_im_ch1'"
-Bytes: 45
+Read:     "'1,Ch1'"
+Bytes: 8
 Status: 0x0 Operation completed successfully.
 
 Write:    "*IDN?"
@@ -331,8 +331,2540 @@ Write:    ":CONF:CHAN:CAT?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "'1,lto_im_ch1,2,im3lo_im_ch1,3,im3uo_im_ch1'"
-Bytes: 45
+Read:     "'1,Ch1'"
+Bytes: 8
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,Ch1'"
+Bytes: 8
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:NAME?"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Read:     "'Ch1'"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:TRAC:CAT?"
+Bytes: 22
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,Trc1'"
+Bytes: 9
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'Trc1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:DEL 'Trc1'"
+Bytes: 22
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "''"
+Bytes: 3
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:TRAC:CAT?"
+Bytes: 22
+Status: 0x0 Operation completed successfully.
+
+Read:     "''"
+Bytes: 3
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:NAME 'lti_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS1:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS1:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'lti_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'lti_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'lti_im_ch1','A1D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'lti_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1'"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN2 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN2:NAME 'uti_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS2:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS2:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC2:PAR:SDEF 'uti_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'uti_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "2"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC2:PAR:MEAS 'uti_im_ch1','A3D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'uti_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1'"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN3 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN3:NAME 'lto_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS3:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS3:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:FREQ2:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC3:PAR:SDEF 'lto_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'lto_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "3"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC3:PAR:MEAS 'lto_im_ch1','B2D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'lto_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1'"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN4 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN4:NAME 'uto_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS4:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS4:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:FREQ2:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC4:PAR:SDEF 'uto_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'uto_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "4"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC4:PAR:MEAS 'uto_im_ch1','B2D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'uto_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1'"
+Bytes: 54
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN5 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN5:NAME 'im3lo_im_ch1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS5:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS5:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS5:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS5:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS5:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS5:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:FREQ2:CONV:ARB:IFR 3,1,-2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR5:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC5:PAR:SDEF 'im3lo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "5"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC5:PAR:MEAS 'im3lo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1'"
+Bytes: 69
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN6 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN6:NAME 'im5lo_im_ch1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS6:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS6:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS6:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS6:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS6:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS6:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:FREQ2:CONV:ARB:IFR 5,1,-4e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR6:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC6:PAR:SDEF 'im5lo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "6"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC6:PAR:MEAS 'im5lo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1'"
+Bytes: 84
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN7 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN7:NAME 'im7lo_im_ch1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS7:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS7:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS7:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS7:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS7:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS7:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:FREQ2:CONV:ARB:IFR 7,1,-6e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR7:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC7:PAR:SDEF 'im7lo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "7"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC7:PAR:MEAS 'im7lo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1,7,im7lo_im_ch1'"
+Bytes: 99
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN8 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN8:NAME 'im9lo_im_ch1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS8:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS8:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS8:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS8:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS8:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS8:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:FREQ2:CONV:ARB:IFR 9,1,-8e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR8:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC8:PAR:SDEF 'im9lo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "8"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC8:PAR:MEAS 'im9lo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1,7,im7lo_im_ch1,8,..."
+Bytes: 114
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN9 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN9:NAME 'im3uo_im_ch1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS9:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS9:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS9:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS9:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS9:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS9:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:FREQ2:CONV:ARB:IFR -3,1,4e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR9:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC9:PAR:SDEF 'im3uo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "9"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC9:PAR:MEAS 'im3uo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1,7,im7lo_im_ch1,8,..."
+Bytes: 129
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN10 1"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN10:NAME 'im5uo_im_ch1'"
+Bytes: 33
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS10:SWE:TYPE LIN"
+Bytes: 21
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS10:FREQ:STAR 9.5e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS10:FREQ:STOP 9.95e+08Hz"
+Bytes: 29
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS10:SWE:POIN 10"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS10:BAND 1000Hz"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:POW -10"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS10:BAND:SEL HIGH"
+Bytes: 21
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:POW1:PERM 0"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:POW1:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 37
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:POW3:PERM 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:POW3:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 42
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:POW2:PERM 0"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:POW2:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:FREQ2:CONV:ARB:IFR -5,1,6e+09,SWE"
+Bytes: 42
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR10:LPOR1?"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC10:PAR:SDEF 'im5uo_im_ch1', 'S11'"
+Bytes: 39
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "10"
+Bytes: 3
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC10:PAR:MEAS 'im5uo_im_ch1','B2D1'"
+Bytes: 39
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1,7,im7lo_im_ch1,8,..."
+Bytes: 145
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN11 1"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN11:NAME 'im7uo_im_ch1'"
+Bytes: 33
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS11:SWE:TYPE LIN"
+Bytes: 21
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS11:FREQ:STAR 9.5e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS11:FREQ:STOP 9.95e+08Hz"
+Bytes: 29
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS11:SWE:POIN 10"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS11:BAND 1000Hz"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:POW -10"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS11:BAND:SEL HIGH"
+Bytes: 21
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:POW1:PERM 0"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:POW1:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 37
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:POW3:PERM 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:POW3:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 42
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:POW2:PERM 0"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:POW2:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:FREQ2:CONV:ARB:IFR -7,1,8e+09,SWE"
+Bytes: 42
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR11:LPOR1?"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC11:PAR:SDEF 'im7uo_im_ch1', 'S11'"
+Bytes: 39
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "11"
+Bytes: 3
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC11:PAR:MEAS 'im7uo_im_ch1','B2D1'"
+Bytes: 39
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1,7,im7lo_im_ch1,8,..."
+Bytes: 161
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN12 1"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN12:NAME 'im9uo_im_ch1'"
+Bytes: 33
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS12:SWE:TYPE LIN"
+Bytes: 21
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS12:FREQ:STAR 9.5e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS12:FREQ:STOP 9.95e+08Hz"
+Bytes: 29
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS12:SWE:POIN 10"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS12:BAND 1000Hz"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:POW -10"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS12:BAND:SEL HIGH"
+Bytes: 21
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:POW1:PERM 0"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:POW1:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 37
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:POW3:PERM 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:POW3:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 42
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:POW2:PERM 0"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:POW2:STAT 1"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:FREQ2:CONV:ARB:IFR -9,1,1e+10,SWE"
+Bytes: 42
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR12:LPOR1?"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC12:PAR:SDEF 'im9uo_im_ch1', 'S11'"
+Bytes: 39
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "12"
+Bytes: 3
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC12:PAR:MEAS 'im9uo_im_ch1','B2D1'"
+Bytes: 39
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'im3mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'im3mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im3lo_im_ch1),linMag(im3uo_im_ch1))'"
+Bytes: 66
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'im3mo_im_ch1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'im5mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'im5mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im5lo_im_ch1),linMag(im5uo_im_ch1))'"
+Bytes: 66
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'im5mo_im_ch1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'im7mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'im7mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im7lo_im_ch1),linMag(im7uo_im_ch1))'"
+Bytes: 66
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'im7mo_im_ch1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'im9mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'im9mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'Max(linMag(im9lo_im_ch1),linMag(im9uo_im_ch1))'"
+Bytes: 66
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'im9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'im9mo_im_ch1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'ip3mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'ip3mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im3lo_im_ch1),linMag(im3uo_im_c..."
+Bytes: 112
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip3mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'ip3mo_im_ch1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'ip5mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'ip5mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im5lo_im_ch1),linMag(im5uo_im_c..."
+Bytes: 113
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip5mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'ip5mo_im_ch1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'ip7mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'ip7mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im7lo_im_ch1),linMag(im7uo_im_c..."
+Bytes: 117
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip7mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'ip7mo_im_ch1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'ip9mo_im_ch1', 'S11'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'ip9mo_im_ch1','B2D1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:SDEF 'linMag(lto_im_ch1)*((linMag(lto_im_ch1)/Max(linMag(im9lo_im_ch1),linMag(im9uo_im_c..."
+Bytes: 114
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
+Bytes: 40
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SEL 'ip9mo_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:MATH:WUN 1"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'ip9mo_im_ch1'"
+Bytes: 36
 Status: 0x0 Operation completed successfully.
 
 Write:    "*IDN?"
@@ -435,8 +2967,288 @@ Write:    ":CONF:CHAN:CAT?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "'1,lto_im_ch1,2,im3lo_im_ch1,3,im3uo_im_ch1'"
-Bytes: 45
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1,7,im7lo_im_ch1,8,..."
+Bytes: 177
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":INST:TPORT:COUN?"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Read:     "4"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1,5,im3lo_im_ch1,6,im5lo_im_ch1,7,im7lo_im_ch1,8,..."
+Bytes: 177
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
 Status: 0x0 Operation completed successfully.
 
 Write:    ":SYST:FREQ? MIN"

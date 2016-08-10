@@ -3,20 +3,20 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
     <Product Id="*" Language="1033"
              Name="R&amp;S IM Spacing Sweep"
-             Version="0.9"
+             Version="1.0"
              Manufacturer="Rohde &amp; Schwarz"
              UpgradeCode="30D7685A-D6D6-4B58-86A2-F87301D4E00C">
         <Package       InstallerVersion="200" Compressed="yes" InstallScope="perMachine"              />
         <MajorUpgrade  DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <MediaTemplate EmbedCab="yes"                              />
-        <WixVariable   Id="WixUILicenseRtf"  Value="license.rtf"   />
-        <WixVariable   Id="WixUIBannerBmp"   Value="banner.bmp"    />
-        <WixVariable   Id="WixUIDialogBmp"   Value="dialog.bmp"    />
-        <Property      Id="ARPPRODUCTICON"   Value="icon.ico"      />
+        <WixVariable   Id="WixUILicenseRtf"  Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\license.rtf" />
+        <WixVariable   Id="WixUIBannerBmp"   Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\banner.bmp"  />
+        <WixVariable   Id="WixUIDialogBmp"   Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\dialog.bmp"  />
+        <Property      Id="ARPPRODUCTICON"   Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\icon.ico"    />
         <Property      Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
         <UIRef         Id="WixUI_InstallDir"                       />
-        <Icon Id="icon.ico" SourceFile="icon.ico"                  />
-        <Feature Id="JoinCal" Title="R&amp;S IM Spacing Sweep" Description="Application" Level="1">
+        <Icon Id="icon.ico" SourceFile="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\icon.ico"                />
+        <Feature Id="IMSpacingSweep" Title="R&amp;S IM Spacing Sweep" Description="Application" Level="1">
             <!-- Licenses       -->
             <ComponentRef Id="MSVCLicense"    />
             <ComponentRef Id="QtLicense"      />

@@ -37,9 +37,9 @@ private slots:
     void traceMath();
 
 private:
-    void debugPrint(QString header, QList<IntermodTrace> traces);
+    void debugPrint(QString header, IntermodTraces traces);
 
-    static QList<IntermodTrace> allTraces();
+    static IntermodTraces allTraces();
     double getMarkerValue(const QString prefix);
     bool isEqual(double left, double right);
 

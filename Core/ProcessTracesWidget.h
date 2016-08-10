@@ -6,12 +6,14 @@
 #include "IntermodError.h"
 #include "IntermodSettings.h"
 #include "IntermodTrace.h"
+#include "ProcessThread.h"
 
 // RsaToolbox
 #include <Vna.h>
 #include <WizardPage.h>
 
 // Qt
+#include <QScopedPointer>
 #include <QWidget>
 
 
@@ -26,25 +28,23 @@ public:
     explicit ProcessTracesWidget(RsaToolbox::Vna *vna, QWidget *parent = 0);
     ~ProcessTracesWidget();
 
-    // Enter, leave
+    // On entry
     virtual void initialize();
-    virtual void back();
-
-signals:
-    void error(const IntermodError &error);
-    void progress(uint percent);
 
 public slots:
     void setSettings(const IntermodSettings &settings  );
-    void setTraces  (const QList<IntermodTrace> &traces);
+    void setTraces  (const IntermodTraces &traces);
 
-    void run();
+private slots:
+    void processFinished();
 
 private:
     Ui::ProcessTracesWidget *ui;
     RsaToolbox::Vna         *_vna;
     IntermodSettings         _settings;
-    QList<IntermodTrace>     _traces;
+    IntermodTraces           _traces;
+
+    QScopedPointer<ProcessThread> _process;
 };
 
 
