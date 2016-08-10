@@ -1,5 +1,5 @@
-TwoToneSweep
-==============
+IM Spacing Sweep
+================
 
 A utility for measuring two-tone intermodulation by sweeping tone spacing. This application works with Rohde &amp; Schwarz Vector Network Analyzers (VNAs).
 
