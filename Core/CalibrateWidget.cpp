@@ -45,6 +45,10 @@ void CalibrateWidget::back() {
                      wizard(), SLOT(next()));
 
 }
+int CalibrateWidget::next() {
+    back();
+    return WizardPage::next();
+}
 
 void CalibrateWidget::setSettings(const IntermodSettings &settings) {
     _settings = settings;

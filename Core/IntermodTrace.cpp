@@ -28,6 +28,30 @@ QString toString(TraceType type) {
         return "Input";
     }
 }
+TraceType toTraceType(QString string) {
+    string = string.toLower();
+//  bool isInput     = string.contains("input"    );
+    bool isOutput    = string.contains("output"   );
+    bool isIntermod  = string.contains("intermod" );
+    bool isRelative  = string.contains("relative" );
+    bool isIntercept = string.contains("intercept");
+
+    if (isIntermod)
+        return TraceType::intermod;
+    if (isRelative)
+        return TraceType::relative;
+    if (isIntercept) {
+        if (isOutput)
+            return TraceType::outputIntercept;
+        else
+            return TraceType::inputIntercept;
+    }
+    if (isOutput)
+        return TraceType::outputTone;
+    else
+        return TraceType::inputTone; // Default
+
+}
 QString toString(TraceFeature feature) {
     switch (feature) {
     case TraceFeature::upper:
@@ -39,6 +63,16 @@ QString toString(TraceFeature feature) {
     default:
         return "Lower";
     }
+}
+TraceFeature toTraceFeature(QString string) {
+    string = string.toLower();
+    if (string.contains("upper"))
+        return TraceFeature::upper;
+    if (string.contains("major"))
+        return TraceFeature::major;
+
+    // Else
+    return TraceFeature::lower;
 }
 
 //const QRegExp IntermodTrace::NAME_REGEX("^[a-z_][0-9a-z_]*$", Qt::CaseInsensitive);

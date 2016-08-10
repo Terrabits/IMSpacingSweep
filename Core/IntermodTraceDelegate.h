@@ -5,6 +5,7 @@
 // Project
 #include "IntermodError.h"
 #include "IntermodSettings.h"
+#include "IntermodTrace.h"
 
 // Qt
 #include <QObject>
@@ -35,6 +36,10 @@ public slots:
 
 private:
     IntermodSettings _settings;
+
+    static QWidget *createTypeEditor   (QWidget *parent);
+    static QWidget *createFeatureEditor(QWidget *parent, const IntermodTrace &t);
+    static QWidget *createOrderEditor  (QWidget *parent);
 };
 
 #endif // INTERMODTRACEDELEGATE_H

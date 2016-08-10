@@ -28,6 +28,7 @@ public:
 
     virtual void initialize();
     virtual void back();
+    virtual int  next();
 
 public slots:
     void setSettings(const IntermodSettings     &settings);

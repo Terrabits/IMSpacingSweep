@@ -2,21 +2,26 @@
 
 
 // Project
+#include "IntermodTrace.h"
 #include "IntermodTraceDelegate.h"
 #include "IntermodTraceModel.h"
 
 // RsaToolbox
-#include <Definitions.h>
-#include <FrequencyEdit.h>
 using namespace RsaToolbox;
 
 // Qt
 #include <QComboBox>
-#include <QLineEdit>
+#include <QDebug>
+#include <QList>
+#include <QPersistentModelIndex>
 #include <QSignalSpy>
+#include <QString>
 #include <QStyleOptionViewItem>
 #include <QWidget>
 
+
+typedef QList<IntermodTrace> Traces;
+Q_DECLARE_METATYPE(Traces)
 
 IntermodTraceDelegateTest::IntermodTraceDelegateTest(QObject *parent) :
     TestClass(parent)
@@ -29,97 +34,80 @@ IntermodTraceDelegateTest::~IntermodTraceDelegateTest()
 
 }
 
-//void IntermodTraceDelegateTest::name() {
-//    IntermodSettings settings = defaultSettings();
+void IntermodTraceDelegateTest::set_data() {
+    QTest::addColumn<Traces >("before");
+    QTest::addColumn<int    >("row"   );
+    QTest::addColumn<int    >("column");
+    QTest::addColumn<QString>("text"  );
+    QTest::addColumn<Traces >("after" );
 
-//    IntermodTraceDelegate delegate;
-//    delegate.setIntermodSettings(settings);
+    // One trace
+    // Change type
+    Traces before;
+    before << IntermodTrace(TraceType::intermod, TraceFeature::major, 3);
+    int row      = 0;
+    int column   = 0;
+    Traces after = before;
+    after[row].setType(TraceType::relative);
+    QTest::newRow("OneTraceType") << before << row << column << "Relative" << after;
 
-//    IntermodTraceModel model;
-//    model.setSettings(settings);
+    // Three traces
+    // Change type of middle
+    before.clear();
+    before << IntermodTrace(TraceType::intermod,       TraceFeature::major, 3);
+    before << IntermodTrace(TraceType::relative,       TraceFeature::major, 5);
+    before << IntermodTrace(TraceType::inputIntercept, TraceFeature::major, 7);
+    row    = 1;
+    column = 0;
+    after  = before;
+    after[row].setType(TraceType::outputTone);
 
-//    QList<IntermodTrace> traces;
-//    IntermodTrace trace;
-//    const QString name = "MyTrace";
-//    trace.setName(name       );
-//    trace.setY   ("IM3 Upper");
-//    traces << trace;
-//    model.setTraces(traces);
+    QTest::newRow("MiddleType") << before << row << column << "Output" << after;
 
-//    const QModelIndex i
-//            = model.index(0, IntermodTraceModel::Column::name);
-//    QWidget *widget
-//            = delegate.createEditor(0,
-//                                    QStyleOptionViewItem(),
-//                                    i);
-//    QLineEdit *edit = qobject_cast<QLineEdit*>(widget);
-//    QVERIFY(edit);
-//    QVERIFY(edit->validator());
+    // First feature
+    row    = 0;
+    column = 1;
+    after  = before;
+    after[row].setFeature(TraceFeature::upper);
+    QTest::newRow("MiddleFeature") << before << row << column << "Upper" << after;
 
-//    delegate.setEditorData(widget, i);
-//    QCOMPARE(edit->text(), name);
+    // Last order
+    row    = 2;
+    column = 2;
+    after  = before;
+    after[row].setOrder(9);
+    QTest::newRow("LastOrder") << before << row << column << "9" << after;
 
-//    const QString newName = "MyNextTrace";
-//    edit->setText(newName);
 
-//    delegate.setModelData(widget, &model, i);
-//    QCOMPARE(model.data(i).toString(), newName);
-//}
-//void IntermodTraceDelegateTest::y() {
-//    IntermodSettings settings = defaultSettings();
+}
+void IntermodTraceDelegateTest::set() {
+    QFETCH(Traces, before);
+    QFETCH(int, row);
+    QFETCH(int, column);
+    QFETCH(QString, text);
+    QFETCH(Traces, after);
 
-//    IntermodTraceDelegate delegate;
-//    delegate.setIntermodSettings(settings);
+    IntermodTraceModel model;
+    model.setTraces(before);
+    QCOMPARE(before, model.traces());
 
-//    IntermodTraceModel model;
-//    model.setSettings(settings);
+    IntermodTraceDelegate delegate;
 
-//    QList<IntermodTrace> traces;
-//    IntermodTrace trace;
-//    const QString y = "IM3 Upper";
-//    trace.setName   ("Trc1");
-//    trace.setY      (y     );
-//    traces << trace;
-//    model.setTraces(traces);
+    QPersistentModelIndex i = model.index(row, column);
+    QStyleOptionViewItem style;
+    QWidget *w = delegate.createEditor(NULL, style, i);
+    QComboBox *combo = qobject_cast<QComboBox*>(w);
+    QVERIFY(combo);
 
-//    const QModelIndex i
-//            = model.index(0, IntermodTraceModel::Column::y);
-//    QWidget *widget
-//            = delegate.createEditor(0,
-//                                    QStyleOptionViewItem(),
-//                                    i);
-//    QComboBox *combo = qobject_cast<QComboBox*>(widget);
-//    QVERIFY(combo);
-//    QVERIFY (!combo->isEditable());
-//    QCOMPARE(combo->count(), trace.possibleYParameters().size());
+    delegate.setEditorData(w, i);
 
-//    delegate.setEditorData(widget, i);
-//    QCOMPARE(combo->currentText(), y);
+    combo->setCurrentText(text);
+    QCOMPARE(text, combo->currentText());
 
-//    const QString newY = "IM5 Lower";
-//    combo->setCurrentText(newY);
+    QSignalSpy dataChanged(&model, SIGNAL(dataChanged(QModelIndex,QModelIndex)));
+    delegate.setModelData(w, &model, i);
+    QVERIFY(dataChanged.count() == 1);
+    QCOMPARE(after, model.traces());
+    delete w;
+}
 
-//    delegate.setModelData(widget, &model, i);
-//    QCOMPARE(model.data(i).toString(), newY);
-//}
-
-//IntermodSettings IntermodTraceDelegateTest::defaultSettings() {
-//    // Settings
-//    VnaIntermod::ToneSource port3;
-//    port3.setPort(3);
-
-//    IntermodSettings settings;
-//    settings.setLowerSourcePort(1);
-//    settings.setUpperSource    (port3);
-//    settings.setReceivingPort  (2);
-//    settings.setStartCenterFrequency (1, SiPrefix::Giga);
-//    settings.setStopCenterFrequency  (2, SiPrefix::Giga);
-//    settings.setCenterFrequencyPoints(11);
-//    settings.setStartToneDistance (10,  SiPrefix::Mega);
-//    settings.setStopToneDistance  (100, SiPrefix::Mega);
-//    settings.setToneDistancePoints(10);
-//    settings.setPower(-10);
-//    settings.setIfBw(  10, SiPrefix::Kilo);
-//    settings.setSelectivity(VnaChannel::IfSelectivity::High);
-//    return settings;
-//}

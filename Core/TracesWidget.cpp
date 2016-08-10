@@ -13,11 +13,11 @@ TracesWidget::TracesWidget(Vna *vna, Keys *keys, QWidget *parent) :
     WizardPage(parent),
     ui(new ::Ui::TracesWidget),
     _vna (vna ),
-    _keys(keys)
+    _keys(keys),
+    _keysLoaded(false)
 {
     ui->setupUi(this);
     setupMvc      ();
-    loadKeys      ();
     connectWidgets();
 }
 
@@ -54,6 +54,11 @@ void TracesWidget::setInput(const QList<IntermodTrace> &traces) {
     _model.setTraces(traces);
 }
 
+void TracesWidget::initialize() {
+    bool blocked = this->blockSignals(true);
+    loadKeys();
+    this->blockSignals(blocked);
+}
 bool TracesWidget::isReadyForNext() {
     IntermodError e;
     if (!isValidInput(e)) {
@@ -145,6 +150,8 @@ void TracesWidget::connectWidgets() {
 }
 
 void TracesWidget::loadKeys() {
+    if (_keysLoaded)
+        return;
     if (!_keys)
         return;
     if (!_keys->exists("TRACES"))
@@ -153,6 +160,7 @@ void TracesWidget::loadKeys() {
     QList<IntermodTrace> traces;
     _keys->get("TRACES", traces);
     setInput(traces);
+    _keysLoaded = true;
 }
 void TracesWidget::saveKeys() {
     if (!_keys)

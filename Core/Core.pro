@@ -31,7 +31,8 @@ HEADERS += Settings.h \
     FrequencyConversionGenerator.h \
     IntermodChannels.h \
     ProcessTraces.h \
-    CalibrateWidget.h
+    CalibrateWidget.h \
+    ProcessTracesWidget.h
 SOURCES += \
            IntermodSettings.cpp \
            IntermodWidget.cpp \
@@ -43,10 +44,12 @@ SOURCES += \
     FrequencyConversionGenerator.cpp \
     IntermodChannels.cpp \
     ProcessTraces.cpp \
-    CalibrateWidget.cpp
+    CalibrateWidget.cpp \
+    ProcessTracesWidget.cpp
 FORMS   += IntermodWidget.ui \
     TracesWidget.ui \
-    CalibrateWidget.ui
+    CalibrateWidget.ui \
+    ProcessTracesWidget.ui
 
 # Defines
 DEFINES += SOURCE_DIR=\\\"$$PWD\\\"

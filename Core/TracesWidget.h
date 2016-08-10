@@ -39,6 +39,7 @@ public:
     void setInput(const QList<IntermodTrace> &input);
 
     // Enter, leave
+    virtual void initialize();
     virtual bool isReadyForNext();
 
 signals:
@@ -66,6 +67,7 @@ private:
     mutable RsaToolbox::Vna *_vna;
     RsaToolbox::Keys        *_keys;
     IntermodSettings         _settings;
+    bool                     _keysLoaded;
 
     IntermodTraceModel    _model;
     IntermodTraceDelegate _delegate;

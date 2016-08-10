@@ -2,17 +2,21 @@
 
 
 // Project
-#include "IntermodTraceModel.h"
-#include "IntermodSettings.h"
+//
 
 // RsaToolbox
 using namespace RsaToolbox;
 
 // Qt
+#include <QList>
 #include <QSignalSpy>
 
 
-IntermodTraceModelTest::IntermodTraceModelTest(QObject *parent) : TestClass(parent)
+typedef QList<IntermodTrace> Traces;
+
+
+IntermodTraceModelTest::IntermodTraceModelTest(QObject *parent) :
+    TestClass(parent)
 {
 
 }
@@ -22,114 +26,142 @@ IntermodTraceModelTest::~IntermodTraceModelTest()
 
 }
 
-void IntermodTraceModelTest::basic() {
-    QVERIFY(false);
-//    // Settings
-//    VnaIntermod::ToneSource port3;
-//    port3.setPort(3);
+void IntermodTraceModelTest::get_data() {
+    QTest::addColumn<Traces>("traces");
 
-//    IntermodSettings settings;
-//    settings.setLowerSourcePort(1    );
-//    settings.setUpperSource    (port3);
-//    settings.setReceivingPort  (2    );
-//    settings.setStartCenterFrequency (1, SiPrefix::Giga);
-//    settings.setStopCenterFrequency  (2, SiPrefix::Giga);
-//    settings.setCenterFrequencyPoints(11);
-//    settings.setStartToneDistance (10,  SiPrefix::Mega);
-//    settings.setStopToneDistance  (100, SiPrefix::Mega);
-//    settings.setToneDistancePoints(10                 );
-//    settings.setPower(-10                );
-//    settings.setIfBw ( 10, SiPrefix::Kilo);
-//    settings.setSelectivity(VnaChannel::IfSelectivity::High);
+    typedef TraceType Type;
+    typedef TraceFeature Feature;
 
-//    IntermodTraceModel model;
-//    model.setSettings(settings);
+    // Empty
+    Traces traces;
+    QTest::newRow("Empty") << traces;
 
-//    QCOMPARE(model.rowCount(), 0);
+    // lti
+    traces << IntermodTrace(Type::inputTone, Feature::lower);
+    QTest::newRow("lti")   << traces;
 
-//    QSignalSpy dataChanged          (&model, SIGNAL(dataChanged          (QModelIndex, QModelIndex)) );
-//    QSignalSpy rowsAboutToBeInserted(&model, SIGNAL(rowsAboutToBeInserted(QModelIndex, int, int)) );
-//    QSignalSpy rowsInserted         (&model, SIGNAL(rowsInserted         (QModelIndex, int, int)) );
-//    QSignalSpy rowsAboutToBeRemoved (&model, SIGNAL(rowsAboutToBeRemoved (QModelIndex, int, int)) );
-//    QSignalSpy rowsRemoved          (&model, SIGNAL(rowsRemoved          (QModelIndex, int, int)) );
-//    QSignalSpy modelAboutToBeReset  (&model, SIGNAL(modelAboutToBeReset  (                     )) );
-//    QSignalSpy modelReset           (&model, SIGNAL(modelReset           (                     )) );
-
-//    // New trace
-//    QVERIFY (model.appendNewTrace());
-//    QCOMPARE(model.rowCount(),              1);
-//    QCOMPARE(dataChanged.count(),           0);
-//    QCOMPARE(rowsAboutToBeInserted.count(), 1);
-//    QCOMPARE(rowsInserted.count(),          1);
-//    QCOMPARE(rowsAboutToBeRemoved.count(),  0);
-//    QCOMPARE(rowsRemoved.count(),           0);
-//    QCOMPARE(modelAboutToBeReset.count(),   0);
-//    QCOMPARE(modelReset.count(),            0);
-//    rowsAboutToBeInserted.clear();
-//    rowsInserted.clear();
-
-//    // New trace name
-//    QModelIndex i = model.index(0, IntermodTraceModel::Column::name);
-//    QCOMPARE(model.data(i).toString(), QString("Trc1"));
-//    QCOMPARE(dataChanged.count(),           0);
-
-//    // Set name
-//    i = model.index(0, IntermodTraceModel::Column::name);
-//    QCOMPARE(dataChanged.count(),           0);
-
-//    const QString name = "my_trace_name";
-//    QVERIFY (model.setData(i,            name));
-//    QCOMPARE(model.data(i).toString(),   name);
-//    QCOMPARE(dataChanged.count(),           1);
-//    QCOMPARE(rowsAboutToBeInserted.count(), 0);
-//    QCOMPARE(rowsInserted.count(),          0);
-//    QCOMPARE(rowsAboutToBeRemoved.count(),  0);
-//    QCOMPARE(rowsRemoved.count(),           0);
-//    QCOMPARE(modelAboutToBeReset.count(),   0);
-//    QCOMPARE(modelReset.count(),            0);
-//    dataChanged.clear();
-
-//    // Set Y
-//    i = model.index(0, IntermodTraceModel::Column::y);
-//    const QString y = "IM3 Upper";
-//    QVERIFY (model.setData(i,               y));
-//    QCOMPARE(model.data(i).toString(),      y);
-//    QCOMPARE(dataChanged.count(),           1);
-//    QCOMPARE(rowsAboutToBeInserted.count(), 0);
-//    QCOMPARE(rowsInserted.count(),          0);
-//    QCOMPARE(rowsAboutToBeRemoved.count(),  0);
-//    QCOMPARE(rowsRemoved.count(),           0);
-//    QCOMPARE(modelAboutToBeReset.count(),   0);
-//    QCOMPARE(modelReset.count(),            0);
-//    dataChanged.clear();
-
-//    // Delete trace
-//    QVERIFY (model.removeRow(0));
-//    QCOMPARE(model.rowCount(),              0);
-//    QCOMPARE(dataChanged.count(),           0);
-//    QCOMPARE(rowsAboutToBeInserted.count(), 0);
-//    QCOMPARE(rowsInserted.count(),          0);
-//    QCOMPARE(rowsAboutToBeRemoved.count(),  1);
-//    QCOMPARE(rowsRemoved.count(),           1);
-//    QCOMPARE(modelAboutToBeReset.count(),   0);
-//    QCOMPARE(modelReset.count(),            0);
-//    rowsAboutToBeRemoved.clear();
-//    rowsRemoved.clear();
+    // ip3lo, ip5uo
+    traces.clear();
+    traces << IntermodTrace(Type::outputIntercept, Feature::lower, 3);
+    traces << IntermodTrace(Type::outputIntercept, Feature::upper, 5);
+    QTest::newRow("ip3loAndip5uo") << traces;
 }
-void IntermodTraceModelTest::flags() {
-    QVERIFY(false);
-//    IntermodTraceModel model;
-//    model.appendNewTrace();
+void IntermodTraceModelTest::get() {
+    QFETCH(Traces, traces);
 
-//    QModelIndex i = model.index(0, IntermodTraceModel::Column::name);
-//    Qt::ItemFlags flags = model.flags(i);
-//    QVERIFY(flags & Qt::ItemIsEditable);
-//    QVERIFY(flags & Qt::ItemIsEnabled);
-//    QVERIFY(flags & Qt::ItemIsSelectable);
+    IntermodTraceModel model;
+    model.setTraces(traces);
 
-//    i = model.index(0, IntermodTraceModel::Column::y);
-//    flags = model.flags(i);
-//    QVERIFY(flags & Qt::ItemIsEditable);
-//    QVERIFY(flags & Qt::ItemIsEnabled);
-//    QVERIFY(flags & Qt::ItemIsSelectable);
+    QCOMPARE(traces,        model.traces());
+    QCOMPARE(traces.size(), model.rowCount());
+    QCOMPARE(int(3)       , model.columnCount());
+
+    for (int i = 0; i < traces.size(); i++) {
+        // Qt::DisplayRole
+        const IntermodTrace t = traces[i];
+        QCOMPARE(toString(t.type())   , getDisplay(model, i, 0));
+        QCOMPARE(toString(t.feature()), getDisplay(model, i, 1));
+        if (t.hasOrder())
+            QCOMPARE(t.order(), getDisplay(model, i, 2).toUInt());
+        else
+            QCOMPARE(QString(), getDisplay(model, i, 2));
+
+        // Qt::EditRole
+        QCOMPARE(getType(model, i)     , t.type());
+        QCOMPARE(getFeature(model, i)  , t.feature());
+        if (t.hasOrder())
+            QCOMPARE(getOrder(model, i), t.order());
+    }
+}
+
+void IntermodTraceModelTest::set_data() {
+    QTest::addColumn<Traces>("traces");
+
+    typedef TraceType Type;
+    typedef TraceFeature Feature;
+
+    // Empty
+    Traces traces;
+    QTest::newRow("Empty") << traces;
+
+    // lti
+    traces << IntermodTrace(Type::inputTone, Feature::lower);
+    QTest::newRow("lti")   << traces;
+
+    // im7mo
+    traces.clear();
+    traces << IntermodTrace(Type::intermod, Feature::major, 7);
+    QTest::newRow("im7mo") << traces;
+
+    // ip3lo, ip5uo
+    traces.clear();
+    traces << IntermodTrace(Type::outputIntercept, Feature::lower, 3);
+    traces << IntermodTrace(Type::outputIntercept, Feature::upper, 5);
+    QTest::newRow("ip3loAndip5uo") << traces;
+}
+void IntermodTraceModelTest::set() {
+    QFETCH(Traces, traces);
+
+    IntermodTraceModel model;
+    model.insertRows(0, traces.size());
+    QCOMPARE(traces.size(), model.rowCount());
+
+    QSignalSpy dataChanged(&model, SIGNAL(dataChanged(QModelIndex,QModelIndex)));
+    for (int i = 0; i < traces.size(); i++) {
+        const IntermodTrace t = traces[i];
+
+        // Type
+        dataChanged.clear();
+        QVERIFY(setType(model, i, t.type()));
+        QVERIFY(dataChanged.count() == 1);
+        QCOMPARE(t.type(), getType(model, i));
+
+        // Feature
+        dataChanged.clear();
+        QVERIFY(setFeature(model, i, t.feature()));
+        QVERIFY(dataChanged.count() == 1);
+        QCOMPARE(t.feature(), getFeature(model, i));
+
+        // Order
+        dataChanged.clear();
+        if (t.hasOrder()) {
+            QVERIFY(setOrder(model, i, t.order()));
+            QVERIFY(dataChanged.count() == 1);
+            QCOMPARE(t.order(), getOrder(model, i));
+        }
+    }
+    QCOMPARE(traces, model.traces());
+}
+
+QString IntermodTraceModelTest::getDisplay(IntermodTraceModel &model, int row, int column) {
+    QModelIndex index = model.index(row, column);
+    return model.data(index).toString();
+}
+TraceType IntermodTraceModelTest::getType(IntermodTraceModel &model, int row) {
+    QModelIndex index = model.index(row, 0);
+    QVariant v = model.data(index, Qt::EditRole);
+    return   v.value<TraceType>();
+}
+TraceFeature IntermodTraceModelTest::getFeature(IntermodTraceModel &model, int row) {
+    QModelIndex index = model.index(row, 1);
+    QVariant v = model.data(index, Qt::EditRole);
+    return   v.value<TraceFeature>();
+}
+uint IntermodTraceModelTest::getOrder(IntermodTraceModel &model, int row) {
+    QModelIndex index = model.index(row, 2);
+    QVariant v = model.data(index, Qt::EditRole);
+    return   v.toUInt();
+}
+
+bool IntermodTraceModelTest::setType(IntermodTraceModel &model, int row, TraceType type) {
+    QModelIndex index = model.index(row, 0);
+    return model.setData(index, QVariant::fromValue(type));
+}
+bool IntermodTraceModelTest::setFeature(IntermodTraceModel &model, int row, TraceFeature feature) {
+    QModelIndex index = model.index(row, 1);
+    return model.setData(index, QVariant::fromValue(feature));
+}
+bool IntermodTraceModelTest::setOrder(IntermodTraceModel &model, int row, uint order) {
+    QModelIndex index = model.index(row, 2);
+    return model.setData(index, QVariant::fromValue(order));
 }

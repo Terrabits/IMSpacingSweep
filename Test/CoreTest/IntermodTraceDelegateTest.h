@@ -19,12 +19,9 @@ public:
     explicit IntermodTraceDelegateTest(QObject *parent = 0);
     ~IntermodTraceDelegateTest();
 
-//private slots:
-//    void name();
-//    void y   ();
-
-//private:
-//    static IntermodSettings defaultSettings();
+private slots:
+    void set_data();
+    void set     ();
 };
 
 #endif // INTERMODTRACEDELEGATETEST_H

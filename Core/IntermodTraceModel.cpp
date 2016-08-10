@@ -63,11 +63,16 @@ Qt::ItemFlags IntermodTraceModel::flags(const QModelIndex &index) const {
     const int column = index.column();
 
     Qt::ItemFlags flags = QAbstractTableModel::flags(index);
+    const IntermodTrace t = _traces[index.row()];
     switch (column) {
     case Column::Type:
     case Column::Feature:
-    case Column::Order:
         return flags | Qt::ItemIsEditable;
+    case Column::Order:
+        if (t.hasOrder())
+            return flags | Qt::ItemIsEditable;
+        else
+            return flags;
     default:
         return flags;
     }
@@ -92,73 +97,61 @@ QVariant IntermodTraceModel::data(const QModelIndex &index, int role) const {
     if (index.model() != this)
         return QVariant();
 
-    const int row = index.row();
+    const int row    = index.row();
     const int column = index.column();
-    if (row < 0 || row >= _traces.size())
-        return QVariant();
-    if (column < 0 || column >= COLUMNS)
-        return QVariant();
-
-    if  (role != Qt::DisplayRole
-      && role != Qt::EditRole)
-    {
-        return QVariant();
-    }
-
-    // Will default to QString format
-    // Even though this probably isn't
-    // proper / is lazy
-    IntermodTrace trace = _traces[row];
     switch (column) {
     case Column::Type:
-        return toString(trace.type());
+        return getType   (row, role);
     case Column::Feature:
-        return toString(trace.feature());
+        return getFeature(row, role);
     case Column::Order:
-        if (trace.hasOrder())
-            return trace.order();
-        else
-            return QVariant();
+        return getOrder  (row, role);
     default:
         return QVariant();
     }
 }
 bool IntermodTraceModel::setData(const QModelIndex &index, const QVariant &value, int role) {
-    if (!index.isValid())
+    if (!index.isValid()) {
         return false;
-    if (index.model() != this)
+    }
+    if (index.model() != this) {
         return false;
+    }
 
-    if (role != Qt::EditRole)
+    if (role != Qt::EditRole && role != Qt::DisplayRole) {
         return false;
-    if (!value.isValid())
+    }
+    if (!value.isValid()) {
         return false;
+    }
 
-    const int row    = index.row();
+    const int row    = index.row   ();
     const int column = index.column();
-    if (row < 0 || row >= _traces.size())
+    if (row < 0 || row >= _traces.size()) {
         return false;
-    if (column < 0 || column >= COLUMNS)
+    }
+    if (column < 0 || column >= COLUMNS) {
         return false;
+    }
 
-    else if (!value.canConvert<QString>())
-        return false;
-
-    const TraceType    type    = value.value<TraceType>();
+    const TraceType    type    = value.value<TraceType>   ();
     const TraceFeature feature = value.value<TraceFeature>();
     const uint         order   = value.toUInt();
     IntermodTrace     &trace   = _traces[row];
     switch (column) {
     case Column::Type:
         trace.setType(type);
+        emit dataChanged(index, index);
         return true;
     case Column::Feature:
         trace.setFeature(feature);
+        emit dataChanged(index, index);
         return true;
     case Column::Order:
         if (!trace.hasOrder())
             return false;
         trace.setOrder(order);
+        emit dataChanged(index, index);
         return true;
     default:
         return false;
@@ -259,3 +252,33 @@ void IntermodTraceModel::setTraces(const QList<IntermodTrace> &traces) {
     endResetModel();
 }
 
+QVariant IntermodTraceModel::getType(int row, int role) const {
+    const TraceType t = _traces[row].type();
+    if (role == Qt::DisplayRole)
+        return toString(t);
+    if (role == Qt::EditRole)
+        return QVariant::fromValue(t);
+
+    // Else
+    return QVariant();
+}
+QVariant IntermodTraceModel::getFeature(int row, int role) const {
+    const TraceFeature f = _traces[row].feature();
+    if (role == Qt::DisplayRole)
+        return toString(f);
+    if (role == Qt::EditRole)
+        return QVariant::fromValue(f);
+
+    // Else
+    return QVariant();
+}
+QVariant IntermodTraceModel::getOrder(int row, int role) const {
+    if (role != Qt::DisplayRole && role != Qt::EditRole)
+        return QVariant();
+
+    const IntermodTrace t = _traces[row];
+    if (t.hasOrder())
+        return t.order();
+    else
+        return QVariant();
+}

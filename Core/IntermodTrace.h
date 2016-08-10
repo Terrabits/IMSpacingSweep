@@ -19,7 +19,8 @@ enum /*class*/ TraceType {
     inputIntercept,
     outputIntercept
 };
-QString toString(TraceType type);
+QString   toString   (TraceType type  );
+TraceType toTraceType(QString   string);
 Q_DECLARE_METATYPE(TraceType)
 
 
@@ -28,7 +29,8 @@ enum /*class*/ TraceFeature {
     upper,
     major
 };
-QString toString(TraceFeature feature);
+QString      toString      (TraceFeature feature);
+TraceFeature toTraceFeature(QString string);
 Q_DECLARE_METATYPE(TraceFeature)
 
 
@@ -98,6 +100,7 @@ private:
 
     QString abbreviateFeature() const;
 };
+Q_DECLARE_METATYPE(IntermodTrace)
 
 QDataStream &operator<<(QDataStream &stream, const IntermodTrace &trace);
 QDataStream &operator>>(QDataStream &stream, IntermodTrace &trace);

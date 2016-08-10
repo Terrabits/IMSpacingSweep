@@ -63,6 +63,10 @@ signals:
 private:
     IntermodSettings     _settings;
     QList<IntermodTrace> _traces;
+
+    QVariant getType   (int row, int role) const;
+    QVariant getFeature(int row, int role) const;
+    QVariant getOrder  (int row, int role) const;
 };
 
 
