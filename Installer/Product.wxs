@@ -9,13 +9,13 @@
         <Package       InstallerVersion="200" Compressed="yes" InstallScope="perMachine"              />
         <MajorUpgrade  DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <MediaTemplate EmbedCab="yes"                              />
-        <WixVariable   Id="WixUILicenseRtf"  Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\license.rtf" />
-        <WixVariable   Id="WixUIBannerBmp"   Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\banner.bmp"  />
-        <WixVariable   Id="WixUIDialogBmp"   Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\dialog.bmp"  />
-        <Property      Id="ARPPRODUCTICON"   Value="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\icon.ico"    />
+        <WixVariable   Id="WixUILicenseRtf"  Value="license.rtf"   />
+        <WixVariable   Id="WixUIBannerBmp"   Value="banner.bmp"    />
+        <WixVariable   Id="WixUIDialogBmp"   Value="dialog.bmp"    />
+        <Property      Id="ARPPRODUCTICON"   Value="icon.ico"      />
         <Property      Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
         <UIRef         Id="WixUI_InstallDir"                       />
-        <Icon Id="icon.ico" SourceFile="C:\Users\Lalic\Documents\Qt\TwoToneSweep\Installer\icon.ico"                />
+        <Icon Id="icon.ico" SourceFile="icon.ico"                  />
         <Feature Id="IMSpacingSweep" Title="R&amp;S IM Spacing Sweep" Description="Application" Level="1">
             <!-- Licenses       -->
             <ComponentRef Id="MSVCLicense"    />
@@ -169,10 +169,10 @@
             <RegistryKey Root="HKCU" Key="Software\Rohde-Schwarz\IM Spacing Sweep\StartShortcuts">
                 <RegistryValue Value="[StartMenu]\R&amp;S IM Spacing Sweep\*" Type="string" KeyPath="yes" />
             </RegistryKey>
-            <Shortcut Id="AboutShortcut"     Name="About"     Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S IM Spacing Sweep.exe" Arguments="-about" />
+            <Shortcut Id="AboutShortcut"     Name="About"             Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S IM Spacing Sweep.exe" Arguments="-about" />
             <Shortcut Id="AppShortcut"       Name="IM Spacing Sweep"  Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[INSTALLFOLDER]\R&amp;S IM Spacing Sweep.exe" />
-            <Shortcut Id="LogsShortcut"      Name="Logs"      Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[WindowsFolder]\explorer.exe" Arguments="&quot;[MyAppDataFolder]&quot;" />
-            <Shortcut Id="UninstallShortcut" Name="Uninstall" Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[SystemFolder]\msiexec.exe" Arguments="/x [ProductCode]" />
+            <Shortcut Id="LogsShortcut"      Name="Logs"              Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[WindowsFolder]\explorer.exe"                 Arguments="&quot;[MyAppDataFolder]&quot;" />
+            <Shortcut Id="UninstallShortcut" Name="Uninstall"         Icon="icon.ico" WorkingDirectory="INSTALLFOLDER" Target="[SystemFolder]\msiexec.exe"                   Arguments="/x [ProductCode]" />
             <RemoveFolder Id="RemoveStartFolder" Directory="StartFolder" On="uninstall" />
         </Component>
     </Fragment>
