@@ -198,8 +198,10 @@ void ProcessTraces::setupCalibration() {
     VnaChannel c = _vna->channel(_channels.base());
     configureChannel(c);
 
-    c.arbitraryFrequencyOff(lowerPort());
-    c.arbitraryFrequencyOff(upperPort());
+    c.sourceArbitraryFreqOff(lowerPort());
+    c.sourceArbitraryFreqOff(upperPort());
+    if (_vna->properties().isZvaFamily())
+        c.receiverArbitraryFreqOff();
 
     c.setFrequencies(calFreq_Hz());
     c.select();
@@ -332,18 +334,18 @@ void ProcessTraces::configureChannel(VnaChannel c) {
     c.setIfSelectivity(_settings.selectivity());
 
     // Port setup
-    c.setArbitraryFrequency(lowerPort(), lowerAf());
-    c.setArbitraryFrequency(upperPort(), upperAf());
+    c.setSourceArbitraryFreq(lowerPort(), lowerAf());
+    c.setSourceArbitraryFreq(upperPort(), upperAf());
 }
 
 void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
     // Channel
-    VnaChannel vnaCh = _channels.create(t);
-    configureChannel(vnaCh);
+    VnaChannel ch = _channels.create(t);
+    configureChannel(ch);
 
     // Trace
     const QString name = traceName(t);
-    _vna->createTrace(traceName(t), vnaCh.index());
+    _vna->createTrace(traceName(t), ch.index());
     VnaTrace vnaTrc = _vna->trace(name);
     if (t.isLower()) {
         vnaTrc.setWaveQuantity(WaveQuantity::a, lowerPort(), lowerPort());
@@ -356,38 +358,42 @@ void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
 }
 void ProcessTraces::processOutputTrace   (const IntermodTrace &t) {
     // Channel
-    VnaChannel vnaCh = _channels.create(t);
-    configureChannel(vnaCh);
+    VnaChannel ch = _channels.create(t);
+    configureChannel(ch);
 
     // Output port setup
-    vnaCh.setArbitraryFrequency(outputPort(), outputAf(t));
+    if (_vna->properties().isZvaFamily())
+        ch.setReceiverArbitraryFreq(outputAf(t));
+    else
+        ch.setSourceArbitraryFreq(outputPort(), outputAf(t));
 
     // Trace
     const QString name = traceName(t);
-    _vna->createTrace(name, vnaCh.index());
+    _vna->createTrace(name, ch.index());
     VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
     if (t.isVisible())
         vnaTrc.setDiagram(_diagram);
 }
 void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
-    uint channel;
+    VnaChannel ch;
     if (!t.isDependent()) {
-        // Channel
-        VnaChannel ch = _channels.create(t);
+        // Channelch = _channels.create(t);
         configureChannel(ch);
 
         // Output port setup
-        ch.setArbitraryFrequency(outputPort(), outputAf(t));
-        channel = ch.index();
+        if (_vna->properties().isZvaFamily())
+            ch.setReceiverArbitraryFreq(outputAf(t));
+        else
+            ch.setSourceArbitraryFreq(outputPort(), outputAf(t));
     }
     else {
-        channel = this->channel();
+        ch = _vna->channel(channel());
     }
 
     // Trace
     const QString name = traceName(t);
-    _vna->createTrace(name, channel);
+    _vna->createTrace(name, ch.index());
     VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
     if (t.isMajor()) {
