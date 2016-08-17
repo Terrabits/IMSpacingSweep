@@ -33,7 +33,8 @@ HEADERS += Settings.h \
     ProcessTraces.h \
     CalibrateWidget.h \
     ProcessTracesWidget.h \
-    ProcessThread.h
+    ProcessThread.h \
+    IntermodCombiner.h
 SOURCES += \
            IntermodSettings.cpp \
            IntermodWidget.cpp \
@@ -47,7 +48,8 @@ SOURCES += \
     ProcessTraces.cpp \
     CalibrateWidget.cpp \
     ProcessTracesWidget.cpp \
-    ProcessThread.cpp
+    ProcessThread.cpp \
+    IntermodCombiner.cpp
 FORMS   += IntermodWidget.ui \
     TracesWidget.ui \
     CalibrateWidget.ui \

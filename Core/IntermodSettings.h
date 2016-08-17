@@ -2,6 +2,9 @@
 #define IMSETTINGS_H
 
 
+// Project
+#include "IntermodCombiner.h"
+
 // RsaToolbox
 #include <VnaChannel.h>
 #include <VnaIntermod.h>
@@ -21,9 +24,12 @@ public:
     uint                                 lowerSourcePort() const;
     RsaToolbox::VnaIntermod::ToneSource  upperSource    () const;
     RsaToolbox::VnaIntermod::ToneSource &upperSource    ();
+    IntermodCombiner                     combiner       () const;
+    IntermodCombiner                    &combiner       ();
     uint                                 receivingPort  () const;
     void setLowerSourcePort(uint port);
-    void setUpperSource(RsaToolbox::VnaIntermod::ToneSource source);
+    void setUpperSource  (RsaToolbox::VnaIntermod::ToneSource source);
+    void setCombiner     (IntermodCombiner combiner);
     void setReceivingPort(uint port);
 
     // Center frequency
