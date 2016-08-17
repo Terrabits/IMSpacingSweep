@@ -13,6 +13,13 @@ https://github.com/Terrabits/RsaToolbox
 
 To build this project, first build RsaToolbox into a shared library in Qt Creator, then build this project in Qt Creator as well. This project was written for and tested exclusively in Windows environments running Windows XP and later. It should compile to other platforms as well, but it might take some effort. Some of the groundwork to compile for MacOS is in place. Linux has never been attempted.
 
+Version History
+===============
+
+1.0: Initial release
+  1.0.1
+  - ZVA: Handle source and receiver arbitrary frequencies separately
+
 Frequency conversion SCPI commands
 ==================================
 Intermod measurement with fixed center frequency and swept tone distance is not currently available on the VNA. This must be implemented in software via SCPI commands and with the frequency conversion settings on a per-port and per-channel-and-trace basis.
