@@ -16,8 +16,8 @@ To build this project, first build RsaToolbox into a shared library in Qt Creato
 Version History
 ===============
 
-1.0: Initial release
-  1.0.1
+1.0 Initial release
+  1.0.1  
   - ZVA: Handle source and receiver arbitrary frequencies separately
 
 Frequency conversion SCPI commands
