@@ -56,6 +56,8 @@ void CombinerTest::combinerEdit() {
     ic.setExternal();
 
     CombinerEdit edit;
+    edit.enablePort();
+
     edit.setValue(ic);
     QVERIFY(ic == edit.value());
 
