@@ -55,8 +55,12 @@ void IntermodWidget::setInputLimits() {
     // Ports
     const uint ports = _vna->properties().physicalPorts();
     ui->lowerPort->setMaximum(ports);
-    qDebug() << "Need uppper source widget and/or some mechanism...";
+    qDebug() << "Need upper source widget and/or some mechanism...";
     ui->upperSourceIndex->setMaximum(ports);
+    qDebug() << "Need better ZVA combiner test";
+    if (_vna->properties().isZvaFamily())
+        ui->combiner->enablePort();
+    ui->combiner->setVnaPorts(_vna->properties().physicalPorts());
     ui->receivingPort->setMaximum(ports);
 
     // Center frequency
@@ -96,6 +100,12 @@ bool IntermodWidget::isValidInput(IntermodError &e) const {
         ui->upperSourceIndex->setFocus();
         e.code = IntermodError::Code::UpperSource;
         e.message = "*Enter upper source";
+        return false;
+    }
+    if (ui->combiner->isPortEmpty()) {
+        ui->combiner->setPortFocus();
+        e.code = IntermodError::Code::Combiner;
+        e.message = "*Enter combiner port";
         return false;
     }
     if (ui->receivingPort->text().isEmpty()) {
@@ -175,6 +185,7 @@ IntermodSettings IntermodWidget::input() const {
     s.setLowerSourcePort(ui->lowerPort->points());
     // FIX ME !!!!! ////
     s.upperSource().setPort(ui->upperSourceIndex->points());
+    s.setCombiner(ui->combiner->value());
     s.setReceivingPort(ui->receivingPort->points());
 
     // Center frequency
@@ -198,6 +209,7 @@ void IntermodWidget::setInput(const IntermodSettings &settings) {
     ui->lowerPort->setPoints(settings.lowerSourcePort());
     // FIX ME !!!!
     ui->upperSourceIndex->setPoints(settings.upperSource().port());
+    ui->combiner->setValue(settings.combiner());
     ui->receivingPort->setPoints(settings.receivingPort());
 
     // Center Frequency

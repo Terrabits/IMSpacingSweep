@@ -7,6 +7,8 @@ QString IntermodError::toString(Code code) {
         return "Lower Source";
     case Code::UpperSource:
         return "Upper Source";
+    case Code::Combiner:
+        return "Combiner";
     case Code::ReceivingPort:
         return "Receiving Port";
     case Code::CenterFrequency:

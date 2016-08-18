@@ -56,10 +56,10 @@ void CombinerTest::combinerEdit() {
     ic.setExternal();
 
     CombinerEdit edit;
-    edit.setCombiner(ic);
-    QVERIFY(ic == edit.combiner());
+    edit.setValue(ic);
+    QVERIFY(ic == edit.value());
 
     ic.setPort(2);
-    edit.setCombiner(ic);
-    QVERIFY(ic == edit.combiner());
+    edit.setValue(ic);
+    QVERIFY(ic == edit.value());
 }

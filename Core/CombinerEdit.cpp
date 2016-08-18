@@ -7,7 +7,10 @@ CombinerEdit::CombinerEdit(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->at->clear();
+    ui->at->addItem("External");
     ui->at->setCurrentText("External");
+    ui->at->setDisabled(true);
 
     ui->port->setParameterName("Combiner port");
     ui->port->clear();
@@ -25,7 +28,16 @@ void CombinerEdit::setVnaPorts(uint numberOfPorts) {
     ui->port->setMaximum(numberOfPorts);
 }
 
-IntermodCombiner CombinerEdit::combiner() const {
+bool CombinerEdit::isPortEnabled() const {
+    return ui->at->count() == 2;
+}
+bool CombinerEdit::isPortEmpty() const {
+    if (!isPortEnabled())
+        return false;
+
+    return ui->port->text().isEmpty();
+}
+IntermodCombiner CombinerEdit::value() const {
     IntermodCombiner ic;
     if (at() == IntermodCombiner::At::External) {
         ic.setExternal();
@@ -36,7 +48,37 @@ IntermodCombiner CombinerEdit::combiner() const {
     return ic;
 }
 
-void CombinerEdit::setCombiner(IntermodCombiner combiner) {
+void CombinerEdit::enablePort(bool isEnabled) {
+    if (isEnabled) {
+        if (isPortEnabled())
+            return;
+
+        ui->at->addItem("Port");
+        ui->at->setEnabled(true);
+    }
+    else {
+        if (!isPortEnabled())
+            return;
+
+        ui->at->removeItem(1);
+        ui->at->setCurrentText("External");
+        ui->at->setDisabled(true);
+        ui->port->clear();
+    }
+}
+void CombinerEdit::disablePort(bool isDisabled) {
+    enablePort(!isDisabled);
+}
+void CombinerEdit::setPortFocus() {
+    if (at() != IntermodCombiner::At::Port) {
+        this->setFocus();
+        return;
+    }
+
+    ui->port->setFocus();
+}
+
+void CombinerEdit::setValue(IntermodCombiner combiner) {
     const QString &at = IntermodCombiner::toString(combiner.at());
     ui->at->setCurrentText(at);
 

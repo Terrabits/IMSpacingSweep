@@ -37,6 +37,12 @@ VnaIntermod::ToneSource &IntermodSettings::upperSource() {
 uint IntermodSettings::receivingPort() const {
     return _receivingPort;
 }
+IntermodCombiner  IntermodSettings::combiner() const {
+    return _combiner;
+}
+IntermodCombiner &IntermodSettings::combiner() {
+    return _combiner;
+}
 void IntermodSettings::setLowerSourcePort(uint port) {
     _lowerSourcePort = port;
 }
@@ -45,6 +51,9 @@ void IntermodSettings::setUpperSource(VnaIntermod::ToneSource source) {
 }
 void IntermodSettings::setReceivingPort(uint port) {
     _receivingPort = port;
+}
+void IntermodSettings::setCombiner(IntermodCombiner combiner) {
+    _combiner = combiner;
 }
 
 // Center Frequency
@@ -111,6 +120,7 @@ QDataStream &operator<<(QDataStream &stream, const IntermodSettings &settings) {
     stream << quint32(settings.lowerSourcePort());
     stream << quint32(settings.upperSource().port());
     stream << quint32(settings.receivingPort());
+    stream << settings.combiner();
 
     stream << settings.centerFrequency_Hz();
 
@@ -131,6 +141,7 @@ QDataStream &operator>>(QDataStream &stream, IntermodSettings &settings) {
     settings.setLowerSourcePort   (lower);
     settings.upperSource().setPort(upper);
     settings.setReceivingPort     (recv);
+    stream >> settings.combiner();
 
     double    center;
     stream >> center;

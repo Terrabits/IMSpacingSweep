@@ -24,13 +24,13 @@ public:
     uint                                 lowerSourcePort() const;
     RsaToolbox::VnaIntermod::ToneSource  upperSource    () const;
     RsaToolbox::VnaIntermod::ToneSource &upperSource    ();
+    uint                                 receivingPort  () const;
     IntermodCombiner                     combiner       () const;
     IntermodCombiner                    &combiner       ();
-    uint                                 receivingPort  () const;
     void setLowerSourcePort(uint port);
     void setUpperSource  (RsaToolbox::VnaIntermod::ToneSource source);
-    void setCombiner     (IntermodCombiner combiner);
     void setReceivingPort(uint port);
+    void setCombiner     (IntermodCombiner combiner);
 
     // Center frequency
     double centerFrequency_Hz() const;
@@ -61,6 +61,7 @@ private:
     // Ports
     uint _lowerSourcePort;
     RsaToolbox::VnaIntermod::ToneSource _upperSource;
+    IntermodCombiner _combiner;
     uint _receivingPort;
 
     // Center frequency

@@ -24,7 +24,7 @@ class IntermodWidget : public RsaToolbox::WizardPage
     Q_OBJECT
 
 public:
-    explicit IntermodWidget(RsaToolbox::Vna *vna, RsaToolbox::Keys *keys, QWidget *parent = 0);
+    explicit IntermodWidget(RsaToolbox::Vna *vna, RsaToolbox::Keys *keys = 0, QWidget *parent = 0);
     ~IntermodWidget();
 
     bool isValidInput(IntermodError &error) const;

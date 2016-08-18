@@ -23,10 +23,16 @@ public:
 
     void setVnaPorts(uint numberOfPorts);
 
-    IntermodCombiner combiner() const;
+    bool isPortEnabled() const;
+    bool isPortEmpty  () const;
+    IntermodCombiner value() const;
 
 public slots:
-    void setCombiner(IntermodCombiner combiner);
+    void enablePort (bool isEnabled = true);
+    void disablePort(bool isDisabled = true);
+    void setPortFocus();
+
+    void setValue(IntermodCombiner value);
 
 signals:
     void outOfRange(const QString &message);

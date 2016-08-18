@@ -10,6 +10,7 @@ struct IntermodError {
     enum /*class*/ Code {
         LowerSourcePort,
         UpperSource,
+        Combiner,
         ReceivingPort,
         CenterFrequency,
         StartToneDistance,
