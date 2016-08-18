@@ -4,6 +4,7 @@
 
 // Qt
 #include <Qt>
+#include <QString>
 
 
 struct IntermodCombiner
@@ -14,6 +15,8 @@ public:
         External,
         Port
     };
+    static QString toString(At at);
+    static At      toAt(QString text);
 
     IntermodCombiner();
     ~IntermodCombiner();
@@ -31,5 +34,7 @@ private:
     At   _at;
     uint _port;
 };
+
+bool operator==(const IntermodCombiner &left, const IntermodCombiner &right);
 
 #endif // INTERMODCOMBINER_H

@@ -205,38 +205,39 @@ void ProcessTracesTest::ready_data() {
     // Enum, can't be wrong!
 
     // Channel [22]
-    settings.setChannel(0);
+    settings.setChannel(100);
     QTest::newRow("ChannelNotFound") << settings << traces << Code::Channel;
+    settings.setChannel(1);
 
     // Traces [23]
     traces.clear();
     QTest::newRow("NoTraces") << settings << traces << Code::Traces;
 
     // Trace frequency [24..31]
-    const double tdStart = 10.0e6; // 10 MHz
-    settings.setCenterFrequency(_vnaMin_Hz + (3.0/2.0)*tdStart - 1.0e6);
+    const double tdStop = 100.0e6; // 100 MHz
+    settings.setCenterFrequency(_vnaMin_Hz + (3.0/2.0)*tdStop - 1.0e6);
     traces << IntermodTrace(TraceType::intermod, TraceFeature::lower, 3);
     QTest::newRow("3TooLow") << settings << traces << Code::Order;
-    settings.setCenterFrequency(_vnaMin_Hz + (5.0/2.0)*tdStart - 1.0e6);
+    settings.setCenterFrequency(_vnaMin_Hz + (5.0/2.0)*tdStop - 1.0e6);
     traces.last().setOrder(5);
     QTest::newRow("5TooLow") << settings << traces << Code::Order;
-    settings.setCenterFrequency(_vnaMin_Hz + (7.0/2.0)*tdStart - 1.0e6);
+    settings.setCenterFrequency(_vnaMin_Hz + (7.0/2.0)*tdStop - 1.0e6);
     traces.last().setOrder(7);
     QTest::newRow("7TooLow") << settings << traces << Code::Order;
-    settings.setCenterFrequency(_vnaMin_Hz + (9.0/2.0)*tdStart - 1.0e6);
+    settings.setCenterFrequency(_vnaMin_Hz + (9.0/2.0)*tdStop - 1.0e6);
     traces.last().setOrder(9);
     QTest::newRow("9TooLow") << settings << traces << Code::Order;
-    settings.setCenterFrequency(_vnaMax_Hz - (3.0/2.0)*tdStart - 1.0e6);
+    settings.setCenterFrequency(_vnaMax_Hz - (3.0/2.0)*tdStop + 1.0e6);
     traces.last().setFeature(TraceFeature::upper);
     traces.last().setOrder(3);
     QTest::newRow("3TooHigh") << settings << traces << Code::Order;
-    settings.setCenterFrequency(_vnaMax_Hz - (5.0/2.0)*tdStart + 1.0e6);
+    settings.setCenterFrequency(_vnaMax_Hz - (5.0/2.0)*tdStop + 1.0e6);
     traces.last().setOrder(5);
     QTest::newRow("5TooHigh") << settings << traces << Code::Order;
-    settings.setCenterFrequency(_vnaMax_Hz - (7.0/2.0)*tdStart + 1.0e6);
+    settings.setCenterFrequency(_vnaMax_Hz - (7.0/2.0)*tdStop + 1.0e6);
     traces.last().setOrder(7);
     QTest::newRow("7TooHigh") << settings << traces << Code::Order;
-    settings.setCenterFrequency(_vnaMax_Hz - (9.0/2.0)*tdStart + 1.0e6);
+    settings.setCenterFrequency(_vnaMax_Hz - (9.0/2.0)*tdStop + 1.0e6);
     traces.last().setOrder(9);
     QTest::newRow("9TooHigh") << settings << traces << Code::Order;
 }
@@ -245,7 +246,6 @@ void ProcessTracesTest::ready() {
     QFETCH(IntermodTraces, traces);
     QFETCH(IntermodError::Code, errorCode);
 
-    settings.setChannel(1);
     ProcessTraces pt(traces, settings, _vna.data());
     IntermodError error;
     bool isReady = pt.isReady(error);
@@ -385,6 +385,7 @@ void ProcessTracesTest::run_data() {
     settings.setPoints(10);
     settings.setPower(-5);
     settings.setIfBw(1, SiPrefix::Kilo);
+    settings.setChannel(1);
 
     IntermodTraces traces;
     traces << IntermodTrace(TraceType::outputTone,      TraceFeature::lower);
@@ -399,9 +400,8 @@ void ProcessTracesTest::run_data() {
 }
 void ProcessTracesTest::run() {
     QFETCH(IntermodSettings, settings);
-    QFETCH(IntermodTraces,           traces);
+    QFETCH(IntermodTraces,   traces);
 
-    settings.setChannel(1);
     ProcessTraces pt(traces, settings, _vna.data());
     pt.run();
     QVERIFY(!_vna->isError());

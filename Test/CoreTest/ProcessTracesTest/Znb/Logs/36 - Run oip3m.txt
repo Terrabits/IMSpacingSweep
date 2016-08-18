@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Tue Aug 9 00:54:21 2016
+Wed Aug 17 17:49:19 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -178,6 +178,14 @@ Write:    ":SOUR1:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
 Bytes: 41
 Status: 0x0 Operation completed successfully.
 
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
 Write:    ":SOUR1:POW2:PERM 0"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
@@ -290,6 +298,14 @@ Write:    ":SOUR2:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
 Bytes: 41
 Status: 0x0 Operation completed successfully.
 
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
 Write:    ":SOUR2:POW2:PERM 0"
 Bytes: 19
 Status: 0x0 Operation completed successfully.
@@ -400,6 +416,14 @@ Status: 0x0 Operation completed successfully.
 
 Write:    ":SOUR3:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
 Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
 Status: 0x0 Operation completed successfully.
 
 Write:    ":SOUR3:POW2:PERM 0"

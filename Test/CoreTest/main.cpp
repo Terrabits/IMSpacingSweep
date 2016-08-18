@@ -1,6 +1,7 @@
 
 
 // Project
+#include "CombinerTest.h"
 #include "FrequencyConversionTest.h"
 #include "IntermodChannelsTest.h"
 #include "IntermodTraceDelegateTest.h"
@@ -27,12 +28,13 @@ int main()
      QString address = "127.0.0.1::5025";
 
     TestRunner testRunner;
-//    testRunner.addTest(new FrequencyConversionTest);
-//    testRunner.addTest(new IntermodTraceTest      );
+    testRunner.addTest(new CombinerTest             );
+    testRunner.addTest(new FrequencyConversionTest  );
+    testRunner.addTest(new IntermodTraceTest        );
     testRunner.addTest(new IntermodTraceModelTest   );
     testRunner.addTest(new IntermodTraceDelegateTest);
-//    testRunner.addTest(new IntermodChannelsTest(connectionType, address));
-//    testRunner.addTest(new ProcessTracesTest   (connectionType, address));
+    testRunner.addTest(new IntermodChannelsTest(connectionType, address));
+    testRunner.addTest(new ProcessTracesTest   (connectionType, address));
 
     // Fix these:
 //    testRunner.addTest(new IntermodTraceModelTest);

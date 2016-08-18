@@ -35,7 +35,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
 
     // Lower port
     if (lowerPort() == 0 || lowerPort() > vnaPorts) {
-        error.code = IntermodError::Code::LowerSourcePort;
+        error.code    = IntermodError::Code::LowerSourcePort;
         error.message = "*lower input port is invalid";
         return false;
     }
@@ -43,31 +43,31 @@ bool ProcessTraces::isReady(IntermodError &error) {
     // Upper port
     // Need to include generator...
     if (upperPort() == 0 || upperPort() > vnaPorts) {
-        error.code = IntermodError::Code::UpperSource;
+        error.code    = IntermodError::Code::UpperSource;
         error.message = "*upper input is invalid";
         return false;
     }
 
     // Receiving port
     if (outputPort() == 0 || outputPort() > vnaPorts) {
-        error.code = IntermodError::Code::ReceivingPort;
+        error.code    = IntermodError::Code::ReceivingPort;
         error.message = "*receiving port is invalid";
         return false;
     }
 
     // Port overlap
     if (lowerPort() == upperPort()) {
-        error.code = IntermodError::Code::UpperSource;
+        error.code    = IntermodError::Code::UpperSource;
         error.message = "*port assignments overlap";
         return false;
     }
     if (lowerPort() == outputPort()) {
-        error.code = IntermodError::Code::LowerSourcePort;
+        error.code    = IntermodError::Code::LowerSourcePort;
         error.message = "*port assignments overlap";
         return false;
     }
     if (upperPort() == outputPort()) {
-        error.code = IntermodError::Code::UpperSource;
+        error.code    = IntermodError::Code::UpperSource;
         error.message = "*port assignments overlap";
         return false;
     }
@@ -76,14 +76,14 @@ bool ProcessTraces::isReady(IntermodError &error) {
     const double center_Hz = _settings.centerFrequency_Hz();
     const double min_Hz    = _vna->properties().minimumFrequency_Hz();
     if (center_Hz < min_Hz) {
-        error.code = IntermodError::Code::CenterFrequency;
+        error.code    = IntermodError::Code::CenterFrequency;
         error.message = "*center frequency must be at least %1";
         error.message = error.message.arg(min_Hz);
         return false;
     }
     const double max_Hz    = _vna->properties().maximumFrequency_Hz();
     if (center_Hz > max_Hz) {
-        error.code = IntermodError::Code::CenterFrequency;
+        error.code    = IntermodError::Code::CenterFrequency;
         error.message = "*center frequency must be at most %1";
         error.message = error.message.arg(max_Hz);
         return false;
@@ -93,27 +93,27 @@ bool ProcessTraces::isReady(IntermodError &error) {
     const double startDist_Hz = _settings.startToneDistance_Hz();
     const double stopDist_Hz  = _settings.stopToneDistance_Hz ();
     if (startDist_Hz <= 0) {
-        error.code = IntermodError::Code::StartToneDistance;
+        error.code    = IntermodError::Code::StartToneDistance;
         error.message = "*start tone distance must be greater than 0";
         return false;
     }
     if (stopDist_Hz <= 0) {
-        error.code = IntermodError::Code::StopToneDistance;
+        error.code    = IntermodError::Code::StopToneDistance;
         error.message = "*stop tone distance must be greater than 0";
         return false;
     }
     if (startDist_Hz >= stopDist_Hz) {
-        error.code = IntermodError::Code::StartToneDistance;
+        error.code    = IntermodError::Code::StartToneDistance;
         error.message = "*start tone distance must be greater than stop";
         return false;
     }
     if (center_Hz - 0.5 * stopDist_Hz < min_Hz) {
-        error.code = IntermodError::Code::StopToneDistance;
+        error.code    = IntermodError::Code::StopToneDistance;
         error.message = "*tone distance too wide for VNA";
         return false;
     }
     if (center_Hz + 0.5 * stopDist_Hz > max_Hz) {
-        error.code = IntermodError::Code::StopToneDistance;
+        error.code    = IntermodError::Code::StopToneDistance;
         error.message = "*tone distance too wide for VNA";
         return false;
     }
@@ -121,13 +121,13 @@ bool ProcessTraces::isReady(IntermodError &error) {
     // Points
     const uint points = _settings.points();
     if (points == 0) {
-        error.code = IntermodError::Code::Points;
+        error.code    = IntermodError::Code::Points;
         error.message = "*points must be greater than 0";
         return false;
     }
     const uint maxPoints = _vna->properties().maximumPoints();
     if (points > maxPoints) {
-        error.code = IntermodError::Code::Points;
+        error.code    = IntermodError::Code::Points;
         error.message = "*points must be at most %1";
         error.message = error.message.arg(maxPoints);
         return false;
@@ -137,14 +137,14 @@ bool ProcessTraces::isReady(IntermodError &error) {
     const double min_dBm   = _vna->properties().minimumPower_dBm();
     const double power_dBm = _settings.power_dBm();
     if (power_dBm < min_dBm) {
-        error.code = IntermodError::Code::Power;
+        error.code    = IntermodError::Code::Power;
         error.message = "*power must be at least %1";
         error.message = error.message.arg(min_dBm);
         return false;
     }
     const double max_dBm = _vna->properties().maximumPower_dBm();
     if (power_dBm > max_dBm) {
-        error.code = IntermodError::Code::Power;
+        error.code    = IntermodError::Code::Power;
         error.message = "*power must be at most %1";
         error.message = error.message.arg(max_dBm);
         return false;
@@ -155,7 +155,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
     const double newIfBw_Hz = findClosest(ifBw_Hz, _vna->properties().ifBandwidthValues_Hz());
     if (newIfBw_Hz != ifBw_Hz) {
         // if value rounded
-        error.code = IntermodError::Code::IfBw;
+        error.code    = IntermodError::Code::IfBw;
         error.message = "*IF BW value rounded to %1";
         error.message = error.message.arg(newIfBw_Hz);
         return false;
@@ -164,7 +164,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
     // Channel
     const uint c = _settings.channel();
     if (!_vna->channels().contains(c)) {
-        error.code = IntermodError::Code::Channel;
+        error.code    = IntermodError::Code::Channel;
         error.message = "*Could not find channel %1";
         error.message = error.message.arg(c);
         return false;
@@ -172,7 +172,7 @@ bool ProcessTraces::isReady(IntermodError &error) {
 
     // Traces
     if (_traces.isEmpty()) {
-        error.code = IntermodError::Code::Traces;
+        error.code    = IntermodError::Code::Traces;
         error.message = "*Enter at least one trace";
         return false;
     }
@@ -343,16 +343,20 @@ void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
     VnaChannel ch = _channels.create(t);
     configureChannel(ch);
 
+    // Wave port
+    uint wavePort;
+    if (_settings.combiner().isPort())
+        wavePort = _settings.combiner().port();
+    else if (t.isLower())
+        wavePort = lowerPort();
+    else
+        wavePort = upperPort();
+
     // Trace
     const QString name = traceName(t);
     _vna->createTrace(traceName(t), ch.index());
     VnaTrace vnaTrc = _vna->trace(name);
-    if (t.isLower()) {
-        vnaTrc.setWaveQuantity(WaveQuantity::a, lowerPort(), lowerPort());
-    }
-    else {
-        vnaTrc.setWaveQuantity(WaveQuantity::a, upperPort(), lowerPort());
-    }
+    vnaTrc.setWaveQuantity(WaveQuantity::a, wavePort, lowerPort());
     if (t.isVisible())
         vnaTrc.setDiagram(_diagram);
 }
@@ -378,7 +382,7 @@ void ProcessTraces::processOutputTrace   (const IntermodTrace &t) {
 void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
     VnaChannel ch;
     if (!t.isDependent()) {
-        // Channelch = _channels.create(t);
+        ch = _channels.create(t);
         configureChannel(ch);
 
         // Output port setup

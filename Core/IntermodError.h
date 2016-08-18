@@ -23,6 +23,7 @@ struct IntermodError {
         Channel,
         None
     };
+    static QString toString(Code code);
 
     IntermodError();
     ~IntermodError();
@@ -32,6 +33,8 @@ struct IntermodError {
 
     Code    code;
     QString message;
+
+    QString display() const;
 };
 
 

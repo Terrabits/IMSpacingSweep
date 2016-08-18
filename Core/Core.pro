@@ -34,7 +34,8 @@ HEADERS += Settings.h \
     CalibrateWidget.h \
     ProcessTracesWidget.h \
     ProcessThread.h \
-    IntermodCombiner.h
+    IntermodCombiner.h \
+    CombinerEdit.h
 SOURCES += \
            IntermodSettings.cpp \
            IntermodWidget.cpp \
@@ -49,11 +50,13 @@ SOURCES += \
     CalibrateWidget.cpp \
     ProcessTracesWidget.cpp \
     ProcessThread.cpp \
-    IntermodCombiner.cpp
+    IntermodCombiner.cpp \
+    CombinerEdit.cpp
 FORMS   += IntermodWidget.ui \
     TracesWidget.ui \
     CalibrateWidget.ui \
-    ProcessTracesWidget.ui
+    ProcessTracesWidget.ui \
+    CombinerEdit.ui
 
 # Defines
 DEFINES += SOURCE_DIR=\\\"$$PWD\\\"
