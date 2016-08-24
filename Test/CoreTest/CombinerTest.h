@@ -19,6 +19,8 @@ public:
 private slots:
     void intermodCombiner();
     void atConversion();
+    void save();
+
     void combinerEdit();
 };
 

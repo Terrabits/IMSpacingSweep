@@ -4,6 +4,9 @@
 // RsaToolbox
 using namespace RsaToolbox;
 
+// Qt
+#include <QDebug>
+
 
 IntermodChannels::IntermodChannels(RsaToolbox::Vna *vna, uint baseChannel) :
     _vna     (vna        ),
@@ -21,8 +24,14 @@ IntermodChannels::~IntermodChannels()
 uint IntermodChannels::base() const {
     return _base;
 }
-
-QVector<uint> IntermodChannels::all() {
+uint IntermodChannels::last() const {
+    const QVector<uint> _all = all();
+    if (!_all.isEmpty())
+        return _all.last();
+    else
+        return _base;
+}
+QVector<uint> IntermodChannels::all() const {
     QString suffix = "_im_ch%1";
     suffix = suffix.arg(_base);
 

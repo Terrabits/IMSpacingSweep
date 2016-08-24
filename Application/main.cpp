@@ -20,6 +20,7 @@ using namespace RsaToolbox;
 // Qt
 #include <QApplication>
 #include <QMessageBox>
+#include <QScopedPointer>
 
 // Functions
 bool isAboutMenu(int argc, char *argv[]);
@@ -51,30 +52,30 @@ int main(int argc, char *argv[])
     title = title.arg(APP_VERSION);
 
     // Wizard
-    Wizard wizard;
-    wizard.setWindowTitle(title);
-    wizard.hideBreadcrumbs();
-    wizard.setRestartOnCancel(false);
+    QScopedPointer<Wizard> wizard(new Wizard);
+    wizard->setWindowTitle(title);
+    wizard->hideBreadcrumbs();
+    wizard->setRestartOnCancel(false);
 
     // Settings page
     IntermodWidget *settings = new IntermodWidget(&vna, &keys);
     settings->setNextIndex(1);
-    QObject::connect(settings, SIGNAL(error(IntermodError)),
-                     &wizard,  SLOT(shake()));
-    QObject::connect(settings, SIGNAL(errorMessage(QString)),
-                     &wizard,  SLOT(shake()));
-    wizard.addPage(settings);
+    QObject::connect(settings,      SIGNAL(error(IntermodError)),
+                     wizard.data(), SLOT(shake()));
+    QObject::connect(settings,      SIGNAL(errorMessage(QString)),
+                     wizard.data(), SLOT(shake()));
+    wizard->addPage(settings);
 
     // Traces page
     TracesWidget *traces = new TracesWidget(&vna, &keys);
     traces->setNextIndex(2);
-    QObject::connect(settings, SIGNAL(validatedInput(IntermodSettings)),
-                     traces,   SLOT(setSettings(IntermodSettings)));
-    QObject::connect(traces,   SIGNAL(error(IntermodError)),
-                     &wizard,  SLOT(shake()));
-    QObject::connect(traces,   SIGNAL(errorMessage(QString)),
-                     &wizard,  SLOT(shake()));
-    wizard.addPage(traces);
+    QObject::connect(settings,      SIGNAL(validatedInput(IntermodSettings)),
+                     traces,        SLOT(setSettings(IntermodSettings)));
+    QObject::connect(traces,        SIGNAL(error(IntermodError)),
+                     wizard.data(), SLOT(shake()));
+    QObject::connect(traces,        SIGNAL(errorMessage(QString)),
+                     wizard.data(), SLOT(shake()));
+    wizard->addPage(traces);
 
     // Calibration page
     CalibrateWidget *cal = new CalibrateWidget(&vna);
@@ -83,7 +84,7 @@ int main(int argc, char *argv[])
                      cal,      SLOT(setSettings(IntermodSettings)));
     QObject::connect(traces,   SIGNAL(validatedInput(IntermodTraces)),
                      cal,      SLOT(setTraces(IntermodTraces)));
-    wizard.addPage(cal);
+    wizard->addPage(cal);
 
     // Process traces
     ProcessTracesWidget *process = new ProcessTracesWidget(&vna);
@@ -92,10 +93,10 @@ int main(int argc, char *argv[])
                      process,  SLOT(setSettings(IntermodSettings)));
     QObject::connect(traces,   SIGNAL(validatedInput(IntermodTraces)),
                      process,  SLOT(setTraces(IntermodTraces)));
-    wizard.addPage(process);
+    wizard->addPage(process);
 
     // Start event loop
-    wizard.show();
+    wizard->show();
     int result = a.exec();
 
     // Save keys?
@@ -105,6 +106,9 @@ int main(int argc, char *argv[])
     if (traces->isValidInput(e))
         traces->saveInput();
 
+    // Quit
+    wizard.reset();
+    vna.local();
     return result;
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>154</width>
-    <height>20</height>
+    <height>22</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,6 +33,9 @@
        <width>75</width>
        <height>0</height>
       </size>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
      </property>
      <item>
       <property name="text">
@@ -62,6 +65,10 @@
    <header>PointsEdit.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>port</tabstop>
+  <tabstop>at</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

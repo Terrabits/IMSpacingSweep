@@ -172,7 +172,11 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="CombinerEdit" name="combiner" native="true"/>
+          <widget class="CombinerEdit" name="combiner" native="true">
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -492,6 +496,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>RsaToolbox::PointsEdit</class>
+   <extends>QLineEdit</extends>
+   <header>PointsEdit.h</header>
+  </customwidget>
+  <customwidget>
    <class>RsaToolbox::ErrorLabel</class>
    <extends>QWidget</extends>
    <header>ErrorLabel.h</header>
@@ -501,11 +510,6 @@
    <class>RsaToolbox::FrequencyEdit</class>
    <extends>QLineEdit</extends>
    <header>FrequencyEdit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>RsaToolbox::PointsEdit</class>
-   <extends>QLineEdit</extends>
-   <header>PointsEdit.h</header>
   </customwidget>
   <customwidget>
    <class>RsaToolbox::PowerEdit</class>
@@ -523,6 +527,7 @@
   <tabstop>lowerPort</tabstop>
   <tabstop>upperSourceType</tabstop>
   <tabstop>upperSourceIndex</tabstop>
+  <tabstop>combiner</tabstop>
   <tabstop>receivingPort</tabstop>
   <tabstop>centerFrequency</tabstop>
   <tabstop>startToneDistance</tabstop>
@@ -531,6 +536,7 @@
   <tabstop>ifBw</tabstop>
   <tabstop>power</tabstop>
   <tabstop>selectivity</tabstop>
+  <tabstop>channel</tabstop>
  </tabstops>
  <resources/>
  <connections/>

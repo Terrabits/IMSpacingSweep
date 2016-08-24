@@ -48,6 +48,7 @@ void IntermodChannelsTest::basic() {
 
     channels.collapse();
     QCOMPARE(_vna->numberOfChannels(), uint(1));
+    QCOMPARE(_vna->traces(), QStringList());
     QVERIFY (!_vna->isError());
 
     IntermodTrace t;

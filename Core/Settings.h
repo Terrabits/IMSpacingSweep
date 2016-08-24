@@ -10,7 +10,7 @@
 
 // Application settings
 const QString APP_NAME            = "R&S IM Spacing Sweep";
-const QString APP_VERSION         = "1.1";
+const QString APP_VERSION         = "1.2";
 const QString MANUFACTURER_FOLDER = "Rohde-Schwarz";
 const QString APP_FOLDER          = "IM Spacing Sweep";
 const QString APP_DESCRIPTION     = "Measure IM products vs tone spacing for a given center frequency";
@@ -24,7 +24,7 @@ const QString KEY_PATH     = dataDir.filePath("_Debug/Keys");
 
 // Debug Connection settings
 const RsaToolbox::ConnectionType CONNECTION_TYPE = RsaToolbox::ConnectionType::VisaTcpSocketConnection;
-const QString                    ADDRESS         = "127.0.0.1::5025";
+const QString                    ADDRESS         = "192.168.183.227::5025";
 
 #else
 // Release program data

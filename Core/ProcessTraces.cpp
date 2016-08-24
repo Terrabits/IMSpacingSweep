@@ -190,8 +190,8 @@ bool ProcessTraces::isReady(IntermodError &error) {
 
     return true;
 }
-uint ProcessTraces::channel() const {
-    return _channels.base();
+uint ProcessTraces::lastChannel() const {
+    return _channels.last();
 }
 void ProcessTraces::setupCalibration() {
 //    _channels.collapse();
@@ -213,6 +213,9 @@ void ProcessTraces::setupCalibration() {
 //    _vna->trace(t).setDiagram(d);
 }
 void ProcessTraces::run() {
+    bool isOn = _vna->settings().isDisplayOn();
+    _vna->settings().displayOff();
+
     _channels.collapse();
     _diagram = createOrReuseDiagram();
     uint numTraces = 0;
@@ -227,6 +230,8 @@ void ProcessTraces::run() {
         }
 
         processTrace(_traces[i]);
+
+        _vna->settings().displayOn(isOn);
     }
 }
 
@@ -343,6 +348,12 @@ void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
     VnaChannel ch = _channels.create(t);
     configureChannel(ch);
 
+    // Receiver frequency is
+    // independent from source settings
+    // on ZVA
+    if (_vna->properties().isZvaFamily())
+        ch.setReceiverArbitraryFreq(receiverAf(t));
+
     // Wave port
     uint wavePort;
     if (_settings.combiner().isPort())
@@ -365,11 +376,11 @@ void ProcessTraces::processOutputTrace   (const IntermodTrace &t) {
     VnaChannel ch = _channels.create(t);
     configureChannel(ch);
 
-    // Output port setup
+    // Output port frequency
     if (_vna->properties().isZvaFamily())
-        ch.setReceiverArbitraryFreq(outputAf(t));
+        ch.setReceiverArbitraryFreq(receiverAf(t));
     else
-        ch.setSourceArbitraryFreq(outputPort(), outputAf(t));
+        ch.setSourceArbitraryFreq(outputPort(), receiverAf(t));
 
     // Trace
     const QString name = traceName(t);
@@ -385,14 +396,14 @@ void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
         ch = _channels.create(t);
         configureChannel(ch);
 
-        // Output port setup
+        // Output port frequency
         if (_vna->properties().isZvaFamily())
-            ch.setReceiverArbitraryFreq(outputAf(t));
+            ch.setReceiverArbitraryFreq(receiverAf(t));
         else
-            ch.setSourceArbitraryFreq(outputPort(), outputAf(t));
+            ch.setSourceArbitraryFreq(outputPort(), receiverAf(t));
     }
     else {
-        ch = _vna->channel(channel());
+        ch = _vna->channel(lastChannel());
     }
 
     // Trace
@@ -411,7 +422,7 @@ void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
 void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
     // Trace
     const QString name = traceName(t);
-    _vna->createTrace(name, channel());
+    _vna->createTrace(name, lastChannel());
     VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveRatio(WaveQuantity::b, outputPort(), lowerPort(),  // num
                         WaveQuantity::b, outputPort(), lowerPort()); // den
@@ -423,7 +434,7 @@ void ProcessTraces::processRelativeTrace (const IntermodTrace &t) {
 void ProcessTraces::processInterceptTrace(const IntermodTrace &t) {
     // Trace
     const QString name = traceName(t);
-    _vna->createTrace(name, channel());
+    _vna->createTrace(name, lastChannel());
     VnaTrace vnaTrc = _vna->trace(name);
     vnaTrc.setWaveQuantity(WaveQuantity::b, outputPort(), lowerPort());
     vnaTrc.math().setExpression(math(t));
@@ -465,7 +476,7 @@ VnaArbitraryFrequency ProcessTraces::lowerAf() const {
 VnaArbitraryFrequency ProcessTraces::upperAf() const {
     return _genFreq.upperInput();
 }
-VnaArbitraryFrequency ProcessTraces::outputAf(const IntermodTrace &t) const {
+VnaArbitraryFrequency ProcessTraces::receiverAf(const IntermodTrace &t) const {
     if (t.isLower())
         return _genFreq.lowerOutput(t.order());
     if (t.isUpper())
@@ -562,7 +573,7 @@ QRowVector ProcessTraces::upperFreq_Hz() const {
     return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
 }
 QRowVector ProcessTraces::outputFreq_Hz(const IntermodTrace &t) const {
-    VnaArbitraryFrequency af = outputAf(t);
+    VnaArbitraryFrequency af = receiverAf(t);
     return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
 }
 QRowVector ProcessTraces::calFreq_Hz() const {

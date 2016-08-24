@@ -25,8 +25,9 @@ public:
     ~IntermodChannels();
 
     uint base() const;
+    uint last() const;
+    QVector<uint> all() const;
 
-    QVector<uint> all();
     RsaToolbox::VnaChannel create(const IntermodTrace &t);
 
     // Remove all except base
@@ -34,7 +35,7 @@ public:
     void collapse();
 
 private:
-    RsaToolbox::Vna *_vna;
+    mutable RsaToolbox::Vna *_vna;
     uint             _base;
     bool             _usedBase;
 

@@ -1,6 +1,10 @@
 #include "IntermodCombiner.h"
 
 
+
+// Qt
+#include <QDebug>
+
 QString IntermodCombiner::toString(At at) {
     if (at == At::External)
         return "External";
@@ -69,21 +73,18 @@ bool operator==(const IntermodCombiner &left, const IntermodCombiner &right) {
 }
 QDataStream &operator<<(QDataStream &stream, const IntermodCombiner &combiner) {
     stream << quint32(combiner.at  ());
-    if (combiner.isPort())
-        stream << quint32(combiner.port());
+    stream << quint32(combiner.port());
     return stream;
 }
-QDataStream &operator>>(QDataStream &stream, IntermodCombiner combiner) {
-    quint32   at;
+QDataStream &operator>>(QDataStream &stream, IntermodCombiner &combiner) {
+    quint32 at;
+    quint32 port;
     stream >> at;
-    if (at == IntermodCombiner::At::Port) {
-        quint32   port;
-        stream >> port;
-        combiner.setPort(port);
-    }
-    else {
+    stream >> port;
+    if (IntermodCombiner::At(at) == IntermodCombiner::External)
         combiner.setExternal();
-    }
+    else
+        combiner.setPort(port);
 
     return stream;
 }

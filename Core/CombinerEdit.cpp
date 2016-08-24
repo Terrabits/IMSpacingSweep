@@ -7,6 +7,8 @@ CombinerEdit::CombinerEdit(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setFocusProxy(ui->at);
+
     ui->at->clear();
     ui->at->addItem("External");
     ui->at->setCurrentText("External");
@@ -79,11 +81,10 @@ void CombinerEdit::setPortFocus() {
 }
 
 void CombinerEdit::setValue(IntermodCombiner combiner) {
-    const QString &at = IntermodCombiner::toString(combiner.at());
-    ui->at->setCurrentText(at);
-
-    if (combiner.isPort())
+    ui->at->setCurrentText(IntermodCombiner::toString(combiner.at()));
+    if (combiner.isPort()) {
         ui->port->setPoints(combiner.port());
+    }
 }
 
 void CombinerEdit::on_at_currentIndexChanged(const QString &arg1) {

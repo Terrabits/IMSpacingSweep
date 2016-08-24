@@ -38,6 +38,6 @@ private:
 
 bool operator==(const IntermodCombiner &left, const IntermodCombiner &right);
 QDataStream &operator<<(QDataStream &stream, const IntermodCombiner &combiner);
-QDataStream &operator>>(QDataStream &stream, IntermodCombiner combiner);
+QDataStream &operator>>(QDataStream &stream, IntermodCombiner &combiner);
 
 #endif // INTERMODCOMBINER_H

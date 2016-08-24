@@ -43,7 +43,7 @@ private:
     uint                         _diagram;
 
     // channel
-    uint channel() const;
+    uint lastChannel() const;
 
     // isReady
     bool isFreqOutsideVna(const IntermodTrace &t) const;
@@ -78,7 +78,7 @@ private:
     uint outputPort() const;
     RsaToolbox::VnaArbitraryFrequency lowerAf () const;
     RsaToolbox::VnaArbitraryFrequency upperAf () const;
-    RsaToolbox::VnaArbitraryFrequency outputAf(const IntermodTrace &t) const;
+    RsaToolbox::VnaArbitraryFrequency receiverAf(const IntermodTrace &t) const;
 
     QString math(const IntermodTrace &t) const;
     QString intermodMath (const IntermodTrace &t) const;
