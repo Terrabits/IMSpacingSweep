@@ -48,6 +48,15 @@ bool ProcessTraces::isReady(IntermodError &error) {
         return false;
     }
 
+    // Combiner
+    if (!isExternalCombiner()) {
+        if (combinerPort() == 0 || combinerPort() > vnaPorts) {
+            error.code    = IntermodError::Code::Combiner;
+            error.message = "*Combiner port is invalid";
+            return false;
+        }
+    }
+
     // Receiving port
     if (outputPort() == 0 || outputPort() > vnaPorts) {
         error.code    = IntermodError::Code::ReceivingPort;
@@ -467,6 +476,12 @@ uint ProcessTraces::lowerPort() const {
 uint ProcessTraces::upperPort() const {
     return _settings.upperSource().port();
 }
+bool ProcessTraces::isExternalCombiner() const {
+    return _settings.combiner().isExternal();
+}
+uint ProcessTraces::combinerPort() const {
+    return _settings.combiner().port();
+}
 uint ProcessTraces::outputPort() const {
     return _settings.receivingPort();
 }
@@ -574,6 +589,7 @@ QRowVector ProcessTraces::upperFreq_Hz() const {
 }
 QRowVector ProcessTraces::outputFreq_Hz(const IntermodTrace &t) const {
     VnaArbitraryFrequency af = receiverAf(t);
+    qDebug() << "af: " << af.numerator() << af.offset_Hz();
     return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
 }
 QRowVector ProcessTraces::calFreq_Hz() const {

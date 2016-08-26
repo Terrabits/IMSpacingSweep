@@ -40,23 +40,16 @@ VnaArbitraryFrequency FrequencyConversionGenerator::upperInput() const {
 // intermod (output)
 VnaArbitraryFrequency FrequencyConversionGenerator::lowerOutput(uint n) const {
     VnaArbitraryFrequency fc;
-    if (n == 1) {
-        fc.setNumerator  (1);
-        fc.setDenominator(1);
-        fc.setOffset     (0);
-        return fc;
-    }
-
-    fc.setNumerator  (n );
-    fc.setDenominator(1.0);
-    fc.setOffset     (( 1.0 - n) * _settings.centerFrequency_Hz());
+    fc.setNumerator  ( 1.0*n);
+    fc.setDenominator(1.0   );
+    fc.setOffset     (double( 1 - n) * _settings.centerFrequency_Hz());
     return fc;
 }
 VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(uint n) const {
     VnaArbitraryFrequency fc;
     fc.setNumerator  (-1.0*n);
     fc.setDenominator(1.0   );
-    fc.setOffset     (( 1.0 + n) * _settings.centerFrequency_Hz());
+    fc.setOffset     (double( 1 + n) * _settings.centerFrequency_Hz());
     return fc;
 }
 

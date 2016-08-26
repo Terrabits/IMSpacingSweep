@@ -28,6 +28,9 @@ private slots:
     void preprocess_data();
     void preprocess     ();
 
+    void calFreq_data();
+    void calFreq     ();
+
     void calibration_data();
     void calibration     ();
 
@@ -45,6 +48,8 @@ private:
 
     double _vnaMin_Hz;
     double _vnaMax_Hz;
+
+    void compareRowVectors(RsaToolbox::QRowVector &actual, RsaToolbox::QRowVector &desired);
 };
 
 #endif // PROCESSTRACESTEST_H

@@ -27,7 +27,7 @@ int main()
      RsaToolbox::ConnectionType connectionType = RsaToolbox::ConnectionType::VisaTcpSocketConnection;
 
      // Mathieu's ZVA:
-     QString address = "192.168.183.227::5025";
+     QString address = "127.0.0.1::5025";
 
     TestRunner testRunner;
 //    testRunner.addTest(new CombinerTest             );

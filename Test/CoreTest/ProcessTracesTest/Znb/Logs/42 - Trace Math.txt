@@ -1,0 +1,1548 @@
+ Version 0.0
+(C) 2016 Rohde & Schwarz North America
+
+Fri Aug 26 15:43:01 2016
+
+VNA INSTRUMENT INFO
+Connection:       TCPIP
+Address:          127.0.0.1::5025
+Make:             Rohde & Schwarz
+Model:            ZNB
+Serial No:        1311601044100104
+Firmware Version: 2.70
+Min Frequency:    9 KHz
+Max Frequency:    8.5 GHz
+Number of Ports:  4
+Options:          ZNB-K2
+                  ZNB-K4
+                  ZNB-K14
+                  ZNB-K17
+                  ZNB-K19
+                  ZNB-K20
+                  ZNB8-B24
+                  ZNB8-B31
+                  ZNB8-B32
+                  ZNB8-B33
+                  ZNB8-B34
+                  ZNB-B81
+                  ZNB-B2
+                  ZNB-B12
+                  ZN-B15
+
+
+Write:    "*CLS"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    "*RST"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    "*OPC?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":INST:TPORT:COUN?"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Read:     "4"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,Ch1'"
+Bytes: 8
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MIN"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "9000"
+Bytes: 5
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:FREQ? MAX"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "8500000000"
+Bytes: 11
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:DISP:UPD?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "0"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:DISP:UPD OFF"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,Ch1'"
+Bytes: 8
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:NAME?"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Read:     "'Ch1'"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:TRAC:CAT?"
+Bytes: 22
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,Trc1'"
+Bytes: 9
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'Trc1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:DEL 'Trc1'"
+Bytes: 22
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "''"
+Bytes: 3
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:TRAC:CAT?"
+Bytes: 22
+Status: 0x0 Operation completed successfully.
+
+Read:     "''"
+Bytes: 3
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1:NAME 'lti_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS1:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS1:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS1:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR1:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:SDEF 'lti_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'lti_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC1:PAR:MEAS 'lti_im_ch1','A1D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'lti_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:DISP:UPD OFF"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1'"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN2 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN2:NAME 'uti_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS2:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS2:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS2:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR2:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC2:PAR:SDEF 'uti_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'uti_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "2"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC2:PAR:MEAS 'uti_im_ch1','A3D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'uti_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:DISP:UPD OFF"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1'"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN3 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN3:NAME 'lto_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS3:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS3:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS3:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:FREQ2:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR3:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC3:PAR:SDEF 'lto_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'lto_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "3"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC3:PAR:MEAS 'lto_im_ch1','B2D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'lto_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:DISP:UPD OFF"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1'"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN4 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN4:NAME 'uto_im_ch1'"
+Bytes: 30
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:SWE:TYPE LIN"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:FREQ:STAR 9.5e+08Hz"
+Bytes: 27
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:FREQ:STOP 9.95e+08Hz"
+Bytes: 28
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SENS4:SWE:POIN 10"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS4:BAND 1000Hz"
+Bytes: 18
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW -10"
+Bytes: 15
+Status: 0x0 Operation completed successfully.
+
+Write:    "SENS4:BAND:SEL HIGH"
+Bytes: 20
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW1:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW1:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:FREQ1:CONV:ARB:IFR 1,1,0,SWE"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW3:PERM 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW3:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:FREQ3:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    "*IDN?"
+Bytes: 6
+Status: 0x0 Operation completed successfully.
+
+Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
+Bytes: 47
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW2:PERM 0"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:POW2:STAT 1"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:FREQ2:CONV:ARB:IFR -1,1,2e+09,SWE"
+Bytes: 41
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SOUR4:LPOR1?"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Read:     "1"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC4:PAR:SDEF 'uto_im_ch1', 'S11'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:TRAC:CHAN:NAME:ID? 'uto_im_ch1'"
+Bytes: 38
+Status: 0x0 Operation completed successfully.
+
+Read:     "4"
+Bytes: 2
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CALC4:PAR:MEAS 'uto_im_ch1','B2D1'"
+Bytes: 36
+Status: 0x0 Operation completed successfully.
+
+Write:    ":DISP:WIND1:TRAC:EFE 'uto_im_ch1'"
+Bytes: 34
+Status: 0x0 Operation completed successfully.
+
+Write:    ":SYST:DISP:UPD OFF"
+Bytes: 19
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN1 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN:CAT?"
+Bytes: 16
+Status: 0x0 Operation completed successfully.
+
+Read:     "'1,lti_im_ch1,2,uti_im_ch1,3,lto_im_ch1,4,uto_im_ch1'"
+Bytes: 54
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN5 1"
+Bytes: 14
+Status: 0x0 Operation completed successfully.
+
+Write:    ":CONF:CHAN5:NAME 'im3lo_im_ch1'"
+Bytes: 32
+Status: 0x0 Operation completed successfully.
+

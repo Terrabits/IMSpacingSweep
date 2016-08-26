@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Wed Aug 17 21:29:42 2016
+Fri Aug 26 15:42:50 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -10,8 +10,8 @@ Make:             Rohde & Schwarz
 Model:            ZNB
 Serial No:        1311601044100104
 Firmware Version: 2.70
-Min Frequency:    9 32
-Max Frequency:    8.5 92
+Min Frequency:    9 KHz
+Max Frequency:    8.5 GHz
 Number of Ports:  4
 Options:          ZNB-K2
                   ZNB-K4
@@ -43,22 +43,6 @@ Bytes: 6
 Status: 0x0 Operation completed successfully.
 
 Read:     "1"
-Bytes: 2
-Status: 0x0 Operation completed successfully.
-
-Write:    "*IDN?"
-Bytes: 6
-Status: 0x0 Operation completed successfully.
-
-Read:     "Rohde-Schwarz,ZNB8-4Port,1311601044100104,2.70"
-Bytes: 47
-Status: 0x0 Operation completed successfully.
-
-Write:    ":INST:TPORT:COUN?"
-Bytes: 18
-Status: 0x0 Operation completed successfully.
-
-Read:     "4"
 Bytes: 2
 Status: 0x0 Operation completed successfully.
 

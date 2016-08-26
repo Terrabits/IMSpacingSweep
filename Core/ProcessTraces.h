@@ -9,6 +9,7 @@
 // Project
 #include "FrequencyConversionGenerator.h"
 #include "IntermodChannels.h"
+#include "IntermodCombiner.h"
 #include "IntermodError.h"
 #include "IntermodSettings.h"
 #include "IntermodTrace.h"
@@ -75,6 +76,9 @@ private:
 
     uint lowerPort () const;
     uint upperPort () const;
+    bool isExternalCombiner() const;
+    uint combinerPort() const;
+
     uint outputPort() const;
     RsaToolbox::VnaArbitraryFrequency lowerAf () const;
     RsaToolbox::VnaArbitraryFrequency upperAf () const;

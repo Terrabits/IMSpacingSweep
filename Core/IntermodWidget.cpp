@@ -102,7 +102,7 @@ bool IntermodWidget::isValidInput(IntermodError &e) const {
         e.message = "*Enter upper source";
         return false;
     }
-    if (ui->combiner->isPortEmpty()) {
+    if (ui->combiner->isPortMissing()) {
         ui->combiner->setPortFocus();
         e.code = IntermodError::Code::Combiner;
         e.message = "*Enter combiner port";

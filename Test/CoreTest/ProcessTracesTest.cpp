@@ -15,6 +15,9 @@ using namespace RsaToolbox;
 // Qt
 #include <Qt>
 
+// std lib
+#include <algorithm>
+
 
 typedef IntermodError::Code Code;
 Q_DECLARE_METATYPE(IntermodTraces)
@@ -86,11 +89,15 @@ void ProcessTracesTest::initTestCase() {
                   << "31 - IM9 too high.txt"
                   << "32 - Preprocess oip3m.txt"
                   << "33 - Preprocess iip5l.txt"
-                  << "34 - Empty Calibration.txt"
-                  << "35 - Full Calibration.txt"
-                  << "36 - Run oip3m.txt"
-                  << "37 - Run All Traces.txt"
-                  << "38 - Trace Math.txt";
+                  << "34 - LTI Cal Frequencies.txt"
+                  << "35 - UTI Cal Frequencies.txt"
+                  << "36 - IM3L Cal Frequencies.txt"
+                  << "37 - IM3U Cal Frequencies.txt"
+                  << "38 - Empty Calibration.txt"
+                  << "39 - Full Calibration.txt"
+                  << "40 - Run oip3m.txt"
+                  << "41 - Run All Traces.txt"
+                  << "42 - Trace Math.txt";
 
     VnaTestClass::_initTestCase();
 
@@ -309,6 +316,147 @@ void ProcessTracesTest::preprocess() {
     QCOMPARE(after, pt._traces);
 }
 
+void ProcessTracesTest::calFreq_data() {
+    QTest::addColumn<IntermodSettings>("settings");
+    QTest::addColumn<IntermodTrace>("trace");
+    QTest::addColumn<QRowVector>("freq_Hz");
+
+    VnaIntermod::ToneSource upperSource;
+    upperSource.setPort(3);
+
+    IntermodSettings settings;
+    settings.setLowerSourcePort(1);
+    settings.setUpperSource    (upperSource);
+    settings.setReceivingPort  (2);
+    settings.setCenterFrequency  ( 2, SiPrefix::Giga);
+    settings.setStartToneDistance( 1, SiPrefix::Mega);
+    settings.setStopToneDistance (10, SiPrefix::Mega);
+    settings.setPoints(21);
+    settings.setPower (-10);
+    settings.setIfBw  (1, SiPrefix::Kilo);
+    settings.setSelectivity(VnaChannel::IfSelectivity::High);
+    settings.setChannel(1);
+
+    // lti
+    IntermodTrace trace;
+    trace.setType(TraceType::inputTone);
+    trace.setFeature(TraceFeature::lower);
+
+    QRowVector freq_Hz;
+    freq_Hz << 1995000000.0
+            << 1995225000.0
+            << 1995450000.0
+            << 1995675000.0
+            << 1995900000.0
+            << 1996125000.0
+            << 1996350000.0
+            << 1996575000.0
+            << 1996800000.0
+            << 1997025000.0
+            << 1997250000.0
+            << 1997475000.0
+            << 1997700000.0
+            << 1997925000.0
+            << 1998150000.0
+            << 1998375000.0
+            << 1998600000.0
+            << 1998825000.0
+            << 1999050000.0
+            << 1999275000.0
+            << 1999500000.0;
+    QTest::newRow("lti") << settings << trace << freq_Hz;
+
+    // uti
+    trace.setFeature(TraceFeature::upper);
+    freq_Hz.clear();
+    freq_Hz << 2005000000.0
+            << 2004775000.0
+            << 2004550000.0
+            << 2004325000.0
+            << 2004100000.0
+            << 2003875000.0
+            << 2003650000.0
+            << 2003425000.0
+            << 2003200000.0
+            << 2002975000.0
+            << 2002750000.0
+            << 2002525000.0
+            << 2002300000.0
+            << 2002075000.0
+            << 2001850000.0
+            << 2001625000.0
+            << 2001400000.0
+            << 2001175000.0
+            << 2000950000.0
+            << 2000725000.0
+            << 2000500000.0;
+    QTest::newRow("uti") << settings << trace << freq_Hz;
+
+    trace.setType(TraceType::intermod);
+    trace.setFeature(TraceFeature::lower);
+    trace.setOrder(3);
+    freq_Hz.clear();
+    freq_Hz << 1985000000.0
+            << 1985675000.0
+            << 1986350000.0
+            << 1987025000.0
+            << 1987700000.0
+            << 1988375000.0
+            << 1989050000.0
+            << 1989725000.0
+            << 1990400000.0
+            << 1991075000.0
+            << 1991750000.0
+            << 1992425000.0
+            << 1993100000.0
+            << 1993775000.0
+            << 1994450000.0
+            << 1995125000.0
+            << 1995800000.0
+            << 1996475000.0
+            << 1997150000.0
+            << 1997825000.0
+            << 1998500000.0;
+    QTest::newRow("im3l") << settings << trace << freq_Hz;
+
+    trace.setType(TraceType::intermod);
+    trace.setFeature(TraceFeature::upper);
+    trace.setOrder(3);
+    freq_Hz.clear();
+    freq_Hz << 2015000000.0
+            << 2014325000.0
+            << 2013650000.0
+            << 2012975000.0
+            << 2012300000.0
+            << 2011625000.0
+            << 2010950000.0
+            << 2010275000.0
+            << 2009600000.0
+            << 2008925000.0
+            << 2008250000.0
+            << 2007575000.0
+            << 2006900000.0
+            << 2006225000.0
+            << 2005550000.0
+            << 2004875000.0
+            << 2004200000.0
+            << 2003525000.0
+            << 2002850000.0
+            << 2002175000.0
+            << 2001500000.0;
+    QTest::newRow("iml3u") << settings << trace << freq_Hz;
+}
+void ProcessTracesTest::calFreq() {
+    QFETCH(IntermodSettings, settings);
+    QFETCH(IntermodTrace, trace);
+    QFETCH(QRowVector, freq_Hz);
+
+    IntermodTraces traces;
+    traces << trace;
+    ProcessTraces pt(traces, settings, _vna.data());
+    compareRowVectors(pt.outputFreq_Hz(trace), freq_Hz);
+}
+
 void ProcessTracesTest::calibration_data() {
     QTest::addColumn<IntermodSettings>("settings");
     QTest::addColumn<IntermodTraces>          ("traces"  );
@@ -355,7 +503,7 @@ void ProcessTracesTest::calibration_data() {
 void ProcessTracesTest::calibration() {
     return;
     QFETCH(IntermodSettings, settings);
-    QFETCH(IntermodTraces,           traces);
+    QFETCH(IntermodTraces,   traces);
 
     settings.setChannel(1);
     ProcessTraces pt(traces, settings, _vna.data());
@@ -368,7 +516,7 @@ void ProcessTracesTest::calibration() {
 
 void ProcessTracesTest::run_data() {
     QTest::addColumn<IntermodSettings>("settings" );
-    QTest::addColumn<IntermodTraces>          ("traces");
+    QTest::addColumn<IntermodTraces>  ("traces");
 
     // IP3MO ->
     // - LTO
@@ -676,5 +824,12 @@ bool ProcessTracesTest::isEqual(double left, double right) {
     }
     else {
         return true;
+    }
+}
+
+void ProcessTracesTest::compareRowVectors(QRowVector &actual, QRowVector &desired) {
+    QCOMPARE(actual.size(), desired.size());
+    for (int i = 0; i < actual.size(); i++) {
+        QCOMPARE(actual[i], desired[i]);
     }
 }

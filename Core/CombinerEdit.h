@@ -23,9 +23,12 @@ public:
 
     void setVnaPorts(uint numberOfPorts);
 
-    bool isPortEnabled() const;
-    bool isPortEmpty  () const;
-    IntermodCombiner value() const;
+    bool isPortEnabled () const;
+
+    bool isExternalSelected() const;
+    bool isPortSelected    () const;
+    bool isPortMissing     () const;
+    IntermodCombiner value () const;
 
 public slots:
     void enablePort (bool isEnabled = true);

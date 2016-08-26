@@ -33,8 +33,17 @@ void CombinerEdit::setVnaPorts(uint numberOfPorts) {
 bool CombinerEdit::isPortEnabled() const {
     return ui->at->count() == 2;
 }
-bool CombinerEdit::isPortEmpty() const {
+
+bool CombinerEdit::isExternalSelected() const {
+    return at() == IntermodCombiner::At::External;
+}
+bool CombinerEdit::isPortSelected() const {
+    return at() == IntermodCombiner::At::Port;
+}
+bool CombinerEdit::isPortMissing() const {
     if (!isPortEnabled())
+        return false;
+    if (!isPortSelected())
         return false;
 
     return ui->port->text().isEmpty();
