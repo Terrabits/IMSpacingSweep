@@ -19,8 +19,11 @@ Version History
 - 1.0 Initial release
 - 1.0.1  
   ZVA: Handle source and receiver arbitrary frequencies separately
-- 1.1  
+- 1.2  
   ZVA: Added option for using internal coupler
+- 1.2.1  
+  Fixed coupler input bug  
+  Fixed cal frequency rounding issue
 
 Frequency conversion SCPI commands
 ==================================
