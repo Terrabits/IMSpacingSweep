@@ -339,8 +339,8 @@ void ProcessTraces::configureChannel(VnaChannel c) {
     c.setSweepType(VnaChannel::SweepType::Linear);
 
     VnaLinearSweep swp = c.linearSweep();
-    swp.setStart (_genFreq.channelStartFrequency_Hz());
-    swp.setStop  (_genFreq.channelStopFrequency_Hz ());
+    swp.setStart (_genFreq.fbStart_Hz());
+    swp.setStop  (_genFreq.fbStop_Hz ());
     swp.setPoints(_settings.points());
 
     swp.setIfbandwidth(_settings.ifBw_Hz    ());
@@ -578,8 +578,8 @@ QString ProcessTraces::interceptMath(const IntermodTrace &t) const {
 }
 
 QRowVector ProcessTraces::fb_Hz() const {
-    const double fbStart = _genFreq.channelStartFrequency_Hz();
-    const double fbStop  = _genFreq.channelStopFrequency_Hz ();
+    const double fbStart = _genFreq.fbStart_Hz();
+    const double fbStop  = _genFreq.fbStop_Hz ();
     const uint   points  = _settings.points();
     return linearSpacing(fbStart, fbStop, points);
 }
@@ -589,7 +589,10 @@ QRowVector ProcessTraces::upperFreq_Hz() const {
 }
 QRowVector ProcessTraces::outputFreq_Hz(const IntermodTrace &t) const {
     VnaArbitraryFrequency af = receiverAf(t);
-    qDebug() << "af: " << af.numerator() << af.offset_Hz();
+    qDebug() << "af:     " << af.numerator() << af.offset_Hz();
+    qDebug() << "fb:     " << fb_Hz().first() << fb_Hz()[1] << "..." << fb_Hz().last();
+    QRowVector result = add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
+    qDebug() << "result: " << result.first() << result[1] << "..." << result.last();
     return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
 }
 QRowVector ProcessTraces::calFreq_Hz() const {

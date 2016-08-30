@@ -16,24 +16,35 @@ public:
    ~FrequencyConversionGenerator();
 
     // channel base frequency (fb)
-    double channelStartFrequency_Hz() const;
-    double channelStopFrequency_Hz () const;
+    double fbStart_Hz() const;
+    double fbStop_Hz () const;
+    RsaToolbox::QRowVector fb_Hz() const;
 
     // inputs
-    RsaToolbox::VnaArbitraryFrequency lowerInput()  const;
-    RsaToolbox::VnaArbitraryFrequency upperInput()  const;
+    RsaToolbox::VnaArbitraryFrequency lowerInput()        const;
+    RsaToolbox::QRowVector            lowerInputFreq_Hz() const;
+    RsaToolbox::VnaArbitraryFrequency upperInput()        const;
+    RsaToolbox::QRowVector            upperInputFreq_Hz() const;
 
     // Note: assumes order n odd
 
     // Intermod (output)
-    RsaToolbox::VnaArbitraryFrequency lowerOutput(uint n) const;
-    RsaToolbox::VnaArbitraryFrequency upperOutput(uint n) const;
+    RsaToolbox::VnaArbitraryFrequency lowerOutput(uint n)  const;
+    RsaToolbox::QRowVector            lowerOutputFreq_Hz(uint n) const;
+    RsaToolbox::VnaArbitraryFrequency upperOutput(uint n)  const;
+    RsaToolbox::QRowVector            upperOutputFreq_Hz(uint n) const;
 
-    double minLowerFreq_Hz  (uint n) const;
-    double maxUpperFreq_Hz  (uint n) const;
+    double minLowerFreq_Hz(uint n) const;
+    double maxUpperFreq_Hz(uint n) const;
 
 private:
     IntermodSettings _settings;
+
+    double fc_Hz     () const;
+    double fdStart() const;
+    double fdStop () const;
+    uint   points () const;
+    static RsaToolbox::QRowVector sort(RsaToolbox::QRowVector v);
 };
 
 #endif // FREQUENCYCONVERSIONGENERATOR_H

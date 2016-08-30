@@ -444,7 +444,7 @@ void ProcessTracesTest::calFreq_data() {
             << 2002850000.0
             << 2002175000.0
             << 2001500000.0;
-    QTest::newRow("iml3u") << settings << trace << freq_Hz;
+    QTest::newRow("im3u") << settings << trace << freq_Hz;
 }
 void ProcessTracesTest::calFreq() {
     QFETCH(IntermodSettings, settings);
@@ -454,6 +454,7 @@ void ProcessTracesTest::calFreq() {
     IntermodTraces traces;
     traces << trace;
     ProcessTraces pt(traces, settings, _vna.data());
+    qDebug() << "Expecting: " << freq_Hz.first() << freq_Hz[1] << "..." << freq_Hz.last();
     compareRowVectors(pt.outputFreq_Hz(trace), freq_Hz);
 }
 

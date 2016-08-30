@@ -31,12 +31,12 @@ int main()
 
     TestRunner testRunner;
 //    testRunner.addTest(new CombinerTest             );
-//    testRunner.addTest(new FrequencyConversionTest  );
+    testRunner.addTest(new FrequencyConversionTest  );
 //    testRunner.addTest(new IntermodTraceTest        );
 //    testRunner.addTest(new IntermodTraceModelTest   );
 //    testRunner.addTest(new IntermodTraceDelegateTest);
 //    testRunner.addTest(new IntermodChannelsTest(connectionType, address));
-    testRunner.addTest(new ProcessTracesTest   (connectionType, address));
+//    testRunner.addTest(new ProcessTracesTest   (connectionType, address));
 
     // Fix these:
 //    testRunner.addTest(new IntermodTraceModelTest);
