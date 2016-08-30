@@ -70,9 +70,6 @@ private slots:
 
     void imu_data();
     void imu     ();
-
-private:
-    void createTestCaseData();
 };
 
 #endif // FREQUENCYCONVERSIONTEST_H

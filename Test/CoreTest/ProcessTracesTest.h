@@ -31,6 +31,9 @@ private slots:
     void calFreq_data();
     void calFreq     ();
 
+    void setCalFreq_data();
+    void setCalFreq();
+
     void calibration_data();
     void calibration     ();
 
@@ -49,7 +52,10 @@ private:
     double _vnaMin_Hz;
     double _vnaMax_Hz;
 
+    void removeDuplicates(RsaToolbox::QRowVector &v);
+    void sort(RsaToolbox::QRowVector &v);
     void compareRowVectors(RsaToolbox::QRowVector &actual, RsaToolbox::QRowVector &desired);
+
 };
 
 #endif // PROCESSTRACESTEST_H

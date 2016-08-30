@@ -24,7 +24,7 @@ const QString KEY_PATH     = dataDir.filePath("_Debug/Keys");
 
 // Debug Connection settings
 const RsaToolbox::ConnectionType CONNECTION_TYPE = RsaToolbox::ConnectionType::VisaTcpSocketConnection;
-const QString                    ADDRESS         = "192.168.183.227::5025";
+const QString                    ADDRESS         = "127.0.0.1::5025";
 
 #else
 // Release program data
@@ -32,7 +32,7 @@ const QDir    dataDir(RsaToolbox::GetAppDataPath(MANUFACTURER_FOLDER, APP_FOLDER
 const QString LOG_FILENAME = dataDir.filePath("R&S IM Spacing Sweep Log.txt");
 const QString KEY_PATH     = dataDir.filePath("Settings");
 
-// Debug Connection settings
+// Release Connection settings
 const RsaToolbox::ConnectionType CONNECTION_TYPE = RsaToolbox::ConnectionType::VisaTcpSocketConnection;
 const QString                    ADDRESS         = "127.0.0.1::5025";
 #endif

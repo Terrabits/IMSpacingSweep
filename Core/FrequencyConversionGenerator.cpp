@@ -59,26 +59,26 @@ QRowVector FrequencyConversionGenerator::upperInputFreq_Hz() const {
 }
 
 // intermod (output)
-VnaArbitraryFrequency FrequencyConversionGenerator::lowerOutput(uint n) const {
+VnaArbitraryFrequency FrequencyConversionGenerator::lowerOutput(int n) const {
     VnaArbitraryFrequency fc;
     fc.setNumerator  ( 1.0*n);
     fc.setDenominator(1.0   );
-    fc.setOffset     (double( 1 - n) * fc_Hz());
+    fc.setOffset     (( 1 - n) * fc_Hz());
     return fc;
 }
-QRowVector FrequencyConversionGenerator::lowerOutputFreq_Hz(uint n) const {
+QRowVector FrequencyConversionGenerator::lowerOutputFreq_Hz(int n) const {
     VnaArbitraryFrequency fc = lowerOutput(n);
     QRowVector f = add(multiply(fb_Hz(), fc.numerator()), fc.offset_Hz());
     return sort(f);
 }
-VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(uint n) const {
+VnaArbitraryFrequency FrequencyConversionGenerator::upperOutput(int n) const {
     VnaArbitraryFrequency fc;
     fc.setNumerator  (-1.0*n);
     fc.setDenominator(1.0   );
-    fc.setOffset     (double( 1 + n) * _settings.centerFrequency_Hz());
+    fc.setOffset     (( 1 + n) * _settings.centerFrequency_Hz());
     return fc;
 }
-QRowVector FrequencyConversionGenerator::upperOutputFreq_Hz(uint n) const {
+QRowVector FrequencyConversionGenerator::upperOutputFreq_Hz(int n) const {
     VnaArbitraryFrequency fc = upperOutput(n);
     QRowVector f = add(multiply(fb_Hz(), fc.numerator()), fc.offset_Hz());
     return sort(f);

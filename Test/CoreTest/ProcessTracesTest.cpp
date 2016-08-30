@@ -93,11 +93,13 @@ void ProcessTracesTest::initTestCase() {
                   << "35 - UTI Cal Frequencies.txt"
                   << "36 - IM3L Cal Frequencies.txt"
                   << "37 - IM3U Cal Frequencies.txt"
-                  << "38 - Empty Calibration.txt"
-                  << "39 - Full Calibration.txt"
-                  << "40 - Run oip3m.txt"
-                  << "41 - Run All Traces.txt"
-                  << "42 - Trace Math.txt";
+                  << "38 - Set Cal Freq Case 1.txt"
+                  << "39 - Set Cal Freq Case 2.txt"
+                  << "40 - Empty Calibration.txt"
+                  << "41 - Full Calibration.txt"
+                  << "42 - Run oip3m.txt"
+                  << "43 - Run All Traces.txt"
+                  << "44 - Trace Math.txt";
 
     VnaTestClass::_initTestCase();
 
@@ -390,6 +392,7 @@ void ProcessTracesTest::calFreq_data() {
             << 2000950000.0
             << 2000725000.0
             << 2000500000.0;
+    std::sort(freq_Hz.begin(), freq_Hz.end());
     QTest::newRow("uti") << settings << trace << freq_Hz;
 
     trace.setType(TraceType::intermod);
@@ -417,6 +420,7 @@ void ProcessTracesTest::calFreq_data() {
             << 1997150000.0
             << 1997825000.0
             << 1998500000.0;
+    std::sort(freq_Hz.begin(), freq_Hz.end());
     QTest::newRow("im3l") << settings << trace << freq_Hz;
 
     trace.setType(TraceType::intermod);
@@ -444,6 +448,7 @@ void ProcessTracesTest::calFreq_data() {
             << 2002850000.0
             << 2002175000.0
             << 2001500000.0;
+    std::sort(freq_Hz.begin(), freq_Hz.end());
     QTest::newRow("im3u") << settings << trace << freq_Hz;
 }
 void ProcessTracesTest::calFreq() {
@@ -454,8 +459,397 @@ void ProcessTracesTest::calFreq() {
     IntermodTraces traces;
     traces << trace;
     ProcessTraces pt(traces, settings, _vna.data());
-    qDebug() << "Expecting: " << freq_Hz.first() << freq_Hz[1] << "..." << freq_Hz.last();
     compareRowVectors(pt.outputFreq_Hz(trace), freq_Hz);
+}
+
+void ProcessTracesTest::setCalFreq_data() {
+    QTest::addColumn<IntermodSettings>("settings");
+    QTest::addColumn<IntermodTraces>("traces");
+    QTest::addColumn<QRowVector>("freq");
+
+    // Case 1
+    VnaIntermod::ToneSource upperSrc1;
+    upperSrc1.setPort(3);
+
+    IntermodSettings settings1;
+    settings1.setLowerSourcePort(1);
+    settings1.setUpperSource(upperSrc1);
+    settings1.setReceivingPort(2);
+    settings1.setCenterFrequency(1, SiPrefix::Giga);
+    settings1.setStartToneDistance(10, SiPrefix::Mega);
+    settings1.setStopToneDistance(100, SiPrefix::Mega);
+    settings1.setPoints(10);
+
+    settings1.setIfBw(1, SiPrefix::Kilo);
+    settings1.setChannel(1);
+
+    QRowVector freq1;
+    // lti
+    freq1 << 950000000.0
+          << 955000000.0
+          << 960000000.0
+          << 965000000.0
+          << 970000000.0
+          << 975000000.0
+          << 980000000.0
+          << 985000000.0
+          << 990000000.0
+          << 995000000.0;
+    // uti
+    freq1 << 1005000000.0
+          << 1010000000.0
+          << 1015000000.0
+          << 1020000000.0
+          << 1025000000.0
+          << 1030000000.0
+          << 1035000000.0
+          << 1040000000.0
+          << 1045000000.0
+          << 1050000000.0;
+    // im3l
+    freq1 << 850000000.0
+          << 865000000.0
+          << 880000000.0
+          << 895000000.0
+          << 910000000.0
+          << 925000000.0
+          << 940000000.0
+          << 955000000.0
+          << 970000000.0
+          << 985000000.0;
+    // im5l
+    freq1 << 750000000.0
+          << 775000000.0
+          << 800000000.0
+          << 825000000.0
+          << 850000000.0
+          << 875000000.0
+          << 900000000.0
+          << 925000000.0
+          << 950000000.0
+          << 975000000.0;
+    // im7l
+    freq1 << 650000000.0
+          << 685000000.0
+          << 720000000.0
+          << 755000000.0
+          << 790000000.0
+          << 825000000.0
+          << 860000000.0
+          << 895000000.0
+          << 930000000.0
+          << 965000000.0;
+    // im9l
+    freq1 << 550000000.0
+          << 595000000.0
+          << 640000000.0
+          << 685000000.0
+          << 730000000.0
+          << 775000000.0
+          << 820000000.0
+          << 865000000.0
+          << 910000000.0
+          << 955000000.0;
+    // im3u
+    freq1 << 1015000000.0
+          << 1030000000.0
+          << 1045000000.0
+          << 1060000000.0
+          << 1075000000.0
+          << 1090000000.0
+          << 1105000000.0
+          << 1120000000.0
+          << 1135000000.0
+          << 1150000000.0;
+    // im5u
+    freq1 << 1025000000.0
+          << 1050000000.0
+          << 1075000000.0
+          << 1100000000.0
+          << 1125000000.0
+          << 1150000000.0
+          << 1175000000.0
+          << 1200000000.0
+          << 1225000000.0
+          << 1250000000.0;
+    // im7u
+    freq1 << 1035000000.0
+          << 1070000000.0
+          << 1105000000.0
+          << 1140000000.0
+          << 1175000000.0
+          << 1210000000.0
+          << 1245000000.0
+          << 1280000000.0
+          << 1315000000.0
+          << 1350000000.0;
+    // im9u
+    freq1 << 1045000000.0
+          << 1090000000.0
+          << 1135000000.0
+          << 1180000000.0
+          << 1225000000.0
+          << 1270000000.0
+          << 1315000000.0
+          << 1360000000.0
+          << 1405000000.0
+          << 1450000000.0;
+    removeDuplicates(freq1);
+    sort(freq1);
+    QTest::newRow("case1") << settings1 << allTraces() << freq1;
+
+    // Case 2
+    VnaIntermod::ToneSource upperSrc2;
+    upperSrc2.setPort(3);
+
+    IntermodSettings settings2;
+    settings2.setLowerSourcePort(1);
+    settings2.setUpperSource(upperSrc2);
+    settings2.setReceivingPort(2);
+    settings2.setCenterFrequency(2, SiPrefix::Giga);
+    settings2.setStartToneDistance(1, SiPrefix::Mega);
+    settings2.setStopToneDistance(10, SiPrefix::Mega);
+    settings2.setPoints(21);
+
+    settings2.setIfBw(1, SiPrefix::Kilo);
+    settings2.setChannel(1);
+
+    QRowVector freq2;
+    // lti
+    freq2 << 1995000000.0
+          << 1995225000.0
+          << 1995450000.0
+          << 1995675000.0
+          << 1995900000.0
+          << 1996125000.0
+          << 1996350000.0
+          << 1996575000.0
+          << 1996800000.0
+          << 1997025000.0
+          << 1997250000.0
+          << 1997475000.0
+          << 1997700000.0
+          << 1997925000.0
+          << 1998150000.0
+          << 1998375000.0
+          << 1998600000.0
+          << 1998825000.0
+          << 1999050000.0
+          << 1999275000.0
+          << 1999500000.0;
+    // uti
+    freq2 << 2000500000.0
+          << 2000725000.0
+          << 2000950000.0
+          << 2001175000.0
+          << 2001400000.0
+          << 2001625000.0
+          << 2001850000.0
+          << 2002075000.0
+          << 2002300000.0
+          << 2002525000.0
+          << 2002750000.0
+          << 2002975000.0
+          << 2003200000.0
+          << 2003425000.0
+          << 2003650000.0
+          << 2003875000.0
+          << 2004100000.0
+          << 2004325000.0
+          << 2004550000.0
+          << 2004775000.0
+          << 2005000000.0;
+    // im3l
+    freq2 << 1985000000.0
+          << 1985675000.0
+          << 1986350000.0
+          << 1987025000.0
+          << 1987700000.0
+          << 1988375000.0
+          << 1989050000.0
+          << 1989725000.0
+          << 1990400000.0
+          << 1991075000.0
+          << 1991750000.0
+          << 1992425000.0
+          << 1993100000.0
+          << 1993775000.0
+          << 1994450000.0
+          << 1995125000.0
+          << 1995800000.0
+          << 1996475000.0
+          << 1997150000.0
+          << 1997825000.0
+          << 1998500000.0;
+    // im5l
+    freq2 << 1975000000.0
+          << 1976125000.0
+          << 1977250000.0
+          << 1978375000.0
+          << 1979500000.0
+          << 1980625000.0
+          << 1981750000.0
+          << 1982875000.0
+          << 1984000000.0
+          << 1985125000.0
+          << 1986250000.0
+          << 1987375000.0
+          << 1988500000.0
+          << 1989625000.0
+          << 1990750000.0
+          << 1991875000.0
+          << 1993000000.0
+          << 1994125000.0
+          << 1995250000.0
+          << 1996375000.0
+          << 1997500000.0;
+    // im7l
+    freq2 << 1965000000.0
+          << 1966575000.0
+          << 1968150000.0
+          << 1969725000.0
+          << 1971300000.0
+          << 1972875000.0
+          << 1974450000.0
+          << 1976025000.0
+          << 1977600000.0
+          << 1979175000.0
+          << 1980750000.0
+          << 1982325000.0
+          << 1983900000.0
+          << 1985475000.0
+          << 1987050000.0
+          << 1988625000.0
+          << 1990200000.0
+          << 1991775000.0
+          << 1993350000.0
+          << 1994925000.0
+          << 1996500000.0;
+    // im9l
+    freq2 << 1955000000.0
+          << 1957025000.0
+          << 1959050000.0
+          << 1961075000.0
+          << 1963100000.0
+          << 1965125000.0
+          << 1967150000.0
+          << 1969175000.0
+          << 1971200000.0
+          << 1973225000.0
+          << 1975250000.0
+          << 1977275000.0
+          << 1979300000.0
+          << 1981325000.0
+          << 1983350000.0
+          << 1985375000.0
+          << 1987400000.0
+          << 1989425000.0
+          << 1991450000.0
+          << 1993475000.0
+          << 1995500000.0;
+    // im3u
+    freq2 << 2001500000.0
+          << 2002175000.0
+          << 2002850000.0
+          << 2003525000.0
+          << 2004200000.0
+          << 2004875000.0
+          << 2005550000.0
+          << 2006225000.0
+          << 2006900000.0
+          << 2007575000.0
+          << 2008250000.0
+          << 2008925000.0
+          << 2009600000.0
+          << 2010275000.0
+          << 2010950000.0
+          << 2011625000.0
+          << 2012300000.0
+          << 2012975000.0
+          << 2013650000.0
+          << 2014325000.0
+          << 2015000000.0;
+    // im5u
+    freq2 << 2002500000.0
+          << 2003625000.0
+          << 2004750000.0
+          << 2005875000.0
+          << 2007000000.0
+          << 2008125000.0
+          << 2009250000.0
+          << 2010375000.0
+          << 2011500000.0
+          << 2012625000.0
+          << 2013750000.0
+          << 2014875000.0
+          << 2016000000.0
+          << 2017125000.0
+          << 2018250000.0
+          << 2019375000.0
+          << 2020500000.0
+          << 2021625000.0
+          << 2022750000.0
+          << 2023875000.0
+          << 2025000000.0;
+    // im7u
+    freq2 << 2003500000.0
+          << 2005075000.0
+          << 2006650000.0
+          << 2008225000.0
+          << 2009800000.0
+          << 2011375000.0
+          << 2012950000.0
+          << 2014525000.0
+          << 2016100000.0
+          << 2017675000.0
+          << 2019250000.0
+          << 2020825000.0
+          << 2022400000.0
+          << 2023975000.0
+          << 2025550000.0
+          << 2027125000.0
+          << 2028700000.0
+          << 2030275000.0
+          << 2031850000.0
+          << 2033425000.0
+          << 2035000000.0;
+    // im9u
+    freq2 << 2004500000.0
+          << 2006525000.0
+          << 2008550000.0
+          << 2010575000.0
+          << 2012600000.0
+          << 2014625000.0
+          << 2016650000.0
+          << 2018675000.0
+          << 2020700000.0
+          << 2022725000.0
+          << 2024750000.0
+          << 2026775000.0
+          << 2028800000.0
+          << 2030825000.0
+          << 2032850000.0
+          << 2034875000.0
+          << 2036900000.0
+          << 2038925000.0
+          << 2040950000.0
+          << 2042975000.0
+          << 2045000000.0;
+    removeDuplicates(freq2);
+    sort(freq2);
+    QTest::newRow("case2") << settings2  << allTraces() << freq2;
+}
+void ProcessTracesTest::setCalFreq() {
+    QFETCH(IntermodSettings, settings);
+    QFETCH(IntermodTraces,   traces);
+    QFETCH(QRowVector,       freq);
+
+    ProcessTraces pt(traces, settings, _vna.data());
+    pt.setupCalibration();
+
+    const uint c = settings.channel();
+    QRowVector measFreq = _vna->channel(c).segmentedSweep().frequencies_Hz();
+    compareRowVectors(measFreq, freq);
 }
 
 void ProcessTracesTest::calibration_data() {
@@ -828,9 +1222,27 @@ bool ProcessTracesTest::isEqual(double left, double right) {
     }
 }
 
+void ProcessTracesTest::removeDuplicates(QRowVector &v) {
+    for (int i = 0; i < v.size();) {
+        const double value = v[i];
+        if (v.mid(i+1).contains(value))
+            v.removeAt(i);
+        else
+            i++;
+    }
+}
+void ProcessTracesTest::sort(QRowVector &v) {
+    std::sort(v.begin(), v.end());
+}
 void ProcessTracesTest::compareRowVectors(QRowVector &actual, QRowVector &desired) {
     QCOMPARE(actual.size(), desired.size());
     for (int i = 0; i < actual.size(); i++) {
+        if (actual[i] != desired[i]) {
+            qDebug() << "i:       " << i;
+            qDebug() << "actual:  " << formatDouble(actual[i], 9);
+            qDebug() << "desired: " << formatDouble(desired[i], 9);
+        }
         QCOMPARE(actual[i], desired[i]);
     }
 }
+

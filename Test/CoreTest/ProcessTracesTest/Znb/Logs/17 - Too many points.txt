@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Mon Aug 29 16:07:54 2016
+Tue Aug 30 13:00:22 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP

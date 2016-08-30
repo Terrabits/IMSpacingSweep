@@ -205,7 +205,11 @@ uint ProcessTraces::lastChannel() const {
 void ProcessTraces::setupCalibration() {
 //    _channels.collapse();
     VnaChannel c = _vna->channel(_channels.base());
-    configureChannel(c);
+
+    VnaLinearSweep swp = c.linearSweep();
+    swp.setIfbandwidth(_settings.ifBw_Hz    ());
+    swp.setPower      (_settings.power_dBm  ());
+    c.setIfSelectivity(_settings.selectivity());
 
     c.sourceArbitraryFreqOff(lowerPort());
     c.sourceArbitraryFreqOff(upperPort());
@@ -214,12 +218,6 @@ void ProcessTraces::setupCalibration() {
 
     c.setFrequencies(calFreq_Hz());
     c.select();
-
-    // Create diagram, trace
-//    uint d = createOrReuseDiagram();
-//    const QString t = "calibrate";
-//    _vna->createTrace(t, channel());
-//    _vna->trace(t).setDiagram(d);
 }
 void ProcessTraces::run() {
     bool isOn = _vna->settings().isDisplayOn();
@@ -578,22 +576,16 @@ QString ProcessTraces::interceptMath(const IntermodTrace &t) const {
 }
 
 QRowVector ProcessTraces::fb_Hz() const {
-    const double fbStart = _genFreq.fbStart_Hz();
-    const double fbStop  = _genFreq.fbStop_Hz ();
-    const uint   points  = _settings.points();
-    return linearSpacing(fbStart, fbStop, points);
+    return _genFreq.fb_Hz();
 }
 QRowVector ProcessTraces::upperFreq_Hz() const {
-    VnaArbitraryFrequency af = upperAf();
-    return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
+    return _genFreq.upperInputFreq_Hz();
 }
 QRowVector ProcessTraces::outputFreq_Hz(const IntermodTrace &t) const {
-    VnaArbitraryFrequency af = receiverAf(t);
-    qDebug() << "af:     " << af.numerator() << af.offset_Hz();
-    qDebug() << "fb:     " << fb_Hz().first() << fb_Hz()[1] << "..." << fb_Hz().last();
-    QRowVector result = add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
-    qDebug() << "result: " << result.first() << result[1] << "..." << result.last();
-    return add(multiply(fb_Hz(), af.numerator()), af.offset_Hz());
+    if (t.isLower())
+        return _genFreq.lowerOutputFreq_Hz(t.order());
+    else
+        return _genFreq.upperOutputFreq_Hz(t.order());
 }
 QRowVector ProcessTraces::calFreq_Hz() const {
     // Original tones

@@ -29,10 +29,10 @@ public:
     // Note: assumes order n odd
 
     // Intermod (output)
-    RsaToolbox::VnaArbitraryFrequency lowerOutput(uint n)  const;
-    RsaToolbox::QRowVector            lowerOutputFreq_Hz(uint n) const;
-    RsaToolbox::VnaArbitraryFrequency upperOutput(uint n)  const;
-    RsaToolbox::QRowVector            upperOutputFreq_Hz(uint n) const;
+    RsaToolbox::VnaArbitraryFrequency lowerOutput(int n)  const;
+    RsaToolbox::QRowVector            lowerOutputFreq_Hz(int n) const;
+    RsaToolbox::VnaArbitraryFrequency upperOutput(int n)  const;
+    RsaToolbox::QRowVector            upperOutputFreq_Hz(int n) const;
 
     double minLowerFreq_Hz(uint n) const;
     double maxUpperFreq_Hz(uint n) const;
