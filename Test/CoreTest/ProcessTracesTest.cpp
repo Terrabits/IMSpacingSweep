@@ -259,6 +259,7 @@ void ProcessTracesTest::ready() {
     ProcessTraces pt(traces, settings, _vna.data());
     IntermodError error;
     bool isReady = pt.isReady(error);
+    QVERIFY(!_vna->isError());
     QCOMPARE(error.code, errorCode);
     if (error.isError()) {
         QVERIFY(!isReady);
@@ -315,7 +316,9 @@ void ProcessTracesTest::preprocess() {
     IntermodSettings settings;
     settings.setChannel(1);
     ProcessTraces pt(before, settings, _vna.data());
+    QVERIFY(!_vna->isError());
     QCOMPARE(after, pt._traces);
+    QVERIFY(!_vna->isError());
 }
 
 void ProcessTracesTest::calFreq_data() {
@@ -459,7 +462,9 @@ void ProcessTracesTest::calFreq() {
     IntermodTraces traces;
     traces << trace;
     ProcessTraces pt(traces, settings, _vna.data());
+    QVERIFY(!_vna->isError());
     compareRowVectors(pt.outputFreq_Hz(trace), freq_Hz);
+    QVERIFY(!_vna->isError());
 }
 
 void ProcessTracesTest::setCalFreq_data() {
@@ -480,6 +485,7 @@ void ProcessTracesTest::setCalFreq_data() {
     settings1.setStopToneDistance(100, SiPrefix::Mega);
     settings1.setPoints(10);
 
+    settings1.setPower(-10);
     settings1.setIfBw(1, SiPrefix::Kilo);
     settings1.setChannel(1);
 
@@ -611,6 +617,7 @@ void ProcessTracesTest::setCalFreq_data() {
     settings2.setStopToneDistance(10, SiPrefix::Mega);
     settings2.setPoints(21);
 
+    settings2.setPower(-10);
     settings2.setIfBw(1, SiPrefix::Kilo);
     settings2.setChannel(1);
 
@@ -846,10 +853,12 @@ void ProcessTracesTest::setCalFreq() {
 
     ProcessTraces pt(traces, settings, _vna.data());
     pt.setupCalibration();
+    QVERIFY(!_vna->isError());
 
     const uint c = settings.channel();
     QRowVector measFreq = _vna->channel(c).segmentedSweep().frequencies_Hz();
     compareRowVectors(measFreq, freq);
+    QVERIFY(!_vna->isError());
 }
 
 void ProcessTracesTest::calibration_data() {
@@ -956,6 +965,7 @@ void ProcessTracesTest::run() {
     _vna->settings().displayOn();
 //    pause("Run: Check setup");
     _vna->settings().displayOff();
+    QVERIFY(!_vna->isError());
 }
 
 void ProcessTracesTest::traceMath() {
@@ -1125,6 +1135,7 @@ void ProcessTracesTest::traceMath() {
         QVERIFY(isEqual(ip9mi, lti + im9mor/8.0));
         QVERIFY(isEqual(std::min(ip9li, ip9ui), ip9mi));
     }
+    QVERIFY(!_vna->isError());
 }
 
 void ProcessTracesTest::debugPrint(QString header, IntermodTraces traces) {

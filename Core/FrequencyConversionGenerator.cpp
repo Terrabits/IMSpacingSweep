@@ -48,7 +48,6 @@ QRowVector FrequencyConversionGenerator::lowerInputFreq_Hz() const {
 }
 VnaArbitraryFrequency FrequencyConversionGenerator::upperInput() const {
     VnaArbitraryFrequency fc = upperOutput(1);
-    fc.setGeneratorPort(true);
     return fc;
 }
 QRowVector FrequencyConversionGenerator::upperInputFreq_Hz() const {

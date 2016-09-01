@@ -211,10 +211,14 @@ void ProcessTraces::setupCalibration() {
     swp.setPower      (_settings.power_dBm  ());
     c.setIfSelectivity(_settings.selectivity());
 
-    c.sourceArbitraryFreqOff(lowerPort());
-    c.sourceArbitraryFreqOff(upperPort());
+    c.port(lowerPort()).rfOff(false);
+    c.port(lowerPort()).setGenerator(false);
+    c.port(lowerPort()).arbitrarySourceFrequencyOff();
+    c.port(upperPort()).rfOff(false);
+    c.port(upperPort()).setGenerator(false);
+    c.port(upperPort()).arbitrarySourceFrequencyOff();
     if (_vna->properties().isZvaFamily())
-        c.receiverArbitraryFreqOff();
+        c.arbitraryReceiverFrequencyOff();
 
     c.setFrequencies(calFreq_Hz());
     c.select();
@@ -346,8 +350,12 @@ void ProcessTraces::configureChannel(VnaChannel c) {
     c.setIfSelectivity(_settings.selectivity());
 
     // Port setup
-    c.setSourceArbitraryFreq(lowerPort(), lowerAf());
-    c.setSourceArbitraryFreq(upperPort(), upperAf());
+    c.port(lowerPort()).rfOff(false);
+    c.port(lowerPort()).setGenerator(false);
+    c.port(lowerPort()).setArbitrarySourceFrequency(lowerAf());
+    c.port(upperPort()).rfOff(false);
+    c.port(upperPort()).setGenerator(true);
+    c.port(upperPort()).setArbitrarySourceFrequency(upperAf());
 }
 
 void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
@@ -359,7 +367,7 @@ void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
     // independent from source settings
     // on ZVA
     if (_vna->properties().isZvaFamily())
-        ch.setReceiverArbitraryFreq(receiverAf(t));
+        ch.setArbitraryReceiverFrequency(receiverAf(t));
 
     // Wave port
     uint wavePort;
@@ -385,9 +393,9 @@ void ProcessTraces::processOutputTrace   (const IntermodTrace &t) {
 
     // Output port frequency
     if (_vna->properties().isZvaFamily())
-        ch.setReceiverArbitraryFreq(receiverAf(t));
+        ch.setArbitraryReceiverFrequency(receiverAf(t));
     else
-        ch.setSourceArbitraryFreq(outputPort(), receiverAf(t));
+        ch.port(outputPort()).setArbitrarySourceFrequency(receiverAf(t));
 
     // Trace
     const QString name = traceName(t);
@@ -405,9 +413,9 @@ void ProcessTraces::processIntermodTrace (const IntermodTrace &t) {
 
         // Output port frequency
         if (_vna->properties().isZvaFamily())
-            ch.setReceiverArbitraryFreq(receiverAf(t));
+            ch.setArbitraryReceiverFrequency(receiverAf(t));
         else
-            ch.setSourceArbitraryFreq(outputPort(), receiverAf(t));
+            ch.port(outputPort()).setArbitrarySourceFrequency(receiverAf(t));
     }
     else {
         ch = _vna->channel(lastChannel());
