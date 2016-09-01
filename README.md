@@ -29,6 +29,9 @@ Frequency conversion SCPI commands
 ==================================
 Intermod measurement with fixed center frequency and swept tone distance is not currently available on the VNA. This must be implemented in software via SCPI commands and with the frequency conversion settings on a per-port and per-channel-and-trace basis.
 
+- Source RF off  
+  `SOUR<Ch>:POWr<Port>:STAT [0/1]`  
+  `SOUR<Ch>:POW<Ignore>:GEN<Gen>:STAT [0/1]`
 - Source permanently on  
   `SOUR<Ch>:POW<Port>:PERM          [0/1]`  
   `SOUR<Ch>:POW<Ignore>:GEN<i>:PERM [0/1]`
