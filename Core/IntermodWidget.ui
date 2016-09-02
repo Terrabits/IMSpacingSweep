@@ -115,53 +115,13 @@
           <widget class="RsaToolbox::PointsEdit" name="receivingPort"/>
          </item>
          <item row="1" column="1">
-          <widget class="QWidget" name="upperSource" native="true">
+          <widget class="UpperSourceEdit" name="upperSource" native="true">
            <property name="minimumSize">
             <size>
              <width>0</width>
              <height>0</height>
             </size>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QComboBox" name="upperSourceType">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>75</width>
-                <height>0</height>
-               </size>
-              </property>
-              <item>
-               <property name="text">
-                <string>Port</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>SigGen</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <widget class="RsaToolbox::PointsEdit" name="upperSourceIndex"/>
-            </item>
-           </layout>
           </widget>
          </item>
          <item row="2" column="0">
@@ -522,11 +482,15 @@
    <header>CombinerEdit.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>UpperSourceEdit</class>
+   <extends>QWidget</extends>
+   <header>UpperSourceEdit.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>lowerPort</tabstop>
-  <tabstop>upperSourceType</tabstop>
-  <tabstop>upperSourceIndex</tabstop>
   <tabstop>combiner</tabstop>
   <tabstop>receivingPort</tabstop>
   <tabstop>centerFrequency</tabstop>

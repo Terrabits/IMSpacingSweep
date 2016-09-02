@@ -41,11 +41,19 @@ bool ProcessTraces::isReady(IntermodError &error) {
     }
 
     // Upper port
-    // Need to include generator...
-    if (upperPort() == 0 || upperPort() > vnaPorts) {
-        error.code    = IntermodError::Code::UpperSource;
-        error.message = "*upper input is invalid";
-        return false;
+    if (isUpperSourceGenerator()) {
+        if (!_vna->generators().contains(upperGenerator())) {
+            error.code    = IntermodError::Code::UpperSource;
+            error.message = "*upper generator is invalid";
+            return false;
+        }
+    }
+    else {
+        if (upperPort() == 0 || upperPort() > vnaPorts) {
+            error.code    = IntermodError::Code::UpperSource;
+            error.message = "*upper port is invalid";
+            return false;
+        }
     }
 
     // Combiner
@@ -65,20 +73,22 @@ bool ProcessTraces::isReady(IntermodError &error) {
     }
 
     // Port overlap
-    if (lowerPort() == upperPort()) {
-        error.code    = IntermodError::Code::UpperSource;
-        error.message = "*port assignments overlap";
-        return false;
-    }
     if (lowerPort() == outputPort()) {
         error.code    = IntermodError::Code::LowerSourcePort;
         error.message = "*port assignments overlap";
         return false;
     }
-    if (upperPort() == outputPort()) {
-        error.code    = IntermodError::Code::UpperSource;
-        error.message = "*port assignments overlap";
-        return false;
+    if (!isUpperSourceGenerator()) {
+        if (lowerPort() == upperPort()) {
+            error.code    = IntermodError::Code::UpperSource;
+            error.message = "*port assignments overlap";
+            return false;
+        }
+        if (upperPort() == outputPort()) {
+            error.code    = IntermodError::Code::UpperSource;
+            error.message = "*port assignments overlap";
+            return false;
+        }
     }
 
     // Center frequency
@@ -185,6 +195,11 @@ bool ProcessTraces::isReady(IntermodError &error) {
         error.message = "*Enter at least one trace";
         return false;
     }
+    if (isUpperSourceGenerator() && hasUpperInputTrace()) {
+        error.code    = IntermodError::Code::Traces;
+        error.message = "*Cannot show upper input when using a generator";
+        return false;
+    }
 
     // Frequency range of traces
     for (int i = 0; i < _traces.size(); i++) {
@@ -214,9 +229,16 @@ void ProcessTraces::setupCalibration() {
     c.port(lowerPort()).rfOff(false);
     c.port(lowerPort()).setGenerator(false);
     c.port(lowerPort()).arbitrarySourceFrequencyOff();
-    c.port(upperPort()).rfOff(false);
-    c.port(upperPort()).setGenerator(false);
-    c.port(upperPort()).arbitrarySourceFrequencyOff();
+    if (isUpperSourceGenerator()) {
+        c.generator(upperGenerator()).rfOff(false);
+        c.generator(upperGenerator()).setPermanentlyOn(false);
+        c.generator(upperGenerator()).arbitraryFrequencyOff();
+    }
+    else {
+        c.port(upperPort()).rfOff(false);
+        c.port(upperPort()).setGenerator(false);
+        c.port(upperPort()).arbitrarySourceFrequencyOff();
+    }
     if (_vna->properties().isZvaFamily())
         c.arbitraryReceiverFrequencyOff();
 
@@ -247,6 +269,17 @@ void ProcessTraces::run() {
 }
 
 // isReady
+bool ProcessTraces::isUpperSourceGenerator() const {
+    return _settings.upperSource().isGenerator();
+}
+bool ProcessTraces::hasUpperInputTrace() const {
+    foreach (IntermodTrace t, _traces) {
+        if (t.isInputTone() && t.isUpper())
+            return true;
+    }
+
+    return false;
+}
 bool ProcessTraces::isFreqOutsideVna(const IntermodTrace &t) const {
     const double vnaMin = _vna->properties().minimumFrequency_Hz();
     const double vnaMax = _vna->properties().maximumFrequency_Hz();
@@ -313,6 +346,22 @@ void ProcessTraces::sort() {
     std::sort(_traces.begin(), _traces.end());
 }
 
+void ProcessTraces::clearPortAndGeneratorSettings() {
+    VnaChannel c = _vna->channel(_settings.channel());
+    const uint numPorts = _vna->properties().physicalPorts();
+    for (uint i = 1; i <= numPorts; i++) {
+        VnaPortSettings p = c.port(i);
+        p.rfOff(false);
+        p.setGenerator(false);
+        p.arbitrarySourceFrequencyOff();
+    }
+    foreach (uint g, _vna->generators()) {
+        c.generator(g).rfOff(false);
+        c.generator(g).setPermanentlyOn(false);
+        c.generator(g).arbitraryFrequencyOff();
+    }
+}
+
 void ProcessTraces::processTrace(const IntermodTrace &t) {
     switch (t.type()) {
     case TraceType::inputTone:
@@ -353,9 +402,18 @@ void ProcessTraces::configureChannel(VnaChannel c) {
     c.port(lowerPort()).rfOff(false);
     c.port(lowerPort()).setGenerator(false);
     c.port(lowerPort()).setArbitrarySourceFrequency(lowerAf());
-    c.port(upperPort()).rfOff(false);
-    c.port(upperPort()).setGenerator(true);
-    c.port(upperPort()).setArbitrarySourceFrequency(upperAf());
+
+    if (_settings.upperSource().isPort()) {
+        c.port(upperPort()).rfOff(false);
+        c.port(upperPort()).setGenerator(true);
+        c.port(upperPort()).setArbitrarySourceFrequency(upperAf());
+    }
+    else {
+        const uint g = _settings.upperSource().generator();
+        c.generator(g).rfOff(false);
+        c.generator(g).setPermanentlyOn(true);
+        c.generator(g).setArbitraryFrequency(upperAf());
+    }
 }
 
 void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
@@ -371,12 +429,22 @@ void ProcessTraces::processInputTrace    (const IntermodTrace &t) {
 
     // Wave port
     uint wavePort;
-    if (_settings.combiner().isPort())
+    if (_settings.combiner().isPort()) {
         wavePort = _settings.combiner().port();
-    else if (t.isLower())
+    }
+    // External combiner:
+    else if (t.isLower()) {
         wavePort = lowerPort();
-    else
+    }
+    // Upper trace
+    else if (_settings.upperSource().isPort()) {
         wavePort = upperPort();
+    }
+    else {
+        // Cannot display upper source
+        // when it is a generator!
+        wavePort = 0;
+    }
 
     // Trace
     const QString name = traceName(t);
@@ -481,6 +549,9 @@ uint ProcessTraces::lowerPort() const {
 }
 uint ProcessTraces::upperPort() const {
     return _settings.upperSource().port();
+}
+uint ProcessTraces::upperGenerator() const {
+    return _settings.upperSource().generator();
 }
 bool ProcessTraces::isExternalCombiner() const {
     return _settings.combiner().isExternal();

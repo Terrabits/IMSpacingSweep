@@ -10,7 +10,7 @@
 
 // Application settings
 const QString APP_NAME            = "R&S IM Spacing Sweep";
-const QString APP_VERSION         = "1.2.1";
+const QString APP_VERSION         = "1.3";
 const QString MANUFACTURER_FOLDER = "Rohde-Schwarz";
 const QString APP_FOLDER          = "IM Spacing Sweep";
 const QString APP_DESCRIPTION     = "Measure IM products vs tone spacing for a given center frequency";

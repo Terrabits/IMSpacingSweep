@@ -152,6 +152,14 @@ void ProcessTracesTest::ready_data() {
     upperSource.setPort(100);
     settings.setUpperSource(upperSource);
     QTest::newRow("UpperPortTooHigh") << settings << traces << Code::UpperSource;
+
+    // Upper generator [?]
+//    uint g = 1;
+//    if (_vna->isGenerator())
+//        g = _vna->generators().last()+1;
+//    upperSource.setGenerator(g);
+//    settings.setUpperSource(upperSource);
+//    QTest::newRow("NoGenerator") << settings << traces << Code::UpperSource;
     upperSource.setPort(3);
     settings.setUpperSource(upperSource);
 
@@ -249,6 +257,19 @@ void ProcessTracesTest::ready_data() {
     settings.setCenterFrequency(_vnaMax_Hz - (9.0/2.0)*tdStop + 1.0e6);
     traces.last().setOrder(9);
     QTest::newRow("9TooHigh") << settings << traces << Code::Order;
+
+    // Upper source trace with generator [?]
+//    traces.clear();
+//    if (!_vna->isGenerator()) {
+//        qDebug() << "GENERATOR REQUIRED!";
+//    }
+//    else {
+//        traces.clear();
+//        traces << IntermodTrace(TraceType::inputTone, TraceFeature::upper);
+//        upperSource.setGenerator(_vna->generators().first());
+//        settings.setUpperSource(upperSource);
+//        QTest::newRow("NoUpperInputTraceWithGenerator") << settings << traces << Code::Traces;
+//    }
 }
 void ProcessTracesTest::ready() {
     return;

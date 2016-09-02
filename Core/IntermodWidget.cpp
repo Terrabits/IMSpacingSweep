@@ -55,8 +55,10 @@ void IntermodWidget::setInputLimits() {
     // Ports
     const uint ports = _vna->properties().physicalPorts();
     ui->lowerPort->setMaximum(ports);
-    qDebug() << "Need upper source widget and/or some mechanism...";
-    ui->upperSourceIndex->setMaximum(ports);
+    ui->upperSource->setVnaPorts(_vna->properties().physicalPorts());
+    if (_vna->isGenerator()) {
+        ui->upperSource->setGenerators(max(_vna->generators()));
+    }
     qDebug() << "Need better ZVA combiner test";
     if (_vna->properties().isZvaFamily())
         ui->combiner->enablePort();
@@ -94,10 +96,9 @@ bool IntermodWidget::isValidInput(IntermodError &e) const {
         e.message = "*Enter lower source port";
         return false;
     }
-    // FIX ME !!!!! ///
-    if (ui->upperSourceIndex->text().isEmpty()) {
-        ui->upperSourceIndex->selectAll();
-        ui->upperSourceIndex->setFocus();
+    if (!ui->upperSource->isInput()) {
+        ui->upperSource->setFocus();
+        ui->upperSource->selectAll();
         e.code = IntermodError::Code::UpperSource;
         e.message = "*Enter upper source";
         return false;
@@ -183,8 +184,7 @@ IntermodSettings IntermodWidget::input() const {
 
     // Ports
     s.setLowerSourcePort(ui->lowerPort->points());
-    // FIX ME !!!!! ////
-    s.upperSource().setPort(ui->upperSourceIndex->points());
+    s.setUpperSource(ui->upperSource->value());
     s.setCombiner(ui->combiner->value());
     s.setReceivingPort(ui->receivingPort->points());
 
@@ -207,8 +207,7 @@ IntermodSettings IntermodWidget::input() const {
 void IntermodWidget::setInput(const IntermodSettings &settings) {
     // Ports
     ui->lowerPort->setPoints(settings.lowerSourcePort());
-    // FIX ME !!!!
-    ui->upperSourceIndex->setPoints(settings.upperSource().port());
+    ui->upperSource->setValue(settings.upperSource());
     ui->combiner->setValue(settings.combiner());
     ui->receivingPort->setPoints(settings.receivingPort());
 
@@ -242,7 +241,7 @@ void IntermodWidget::connectWidgets() {
     // Ports
     connect(ui->lowerPort, SIGNAL(outOfRange(QString)),
             this, SIGNAL(errorMessage(QString)));
-    connect(ui->upperSourceIndex, SIGNAL(outOfRange(QString)),
+    connect(ui->upperSource, SIGNAL(outOfRange(QString)),
             this, SIGNAL(errorMessage(QString)));
     connect(ui->receivingPort, SIGNAL(outOfRange(QString)),
             this, SIGNAL(errorMessage(QString)));
@@ -342,8 +341,8 @@ void IntermodWidget::focusOn(const IntermodError &error) {
         ui->lowerPort->setFocus();
         break;
     case Code::UpperSource:
-        ui->upperSourceIndex->selectAll();
-        ui->upperSourceIndex->setFocus();
+        ui->upperSource->setFocus();
+        ui->upperSource->selectAll();
         break;
     case Code::ReceivingPort:
         ui->receivingPort->selectAll();

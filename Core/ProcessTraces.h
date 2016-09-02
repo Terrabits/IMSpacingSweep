@@ -47,6 +47,8 @@ private:
     uint lastChannel() const;
 
     // isReady
+    bool isUpperSourceGenerator() const;
+    bool hasUpperInputTrace    () const;
     bool isFreqOutsideVna(const IntermodTrace &t) const;
 
     // Preprocess
@@ -58,6 +60,9 @@ private:
     void preprocessTrace   (const IntermodTrace &t);
     bool dependencyInTraces(const IntermodTrace &t) const;
     void sort                 ();
+
+    // Turn off previous settings
+    void clearPortAndGeneratorSettings();
 
     // Process
     void processTrace      (const IntermodTrace &t);
@@ -74,10 +79,11 @@ private:
     QString traceName  (const IntermodTrace &t) const;
     uint createOrReuseDiagram();
 
-    uint lowerPort () const;
-    uint upperPort () const;
+    uint lowerPort() const;
+    uint upperPort() const;
+    uint upperGenerator    () const;
     bool isExternalCombiner() const;
-    uint combinerPort() const;
+    uint combinerPort      () const;
 
     uint outputPort() const;
     RsaToolbox::VnaArbitraryFrequency lowerAf () const;

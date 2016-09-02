@@ -24,6 +24,8 @@ Version History
 - 1.2.1  
   Fixed coupler input bug  
   Fixed cal frequency rounding issue
+- 1.3  
+  Added support for external generators
 
 Frequency conversion SCPI commands
 ==================================

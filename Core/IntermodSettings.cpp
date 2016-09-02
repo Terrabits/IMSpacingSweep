@@ -118,7 +118,7 @@ void IntermodSettings::setChannel(uint index) {
 // Stream operators
 QDataStream &operator<<(QDataStream &stream, const IntermodSettings &settings) {
     stream << quint32(settings.lowerSourcePort());
-    stream << quint32(settings.upperSource().port());
+    stream << settings.upperSource();
     stream << quint32(settings.receivingPort());
     stream << settings.combiner();
 
@@ -136,11 +136,16 @@ QDataStream &operator<<(QDataStream &stream, const IntermodSettings &settings) {
     return stream;
 }
 QDataStream &operator>>(QDataStream &stream, IntermodSettings &settings) {
-    quint32   lower ,  upper ,  recv;
-    stream >> lower >> upper >> recv;
-    settings.setLowerSourcePort   (lower);
-    settings.upperSource().setPort(upper);
+    quint32   lower;
+    stream >> lower;
+    settings.setLowerSourcePort(lower);
+
+    stream >> settings.upperSource();
+
+    quint32   recv;
+    stream >> recv;
     settings.setReceivingPort     (recv);
+
     stream >> settings.combiner();
 
     double    center;

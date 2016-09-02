@@ -1,7 +1,7 @@
  Version 0.0
 (C) 2016 Rohde & Schwarz North America
 
-Thu Sep 1 15:53:02 2016
+Thu Sep 1 19:11:47 2016
 
 VNA INSTRUMENT INFO
 Connection:       TCPIP
@@ -11366,7 +11366,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.79733975431"
+Read:     "8.28533012669"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11422,7 +11422,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.73503449089"
+Read:     "8.79715942327"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11450,7 +11450,7 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.76193663385"
+Read:     "8.34370132551"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11478,7 +11478,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.73503449089"
+Read:     "8.79715942327"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11506,7 +11506,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.69069042537"
+Read:     "8.38122970473"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11534,7 +11534,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56636253384"
+Read:     "8.69847590648"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11562,7 +11562,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.69069042537"
+Read:     "8.69847590648"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11590,7 +11590,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.80185588298"
+Read:     "7.36056452339"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11618,8 +11618,8 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.75896155503"
-Bytes: 14
+Read:     "8.3703373001"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
@@ -11646,8 +11646,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.80185588298"
-Bytes: 14
+Read:     "8.3703373001"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lo_im_ch1'"
@@ -11674,8 +11674,8 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.37215585323"
-Bytes: 14
+Read:     "8.0003155832"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uo_im_ch1'"
@@ -11702,7 +11702,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.71970033023"
+Read:     "8.17246704514"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11730,7 +11730,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.37215585323"
+Read:     "8.17246704514"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -11758,7 +11758,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.937694736573"
+Read:     "-0.511829296577"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -11786,8 +11786,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0354031204637"
-Bytes: 16
+Read:     "-0.0583711988235"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -11814,7 +11814,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.937694736573"
+Read:     "-0.511829296577"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -11842,8 +11842,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.893350671051"
-Bytes: 16
+Read:     "-0.0958995780378"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -11870,7 +11870,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.769022779521"
+Read:     "-0.413145779785"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -11898,7 +11898,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.893350671051"
+Read:     "-0.413145779785"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -11926,7 +11926,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-1.00451612867"
+Read:     "0.924765603298"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -11954,8 +11954,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0383781992868"
-Bytes: 16
+Read:     "-0.0850071734102"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -11982,8 +11982,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-1.00451612867"
-Bytes: 15
+Read:     "-0.0850071734102"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lor_im_ch1'"
@@ -12010,8 +12010,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.574816098915"
-Bytes: 16
+Read:     "0.285014543489"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -12038,8 +12038,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0776394240864"
-Bytes: 16
+Read:     "0.112863081552"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -12066,8 +12066,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.574816098915"
-Bytes: 16
+Read:     "0.112863081552"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -12094,8 +12094,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.32849238603"
-Bytes: 14
+Read:     "8.0294154784"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3uo_im_ch1'"
@@ -12122,7 +12122,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.81504131455"
+Read:     "8.25614452728"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12150,8 +12150,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.32849238603"
-Bytes: 14
+Read:     "8.0294154784"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3li_im_ch1'"
@@ -12178,7 +12178,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.5414525884"
+Read:     "12.7543853084"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12206,7 +12206,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0280015169"
+Read:     "12.9811143572"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12234,7 +12234,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.5414525884"
+Read:     "12.7543853084"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12262,7 +12262,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.57400208655"
+Read:     "8.26135523218"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12290,7 +12290,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.60508405943"
+Read:     "8.18204368175"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12318,7 +12318,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.57400208655"
+Read:     "8.18204368175"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12346,7 +12346,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.7869622889"
+Read:     "12.9863250621"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12374,7 +12374,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8180442618"
+Read:     "12.9070135117"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12402,7 +12402,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.7869622889"
+Read:     "12.9070135117"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12430,7 +12430,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.6299200647"
+Read:     "8.4394580355"
 Bytes: 13
 Status: 0x0 Operation completed successfully.
 
@@ -12458,7 +12458,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.80373613366"
+Read:     "8.27116223612"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12486,8 +12486,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.6299200647"
-Bytes: 13
+Read:     "8.27116223612"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7li_im_ch1'"
@@ -12514,8 +12514,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.842880267"
-Bytes: 13
+Read:     "13.1644278654"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7ui_im_ch1'"
@@ -12542,8 +12542,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.016696336"
-Bytes: 13
+Read:     "12.9961320661"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mi_im_ch1'"
@@ -12570,8 +12570,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.842880267"
-Bytes: 13
+Read:     "12.9961320661"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9lo_im_ch1'"
@@ -12598,7 +12598,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.72548774195"
+Read:     "8.32095694463"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12626,7 +12626,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.80704468233"
+Read:     "8.29943801189"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12654,7 +12654,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.72548774195"
+Read:     "8.29943801189"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12682,7 +12682,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9384479443"
+Read:     "13.0459267746"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12710,7 +12710,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0200048847"
+Read:     "13.0244078418"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12738,7 +12738,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9384479443"
+Read:     "13.0244078418"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12790,7 +12790,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.15241132637"
+Read:     "8.83949161637"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12846,7 +12846,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.83136567338"
+Read:     "8.41081710616"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12874,8 +12874,8 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.7276417204"
-Bytes: 13
+Read:     "7.78534904192"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
@@ -12902,7 +12902,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.83136567338"
+Read:     "8.41081710616"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12930,8 +12930,8 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.90521408793"
-Bytes: 14
+Read:     "7.5833856791"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uo_im_ch1'"
@@ -12958,7 +12958,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17439880229"
+Read:     "8.72590523018"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -12986,7 +12986,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17439880229"
+Read:     "8.72590523018"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13014,7 +13014,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.36489629451"
+Read:     "7.73174378564"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13042,8 +13042,8 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.5059378691"
-Bytes: 13
+Read:     "7.49897425687"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
@@ -13070,8 +13070,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.5059378691"
-Bytes: 13
+Read:     "7.73174378564"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lo_im_ch1'"
@@ -13098,7 +13098,7 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.46679382022"
+Read:     "7.42989692655"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13126,8 +13126,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.20192495813"
-Bytes: 14
+Read:     "8.6410760756"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
@@ -13154,8 +13154,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.46679382022"
-Bytes: 14
+Read:     "8.6410760756"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3lor_im_ch1'"
@@ -13182,8 +13182,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.678954347008"
-Bytes: 16
+Read:     "0.428674510205"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uor_im_ch1'"
@@ -13210,8 +13210,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.575230394027"
-Bytes: 16
+Read:     "1.05414257444"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -13238,8 +13238,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.678954347008"
-Bytes: 16
+Read:     "0.428674510205"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -13266,8 +13266,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.247197238434"
-Bytes: 15
+Read:     "1.25610593727"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -13294,8 +13294,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0219874759216"
-Bytes: 17
+Read:     "0.113586386182"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mor_im_ch1'"
@@ -13322,8 +13322,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0219874759216"
-Bytes: 17
+Read:     "0.113586386182"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lor_im_ch1'"
@@ -13350,8 +13350,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.212484968145"
-Bytes: 16
+Read:     "1.10774783073"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7uor_im_ch1'"
@@ -13378,8 +13378,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.353526542728"
-Bytes: 16
+Read:     "1.3405173595"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -13406,8 +13406,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.353526542728"
-Bytes: 16
+Read:     "1.10774783073"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lor_im_ch1'"
@@ -13434,8 +13434,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.314382493849"
-Bytes: 16
+Read:     "1.40959468982"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -13462,8 +13462,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0495136317581"
-Bytes: 17
+Read:     "0.198415540765"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -13490,8 +13490,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.314382493849"
-Bytes: 16
+Read:     "0.198415540765"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -13518,7 +13518,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.81293415286"
+Read:     "9.05382887147"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13546,7 +13546,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.86479612935"
+Read:     "9.36656290359"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13574,7 +13574,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.81293415286"
+Read:     "9.05382887147"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13602,7 +13602,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.6708227831"
+Read:     "13.2246372117"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13630,7 +13630,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.7226847596"
+Read:     "13.5373712439"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13658,7 +13658,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.6708227831"
+Read:     "13.2246372117"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13686,7 +13686,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.21421063598"
+Read:     "9.15351810068"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13714,7 +13714,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.14691445739"
+Read:     "8.86788821291"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13742,7 +13742,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.14691445739"
+Read:     "8.86788821291"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13770,8 +13770,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0720992662"
-Bytes: 14
+Read:     "13.324326441"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5ui_im_ch1'"
@@ -13798,7 +13798,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0048030877"
+Read:     "13.0386965532"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13826,7 +13826,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0048030877"
+Read:     "13.0386965532"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13854,7 +13854,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.11699709418"
+Read:     "9.02411662407"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13882,7 +13882,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.09349011807"
+Read:     "9.06291162312"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13910,7 +13910,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.09349011807"
+Read:     "9.02411662407"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13938,7 +13938,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9748857245"
+Read:     "13.1949249643"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13966,7 +13966,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9513787483"
+Read:     "13.2337199634"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -13994,7 +13994,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9513787483"
+Read:     "13.1949249643"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14022,7 +14022,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.11311351464"
+Read:     "9.01569095259"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14050,8 +14050,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.1462221224"
-Bytes: 13
+Read:     "8.86429355896"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
@@ -14078,7 +14078,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.11311351464"
+Read:     "8.86429355896"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14106,7 +14106,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9710021449"
+Read:     "13.1864992929"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14134,7 +14134,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0041107527"
+Read:     "13.0351018992"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14162,7 +14162,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9710021449"
+Read:     "13.0351018992"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14214,7 +14214,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.57660653178"
+Read:     "8.76837756599"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14270,7 +14270,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.59395816769"
+Read:     "7.48718527743"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14298,8 +14298,8 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.60297487747"
-Bytes: 14
+Read:     "8.5052398496"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
@@ -14326,8 +14326,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.60297487747"
-Bytes: 14
+Read:     "8.5052398496"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lo_im_ch1'"
@@ -14354,7 +14354,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.78240901126"
+Read:     "7.63644447067"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14382,7 +14382,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.44486408324"
+Read:     "8.64554711344"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14410,7 +14410,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.78240901126"
+Read:     "8.64554711344"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14438,7 +14438,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.66549515729"
+Read:     "8.37298421266"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14466,7 +14466,7 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.44327078966"
+Read:     "8.48008511751"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14494,7 +14494,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.44327078966"
+Read:     "8.48008511751"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14522,8 +14522,8 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.53760178022"
-Bytes: 14
+Read:     "8.8260626238"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uo_im_ch1'"
@@ -14550,7 +14550,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.69076581458"
+Read:     "8.16758373596"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14578,8 +14578,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.69076581458"
-Bytes: 14
+Read:     "8.8260626238"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3lor_im_ch1'"
@@ -14606,8 +14606,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0173516359095"
-Bytes: 17
+Read:     "1.28119228856"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uor_im_ch1'"
@@ -14634,8 +14634,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.026368345695"
-Bytes: 16
+Read:     "0.263137716391"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -14662,8 +14662,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.026368345695"
-Bytes: 16
+Read:     "0.263137716391"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -14690,8 +14690,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.205802479477"
-Bytes: 16
+Read:     "1.13193309532"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -14718,7 +14718,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.131742448539"
+Read:     "0.122830452549"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -14746,8 +14746,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.205802479477"
-Bytes: 16
+Read:     "0.122830452549"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lor_im_ch1'"
@@ -14774,7 +14774,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.911111374491"
+Read:     "0.395393353332"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -14802,7 +14802,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.133335742124"
+Read:     "0.288292448478"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -14830,7 +14830,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.133335742124"
+Read:     "0.288292448478"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -14858,8 +14858,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.039004751558"
-Bytes: 15
+Read:     "-0.0576850578058"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -14886,8 +14886,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.114159282798"
-Bytes: 16
+Read:     "0.600793830033"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -14914,8 +14914,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.114159282798"
-Bytes: 16
+Read:     "-0.0576850578058"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -14942,7 +14942,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56793071382"
+Read:     "9.40897371027"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14970,7 +14970,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56342235893"
+Read:     "8.89994642419"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -14998,7 +14998,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56342235893"
+Read:     "8.89994642419"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15026,7 +15026,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0016241387"
+Read:     "13.6508961009"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15054,7 +15054,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9971157838"
+Read:     "13.1418688148"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15082,7 +15082,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9971157838"
+Read:     "13.1418688148"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15110,7 +15110,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.52515591191"
+Read:     "9.05136083982"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15138,7 +15138,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.60954214391"
+Read:     "8.79908517913"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15166,7 +15166,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.52515591191"
+Read:     "8.79908517913"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15194,7 +15194,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9588493368"
+Read:     "13.2932832305"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15222,7 +15222,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0432355688"
+Read:     "13.0410075698"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15250,7 +15250,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9588493368"
+Read:     "13.0410075698"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15278,7 +15278,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.72845873123"
+Read:     "8.83427659001"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15306,8 +15306,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.59882919991"
-Bytes: 14
+Read:     "8.8164264035"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
@@ -15334,8 +15334,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.59882919991"
-Bytes: 14
+Read:     "8.8164264035"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7li_im_ch1'"
@@ -15362,7 +15362,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1621521561"
+Read:     "13.0761989807"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15390,7 +15390,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0325226248"
+Read:     "13.0583487942"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15418,7 +15418,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0325226248"
+Read:     "13.0583487942"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15446,7 +15446,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.58148212572"
+Read:     "8.76116693376"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15474,7 +15474,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56233662143"
+Read:     "8.84347679474"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15502,7 +15502,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56233662143"
+Read:     "8.76116693376"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15530,7 +15530,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0151755506"
+Read:     "13.0030893244"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15558,7 +15558,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9960300463"
+Read:     "13.0853991854"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15586,7 +15586,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9960300463"
+Read:     "13.0030893244"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15638,7 +15638,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.13404877831"
+Read:     "7.54270390963"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15694,7 +15694,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.81472736505"
+Read:     "8.41852781113"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15722,8 +15722,8 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.69715140803"
-Bytes: 14
+Read:     "7.7104037458"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mo_im_ch1'"
@@ -15750,7 +15750,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.81472736505"
+Read:     "8.41852781113"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15778,7 +15778,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.98100455333"
+Read:     "7.91283574901"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15806,7 +15806,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.20104505569"
+Read:     "8.62729210821"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15834,7 +15834,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.20104505569"
+Read:     "8.62729210821"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -15862,8 +15862,8 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.02427551061"
-Bytes: 14
+Read:     "8.3264823086"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7uo_im_ch1'"
@@ -15890,8 +15890,8 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.0422775843"
-Bytes: 13
+Read:     "7.60192748407"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
@@ -15918,7 +15918,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.0422775843"
+Read:     "8.3264823086"
 Bytes: 13
 Status: 0x0 Operation completed successfully.
 
@@ -15946,7 +15946,7 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.2014053654"
+Read:     "7.8647806095"
 Bytes: 13
 Status: 0x0 Operation completed successfully.
 
@@ -15974,7 +15974,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.16760093505"
+Read:     "7.40565420375"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16002,7 +16002,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.2014053654"
+Read:     "7.8647806095"
 Bytes: 13
 Status: 0x0 Operation completed successfully.
 
@@ -16030,7 +16030,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.680678586736"
+Read:     "-0.875823901502"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -16058,7 +16058,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.563102629718"
+Read:     "-0.167699836176"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -16086,7 +16086,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.680678586736"
+Read:     "-0.875823901502"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -16114,8 +16114,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.153044224983"
-Bytes: 15
+Read:     "-0.370131839383"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -16142,8 +16142,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0669962773749"
-Bytes: 17
+Read:     "-1.08458819859"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mor_im_ch1'"
@@ -16170,8 +16170,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0669962773749"
-Bytes: 17
+Read:     "-1.08458819859"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lor_im_ch1'"
@@ -16198,8 +16198,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.109773267705"
-Bytes: 15
+Read:     "-0.783778398974"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7uor_im_ch1'"
@@ -16226,8 +16226,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0917711940156"
-Bytes: 16
+Read:     "-0.0592235744421"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -16254,7 +16254,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0917711940156"
+Read:     "-0.783778398974"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -16282,8 +16282,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0673565870845"
-Bytes: 17
+Read:     "-0.32207669987"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -16310,8 +16310,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0335521567377"
-Bytes: 17
+Read:     "0.137049705876"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -16338,8 +16338,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0673565870845"
-Bytes: 17
+Read:     "-0.32207669987"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -16366,7 +16366,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.79370948495"
+Read:     "7.10479195888"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16394,7 +16394,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.85249746346"
+Read:     "7.45885399154"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16422,7 +16422,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.79370948495"
+Read:     "7.10479195888"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16450,7 +16450,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.6699606633"
+Read:     "12.5723880059"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16478,7 +16478,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.7287486418"
+Read:     "12.9264500386"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16506,7 +16506,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.6699606633"
+Read:     "12.5723880059"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16534,7 +16534,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17230983456"
+Read:     "7.45017094978"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16562,7 +16562,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.11729970897"
+Read:     "7.27155685998"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16590,7 +16590,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.11729970897"
+Read:     "7.27155685998"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16618,7 +16618,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0485610129"
+Read:     "12.9177669968"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16646,8 +16646,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9935508873"
-Bytes: 14
+Read:     "12.739152907"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mi_im_ch1'"
@@ -16674,8 +16674,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9935508873"
-Bytes: 14
+Read:     "12.739152907"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7lo_im_ch1'"
@@ -16702,8 +16702,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.15234435952"
-Bytes: 14
+Read:     "7.4120739152"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7uo_im_ch1'"
@@ -16730,7 +16730,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.14934400791"
+Read:     "7.53283329414"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16758,8 +16758,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.14934400791"
-Bytes: 14
+Read:     "7.4120739152"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7li_im_ch1'"
@@ -16786,7 +16786,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0285955378"
+Read:     "12.8796699622"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16814,7 +16814,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0255951862"
+Read:     "13.0004293412"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16842,7 +16842,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0255951862"
+Read:     "12.8796699622"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16870,7 +16870,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.12562920493"
+Read:     "7.50244432214"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16898,7 +16898,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.12985475872"
+Read:     "7.55983512286"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16926,7 +16926,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.12562920493"
+Read:     "7.50244432214"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16954,7 +16954,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0018803833"
+Read:     "12.9700403692"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -16982,8 +16982,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.006105937"
-Bytes: 13
+Read:     "13.0274311699"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mi_im_ch1'"
@@ -17010,7 +17010,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0018803833"
+Read:     "12.9700403692"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17062,7 +17062,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.09369666825"
+Read:     "7.77508788662"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17118,7 +17118,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.35439869326"
+Read:     "7.35505002147"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17146,7 +17146,7 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.23375818132"
+Read:     "7.93236144555"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17174,7 +17174,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.35439869326"
+Read:     "7.93236144555"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17202,8 +17202,8 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.11324137269"
-Bytes: 14
+Read:     "8.2569682524"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uo_im_ch1'"
@@ -17230,7 +17230,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.26019927408"
+Read:     "7.81995641216"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17258,8 +17258,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.26019927408"
-Bytes: 14
+Read:     "8.2569682524"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lo_im_ch1'"
@@ -17286,7 +17286,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.73012835448"
+Read:     "7.61626778624"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17314,7 +17314,7 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.33930362238"
+Read:     "7.56419875122"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17342,7 +17342,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.33930362238"
+Read:     "7.61626778624"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17370,7 +17370,7 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.97347764183"
+Read:     "8.39520295946"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17398,7 +17398,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.73776074682"
+Read:     "7.56427118179"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17426,7 +17426,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.97347764183"
+Read:     "8.39520295946"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17454,8 +17454,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.260702025004"
-Bytes: 16
+Read:     "0.420037865145"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uor_im_ch1'"
@@ -17482,7 +17482,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.140061513071"
+Read:     "-0.157273558936"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -17510,7 +17510,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.260702025004"
+Read:     "-0.157273558936"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -17538,8 +17538,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0195447044312"
-Bytes: 17
+Read:     "-0.481880365783"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -17566,8 +17566,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.166502605822"
-Bytes: 16
+Read:     "-0.0448685255414"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mor_im_ch1'"
@@ -17594,7 +17594,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.166502605822"
+Read:     "-0.481880365783"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -17622,7 +17622,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.363568313772"
+Read:     "0.158820100376"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -17650,8 +17650,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.245606954125"
-Bytes: 16
+Read:     "0.210889135396"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -17678,8 +17678,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.245606954125"
-Bytes: 16
+Read:     "0.158820100376"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lor_im_ch1'"
@@ -17706,8 +17706,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.120219026424"
-Bytes: 15
+Read:     "-0.620115072843"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -17734,7 +17734,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.355935921433"
+Read:     "0.210816704826"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -17762,8 +17762,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.120219026424"
-Bytes: 15
+Read:     "-0.620115072843"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -17790,7 +17790,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.96334565575"
+Read:     "7.98510681919"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17818,7 +17818,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.02366591172"
+Read:     "7.69645110715"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17846,7 +17846,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.96334565575"
+Read:     "7.69645110715"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17874,7 +17874,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8799489441"
+Read:     "13.2203188892"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17902,7 +17902,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9402692001"
+Read:     "12.9316631772"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17930,7 +17930,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8799489441"
+Read:     "12.9316631772"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17958,7 +17958,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.08881049215"
+Read:     "7.65461779517"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -17986,8 +17986,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.0520710168"
-Bytes: 13
+Read:     "7.76387075523"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mo_im_ch1'"
@@ -18014,8 +18014,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.0520710168"
-Bytes: 13
+Read:     "7.65461779517"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5li_im_ch1'"
@@ -18042,7 +18042,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0054137805"
+Read:     "12.8898298652"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18070,7 +18070,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9686743052"
+Read:     "12.9990828253"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18098,7 +18098,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9686743052"
+Read:     "12.8898298652"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18126,7 +18126,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.15429150841"
+Read:     "7.80155795629"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18154,7 +18154,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.05276209403"
+Read:     "7.81023614615"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18182,7 +18182,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.05276209403"
+Read:     "7.80155795629"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18210,7 +18210,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0708947968"
+Read:     "13.0367700263"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18238,7 +18238,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9693653824"
+Read:     "13.0454482162"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18266,7 +18266,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9693653824"
+Read:     "13.0367700263"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18294,7 +18294,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.10872404656"
+Read:     "7.69757350251"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18322,7 +18322,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.13818865843"
+Read:     "7.80143997472"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18350,7 +18350,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.10872404656"
+Read:     "7.69757350251"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18378,7 +18378,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0253273349"
+Read:     "12.9327855725"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18406,7 +18406,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0547919468"
+Read:     "13.0366520447"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18434,7 +18434,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0253273349"
+Read:     "12.9327855725"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18486,7 +18486,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.80501946489"
+Read:     "7.82516460665"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18542,8 +18542,8 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.1786031842"
-Bytes: 13
+Read:     "7.61641315618"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uo_im_ch1'"
@@ -18570,7 +18570,7 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.82812699951"
+Read:     "8.26920285497"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18598,7 +18598,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.82812699951"
+Read:     "8.26920285497"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18626,7 +18626,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.49932224186"
+Read:     "7.95415649199"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18654,8 +18654,8 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.57966714348"
-Bytes: 14
+Read:     "8.6277926075"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
@@ -18682,8 +18682,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.49932224186"
-Bytes: 14
+Read:     "8.6277926075"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lo_im_ch1'"
@@ -18710,7 +18710,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.80069959192"
+Read:     "8.57014916309"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18738,8 +18738,8 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.6745140512"
-Bytes: 13
+Read:     "8.20410665933"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mo_im_ch1'"
@@ -18766,7 +18766,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.80069959192"
+Read:     "8.57014916309"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18794,8 +18794,8 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.73259423562"
-Bytes: 14
+Read:     "8.7932311266"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uo_im_ch1'"
@@ -18822,7 +18822,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.91404273844"
+Read:     "8.40021320771"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -18850,8 +18850,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.91404273844"
-Bytes: 14
+Read:     "8.7932311266"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3lor_im_ch1'"
@@ -18878,8 +18878,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.373583719309"
-Bytes: 16
+Read:     "0.208751450464"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uor_im_ch1'"
@@ -18906,8 +18906,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-1.02310753462"
-Bytes: 15
+Read:     "-0.444038248327"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -18934,8 +18934,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-1.02310753462"
-Bytes: 15
+Read:     "-0.444038248327"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -18962,7 +18962,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.694302776968"
+Read:     "-0.128991885345"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -18990,8 +18990,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.225352321407"
-Bytes: 15
+Read:     "-0.802628000851"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mor_im_ch1'"
@@ -19018,7 +19018,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.694302776968"
+Read:     "-0.802628000851"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -19046,7 +19046,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.995680127033"
+Read:     "-0.744984556449"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -19074,8 +19074,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.86949458631"
-Bytes: 15
+Read:     "-0.378942052683"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -19102,7 +19102,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.995680127033"
+Read:     "-0.744984556449"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -19130,7 +19130,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0724252292726"
+Read:     "-0.968066519954"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -19158,7 +19158,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.109023273548"
+Read:     "-0.575048601064"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -19186,7 +19186,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.109023273548"
+Read:     "-0.968066519954"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -19214,7 +19214,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.61822760524"
+Read:     "7.92954033188"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19242,7 +19242,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.29346569758"
+Read:     "7.60314548248"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19270,7 +19270,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.29346569758"
+Read:     "7.60314548248"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19298,8 +19298,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.823508097"
-Bytes: 13
+Read:     "13.1146756819"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3ui_im_ch1'"
@@ -19326,7 +19326,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.4987461893"
+Read:     "12.7882808325"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19354,7 +19354,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.4987461893"
+Read:     "12.7882808325"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19382,7 +19382,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.63144377065"
+Read:     "7.79291663531"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19410,7 +19410,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.86135754524"
+Read:     "7.62450760643"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19438,7 +19438,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.63144377065"
+Read:     "7.62450760643"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19466,7 +19466,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8367242624"
+Read:     "12.9780519853"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19494,8 +19494,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.066638037"
-Bytes: 13
+Read:     "12.8096429564"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5mi_im_ch1'"
@@ -19522,7 +19522,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8367242624"
+Read:     "12.8096429564"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19550,7 +19550,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.63907244516"
+Read:     "7.70100026558"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19578,7 +19578,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.66010341067"
+Read:     "7.76200747155"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19606,7 +19606,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.63907244516"
+Read:     "7.70100026558"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19634,7 +19634,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8443529369"
+Read:     "12.8861356156"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19662,7 +19662,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8653839024"
+Read:     "12.9471428215"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19690,7 +19690,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8443529369"
+Read:     "12.8861356156"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19718,7 +19718,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.81407261855"
+Read:     "7.70415629165"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19746,8 +19746,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.7913915557"
-Bytes: 13
+Read:     "7.75328353151"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9mo_im_ch1'"
@@ -19774,8 +19774,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.7913915557"
-Bytes: 13
+Read:     "7.70415629165"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9li_im_ch1'"
@@ -19802,7 +19802,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0193531103"
+Read:     "12.8892916416"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19830,7 +19830,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9966720474"
+Read:     "12.9384188815"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19858,7 +19858,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9966720474"
+Read:     "12.8892916416"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19910,7 +19910,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17817742785"
+Read:     "8.17188025283"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19966,7 +19966,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.19363442787"
+Read:     "7.49374888676"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -19994,7 +19994,7 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.18662360071"
+Read:     "8.08129551927"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20022,7 +20022,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.19363442787"
+Read:     "8.08129551927"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20050,7 +20050,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.52050366766"
+Read:     "8.23338533599"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20078,7 +20078,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.79432682508"
+Read:     "7.82911600587"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20106,7 +20106,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.79432682508"
+Read:     "8.23338533599"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20134,7 +20134,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.72900459996"
+Read:     "8.29464528179"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20162,7 +20162,7 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.41661909486"
+Read:     "8.09566195162"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20190,7 +20190,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.72900459996"
+Read:     "8.29464528179"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20218,7 +20218,7 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.19768519434"
+Read:     "7.97208405065"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20246,8 +20246,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.74521545533"
-Bytes: 14
+Read:     "7.6563686917"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
@@ -20274,7 +20274,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.19768519434"
+Read:     "7.97208405065"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20302,8 +20302,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0154570000218"
-Bytes: 17
+Read:     "0.67813136607"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uor_im_ch1'"
@@ -20330,8 +20330,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0084461728565"
-Bytes: 17
+Read:     "0.0905847335541"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -20358,8 +20358,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0154570000218"
-Bytes: 17
+Read:     "0.0905847335541"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -20386,8 +20386,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.657673760189"
-Bytes: 15
+Read:     "-0.061505083168"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -20414,7 +20414,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.38385060277"
+Read:     "0.34276424696"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20442,8 +20442,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.38385060277"
-Bytes: 14
+Read:     "-0.061505083168"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lor_im_ch1'"
@@ -20470,7 +20470,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.550827172105"
+Read:     "-0.122765028961"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -20498,7 +20498,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.238441667011"
+Read:     "0.0762183012033"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -20526,7 +20526,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.550827172105"
+Read:     "-0.122765028961"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -20554,8 +20554,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0195077664932"
-Bytes: 17
+Read:     "0.199796202176"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -20582,8 +20582,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.43296197252"
-Bytes: 14
+Read:     "0.515511561128"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -20610,8 +20610,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.0195077664932"
-Bytes: 17
+Read:     "0.199796202176"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -20638,7 +20638,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17044892784"
+Read:     "8.51094593586"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20666,8 +20666,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17395434142"
-Bytes: 14
+Read:     "8.2171726196"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3mo_im_ch1'"
@@ -20694,8 +20694,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17044892784"
-Bytes: 14
+Read:     "8.2171726196"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3li_im_ch1'"
@@ -20722,7 +20722,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0025714566"
+Read:     "13.3493656397"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20750,7 +20750,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0060768702"
+Read:     "13.0555923234"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20778,7 +20778,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0025714566"
+Read:     "13.0555923234"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20806,8 +20806,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.3425958679"
-Bytes: 13
+Read:     "8.15650398203"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip5uo_im_ch1'"
@@ -20834,7 +20834,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.27414007854"
+Read:     "8.25757131457"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20862,7 +20862,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.27414007854"
+Read:     "8.15650398203"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20890,7 +20890,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1747183967"
+Read:     "12.9949236858"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20918,7 +20918,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1062626073"
+Read:     "13.0959910184"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20946,7 +20946,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1062626073"
+Read:     "12.9949236858"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -20974,7 +20974,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.08637271556"
+Read:     "8.15141937374"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21002,7 +21002,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.13843707054"
+Read:     "8.18458332843"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21030,7 +21030,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.08637271556"
+Read:     "8.15141937374"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21058,7 +21058,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9184952443"
+Read:     "12.9898390776"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21086,7 +21086,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9705595993"
+Read:     "13.0230030322"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21114,7 +21114,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9184952443"
+Read:     "12.9898390776"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21142,8 +21142,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17573895704"
-Bytes: 14
+Read:     "8.1968547781"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9uo_im_ch1'"
@@ -21170,7 +21170,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.23229767442"
+Read:     "8.23631919797"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21198,8 +21198,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.17573895704"
-Bytes: 14
+Read:     "8.1968547781"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9li_im_ch1'"
@@ -21226,7 +21226,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0078614858"
+Read:     "13.0352744819"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21254,7 +21254,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0644202032"
+Read:     "13.0747389018"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21282,7 +21282,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0078614858"
+Read:     "13.0352744819"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21334,7 +21334,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.64708248031"
+Read:     "7.25200945299"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21390,7 +21390,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.33902027087"
+Read:     "7.41340611741"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21418,7 +21418,7 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.74323369449"
+Read:     "8.18529938983"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21446,7 +21446,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.74323369449"
+Read:     "8.18529938983"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21474,7 +21474,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.31083146123"
+Read:     "7.62177147292"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21502,7 +21502,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.62544856791"
+Read:     "7.53239202421"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21530,7 +21530,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.31083146123"
+Read:     "7.62177147292"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21558,7 +21558,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.31150549693"
+Read:     "8.48709646082"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21586,7 +21586,7 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.26770192266"
+Read:     "8.47352293509"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21614,7 +21614,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.31150549693"
+Read:     "8.48709646082"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21642,7 +21642,7 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.13790843999"
+Read:     "8.53832186708"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21670,7 +21670,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.96371505276"
+Read:     "8.60862701491"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21698,7 +21698,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.13790843999"
+Read:     "8.60862701491"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -21726,7 +21726,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.691937790557"
+Read:     "-0.161396664416"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -21754,8 +21754,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-1.09615121418"
-Bytes: 15
+Read:     "-0.933289936837"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -21782,8 +21782,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-1.09615121418"
-Bytes: 15
+Read:     "-0.933289936837"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -21810,7 +21810,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.663748980917"
+Read:     "-0.369762019926"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -21838,7 +21838,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0216339124082"
+Read:     "-0.280382571222"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -21866,7 +21866,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.663748980917"
+Read:     "-0.369762019926"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -21894,8 +21894,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.664423016618"
-Bytes: 16
+Read:     "-1.23508700783"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7uor_im_ch1'"
@@ -21922,8 +21922,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.620619442346"
-Bytes: 16
+Read:     "-1.2215134821"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -21950,8 +21950,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.664423016618"
-Bytes: 16
+Read:     "-1.23508700783"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lor_im_ch1'"
@@ -21978,8 +21978,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.490825959677"
-Bytes: 16
+Read:     "-1.28631241409"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9uor_im_ch1'"
@@ -22006,8 +22006,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.316632572442"
-Bytes: 16
+Read:     "-1.35661756192"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -22034,8 +22034,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.490825959677"
-Bytes: 16
+Read:     "-1.35661756192"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip3lo_im_ch1'"
@@ -22062,7 +22062,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.30111358504"
+Read:     "7.17131112078"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22090,7 +22090,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.09900687322"
+Read:     "6.78536448457"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22118,7 +22118,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.09900687322"
+Read:     "6.78536448457"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22146,7 +22146,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.6643310614"
+Read:     "12.9296016244"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22174,7 +22174,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.4622243495"
+Read:     "12.5436549882"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22202,7 +22202,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.4622243495"
+Read:     "12.5436549882"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22230,7 +22230,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.48114523509"
+Read:     "7.15956894801"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22258,7 +22258,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.65249095842"
+Read:     "7.18191381018"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22286,7 +22286,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.48114523509"
+Read:     "7.15956894801"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22314,7 +22314,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8443627114"
+Read:     "12.9178594517"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22342,7 +22342,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0157084347"
+Read:     "12.9402043138"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22370,7 +22370,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8443627114"
+Read:     "12.9178594517"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22398,8 +22398,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.5363450894"
-Bytes: 13
+Read:     "7.04616120666"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7uo_im_ch1'"
@@ -22426,7 +22426,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.54364569972"
+Read:     "7.04842346547"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22454,8 +22454,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.5363450894"
-Bytes: 13
+Read:     "7.04616120666"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7li_im_ch1'"
@@ -22482,7 +22482,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8995625657"
+Read:     "12.8044517103"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22510,8 +22510,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.906863176"
-Bytes: 13
+Read:     "12.8067139691"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mi_im_ch1'"
@@ -22538,7 +22538,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8995625657"
+Read:     "12.8044517103"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22566,7 +22566,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.58572923535"
+Read:     "7.09122040123"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22594,7 +22594,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.60750340876"
+Read:     "7.08243225775"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22622,7 +22622,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.58572923535"
+Read:     "7.08243225775"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22650,7 +22650,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9489467117"
+Read:     "12.8495109049"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22678,7 +22678,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9707208851"
+Read:     "12.8407227614"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22706,7 +22706,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9489467117"
+Read:     "12.8407227614"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22758,7 +22758,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.70818651095"
+Read:     "7.94547075204"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22814,8 +22814,8 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.44767565891"
-Bytes: 14
+Read:     "7.8687952746"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uo_im_ch1'"
@@ -22842,7 +22842,7 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.05779124152"
+Read:     "8.86499896257"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22870,7 +22870,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.44767565891"
+Read:     "8.86499896257"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22898,7 +22898,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.14676459685"
+Read:     "7.94652489144"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22926,7 +22926,7 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.41901134285"
+Read:     "8.32265369416"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22954,7 +22954,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.14676459685"
+Read:     "8.32265369416"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -22982,7 +22982,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.88169537793"
+Read:     "8.22727746252"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23010,7 +23010,7 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.45274056423"
+Read:     "8.31192089861"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23038,7 +23038,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.45274056423"
+Read:     "8.31192089861"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23066,7 +23066,7 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.00333006491"
+Read:     "8.51432085644"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23094,8 +23094,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.60983169389"
-Bytes: 14
+Read:     "8.6668736222"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mo_im_ch1'"
@@ -23122,8 +23122,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.00333006491"
-Bytes: 14
+Read:     "8.6668736222"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3lor_im_ch1'"
@@ -23150,8 +23150,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.73948914796"
-Bytes: 15
+Read:     "0.0766754774403"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3uor_im_ch1'"
@@ -23178,7 +23178,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.349604730571"
+Read:     "-0.919528210531"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -23206,8 +23206,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.73948914796"
-Bytes: 15
+Read:     "-0.919528210531"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -23234,8 +23234,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.4385780859"
-Bytes: 14
+Read:     "-0.00105413940196"
+Bytes: 18
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -23262,8 +23262,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.289175168096"
-Bytes: 15
+Read:     "-0.377182942115"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mor_im_ch1'"
@@ -23290,8 +23290,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.4385780859"
-Bytes: 14
+Read:     "-0.377182942115"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lor_im_ch1'"
@@ -23318,8 +23318,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.173508866988"
-Bytes: 16
+Read:     "-0.28180671048"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7uor_im_ch1'"
@@ -23346,7 +23346,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.744554053284"
+Read:     "-0.366450146573"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -23374,7 +23374,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.744554053284"
+Read:     "-0.366450146573"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -23402,7 +23402,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.295143553964"
+Read:     "-0.568850104399"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -23430,7 +23430,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0983548170594"
+Read:     "-0.721402870163"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -23458,7 +23458,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "-0.295143553964"
+Read:     "-0.721402870163"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
@@ -23486,7 +23486,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.33844193697"
+Read:     "7.98380849076"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23514,7 +23514,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.53338414566"
+Read:     "7.48570664678"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23542,7 +23542,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.33844193697"
+Read:     "7.48570664678"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23570,7 +23570,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.6405553827"
+Read:     "13.0486376954"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23598,7 +23598,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8354975914"
+Read:     "12.5505358514"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23626,7 +23626,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.6405553827"
+Read:     "12.5505358514"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23654,7 +23654,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.59854198947"
+Read:     "7.94520721719"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23682,7 +23682,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.78048030297"
+Read:     "7.85117501651"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23710,7 +23710,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.59854198947"
+Read:     "7.85117501651"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23738,7 +23738,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9006554352"
+Read:     "13.0100364218"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23766,7 +23766,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0825937487"
+Read:     "12.9160042211"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23794,7 +23794,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9006554352"
+Read:     "12.9160042211"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23822,7 +23822,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.67926830861"
+Read:     "7.89850287303"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23850,7 +23850,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.58409392055"
+Read:     "7.88439560546"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23878,7 +23878,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.58409392055"
+Read:     "7.88439560546"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23906,7 +23906,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9813817543"
+Read:     "12.9633320776"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23934,7 +23934,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8862073662"
+Read:     "12.9492248101"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23962,7 +23962,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.8862073662"
+Read:     "12.9492248101"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -23990,8 +23990,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.6712935667"
-Bytes: 13
+Read:     "7.87436448899"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9uo_im_ch1'"
@@ -24018,7 +24018,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.72048086308"
+Read:     "7.85529539327"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24046,8 +24046,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.6712935667"
-Bytes: 13
+Read:     "7.85529539327"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9li_im_ch1'"
@@ -24074,7 +24074,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9734070124"
+Read:     "12.9391936936"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24102,7 +24102,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0225943088"
+Read:     "12.9201245979"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24130,7 +24130,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "12.9734070124"
+Read:     "12.9201245979"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24182,7 +24182,7 @@ Write:    ":CALC3:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.67953611804"
+Read:     "8.29430766433"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24238,7 +24238,7 @@ Write:    ":CALC5:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.18448341106"
+Read:     "7.78044259587"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24266,7 +24266,7 @@ Write:    ":CALC9:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.32496773411"
+Read:     "8.38028066668"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24294,7 +24294,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.32496773411"
+Read:     "8.38028066668"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24322,7 +24322,7 @@ Write:    ":CALC6:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.05376884137"
+Read:     "8.68771853299"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24350,8 +24350,8 @@ Write:    ":CALC10:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "7.82519986168"
-Bytes: 14
+Read:     "8.4054569785"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mo_im_ch1'"
@@ -24378,7 +24378,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.05376884137"
+Read:     "8.68771853299"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24406,7 +24406,7 @@ Write:    ":CALC7:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.42071970757"
+Read:     "7.53913933908"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24434,7 +24434,7 @@ Write:    ":CALC11:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.62635972761"
+Read:     "7.91157869422"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24462,7 +24462,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.62635972761"
+Read:     "7.91157869422"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24490,7 +24490,7 @@ Write:    ":CALC8:MARK1:Y?"
 Bytes: 16
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.43155123051"
+Read:     "7.56110827982"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24518,7 +24518,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56053608513"
+Read:     "7.27925398757"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24546,7 +24546,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.56053608513"
+Read:     "7.56110827982"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24574,7 +24574,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.495052706987"
+Read:     "0.513865068461"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -24602,8 +24602,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.354568383937"
-Bytes: 15
+Read:     "-0.0859730023491"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im3mor_im_ch1'"
@@ -24630,8 +24630,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.354568383937"
-Bytes: 15
+Read:     "-0.0859730023491"
+Bytes: 17
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5lor_im_ch1'"
@@ -24658,8 +24658,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.625767276678"
-Bytes: 15
+Read:     "-0.393410868657"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5uor_im_ch1'"
@@ -24686,8 +24686,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.854336256359"
-Bytes: 15
+Read:     "-0.111149314168"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im5mor_im_ch1'"
@@ -24714,8 +24714,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.625767276678"
-Bytes: 15
+Read:     "-0.393410868657"
+Bytes: 16
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7lor_im_ch1'"
@@ -24742,7 +24742,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.258816410472"
+Read:     "0.755168325252"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -24770,8 +24770,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0531763904347"
-Bytes: 16
+Read:     "0.382728970114"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im7mor_im_ch1'"
@@ -24798,8 +24798,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.0531763904347"
-Bytes: 16
+Read:     "0.382728970114"
+Bytes: 15
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9lor_im_ch1'"
@@ -24826,7 +24826,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.247984887535"
+Read:     "0.733199384511"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -24854,8 +24854,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.119000032919"
-Bytes: 15
+Read:     "1.01505367676"
+Bytes: 14
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'im9mor_im_ch1'"
@@ -24882,7 +24882,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "0.119000032919"
+Read:     "0.733199384511"
 Bytes: 15
 Status: 0x0 Operation completed successfully.
 
@@ -24910,7 +24910,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.92706247154"
+Read:     "8.55124019857"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24938,7 +24938,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.85682031001"
+Read:     "8.25132116316"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24966,7 +24966,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.85682031001"
+Read:     "8.25132116316"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -24994,7 +24994,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.2578263101"
+Read:     "13.2672324909"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25022,7 +25022,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1875841486"
+Read:     "12.9673134555"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25050,7 +25050,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1875841486"
+Read:     "12.9673134555"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25078,7 +25078,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.83597793721"
+Read:     "8.19595494717"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25106,7 +25106,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.89312018213"
+Read:     "8.26652033579"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25134,7 +25134,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.83597793721"
+Read:     "8.19595494717"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25162,7 +25162,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1667417758"
+Read:     "12.9119472395"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25190,7 +25190,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.2238840207"
+Read:     "12.9825126281"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25218,7 +25218,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.1667417758"
+Read:     "12.9119472395"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25246,8 +25246,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.72267227273"
-Bytes: 14
+Read:     "8.4201693036"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7uo_im_ch1'"
@@ -25274,8 +25274,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.68839886751"
-Bytes: 14
+Read:     "8.3580959536"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7mo_im_ch1'"
@@ -25302,8 +25302,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.68839886751"
-Bytes: 14
+Read:     "8.3580959536"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip7li_im_ch1'"
@@ -25330,7 +25330,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0534361113"
+Read:     "13.1361615959"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25358,7 +25358,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0191627061"
+Read:     "13.0740882459"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25386,7 +25386,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0191627061"
+Read:     "13.0740882459"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25414,8 +25414,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.71053422899"
-Bytes: 14
+Read:     "8.3859575874"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9uo_im_ch1'"
@@ -25442,7 +25442,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.69441112216"
+Read:     "8.42118937393"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25470,8 +25470,8 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "8.69441112216"
-Bytes: 14
+Read:     "8.3859575874"
+Bytes: 13
 Status: 0x0 Operation completed successfully.
 
 Write:    ":CONF:TRAC:CHAN:NAME:ID? 'ip9li_im_ch1'"
@@ -25498,7 +25498,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0412980676"
+Read:     "13.1019498797"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25526,7 +25526,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0251749608"
+Read:     "13.1371816662"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
@@ -25554,7 +25554,7 @@ Write:    ":CALC12:MARK1:Y?"
 Bytes: 17
 Status: 0x0 Operation completed successfully.
 
-Read:     "13.0251749608"
+Read:     "13.1019498797"
 Bytes: 14
 Status: 0x0 Operation completed successfully.
 
