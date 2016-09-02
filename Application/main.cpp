@@ -95,6 +95,15 @@ int main(int argc, char *argv[])
                      process,  SLOT(setTraces(IntermodTraces)));
     wizard->addPage(process);
 
+    // Resize wizard
+    QRect g = wizard->geometry();
+    int w = g.width();
+    const int new_w = 425;
+    g.setWidth(new_w);
+    g.setLeft(g.left() + (w-new_w)/2);
+    wizard->setGeometry(g);
+    wizard->setAttribute(Qt::WA_Moved, false);
+
     // Start event loop
     wizard->show();
     int result = a.exec();

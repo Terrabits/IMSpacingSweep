@@ -57,6 +57,7 @@ void TracesWidget::setInput(const IntermodTraces &traces) {
 void TracesWidget::initialize() {
     bool blocked = this->blockSignals(true);
     loadKeys();
+    ui->traces->resizeColumnToContents(2);
     this->blockSignals(blocked);
 }
 bool TracesWidget::isReadyForNext() {
